@@ -376,13 +376,14 @@ Source: [Artwork by \@allison_horst](https://twitter.com/allison_horst)
 ::: {.column width="45%"}
 **Next Class**
 
-- The next class will be Tuesday, April 9 from 11:00 AM - 12:00 PM CT. 
+- The next class will be **Tuesday, April 9 from 11:00 AM - 12:00 PM CT.** 
 
 - We will do a deep dive into the `tidyverse` and the main functions we use to do data cleaning. 
 
 - You all will clean and manipulate data frames using data from the `edbuildr` package. 
 
 :::
+
 
 ::: {.column width="45%"}
 **Homework**

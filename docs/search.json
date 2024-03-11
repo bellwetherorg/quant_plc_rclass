@@ -1,0 +1,137 @@
+[
+  {
+    "objectID": "quant_plc_r_training.html",
+    "href": "quant_plc_r_training.html",
+    "title": "Quantitative Peer Learning Community R Training",
+    "section": "",
+    "text": "There has been a growing demand amongst Bellwarians to learn R to support them in data cleaning, analysis and visualization. To support Bellwarians in developing their R skills, the Quantitaive PLC is providing a 9 week course that will teach them how to do the following:\n\nData cleaning and analysis\nJoin two or more data frames\nAdvanced data visualizations, including charts, graphs, and maps\nCreate high-quality presentations using Quarto"
+  },
+  {
+    "objectID": "quant_plc_r_training.html#about-this-training",
+    "href": "quant_plc_r_training.html#about-this-training",
+    "title": "Quantitative Peer Learning Community R Training",
+    "section": "",
+    "text": "When the window opens to pass major education funding reform, advocates need deep policy and technical expertise to influence the legislation. This session will introduce advocates to the technical tools needed to become a trusted authority for modeling potential changes to their state’s school funding formula. Participants will get a crash course in building data analysis and modeling skills, hear from other advocates who’ve put these skills to use to shape policy, and get to know colleagues across the Network who can support future funding reform efforts."
+  },
+  {
+    "objectID": "quant_plc_r_training.html#r-class-prep",
+    "href": "quant_plc_r_training.html#r-class-prep",
+    "title": "Quantitative Peer Learning Community R Training",
+    "section": "R Class Prep",
+    "text": "R Class Prep\nPrior to the first class on March 19, participants should do the following:\n\nInstall R, RStudio, and specified packages. Detailed instructions for downloading required software are available here.\nCreate a Github account. Detailed instructions for how to set up a Github account can be found here.\nDownload R packages"
+  },
+  {
+    "objectID": "quant_plc_r_training.html#instructors",
+    "href": "quant_plc_r_training.html#instructors",
+    "title": "Quantitative Peer Learning Community R Training",
+    "section": "Instructors",
+    "text": "Instructors\n\nKrista Kaput\nAlex Spurrier"
+  },
+  {
+    "objectID": "setup.html",
+    "href": "setup.html",
+    "title": "Setup",
+    "section": "",
+    "text": "The R language is open-source software available at through the Comprehensive R Archive Network, CRAN. Select the version of R that is compatiable with your operating system.\nOnce you’ve downloaded the installer, go ahead and run it to install R on your computer.",
+    "crumbs": [
+      "Setup"
+    ]
+  },
+  {
+    "objectID": "setup.html#step-1-download-and-install-r",
+    "href": "setup.html#step-1-download-and-install-r",
+    "title": "Setup",
+    "section": "",
+    "text": "The R language is open-source software available at through the Comprehensive R Archive Network, CRAN. Select the version of R that is compatiable with your operating system.\nOnce you’ve downloaded the installer, go ahead and run it to install R on your computer.",
+    "crumbs": [
+      "Setup"
+    ]
+  },
+  {
+    "objectID": "setup.html#step-2-install-rstudio",
+    "href": "setup.html#step-2-install-rstudio",
+    "title": "Setup",
+    "section": "Step 2: Install RStudio",
+    "text": "Step 2: Install RStudio\nRStudio is an open-source integrated development environment (IDE) designed to improve your R programming experience. It is available to download through Posit, a public benefit corporation (PBC) that develops open-source software.\nAgain, once you’ve downloaded the installer, go ahead and run it to install RStudio on your computer.",
+    "crumbs": [
+      "Setup"
+    ]
+  },
+  {
+    "objectID": "setup.html#step-3-install-required-packages",
+    "href": "setup.html#step-3-install-required-packages",
+    "title": "Setup",
+    "section": "Step 3: Install required packages",
+    "text": "Step 3: Install required packages\nPackages help make R easier to use by providing useful functions and data. During this training, we will use the following packages:\n\ntidyverse: This package is actually a collection of packages that provide essential tools for data cleaning (dplyr) and visualization (ggplot2). Census Bureau that has been cleaned using EdBuild’s methodology for handling such data.\nremotes: This package allows you to download packages hosted on GitHub, such as edbuildr.\nreadxl: This package allows you to read in excel documents to do data cleaning and analysis.\n\nTo install these packages, open RStudio and copy the code below. In the “Console” pane, paste the code and run it by hitting return:\n\ninstall.packages(c(\"tidyverse\", \"readxl\", \"remotes\"))\n\nremotes::install_github(\"edbuild/edbuildr\")",
+    "crumbs": [
+      "Setup"
+    ]
+  },
+  {
+    "objectID": "quant_plc_r_training.html#about-this-r-training",
+    "href": "quant_plc_r_training.html#about-this-r-training",
+    "title": "Quantitative Peer Learning Community R Training",
+    "section": "",
+    "text": "There has been a growing demand amongst Bellwarians to learn R to support them in data cleaning, analysis and visualization. To support Bellwarians in developing their R skills, the Quantitaive PLC is providing a 9 week course that will teach them how to do the following:\n\nData cleaning and analysis\nJoin two or more data frames\nAdvanced data visualizations, including charts, graphs, and maps\nCreate high-quality presentations using Quarto"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Quantitative Peer Learning Community R Training",
+    "section": "",
+    "text": "There has been a growing demand amongst Bellwarians to learn R. Specifically, we have heard that Bellwarians want to learn R to help improve their skills in data cleaning, analysis and visualization. To support Bellwarians in developing their R skills, the Quantitaive PLC is providing a 9 week course that will teach them how to do the following:\n\nData cleaning and analysis\nJoin two or more data frames\nAdvanced data visualizations, including charts, graphs, and maps\nCreate high-quality presentations using Quarto",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#about-this-r-training",
+    "href": "index.html#about-this-r-training",
+    "title": "Quantitative Peer Learning Community R Training",
+    "section": "",
+    "text": "There has been a growing demand amongst Bellwarians to learn R. Specifically, we have heard that Bellwarians want to learn R to help improve their skills in data cleaning, analysis and visualization. To support Bellwarians in developing their R skills, the Quantitaive PLC is providing a 9 week course that will teach them how to do the following:\n\nData cleaning and analysis\nJoin two or more data frames\nAdvanced data visualizations, including charts, graphs, and maps\nCreate high-quality presentations using Quarto",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#r-class-prep",
+    "href": "index.html#r-class-prep",
+    "title": "Quantitative Peer Learning Community R Training",
+    "section": "R Class Prep",
+    "text": "R Class Prep\nPrior to the first class on March 19, participants should do the following:\n\nInstall R, RStudio, and specified packages. Detailed instructions for downloading required software are available here.\nCreate a Github account. Detailed instructions for how to set up a Github account can be found here.\nDownload R packages",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "index.html#instructors",
+    "href": "index.html#instructors",
+    "title": "Quantitative Peer Learning Community R Training",
+    "section": "Instructors",
+    "text": "Instructors\n\nKrista Kaput\nAlex Spurrier",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "schedule.html",
+    "href": "schedule.html",
+    "title": "Setup",
+    "section": "",
+    "text": "All R classes will take place from 11:00 AM - 12:00 PM Central Time. We will also be recording the R classes in case someone is unable to make the course. Krista will host weekly office hours to provide R support and answer questions.\n\n\n\n\n\n\n\n\nWeek\nDate\nDescription\n\n\nWeek 1\nMarch 19\nIntroduction to R, RStudio, Git, and Github\n\n\nWeek 2\nApril 9\nBasic data analysis in R (tidyverse)\n\n\nWeek 3\nApril 23\nBasic data visualization in R (ggplot2)\n\n\nWeek 4\nMay 14\nData cleaning and processing in R part 1\n\n\nWeek 5\nJune 11\nData cleaning and processing in R part 2\n\n\nWeek 6\nJuly 23\nCensus data in R (tidycensus)\n\n\nWeek 7\nAugust 13\nAdvanced data visualization in R (ggplot2/plotly)\n\n\nWeek 8\nSeptember 3\nCreating maps in R (sf and leaflet)\n\n\nWeek 9\nSeptember 24\nIntroduction to Quarto and creating presentations in R (Quarto)\n\n\nWeek 10\nOctober 22\nDebrief the course",
+    "crumbs": [
+      "Schedule"
+    ]
+  },
+  {
+    "objectID": "schedule.html#class-schedule",
+    "href": "schedule.html#class-schedule",
+    "title": "Setup",
+    "section": "",
+    "text": "All R classes will take place from 11:00 AM - 12:00 PM Central Time. We will also be recording the R classes in case someone is unable to make the course. Krista will host weekly office hours to provide R support and answer questions.\n\n\n\n\n\n\n\n\nWeek\nDate\nDescription\n\n\nWeek 1\nMarch 19\nIntroduction to R, RStudio, Git, and Github\n\n\nWeek 2\nApril 9\nBasic data analysis in R (tidyverse)\n\n\nWeek 3\nApril 23\nBasic data visualization in R (ggplot2)\n\n\nWeek 4\nMay 14\nData cleaning and processing in R part 1\n\n\nWeek 5\nJune 11\nData cleaning and processing in R part 2\n\n\nWeek 6\nJuly 23\nCensus data in R (tidycensus)\n\n\nWeek 7\nAugust 13\nAdvanced data visualization in R (ggplot2/plotly)\n\n\nWeek 8\nSeptember 3\nCreating maps in R (sf and leaflet)\n\n\nWeek 9\nSeptember 24\nIntroduction to Quarto and creating presentations in R (Quarto)\n\n\nWeek 10\nOctober 22\nDebrief the course",
+    "crumbs": [
+      "Schedule"
+    ]
+  }
+]

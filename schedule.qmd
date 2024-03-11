@@ -1,0 +1,25 @@
+---
+title: "Setup"
+format: html
+execute:
+  eval: false
+---
+
+## Class Schedule
+
+All R classes will take place from 11:00 AM - 12:00 PM Central Time. We will also be recording the R classes in case someone is unable to make the course. Krista will host weekly office hours to provide R support and answer questions. 
+
+|           |              |                                                                 |
+|:-----------------|:---------------:|:-------------------------------------|
+|  **Week** |   **Date**   |  **Description**                                                |
+| Week 1    |   March 19   | Introduction to R, RStudio, Git, and Github                     |
+| Week 2    |   April 9    | Basic data analysis in R (tidyverse)                            |
+| Week 3    |   April 23   | Basic data visualization in R (ggplot2)                         |
+| Week 4    |    May 14    | Data cleaning and processing in R part 1                        |
+| Week 5    |   June 11    | Data cleaning and processing in R part 2                        |
+| Week 6    |   July 23    | Census data in R (tidycensus)                                   |
+| Week 7    |  August 13   | Advanced data visualization in R (ggplot2/plotly)               |
+| Week 8    | September 3  | Creating maps in R (sf and leaflet)                             |
+| Week 9    | September 24 | Introduction to Quarto and creating presentations in R (Quarto) |
+| Week 10   |  October 22  | Debrief the course                                              |
+

@@ -1,0 +1,19 @@
+{
+  "hash": "a40a189626020e44b61d3a88ab2a9a8b",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Introduction to R, RStudio, Git, and GitHub\"\ndate: \"March 19, 2024\"\nformat: \n  revealjs:\n    chalkboard: true\nexecute:\n  freeze: auto\n  echo: false\n  message: false\n  warning: false\n---\n\n::: {.cell}\n\n:::\n\n\n# Introductions\n\n## Agenda\n\n-   Course Overview (5 min)\n\n-   Introduction to R and RStudio (20 min)\n\n-   RStudio Setup and Workflow Tips (10 min)\n\n-   Introduction to Git and GitHub (20 min)\n\n## Meet your R instructors {.smaller}\n\n::: columns\n::: {.column width=\"50%\" style=\"text-align: center\"}\n![**Krista Kaput**, Senior Analyst](img/kaput.jpg){width=\"400\"}\n:::\n\n::: {.column width=\"50%\" style=\"text-align: center\"}\n![**Alex Spurrier**, Associate Partner](img/spurrier.jpg){alt=\"Alex Spurrier\" width=\"400\"}\n:::\n::: \n\n# Course Overview\n\n## Goals for this course\n\n::: callout\nOur primary goal is to support Bellwarians build their data cleaning, analysis, and visualization skills in R. \n:::\n\nWe will achieve this by helping you learn how to do the following:\n\n-   Data cleaning and analysis \n\n-   Join two or more data frames \n\n-   Advanced data visualizations, including charts, graphs, and maps \n\n-   Create high-quality presentations using Quarto \n\n## Course website and class structure\n\n::: columns\n::: {.column width=\"50%\"}\n[**Course website**](https://bellwetherorg.github.io/quant_plc_rclass/)\n\n-   Schedule\n-   Slides\n-   Homework\n-   Lecture recordings\n:::\n\n::: {.column width=\"50%\"}\n**Class structure** \n\n-   Lecture and review (20 min)\n-   In-class exercise (35 min)\n-   Homework (5 min)\n\nThere will be **short** homework assignments to help you build and grow your R skills. \n:::\n:::\n\n## Course calendar {.smaller}\n\n\n\n\n\n\n\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {
+      "include-after-body": [
+        "\n<script>\n  // htmlwidgets need to know to resize themselves when slides are shown/hidden.\n  // Fire the \"slideenter\" event (handled by htmlwidgets.js) when the current\n  // slide changes (different for each slide format).\n  (function () {\n    // dispatch for htmlwidgets\n    function fireSlideEnter() {\n      const event = window.document.createEvent(\"Event\");\n      event.initEvent(\"slideenter\", true, true);\n      window.document.dispatchEvent(event);\n    }\n\n    function fireSlideChanged(previousSlide, currentSlide) {\n      fireSlideEnter();\n\n      // dispatch for shiny\n      if (window.jQuery) {\n        if (previousSlide) {\n          window.jQuery(previousSlide).trigger(\"hidden\");\n        }\n        if (currentSlide) {\n          window.jQuery(currentSlide).trigger(\"shown\");\n        }\n      }\n    }\n\n    // hookup for slidy\n    if (window.w3c_slidy) {\n      window.w3c_slidy.add_observer(function (slide_num) {\n        // slide_num starts at position 1\n        fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);\n      });\n    }\n\n  })();\n</script>\n\n"
+      ]
+    },
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

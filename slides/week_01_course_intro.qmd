@@ -91,21 +91,12 @@ summer23_states <- us_states |>
 
 <br>
 
-![](img/schiess.jpg){.instructor-img fig-align="center"}
-
-**Jennifer Schiess**, Senior Partner & Policy and Evaluation Practice Leader
-:::
 
 ::: {.column width="50%" style="text-align: center"}
 ![](img/kaput.jpg){.instructor-img fig-align="center"}
 
 **Krista Kaput**, Senior Analyst
 
-<br>
-
-![](img/okeefe.jpg){.instructor-img fig-align="center"}
-
-**Bonnie O'Keefe**, Senior Associate Partner
 :::
 :::
 

@@ -742,5 +742,194 @@
     "title": "Introduction to R, RStudio, Git, and GitHub",
     "section": "Coming Up",
     "text": "Coming Up\n\n\nNext Class\n\nThe next class will be Tuesday, April 9 from 11:00 AM - 12:00 PM CT.\nWe will do a deep dive into the tidyverse and the main functions we use to do data cleaning.\nYou all will clean and manipulate data frames using data from the edbuildr package.\n\n\nHomework\n\nSet up your RStudio interface to your taste (“RStudio Setup and Workflow Tips” slides).\nIf you weren’t able to complete all of the pre-class setup, please do that."
+  },
+  {
+    "objectID": "slides/class_1/class_1.html#agenda",
+    "href": "slides/class_1/class_1.html#agenda",
+    "title": "Introduction to R, RStudio, Git, and GitHub",
+    "section": "Agenda",
+    "text": "Agenda\n\nCourse Overview (5 min)\nIntroduction to R and RStudio (20 min)\nRStudio Setup and Workflow Tips (10 min)\nIntroduction to Git and GitHub (20 min)\nNext class and Homework (5 min)"
+  },
+  {
+    "objectID": "slides/class_1/class_1.html#meet-your-r-instructors",
+    "href": "slides/class_1/class_1.html#meet-your-r-instructors",
+    "title": "Introduction to R, RStudio, Git, and GitHub",
+    "section": "Meet your R instructors",
+    "text": "Meet your R instructors\n\n\n\n\n\nKrista Kaput, Senior Analyst\n\n\n\n\n\n\nAlex Spurrier"
+  },
+  {
+    "objectID": "slides/class_1/class_1.html#goals-for-this-course",
+    "href": "slides/class_1/class_1.html#goals-for-this-course",
+    "title": "Introduction to R, RStudio, Git, and GitHub",
+    "section": "Goals for this course",
+    "text": "Goals for this course\n\n\n\nOur primary goal is to support Bellwarians build their data cleaning, analysis, and visualization skills in R.\n\n\n\nWe will achieve this by helping you learn how to do the following:\n\nData cleaning and analysis\nJoin two or more data frames\nAdvanced data visualizations, including charts, graphs, and maps\nCreate high-quality presentations using Quarto"
+  },
+  {
+    "objectID": "slides/class_1/class_1.html#course-website-and-class-structure",
+    "href": "slides/class_1/class_1.html#course-website-and-class-structure",
+    "title": "Introduction to R, RStudio, Git, and GitHub",
+    "section": "Course website and class structure",
+    "text": "Course website and class structure\n\n\nCourse website\n\nSchedule\nSlides\nHomework\nLecture recordings\n\n\nClass structure\n\nLecture and review (20 min)\nIn-class exercise (35 min)\nHomework (5 min)\n\nThere will be short homework assignments to help you build and grow your R skills."
+  },
+  {
+    "objectID": "slides/class_1/class_1.html#course-calendar",
+    "href": "slides/class_1/class_1.html#course-calendar",
+    "title": "Introduction to R, RStudio, Git, and GitHub",
+    "section": "Course calendar",
+    "text": "Course calendar\n\n\n\n\n\n\n\n\nWeek\nClass Date\nDescription\n\n\n\n\nWeek 1\nMarch 19\nIntroduction to R, RStudio, Git, and GitHub\n\n\nWeek 2\nApril 9\nBasic data analysis in R (tidyverse)\n\n\nWeek 3\nApril 23\nBasic data visualization in R (ggplot2)\n\n\nWeek 4\nMay 14\nData cleaning and process in R part 1\n\n\nWeek 5\nJune 11\nData cleaning and process in R part 2\n\n\nWeek 6\nJuly 23\nAdvanced data visualization in R (ggplot2/plotly)\n\n\nWeek 7\nAugust 13\nCensus data in R (tidycensus)\n\n\nWeek 8\nSeptember 3\nCreating maps in R (sf and leaflet)\n\n\nWeek 9\nSeptember 24\nIntroduction to Quarto and creating presentations in R (Quarto)\n\n\nWeek 10\nOctober 22\nDebrief the course"
+  },
+  {
+    "objectID": "slides/class_1/class_1.html#what-are-r-and-rstudio-and-how-do-they-work-together",
+    "href": "slides/class_1/class_1.html#what-are-r-and-rstudio-and-how-do-they-work-together",
+    "title": "Introduction to R, RStudio, Git, and GitHub",
+    "section": "What are R and RStudio and how do they work together?",
+    "text": "What are R and RStudio and how do they work together?\nR is a statistical programming language. RStudio is a graphical user interface (GUI) that allows R users to better organize and execute R code.\n\n\n\nSource: Modern Drive"
+  },
+  {
+    "objectID": "slides/class_1/class_1.html#compared-to-other-data-analysis-tools-r-and-rstudio-are-more-powerful-and-precise-its-a-blessing-and-a-curse",
+    "href": "slides/class_1/class_1.html#compared-to-other-data-analysis-tools-r-and-rstudio-are-more-powerful-and-precise-its-a-blessing-and-a-curse",
+    "title": "Introduction to R, RStudio, Git, and GitHub",
+    "section": "Compared to other data analysis tools, R and RStudio are more powerful and precise – it’s a blessing and a curse",
+    "text": "Compared to other data analysis tools, R and RStudio are more powerful and precise – it’s a blessing and a curse"
+  },
+  {
+    "objectID": "slides/class_1/class_1.html#working-in-r-with-rstudio-allows-for-highly-reproducible-data-analysis-and-straightforward-quality-checking",
+    "href": "slides/class_1/class_1.html#working-in-r-with-rstudio-allows-for-highly-reproducible-data-analysis-and-straightforward-quality-checking",
+    "title": "Introduction to R, RStudio, Git, and GitHub",
+    "section": "Working in R with RStudio allows for highly reproducible data analysis and straightforward quality checking",
+    "text": "Working in R with RStudio allows for highly reproducible data analysis and straightforward quality checking\nOne of the best features of R is that it is very surly.\n\nIt will not do anything to your data unless you explicitly tell it to do so\nContrast this with Excel, which often tries to be helpful with auto-formatting\n\nData analysis in R is easy to reproduce\n\nR code “reads” data from your hard drive into a working environment for cleaning and analysis\nAnyone with the same raw data files and R scripts can run the code and produce the same results\nIt will NOT edit underlying data files unless you explicitly write code to do so R’s surly nature is very helpful in this respect\n\nConducting quality checks in R scripts is much easier than in Excel workbooks\n\nEvery step of data cleaning and analysis is clearly articulated, in order.\nWorking with R scripts minimizes the potential for “fat finger” errors."
+  },
+  {
+    "objectID": "slides/class_1/class_1.html#rstudios-interface-is-divided-into-quadrants-that-allow-users-to-edit-and-run-code-view-plots-and-read-help-docs",
+    "href": "slides/class_1/class_1.html#rstudios-interface-is-divided-into-quadrants-that-allow-users-to-edit-and-run-code-view-plots-and-read-help-docs",
+    "title": "Introduction to R, RStudio, Git, and GitHub",
+    "section": "RStudio’s interface is divided into quadrants that allow users to edit and run code, view plots, and read help docs",
+    "text": "RStudio’s interface is divided into quadrants that allow users to edit and run code, view plots, and read help docs"
+  },
+  {
+    "objectID": "slides/class_1/class_1.html#at-its-core-r-allows-you-to-work-with-variables-and-functions",
+    "href": "slides/class_1/class_1.html#at-its-core-r-allows-you-to-work-with-variables-and-functions",
+    "title": "Introduction to R, RStudio, Git, and GitHub",
+    "section": "At its core, R allows you to work with variables and functions",
+    "text": "At its core, R allows you to work with variables and functions\nIn the R environment, data is stored in variables that can be manipulated using functions.\nThe most basic functions in R are called operators:\n\nThe most important operator is the assignment arrow: &lt;-\nUsed to store value in a new or existing variable x &lt;- 3\nBasic operators include: +, - , /, *, %, ^\nR comes pre-installed with functions that perform commonly-used operations: sum(), mean(), median(), percentile()"
+  },
+  {
+    "objectID": "slides/class_1/class_1.html#variables-in-r-mostly-include-a-few-different-types",
+    "href": "slides/class_1/class_1.html#variables-in-r-mostly-include-a-few-different-types",
+    "title": "Introduction to R, RStudio, Git, and GitHub",
+    "section": "Variables in R mostly include a few different types",
+    "text": "Variables in R mostly include a few different types\nVariables can have different types:\n\nInteger 3\nFloat (decimal) 3.14\nCharacter “pi”\nFactor (categorical, ordered variable) “Low”, “Medium”, “High”"
+  },
+  {
+    "objectID": "slides/class_1/class_1.html#variables-can-be-stored-as-single-values-or-as-vectors-of-multiple-values",
+    "href": "slides/class_1/class_1.html#variables-can-be-stored-as-single-values-or-as-vectors-of-multiple-values",
+    "title": "Introduction to R, RStudio, Git, and GitHub",
+    "section": "Variables can be stored as single values or as vectors of multiple values",
+    "text": "Variables can be stored as single values or as vectors of multiple values\n\nlibrary(tidyverse)\n\n1x &lt;- 3\n\n2y &lt;- c(2, 4, 5)\nz &lt;- c(\"a\", \"b\", \"c\")\n\n3df &lt;- tibble(letters = z, nums = y)\n\n4df\n\n\n1\n\nVariables can be stored on their own.\n\n2\n\nOr as a vector of multiple variables of the same type.\n\n3\n\nVectors can be joined together to create dataframes (tables) using a range of functions.\n\n4\n\nIf you just run variable name in your code, R will print out its contents.\n\n\n\n\n# A tibble: 3 × 2\n  letters  nums\n  &lt;chr&gt;   &lt;dbl&gt;\n1 a           2\n2 b           4\n3 c           5"
+  },
+  {
+    "objectID": "slides/class_1/class_1.html#coding-example-basic-r-use",
+    "href": "slides/class_1/class_1.html#coding-example-basic-r-use",
+    "title": "Introduction to R, RStudio, Git, and GitHub",
+    "section": "CODING EXAMPLE – Basic R use",
+    "text": "CODING EXAMPLE – Basic R use\n\n# basic r use ------------\n\n# creating variables using the assignment operator \"&lt;-\"\nvar1 &lt;- 12\nvar2 &lt;- 34\n\n# you can do operations on variables\nvar1 + var2\n\n[1] 46\n\n# we need to store them as a new variable\nvar1_var2_sum &lt;- var1 + var2\n\n# you can group variables together in a vector using the \n# concatenate function \"c()\" to create vectors\nvar_values &lt;- c(var1, var2)\nvar_names &lt;- c(\"Tom Brady\", \"Nolan Ryan\")\n\n# you can run functions across the values in a vector\nmean(var_values)\n\n[1] 23\n\n# individual positions in vectors can be referenced\nvar_names[1]\n\n[1] \"Tom Brady\"\n\n# vectors of equal length can be grouped into tables, called dataframes\nathlete_df &lt;- data.frame(name = var_names, jersey = var_values)\n\n# column names are referenced using \"$\"\nathlete_df$name\n\n[1] \"Tom Brady\"  \"Nolan Ryan\"\n\n# you can run functions on dataframe columns\nmean(athlete_df$jersey)\n\n[1] 23\n\n# but you need to be sure you're using the right datatype\nmean(athlete_df$name)\n\n[1] NA"
+  },
+  {
+    "objectID": "slides/class_1/class_1.html#packages-are-collections-of-r-functions-they-allow-users-to-easily-extend-what-they-can-do-in-r",
+    "href": "slides/class_1/class_1.html#packages-are-collections-of-r-functions-they-allow-users-to-easily-extend-what-they-can-do-in-r",
+    "title": "Introduction to R, RStudio, Git, and GitHub",
+    "section": "Packages are collections of R functions – they allow users to easily extend what they can do in R",
+    "text": "Packages are collections of R functions – they allow users to easily extend what they can do in R\n\n\n\nPackages are an important part of expanding what users can do in R, minimizing barriers to high-quality data analysis and visualization.\nThe most popular packages are available directly through RStudio via the CRAN network.\n\nCRAN packages are reviewed by the R community for quality\nCan be installed via the RStudio GUI or through the R console via the install.packages() function\n\nThe most popular packages in the R community are part of what is called the “tidyverse”\n\nggplot2, tidyr, dplyr, stringr, forcats, tibble, readr, purrr\nTidyverse packages are built to work together"
+  },
+  {
+    "objectID": "slides/class_1/class_1.html#adjusting-your-rstudio-defaults",
+    "href": "slides/class_1/class_1.html#adjusting-your-rstudio-defaults",
+    "title": "Introduction to R, RStudio, Git, and GitHub",
+    "section": "Adjusting your RStudio defaults",
+    "text": "Adjusting your RStudio defaults\n\n\n\nWhen working in RStudio, you want to be sure you control and understand everything in your working environment\nBy default, R will save the variables and history of what you’re working on as you quit and bring in back when you restart\nThis creates bad data management habits – you want to start each coding session fresh, building up your variables by running your code\nDon’t rely on remembering what past you was trying to do!"
+  },
+  {
+    "objectID": "slides/class_1/class_1.html#rstudio-lets-you-arrange-your-interface-in-different-ways-we-should-share-a-common-approach",
+    "href": "slides/class_1/class_1.html#rstudio-lets-you-arrange-your-interface-in-different-ways-we-should-share-a-common-approach",
+    "title": "Introduction to R, RStudio, Git, and GitHub",
+    "section": "RStudio lets you arrange your interface in different ways; we should share a common approach",
+    "text": "RStudio lets you arrange your interface in different ways; we should share a common approach"
+  },
+  {
+    "objectID": "slides/class_1/class_1.html#youll-spend-a-lot-of-time-working-in-rstudio-you-should-make-it-look-like-something-that-youll-enjoy-seeing",
+    "href": "slides/class_1/class_1.html#youll-spend-a-lot-of-time-working-in-rstudio-you-should-make-it-look-like-something-that-youll-enjoy-seeing",
+    "title": "Introduction to R, RStudio, Git, and GitHub",
+    "section": "You’ll spend a lot of time working in RStudio – you should make it look like something that you’ll enjoy seeing",
+    "text": "You’ll spend a lot of time working in RStudio – you should make it look like something that you’ll enjoy seeing"
+  },
+  {
+    "objectID": "slides/class_1/class_1.html#use-tab-to-auto-complete-a-variable-or-function-as-you-are-typing-it-or-the-updown-arrows-to-cycle-through-options",
+    "href": "slides/class_1/class_1.html#use-tab-to-auto-complete-a-variable-or-function-as-you-are-typing-it-or-the-updown-arrows-to-cycle-through-options",
+    "title": "Introduction to R, RStudio, Git, and GitHub",
+    "section": "Use Tab to auto-complete a variable or function as you are typing it, or the up/down arrows to cycle through options",
+    "text": "Use Tab to auto-complete a variable or function as you are typing it, or the up/down arrows to cycle through options"
+  },
+  {
+    "objectID": "slides/class_1/class_1.html#use-cmdctrl-enter-to-run-a-line-of-code-from-your-script-in-the-console",
+    "href": "slides/class_1/class_1.html#use-cmdctrl-enter-to-run-a-line-of-code-from-your-script-in-the-console",
+    "title": "Introduction to R, RStudio, Git, and GitHub",
+    "section": "Use CMD/CTRL + ENTER to run a line of code from your script in the console",
+    "text": "Use CMD/CTRL + ENTER to run a line of code from your script in the console"
+  },
+  {
+    "objectID": "slides/class_1/class_1.html#if-your-cursor-is-in-the-console-you-can-use-the-updown-arrows-to-cycle-through-previously-executed-code",
+    "href": "slides/class_1/class_1.html#if-your-cursor-is-in-the-console-you-can-use-the-updown-arrows-to-cycle-through-previously-executed-code",
+    "title": "Introduction to R, RStudio, Git, and GitHub",
+    "section": "If your cursor is in the console, you can use the up/down arrows to cycle through previously executed code",
+    "text": "If your cursor is in the console, you can use the up/down arrows to cycle through previously executed code"
+  },
+  {
+    "objectID": "slides/class_1/class_1.html#use-cmdctrl-shift-0-to-restart-rstudio-often",
+    "href": "slides/class_1/class_1.html#use-cmdctrl-shift-0-to-restart-rstudio-often",
+    "title": "Introduction to R, RStudio, Git, and GitHub",
+    "section": "Use CMD/CTRL + SHIFT + 0 to restart RStudio often",
+    "text": "Use CMD/CTRL + SHIFT + 0 to restart RStudio often\n\n\nThis key command will clear your workspace —- it’s an important step to do often to ensure that you’re only relying on code you’re writing in scripts and not code you’re executing on the fly in the console\n\nHadley Wickham said it best:\n“This will cause you some short-term pain, because now when you restart RStudio it will not remember the results of the code that you ran last time. But this short-term pain will save you long-term agony because it forces you to capture all important interactions in your code. There’s nothing worse than discovering three months after the fact that you’ve only stored the results of an important calculation in your workspace, not the calculation itself in your code.”"
+  },
+  {
+    "objectID": "slides/class_1/class_1.html#there-are-lots-of-other-helpful-shortcuts-in-rstudio",
+    "href": "slides/class_1/class_1.html#there-are-lots-of-other-helpful-shortcuts-in-rstudio",
+    "title": "Introduction to R, RStudio, Git, and GitHub",
+    "section": "There are lots of other helpful shortcuts in RStudio",
+    "text": "There are lots of other helpful shortcuts in RStudio\n\nRStudio keyboard shortcuts\nRStudio IDE cheatsheet"
+  },
+  {
+    "objectID": "slides/class_1/class_1.html#what-is-git",
+    "href": "slides/class_1/class_1.html#what-is-git",
+    "title": "Introduction to R, RStudio, Git, and GitHub",
+    "section": "What is git?",
+    "text": "What is git?\nGit is version control software – it allows you to save (commit) changes to files and track those changes over time.\n\n\n\n\n\n\n\nSource: Artwork by @allison_horst"
+  },
+  {
+    "objectID": "slides/class_1/class_1.html#what-is-github",
+    "href": "slides/class_1/class_1.html#what-is-github",
+    "title": "Introduction to R, RStudio, Git, and GitHub",
+    "section": "What is GitHub?",
+    "text": "What is GitHub?\nGitHub is to Git what RStudio is to R, but for file management.\n\n\n\n\n\n\n\nSource: Artwork by @allison_horst"
+  },
+  {
+    "objectID": "slides/class_1/class_1.html#github-helps-you-collaborate-with-others-including-past-and-future-versions-of-yourself",
+    "href": "slides/class_1/class_1.html#github-helps-you-collaborate-with-others-including-past-and-future-versions-of-yourself",
+    "title": "Introduction to R, RStudio, Git, and GitHub",
+    "section": "GitHub helps you collaborate with others, including past and future versions of yourself",
+    "text": "GitHub helps you collaborate with others, including past and future versions of yourself\n\n\n\n\n\n\n\nSource: Artwork by @allison_horst"
+  },
+  {
+    "objectID": "slides/class_1/class_1.html#we-will-use-github-to-distribute-collect-and-collaborate-on-in-class-exercises-and-homeowrk",
+    "href": "slides/class_1/class_1.html#we-will-use-github-to-distribute-collect-and-collaborate-on-in-class-exercises-and-homeowrk",
+    "title": "Introduction to R, RStudio, Git, and GitHub",
+    "section": "We will use GitHub to distribute, collect, and collaborate on in-class exercises and homeowrk",
+    "text": "We will use GitHub to distribute, collect, and collaborate on in-class exercises and homeowrk\n\n\n\n\n\n\n\nSource: Artwork by @allison_horst"
+  },
+  {
+    "objectID": "slides/class_1/class_1.html#coming-up",
+    "href": "slides/class_1/class_1.html#coming-up",
+    "title": "Introduction to R, RStudio, Git, and GitHub",
+    "section": "Coming Up",
+    "text": "Coming Up\n\n\nNext Class\n\nThe next class will be Tuesday, April 9 from 11:00 AM - 12:00 PM CT.\nWe will do a deep dive into the tidyverse and the main functions we use to do data cleaning.\nYou all will clean and manipulate data frames using data from the edbuildr package.\n\n\nHomework\n\nSet up your RStudio interface to your taste (“RStudio Setup and Workflow Tips” slides).\nIf you weren’t able to complete all of the pre-class setup, please do that."
   }
 ]

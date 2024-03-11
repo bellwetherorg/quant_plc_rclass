@@ -1,0 +1,24 @@
+---
+title: "Introduction to R, RStudio, Git, and GitHub"
+date: "March 19, 2024"
+format: 
+  revealjs:
+    chalkboard: true
+execute:
+  freeze: auto
+  echo: false
+  message: false
+  warning: false
+---
+
+```{r}
+#| output: false
+
+
+library(tidyverse)
+library(countdown)
+library(tigris)
+library(sf)
+library(scales)
+
+```

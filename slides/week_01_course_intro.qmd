@@ -437,7 +437,7 @@ Source: [Modern Drive](https://moderndive.com/1-getting-started.html)
 -   Every step of data cleaning and analysis is clearly articulated, in order.
 -   Working with R scripts minimizes the potential for ["fat finger" errors](https://www.theguardian.com/business/2022/jun/03/flash-crash-set-off-by-fat-fingered-citigroup-trader-could-cost-50m).
 
-## RStudio's interface is divided into quadrants that allow users to edit and run code, view plots, and read help docs
+## RStudio's interface is divided into quadrants that allow users to edit and run code, view plots, and read help docs {.smaller}
 
 ![](img/rstudio_setup.png){fig-align="center"}
 

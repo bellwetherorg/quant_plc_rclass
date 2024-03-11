@@ -120,3 +120,275 @@ There will be **short** homework assignments to help you build and grow your R s
 |  Week 8  |  September 3   | Creating maps in R (sf and leaflet)                             |
 |  Week 9  |  September 24  | Introduction to Quarto and creating presentations in R (Quarto) |
 | Week 10  |   October 22   | Debrief the course                                              |
+
+
+# Introduction to R and RStudio
+
+## What are R and RStudio and how do they work together? {.smaller}
+
+**R** is a statistical programming language. **RStudio** is a graphical user interface (GUI) that allows R users to better organize and execute R code.
+
+![](https://d33wubrfki0l68.cloudfront.net/0b4d0569b2ddf6147da90b110fbb2a17653c8b08/f06f3/images/shutterstock/r_vs_rstudio_1.png)
+
+::: aside
+Source: [Modern Drive](https://moderndive.com/1-getting-started.html)
+:::
+
+## Compared to other data analysis tools, R and RStudio are more powerful and precise -- it's a blessing and a curse
+
+![](img/excel_bike_r_porsche.png){fig-align="center"}
+
+## Working in R with RStudio allows for highly reproducible data analysis and straightforward quality checking {.smaller .scrollable}
+
+**One of the best features of R is that it is *very* surly**.
+
+-   It will not do anything to your data unless you explicitly tell it to do so
+-   Contrast this with Excel, which often tries to be helpful with auto-formatting
+
+**Data analysis in R is easy to reproduce**
+
+-   R code "reads" data from your hard drive into a working environment for cleaning and analysis
+-   Anyone with the same raw data files and R scripts can run the code and produce the same results
+-   It will NOT edit underlying data files unless you explicitly write code to do so R's surly nature is very helpful in this respect
+
+**Conducting quality checks in R scripts is much easier than in Excel workbooks**
+
+-   Every step of data cleaning and analysis is clearly articulated, in order.
+-   Working with R scripts minimizes the potential for ["fat finger" errors](https://www.theguardian.com/business/2022/jun/03/flash-crash-set-off-by-fat-fingered-citigroup-trader-could-cost-50m).
+
+## RStudio's interface is divided into quadrants that allow users to edit and run code, view plots, and read help docs {.smaller}
+
+![](img/rstudio_setup.png){fig-align="center"}
+
+## At its core, R allows you to work with variables and functions
+
+In the R environment, data is stored in variables that can be manipulated using functions.
+
+The most basic functions in R are called *operators*:
+
+-   The most important operator is the assignment arrow: `<-`
+-   Used to store value in a new or existing variable `x <- 3`
+-   Basic operators include: `+, - , /, *, %, ^`
+-   R comes pre-installed with functions that perform commonly-used operations: `sum()`, `mean()`, `median()`, `percentile()`
+
+## Variables in R mostly include a few different types
+
+Variables can have different types:
+
+-   Integer `3`
+-   Float (decimal) `3.14`
+-   Character `“pi”`
+-   Factor (categorical, ordered variable) `“Low”, “Medium”, “High”`
+
+## Variables can be stored as single values or as *vectors* of multiple values {.smaller .scrollable}
+```{r}
+#| echo: true
+library(tidyverse)
+
+x <- 3 # <1>
+
+y <- c(2, 4, 5) # <2>
+z <- c("a", "b", "c") # <2>
+
+df <- tibble(letters = z, nums = y) # <3>
+
+df #<4>
+
+```
+
+1.  Variables can be stored on their own.
+2.  Or as a *vector* of multiple variables of the same type.
+3.  Vectors can be joined together to create *dataframes* (tables) using a range of functions.
+4.  If you just run variable name in your code, R will print out its contents.
+
+## CODING EXAMPLE -- Basic R use {.scrollable}
+
+```{r}
+#| echo: true
+
+# basic r use ------------
+
+# creating variables using the assignment operator "<-"
+var1 <- 12
+var2 <- 34
+
+# you can do operations on variables
+var1 + var2
+
+# we need to store them as a new variable
+var1_var2_sum <- var1 + var2
+
+# you can group variables together in a vector using the 
+# concatenate function "c()" to create vectors
+var_values <- c(var1, var2)
+var_names <- c("Tom Brady", "Nolan Ryan")
+
+# you can run functions across the values in a vector
+mean(var_values)
+
+# individual positions in vectors can be referenced
+var_names[1]
+
+# vectors of equal length can be grouped into tables, called dataframes
+athlete_df <- data.frame(name = var_names, jersey = var_values)
+
+# column names are referenced using "$"
+athlete_df$name
+
+# you can run functions on dataframe columns
+mean(athlete_df$jersey)
+
+# but you need to be sure you're using the right datatype
+mean(athlete_df$name)
+
+```
+
+## Packages are collections of R functions -- they allow users to easily extend what they can do in R {.smaller .scrollable}
+
+::: columns
+::: {.column width="50%"}
+-   Packages are an important part of expanding what users can do in R, minimizing barriers to high-quality data analysis and visualization.
+
+-   The most popular packages are available directly through RStudio via the CRAN network.
+
+    -   CRAN packages are reviewed by the R community for quality
+
+    -   Can be installed via the RStudio GUI or through the R console via the install.packages() function
+
+-   The most popular packages in the R community are part of what is called the "tidyverse"
+
+    -   `ggplot2`, `tidyr`, `dplyr`, `stringr`, `forcats`, `tibble`, `readr`, `purrr`
+
+    -   Tidyverse packages are built to work together
+:::
+
+::: {.column width="50%"}
+![](img/tidy_packages.png){fig-align="center"}
+
+:::
+:::
+
+# RStudio Setup and Workflow Tips
+
+## Adjusting your RStudio defaults {.smaller .scrollable}
+
+::: columns
+::: {.column width="50%"}
+-   When working in RStudio, you want to be sure you control and understand everything in your working environment
+-   By default, R will save the variables and history of what you're working on as you quit and bring in back when you restart
+-   This creates bad data management habits -- you want to start each coding session fresh, building up your variables by running your code
+-   Don't rely on remembering what past you was trying to do!
+:::
+
+::: {.column width="50%"}
+![](img/working_env_default.png){fig-align="center"}
+
+:::
+:::
+
+## RStudio lets you arrange your interface in different ways; we should share a common approach
+
+![](img/rstudio_panes.png){fig-align="center"}
+
+## You'll spend a lot of time working in RStudio -- you should make it look like something that you'll enjoy seeing
+
+![](img/rstudio_themes.png){fig-align="center"}
+
+## Use Tab to auto-complete a variable or function as you are typing it, or the up/down arrows to cycle through options
+
+![](img/autocomplete.png){fig-align="center"}
+
+## Use CMD/CTRL + ENTER to run a line of code from your script in the console
+
+![](img/cmd_enter.png){fig-align="center"}
+
+## If your cursor is in the console, you can use the up/down arrows to cycle through previously executed code
+
+![](img/prev_command.png){fig-align="center"}
+
+## Use CMD/CTRL + SHIFT + 0 to restart RStudio often {.smaller .scrollable}
+
+::: columns
+::: {.column width="50%"}
+This key command will clear your workspace ---- it's an important step to do often to ensure that you're only relying on code you're writing in scripts and not code you're executing on the fly in the console
+:::
+
+::: {.column width="50%"}
+[Hadley Wickham said it best](https://r4ds.had.co.nz/workflow-projects.html):
+
+"This will cause you some short-term pain, because now when you restart RStudio it will not remember the results of the code that you ran last time. But this short-term pain will save you long-term agony because it forces you to capture all important interactions in your code. There's nothing worse than discovering three months after the fact that you've only stored the results of an important calculation in your workspace, not the calculation itself in your code."
+:::
+:::
+
+## There are lots of other helpful shortcuts in RStudio
+
+-   [RStudio keyboard shortcuts](https://support.posit.co/hc/en-us/articles/200711853-Keyboard-Shortcuts-in-the-RStudio-IDE)
+
+-   [RStudio IDE cheatsheet](https://posit.co/wp-content/uploads/2022/10/rstudio-ide-1.pdf)
+
+# Introduction to Git and GitHub
+
+
+## What is git? {.smaller}
+
+Git is *version control software* -- it allows you to save (commit) changes to files and track those changes over time.
+
+![](https://cdn.myportfolio.com/45214904-6a61-4e23-98d6-b140f8654a40/78587c8b-fa99-4c94-bce2-026cf4e588b5_rw_1920.png?h=a9bcd5a907323d4cb9806a7c75fad319){fig-align="center" width="800"}
+
+::: aside
+Source: [Artwork by \@allison_horst](https://twitter.com/allison_horst)
+:::
+
+## What is GitHub? {.smaller}
+
+GitHub is to Git what RStudio is to R, but for file management.
+
+![](https://cdn.myportfolio.com/45214904-6a61-4e23-98d6-b140f8654a40/7a5f458a-3d63-4e46-8a09-c417e52587ea_rw_1920.png?h=bee94bf23b391e8c9cbe190dd78b631d){fig-align="center" width="889"}
+
+::: aside
+Source: [Artwork by \@allison_horst](https://twitter.com/allison_horst)
+:::
+
+## GitHub helps you collaborate with others, including past and future versions of yourself {.smaller}
+
+![](https://cdn.myportfolio.com/45214904-6a61-4e23-98d6-b140f8654a40/33f12eb3-e65b-46df-9a2e-e4b24a4b59cd_rw_1920.png?h=d7b1f2c0b41d04a766ad6d7bc6bd8c80){fig-align="center" width="889"}
+
+::: aside
+Source: [Artwork by \@allison_horst](https://twitter.com/allison_horst)
+:::
+
+## We will use GitHub to distribute, collect, and collaborate on in-class exercises and homeowrk {.smaller}
+
+![](https://cdn.myportfolio.com/45214904-6a61-4e23-98d6-b140f8654a40/51566506-f87b-465b-934b-c0707b8636e0_rw_1920.jpeg?h=d712ca4f9e8577bdebe03757c66ec804){fig-align="center" width="889"}
+
+::: aside
+Source: [Artwork by \@allison_horst](https://twitter.com/allison_horst)
+:::
+
+
+# Next Class and Homework
+
+## Coming Up {.smaller}
+
+::: columns
+::: {.column width="45%"}
+**Next Class**
+
+- The next class will be Tuesday, April 9 from 11:00 AM - 12:00 PM CT. 
+
+- We will do a deep dive into the `tidyverse` and the main functions we use to do data cleaning. 
+
+- You all will clean and manipule data frames using data from the `edbuildr` package. 
+
+:::
+
+::: {.column width="45%"}
+**Homework**
+
+- Set up your RStudio interface to your taste ("RStudio Setup and Workflow Tips" slides). 
+
+- If you weren't able to complete all of the pre-class setup, please do that.
+
+:::
+:::
+

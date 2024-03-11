@@ -62,7 +62,7 @@
     "href": "setup.html#step-3-install-required-packages",
     "title": "Setup",
     "section": "Step 3: Install required packages",
-    "text": "Step 3: Install required packages\nPackages help make R easier to use by providing useful functions and data. During this training, we will use the following packages:\n\ntidyverse: This package is actually a collection of packages that provide essential tools for data cleaning (dplyr) and visualization (ggplot2). Census Bureau that has been cleaned using EdBuild’s methodology for handling such data.\nremotes: This package allows you to download packages hosted on GitHub, such as edbuildr.\nreadxl: This package allows you to read in excel documents to do data cleaning and analysis.\n\nTo install these packages, open RStudio and copy the code below. In the “Console” pane, paste the code and run it by hitting return:\n\ninstall.packages(c(\"tidyverse\", \"readxl\", \"remotes\"))\n\nremotes::install_github(\"edbuild/edbuildr\")",
+    "text": "Step 3: Install required packages\nPackages help make R easier to use by providing useful functions and data. During this training, we will use the following packages:\n\ntidyverse: This package is actually a collection of packages that provide essential tools for data cleaning (dplyr) and visualization (ggplot2). Census Bureau that has been cleaned using EdBuild’s methodology for handling such data.\nremotes: This package allows you to download packages hosted on GitHub, such as edbuildr.\nreadxl: This package allows you to read in excel documents to do data cleaning and analysis.\nedbuildr: This package was developed by EdBuild to provide more accessible school finance data. It allows you to download data from the National Center for Educaiton Statistics (NCES) and the U.S. Census Bureau that has been cleaned using EdBuild’s methodology for handling such data.\n\nTo install these packages, open RStudio and copy the code below. In the “Console” pane, paste the code and run it by hitting return:\n\ninstall.packages(c(\"tidyverse\", \"readxl\", \"remotes\"))\n\nremotes::install_github(\"edbuild/edbuildr\")",
     "crumbs": [
       "Setup"
     ]
@@ -79,7 +79,7 @@
     "href": "index.html",
     "title": "Quantitative Peer Learning Community R Training",
     "section": "",
-    "text": "There has been a growing demand amongst Bellwarians to learn R. Specifically, we have heard that Bellwarians want to learn R to help improve their skills in data cleaning, analysis and visualization. To support Bellwarians in developing their R skills, the Quantitaive PLC is providing a 9 week course that will teach them how to do the following:\n\nData cleaning and analysis\nJoin two or more data frames\nAdvanced data visualizations, including charts, graphs, and maps\nCreate high-quality presentations using Quarto",
+    "text": "There has been a growing demand amongst Bellwarians to learn R. Specifically, we have heard that Bellwarians want to learn R to help improve their skills in data cleaning, analysis and visualization. To support Bellwarians in developing their R skills, the Quantitaive PLC is providing a 10 week course that will teach them how to do the following:\n\nData cleaning and analysis\nJoin two or more data frames\nAdvanced data visualizations, including charts, graphs, and maps\nCreate high-quality presentations using Quarto",
     "crumbs": [
       "Home"
     ]
@@ -89,7 +89,7 @@
     "href": "index.html#about-this-r-training",
     "title": "Quantitative Peer Learning Community R Training",
     "section": "",
-    "text": "There has been a growing demand amongst Bellwarians to learn R. Specifically, we have heard that Bellwarians want to learn R to help improve their skills in data cleaning, analysis and visualization. To support Bellwarians in developing their R skills, the Quantitaive PLC is providing a 9 week course that will teach them how to do the following:\n\nData cleaning and analysis\nJoin two or more data frames\nAdvanced data visualizations, including charts, graphs, and maps\nCreate high-quality presentations using Quarto",
+    "text": "There has been a growing demand amongst Bellwarians to learn R. Specifically, we have heard that Bellwarians want to learn R to help improve their skills in data cleaning, analysis and visualization. To support Bellwarians in developing their R skills, the Quantitaive PLC is providing a 10 week course that will teach them how to do the following:\n\nData cleaning and analysis\nJoin two or more data frames\nAdvanced data visualizations, including charts, graphs, and maps\nCreate high-quality presentations using Quarto",
     "crumbs": [
       "Home"
     ]

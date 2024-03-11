@@ -7,7 +7,7 @@ execute:
 
 ## Class Schedule
 
-All R classes will take place from 11:00 AM - 12:00 PM Central Time. We will also be recording the R classes in case someone is unable to make the course. Krista will host weekly office hours to provide R support and answer questions.
+All R classes will take place from 11:00 AM - 12:00 PM Central Time. We will also be recording the R classes in case someone is unable to attend. Krista will host weekly office hours to provide R support and answer questions.
 
 |          |              |                                                                 |
 |:-----------------|:----------------:|:-----------------------------------|

@@ -99,7 +99,7 @@
     "href": "index.html#r-class-prep",
     "title": "Quantitative Peer Learning Community R Training",
     "section": "R Class Prep",
-    "text": "R Class Prep\nPrior to the first class on March 19, participants should do the following:\n\nInstall R, RStudio, and specified packages. Detailed instructions for downloading required software are available here.\nCreate a Github account. Detailed instructions for how to set up a Github account can be found here.\nDownload R packages",
+    "text": "R Class Prep\nPrior to the first class on March 19, participants should do the following:\n\nInstall R, RStudio, and specified packages. Detailed instructions for downloading required software are available here.\nCreate a Github account. Once you have set up your Github username, please add your username here. Detailed instructions for how to set up a Github account can be found here.\nDownload R packages",
     "crumbs": [
       "Home"
     ]

@@ -21,7 +21,7 @@ Prior to the first class on March 19, participants should do the following:
 
 -   **Install R, RStudio, and specified packages**. Detailed [instructions for downloading required software are available here](https://kkaput23.github.io/quant_plc/setup.html).
 
--   **Create a Github account**. Detailed instructions for how to set up a [Github account can be found here](https://docs.github.com/en/get-started/start-your-journey/creating-an-account-on-github).
+-   **Create a Github account**. Once you have set up your Github username, please add your username [here](https://bellwethereducation.sharepoint.com/:x:/r/sites/SF/_layouts/15/Doc.aspx?sourcedoc=%7B5dc443d3-a006-49fa-a11c-d8b90799d21c%7D&action=editnew). Detailed instructions for how to set up a [Github account can be found here](https://docs.github.com/en/get-started/start-your-journey/creating-an-account-on-github). 
 
 -   Download R packages
 

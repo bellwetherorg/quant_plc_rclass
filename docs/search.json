@@ -517,7 +517,7 @@
     "href": "slides/class_1.html#agenda",
     "title": "Introduction to R, RStudio, Git, and GitHub",
     "section": "Agenda",
-    "text": "Agenda\n\nCourse Overview (5 min)\nIntroduction to R and RStudio (20 min)\nRStudio Setup and Workflow Tips (10 min)\nIntroduction to Git and GitHub (20 min)"
+    "text": "Agenda\n\nCourse Overview (5 min)\nIntroduction to R and RStudio (20 min)\nRStudio Setup and Workflow Tips (10 min)\nIntroduction to Git and GitHub (20 min)\nNext class and Homework (5 min)"
   },
   {
     "objectID": "slides/class_1.html#meet-your-r-instructors",
@@ -741,6 +741,6 @@
     "href": "slides/class_1.html#coming-up",
     "title": "Introduction to R, RStudio, Git, and GitHub",
     "section": "Coming Up",
-    "text": "Coming Up\n\n\nNext Class\n\nThe next class will be Tuesday, April 9 from 11:00 AM - 12:00 PM CT.\nWe will do a deep dive into the tidyverse and the main functions we use to do data cleaning.\nYou all will clean and manipule data frames using data from the edbuildr package.\n\n\nHomework\n\nSet up your RStudio interface to your taste (“RStudio Setup and Workflow Tips” slides).\nIf you weren’t able to complete all of the pre-class setup, please do that."
+    "text": "Coming Up\n\n\nNext Class\n\nThe next class will be Tuesday, April 9 from 11:00 AM - 12:00 PM CT.\nWe will do a deep dive into the tidyverse and the main functions we use to do data cleaning.\nYou all will clean and manipulate data frames using data from the edbuildr package.\n\n\nHomework\n\nSet up your RStudio interface to your taste (“RStudio Setup and Workflow Tips” slides).\nIf you weren’t able to complete all of the pre-class setup, please do that."
   }
 ]

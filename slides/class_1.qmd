@@ -53,6 +53,8 @@ bw_secondary <- c("#FFC762", # 1 yellow
 
 -   Introduction to Git and GitHub (20 min)
 
+-   Next class and Homework (5 min)
+
 ## Meet your R instructors {.smaller}
 
 ::: columns
@@ -378,7 +380,7 @@ Source: [Artwork by \@allison_horst](https://twitter.com/allison_horst)
 
 - We will do a deep dive into the `tidyverse` and the main functions we use to do data cleaning. 
 
-- You all will clean and manipule data frames using data from the `edbuildr` package. 
+- You all will clean and manipulate data frames using data from the `edbuildr` package. 
 
 :::
 

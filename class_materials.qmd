@@ -5,8 +5,13 @@ execute:
   eval: false
 ---
 
-## Week 1 Materials
+## March 19, 2024: Class 1 Materials
 
-- [Link to class 1 recording](). Refer to follow-up email for the password to view the recording. 
-- [Link to slides for class 1]()
-- Homework: 
+- [Link to class 1 recording](https://vimeo.com/925123310). Refer to follow-up email for the password to view the recording. 
+- [Link to slides for class 1](https://bellwetherorg.github.io/quant_plc_rclass/slides/class_1.html)
+- Homework: Set up your RStudio interface to your taste ("RStudio Setup and Workflow Tips" slides) and complete the pre-class set up. 
+
+## April 9, 2024: Class 2 Materials 
+
+- Link to class 2 recording (to come) 
+- Link to slides for class 2 (to come)

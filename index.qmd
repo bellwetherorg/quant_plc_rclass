@@ -19,7 +19,7 @@ There has been a growing demand amongst Bellwarians to learn R. Specifically, we
 
 Prior to the first class on March 19, participants should do the following:
 
--   **Install R, RStudio, and specified packages**. Detailed [instructions for downloading required software are available here](https://kkaput23.github.io/quant_plc/setup.html).
+-   **Install R, RStudio, and specified packages**. Detailed [instructions for downloading required software are available here](https://bellwetherorg.github.io/quant_plc_rclass/setup.html).
 
 -   **Create a Github account**. Detailed instructions for how to set up a [Github account can be found here](https://docs.github.com/en/get-started/start-your-journey/creating-an-account-on-github). 
 

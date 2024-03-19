@@ -747,15 +747,15 @@
     "objectID": "slides/class_1/class_1.html#agenda",
     "href": "slides/class_1/class_1.html#agenda",
     "title": "Introduction to R, RStudio, Git, and GitHub",
-    "section": "",
-    "text": "Course Overview (5 min)\nIntroduction to R and RStudio (20 min)\nRStudio Setup and Workflow Tips (10 min)\nIntroduction to Git and GitHub (20 min)\nNext class and Homework (5 min)"
+    "section": "Agenda",
+    "text": "Agenda\n\nCourse Overview (5 min)\nIntroduction to R and RStudio (20 min)\nRStudio Setup and Workflow Tips (10 min)\nIntroduction to Git and GitHub (20 min)\nNext class and Homework (5 min)"
   },
   {
     "objectID": "slides/class_1/class_1.html#meet-your-r-instructors",
     "href": "slides/class_1/class_1.html#meet-your-r-instructors",
     "title": "Introduction to R, RStudio, Git, and GitHub",
-    "section": "",
-    "text": "Krista Kaput, Senior Analyst\n\n\n\n\n\n\nAlex Spurrier"
+    "section": "Meet your R instructors",
+    "text": "Meet your R instructors\n\n\n\n\n\nKrista Kaput, Senior Analyst\n\n\n\n\n\n\nAlex Spurrier"
   },
   {
     "objectID": "slides/class_1/class_1.html#goals-for-this-course",
@@ -832,7 +832,7 @@
     "href": "slides/class_1/class_1.html#coding-example-basic-r-use",
     "title": "Introduction to R, RStudio, Git, and GitHub",
     "section": "CODING EXAMPLE – Basic R use",
-    "text": "CODING EXAMPLE – Basic R use\n\n# basic r use ------------\n\n# creating variables using the assignment operator \"&lt;-\"\nvar1 &lt;- 12\nvar2 &lt;- 34\n\n# you can do operations on variables\nvar1 + var2\n\n[1] 46\n\n# we need to store them as a new variable\nvar1_var2_sum &lt;- var1 + var2\n\n# you can group variables together in a vector using the \n# concatenate function \"c()\" to create vectors\nvar_values &lt;- c(var1, var2)\nvar_names &lt;- c(\"Tom Brady\", \"Nolan Ryan\")\n\n# you can run functions across the values in a vector\nmean(var_values)\n\n[1] 23\n\n# individual positions in vectors can be referenced\nvar_names[1]\n\n[1] \"Tom Brady\"\n\n# vectors of equal length can be grouped into tables, called dataframes\nathlete_df &lt;- data.frame(name = var_names, jersey = var_values)\n\n# column names are referenced using \"$\"\nathlete_df$name\n\n[1] \"Tom Brady\"  \"Nolan Ryan\"\n\n# you can run functions on dataframe columns\nmean(athlete_df$jersey)\n\n[1] 23\n\n# but you need to be sure you're using the right datatype\nmean(athlete_df$name)\n\n[1] NA"
+    "text": "CODING EXAMPLE – Basic R use\n\n# basic r use ------------\n\n# creating variables using the assignment operator \"&lt;-\"\nvar1 &lt;- 12\nvar2 &lt;- 34\n\n# you can do operations on variables\nvar1 + var2\n\n[1] 46\n\n# we need to store them as a new variable\nvar1_var2_sum &lt;- var1 + var2\n\n# you can group variables together in a vector using the \n# concatenate function \"c()\" to create vectors\nvar_values &lt;- c(var1, var2)\nvar_names &lt;- c(\"Tom Brady\", \"Nolan Ryan\")\n\n# you can run functions across the values in a vector\nmean(var_values)\n\n[1] 23\n\n# individual positions in vectors can be referenced\nvar_names[1]\n\n[1] \"Tom Brady\"\n\n# vectors of equal length can be grouped into tables, called dataframes\nathlete_df &lt;- data.frame(name = var_names, jersey = var_values)\n\n# column names are referenced using \"$\"\nathlete_df$name\n\n[1] \"Tom Brady\"  \"Nolan Ryan\"\n\n# you can run functions on dataframe columns\nmean(athlete_df$jersey)\n\n[1] 23\n\n# but you need to be sure you're using the right datatype\nmean(athlete_df$name)\n\nWarning in mean.default(athlete_df$name): argument is not numeric or logical:\nreturning NA\n\n\n[1] NA"
   },
   {
     "objectID": "slides/class_1/class_1.html#packages-are-collections-of-r-functions-they-allow-users-to-easily-extend-what-they-can-do-in-r",
@@ -979,7 +979,7 @@
     "href": "class_materials.html",
     "title": "Class Materials",
     "section": "",
-    "text": "Link to class 1 recording. Refer to follow-up email for the password to view the recording.\nLink to slides for class 1\nHomework:",
+    "text": "Link to class 1 recording. Refer to follow-up email for the password to view the recording.\nLink to slides for class 1\nHomework: Set up your RStudio interface to your taste (“RStudio Setup and Workflow Tips” slides) and complete the pre-class set up.",
     "crumbs": [
       "Class Materials"
     ]
@@ -999,7 +999,7 @@
     "href": "slides/class_1/class_1.html",
     "title": "Introduction to R, RStudio, Git, and GitHub",
     "section": "",
-    "text": "Course Overview (5 min)\nIntroduction to R and RStudio (20 min)\nRStudio Setup and Workflow Tips (10 min)\nIntroduction to Git and GitHub (20 min)\nNext class and Homework (5 min)\n\n\n\n\n\n\n\n\n\nKrista Kaput, Senior Analyst\n\n\n\n\n\n\nAlex Spurrier"
+    "text": "library(tidyverse)\nlibrary(countdown)\nlibrary(tigris)\nlibrary(sf)\nlibrary(scales)\n\n\nbw_primary &lt;- c(\"#6D1E4A\", # 1 plum\n                \"#007786\", # 2 teal\n                \"#0D525A\", # 3 dark green\n                \"#212B46\", # 4 navy\n                \"#5A6675\", # 5 grey\n                \"#F0DEC1\") # 6 cream\n\nbw_secondary &lt;- c(\"#FFC762\", # 1 yellow\n                  \"#FFB653\", # 2 orange\n                  \"#BEC6CE\", # 3 light grey\n                  \"#2E1A4A\", # 4 deep purple\n                  \"#7EA2D1\", # 5 soft blue\n                  \"#CAD3FB\", # 6 lavender\n                  \"#9CD4EA\", # 7 sky\n                  \"#FFA497\") # 8 peach"
   },
   {
     "objectID": "slides/class_1/class_1.html#we-will-use-github-to-distribute-collect-and-collaborate-on-in-class-exercises-and-homework",
@@ -1007,5 +1007,25 @@
     "title": "Introduction to R, RStudio, Git, and GitHub",
     "section": "We will use GitHub to distribute, collect, and collaborate on in-class exercises and homework",
     "text": "We will use GitHub to distribute, collect, and collaborate on in-class exercises and homework\n\n\n\n\n\n\n\nSource: Artwork by @allison_horst"
+  },
+  {
+    "objectID": "class_materials.html#march-19-2024-class-1-materials",
+    "href": "class_materials.html#march-19-2024-class-1-materials",
+    "title": "Class Materials",
+    "section": "",
+    "text": "Link to class 1 recording. Refer to follow-up email for the password to view the recording.\nLink to slides for class 1\nHomework: Set up your RStudio interface to your taste (“RStudio Setup and Workflow Tips” slides) and complete the pre-class set up.",
+    "crumbs": [
+      "Class Materials"
+    ]
+  },
+  {
+    "objectID": "class_materials.html#april-9-2024-class-2-materials",
+    "href": "class_materials.html#april-9-2024-class-2-materials",
+    "title": "Class Materials",
+    "section": "April 9, 2024: Class 2 Materials",
+    "text": "April 9, 2024: Class 2 Materials\n\nLink to class 2 recording (to come)\nLink to slides for class 2 (to come)",
+    "crumbs": [
+      "Class Materials"
+    ]
   }
 ]

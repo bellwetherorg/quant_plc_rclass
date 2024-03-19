@@ -1,14 +1,12 @@
 ---
 title: "Introduction to R, RStudio, Git, and GitHub"
 date: "March 19, 2024"
-format: 
-  revealjs:
-    chalkboard: true
-execute:
-  freeze: auto
-  echo: false
-  message: false
-  warning: false
+output:
+  html_document:
+    revealjs::revealjs_presentation:
+      chalkboard: true
+runtime:
+  shiny: false
 ---
 
 ```{r}

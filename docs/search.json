@@ -935,9 +935,9 @@
   {
     "objectID": "classes/class_1.html",
     "href": "classes/class_1.html",
-    "title": "Quantitative Peer Learning Community R Training",
+    "title": "Week 01",
     "section": "",
-    "text": "Class Link"
+    "text": "Topic\n\n\nDate\n\n\n\n\n\n\nIntroduction to R, RStudio, Git, and GitHub\n\n\nMar 19, 2024\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "classes/class_1.html#class-1-slides",
@@ -959,5 +959,19 @@
     "title": "Introduction to R, RStudio, Git, and GitHub",
     "section": "A couple of examples of data visualizations you will be able to do by the end of the course",
     "text": "A couple of examples of data visualizations you will be able to do by the end of the course"
+  },
+  {
+    "objectID": "classes/class_1.html#slides",
+    "href": "classes/class_1.html#slides",
+    "title": "Week 01",
+    "section": "",
+    "text": "Topic\n\n\nDate\n\n\n\n\n\n\nIntroduction to R, RStudio, Git, and GitHub\n\n\nMar 19, 2024\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "classes/class_1.html#lecture-recording",
+    "href": "classes/class_1.html#lecture-recording",
+    "title": "Week 01",
+    "section": "Lecture recording",
+    "text": "Lecture recording\nThe Zoom recording from our class is available on Vimeo here (recording to come). Please refer to the post-class email for the password that will allow you to access the recording."
   }
 ]

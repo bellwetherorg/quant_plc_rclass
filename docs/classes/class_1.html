@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="">
+<meta name="description" content="March 19, 2024">
 
-<title>Quantitative Peer Learning Community R Training</title>
+<title>Quantitative Peer Learning Community R Training - Week 01</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -29,6 +31,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-listing/list.min.js"></script>
+<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -65,7 +69,65 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
 
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-slides .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-title','listing-date',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
+      
+      searchColumns: ["listing-date","listing-title","listing-author"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-slides'] = new List('listing-slides', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -78,7 +140,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Quantitative Peer Learning Community R Training</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Week 01</li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -131,9 +193,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#class-1-description" id="toc-class-1-description" class="nav-link active" data-scroll-target="#class-1-description">Class #1 Description</a></li>
-  <li><a href="#class-1-slides" id="toc-class-1-slides" class="nav-link" data-scroll-target="#class-1-slides">Class #1 Slides</a></li>
-  <li><a href="#class-1-recording" id="toc-class-1-recording" class="nav-link" data-scroll-target="#class-1-recording">Class #1 Recording</a></li>
+  <li><a href="#slides" id="toc-slides" class="nav-link active" data-scroll-target="#slides">Slides</a></li>
+  <li><a href="#lecture-recording" id="toc-lecture-recording" class="nav-link" data-scroll-target="#lecture-recording">Lecture recording</a></li>
   </ul>
 </nav>
     </div>
@@ -142,9 +203,15 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Quantitative Peer Learning Community R Training</h1>
+<h1 class="title">Week 01</h1>
+<p class="subtitle lead">Introduction to R, RStudio, Git, and GitHub</p>
 </div>
 
+<div>
+  <div class="description">
+    March 19, 2024
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
@@ -159,14 +226,40 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="class-1-description" class="level2">
-<h2 class="anchored" data-anchor-id="class-1-description">Class #1 Description</h2>
+<section id="slides" class="level2">
+<h2 class="anchored" data-anchor-id="slides">Slides</h2>
+<div id="listing-slides" class="quarto-listing quarto-listing-container-table">
+<table class="quarto-listing-table table">
+<thead>
+<tr>
+<th>
+Topic
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody class="list">
+<tr data-index="0" data-listing-date-sort="1710824400000" data-listing-file-modified-sort="1710857629313" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2267" data-listing-title-sort="Introduction to R, RStudio, Git, and GitHub" data-listing-filename-sort="class_1.qmd">
+<td>
+<a href="../slides/class_1/class_1.html" class="title listing-title">Introduction to R, RStudio, Git, and GitHub</a>
+</td>
+<td>
+<span class="listing-date">Mar 19, 2024</span>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div>
 </section>
-<section id="class-1-slides" class="level2">
-<h2 class="anchored" data-anchor-id="class-1-slides">Class #1 Slides</h2>
-</section>
-<section id="class-1-recording" class="level2">
-<h2 class="anchored" data-anchor-id="class-1-recording">Class #1 Recording</h2>
+<section id="lecture-recording" class="level2">
+<h2 class="anchored" data-anchor-id="lecture-recording">Lecture recording</h2>
+<p>The Zoom recording from our class is available on Vimeo here (recording to come). Please refer to the post-class email for the password that will allow you to access the recording.</p>
+
 
 
 </section>

@@ -7,5 +7,6 @@ execute:
 
 ## Week 1 Materials
 
-- Link to class recording (to come)
-- Link to class slides (to come)
+- [Link to class 1 recording](). Refer to follow-up email for the password to view the recording. 
+- [Link to slides for class 1]()
+- Homework: 

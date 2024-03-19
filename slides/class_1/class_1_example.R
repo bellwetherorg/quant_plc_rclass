@@ -5,8 +5,8 @@
 
 # basic r use ------------
 
-# creating variables using the assignment operator also known 
-# as the pipe operator "<-"
+# creating variables using the assignment operator <- 
+
 var1 <- 12
 var2 <- 34
 

@@ -371,7 +371,7 @@ Source: [Artwork by \@allison_horst](https://twitter.com/allison_horst)
 Source: [Artwork by \@allison_horst](https://twitter.com/allison_horst)
 :::
 
-## We will use GitHub to distribute, collect, and collaborate on in-class exercises and homeowrk {.smaller}
+## We will use GitHub to distribute, collect, and collaborate on in-class exercises and homework {.smaller}
 
 ![](https://cdn.myportfolio.com/45214904-6a61-4e23-98d6-b140f8654a40/51566506-f87b-465b-934b-c0707b8636e0_rw_1920.jpeg?h=d712ca4f9e8577bdebe03757c66ec804){fig-align="center" width="889"}
 

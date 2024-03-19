@@ -1,6 +1,8 @@
 ---
-title: "Class Materials"
+title: "Setup"
 format: html
+execute:
+  eval: false
 ---
 
 ## Week 1 Materials

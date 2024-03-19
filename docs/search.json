@@ -747,22 +747,22 @@
     "objectID": "slides/class_1/class_1.html#agenda",
     "href": "slides/class_1/class_1.html#agenda",
     "title": "Introduction to R, RStudio, Git, and GitHub",
-    "section": "Agenda",
-    "text": "Agenda\n\nCourse Overview (5 min)\nIntroduction to R and RStudio (20 min)\nRStudio Setup and Workflow Tips (10 min)\nIntroduction to Git and GitHub (20 min)\nNext class and Homework (5 min)"
+    "section": "",
+    "text": "Course Overview (5 min)\nIntroduction to R and RStudio (20 min)\nRStudio Setup and Workflow Tips (10 min)\nIntroduction to Git and GitHub (20 min)\nNext class and Homework (5 min)"
   },
   {
     "objectID": "slides/class_1/class_1.html#meet-your-r-instructors",
     "href": "slides/class_1/class_1.html#meet-your-r-instructors",
     "title": "Introduction to R, RStudio, Git, and GitHub",
-    "section": "Meet your R instructors",
-    "text": "Meet your R instructors\n\n\n\n\n\nKrista Kaput, Senior Analyst\n\n\n\n\n\n\nAlex Spurrier"
+    "section": "",
+    "text": "Krista Kaput, Senior Analyst\n\n\n\n\n\n\nAlex Spurrier"
   },
   {
     "objectID": "slides/class_1/class_1.html#goals-for-this-course",
     "href": "slides/class_1/class_1.html#goals-for-this-course",
     "title": "Introduction to R, RStudio, Git, and GitHub",
     "section": "Goals for this course",
-    "text": "Goals for this course\n\n\n\nOur primary goal is to support Bellwarians build their data cleaning, analysis, and visualization skills in R.\n\n\n\nWe will achieve this by helping you learn how to do the following:\n\nData cleaning and analysis\nJoin two or more data frames\nAdvanced data visualizations, including charts, graphs, and maps\nCreate high-quality presentations using Quarto"
+    "text": "Goals for this course\n\n\n\n\n\n\nOur primary goal is to support Bellwarians build their data cleaning, analysis, and visualization skills in R.\n\n\n\nWe will achieve this by helping you learn how to do the following:\n\nData cleaning and analysis\nJoin two or more data frames\nAdvanced data visualizations, including charts, graphs, and maps\nCreate high-quality presentations using Quarto"
   },
   {
     "objectID": "slides/class_1/class_1.html#course-website-and-class-structure",
@@ -977,7 +977,7 @@
   {
     "objectID": "class_materials.html",
     "href": "class_materials.html",
-    "title": "Class Materials",
+    "title": "Setup",
     "section": "",
     "text": "Link to class recording (to come)\nLink to class slides (to come)",
     "crumbs": [
@@ -987,11 +987,25 @@
   {
     "objectID": "class_materials.html#week-1-materials",
     "href": "class_materials.html#week-1-materials",
-    "title": "Class Materials",
+    "title": "Setup",
     "section": "",
     "text": "Link to class recording (to come)\nLink to class slides (to come)",
     "crumbs": [
       "Class Materials"
     ]
+  },
+  {
+    "objectID": "slides/class_1/class_1.html",
+    "href": "slides/class_1/class_1.html",
+    "title": "Introduction to R, RStudio, Git, and GitHub",
+    "section": "",
+    "text": "Course Overview (5 min)\nIntroduction to R and RStudio (20 min)\nRStudio Setup and Workflow Tips (10 min)\nIntroduction to Git and GitHub (20 min)\nNext class and Homework (5 min)\n\n\n\n\n\n\n\n\n\nKrista Kaput, Senior Analyst\n\n\n\n\n\n\nAlex Spurrier"
+  },
+  {
+    "objectID": "slides/class_1/class_1.html#we-will-use-github-to-distribute-collect-and-collaborate-on-in-class-exercises-and-homework",
+    "href": "slides/class_1/class_1.html#we-will-use-github-to-distribute-collect-and-collaborate-on-in-class-exercises-and-homework",
+    "title": "Introduction to R, RStudio, Git, and GitHub",
+    "section": "We will use GitHub to distribute, collect, and collaborate on in-class exercises and homework",
+    "text": "We will use GitHub to distribute, collect, and collaborate on in-class exercises and homework\n\n\n\n\n\n\n\nSource: Artwork by @allison_horst"
   }
 ]

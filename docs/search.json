@@ -119,7 +119,7 @@
     "href": "schedule.html",
     "title": "Setup",
     "section": "",
-    "text": "All R classes will take place from 11:00 AM - 12:00 PM Central Time. We will also be recording the R classes in case someone is unable to make the course. Krista will host weekly office hours to provide R support and answer questions.\n\n\n\n\n\n\n\n\nWeek\nDate\nDescription\n\n\nWeek 1\nMarch 19\nIntroduction to R, RStudio, Git, and Github\n\n\nWeek 2\nApril 9\nBasic data analysis in R (tidyverse)\n\n\nWeek 3\nApril 23\nBasic data visualization in R (ggplot2)\n\n\nWeek 4\nMay 14\nData cleaning and processing in R part 1\n\n\nWeek 5\nJune 11\nData cleaning and processing in R part 2\n\n\nWeek 6\nJuly 23\nCensus data in R (tidycensus)\n\n\nWeek 7\nAugust 13\nAdvanced data visualization in R (ggplot2/plotly)\n\n\nWeek 8\nSeptember 3\nCreating maps in R (sf and leaflet)\n\n\nWeek 9\nSeptember 24\nIntroduction to Quarto and creating presentations in R (Quarto)\n\n\nWeek 10\nOctober 22\nDebrief the course",
+    "text": "All R classes will take place from 11:00 AM - 12:00 PM Central Time. We will also be recording the R classes in case someone is unable to attend. Krista will host weekly office hours to provide R support and answer questions.\n\n\n\nWeek\nClass Date\nDescription\n\n\nWeek1\nMarch 19\nIntroduction to R, RStudio, Git, and GitHub\n\n\nWeek 2\nApril 9\nBasic data analysis in R (tidyverse)\n\n\nWeek 3\nApril 23\nBasic data visualization in R (ggplot2)\n\n\nWeek 4\nMay 14\nData cleaning and processing in R part 1\n\n\nWeek 5\nJune 11\nData cleaning and processing in R part 2\n\n\nWeek 6\nJuly 23\nAdvanced data visualization in R (ggplot2/plotly)\n\n\nWeek 7\nAugust 13\nCensus data in R (tidycensus)\n\n\nWeek 8\nSeptember 3\nCreating maps in R (sf and leaflet)\n\n\nWeek 9\nSeptember 24\nIntroduction to Quarto and creating presentations in R (Quarto)\n\n\nWeek 10\nOctober 22\nDebrief the course",
     "crumbs": [
       "Schedule"
     ]
@@ -129,7 +129,7 @@
     "href": "schedule.html#class-schedule",
     "title": "Setup",
     "section": "",
-    "text": "All R classes will take place from 11:00 AM - 12:00 PM Central Time. We will also be recording the R classes in case someone is unable to make the course. Krista will host weekly office hours to provide R support and answer questions.\n\n\n\n\n\n\n\n\nWeek\nDate\nDescription\n\n\nWeek 1\nMarch 19\nIntroduction to R, RStudio, Git, and Github\n\n\nWeek 2\nApril 9\nBasic data analysis in R (tidyverse)\n\n\nWeek 3\nApril 23\nBasic data visualization in R (ggplot2)\n\n\nWeek 4\nMay 14\nData cleaning and processing in R part 1\n\n\nWeek 5\nJune 11\nData cleaning and processing in R part 2\n\n\nWeek 6\nJuly 23\nCensus data in R (tidycensus)\n\n\nWeek 7\nAugust 13\nAdvanced data visualization in R (ggplot2/plotly)\n\n\nWeek 8\nSeptember 3\nCreating maps in R (sf and leaflet)\n\n\nWeek 9\nSeptember 24\nIntroduction to Quarto and creating presentations in R (Quarto)\n\n\nWeek 10\nOctober 22\nDebrief the course",
+    "text": "All R classes will take place from 11:00 AM - 12:00 PM Central Time. We will also be recording the R classes in case someone is unable to attend. Krista will host weekly office hours to provide R support and answer questions.\n\n\n\nWeek\nClass Date\nDescription\n\n\nWeek1\nMarch 19\nIntroduction to R, RStudio, Git, and GitHub\n\n\nWeek 2\nApril 9\nBasic data analysis in R (tidyverse)\n\n\nWeek 3\nApril 23\nBasic data visualization in R (ggplot2)\n\n\nWeek 4\nMay 14\nData cleaning and processing in R part 1\n\n\nWeek 5\nJune 11\nData cleaning and processing in R part 2\n\n\nWeek 6\nJuly 23\nAdvanced data visualization in R (ggplot2/plotly)\n\n\nWeek 7\nAugust 13\nCensus data in R (tidycensus)\n\n\nWeek 8\nSeptember 3\nCreating maps in R (sf and leaflet)\n\n\nWeek 9\nSeptember 24\nIntroduction to Quarto and creating presentations in R (Quarto)\n\n\nWeek 10\nOctober 22\nDebrief the course",
     "crumbs": [
       "Schedule"
     ]
@@ -931,5 +931,33 @@
     "title": "Introduction to R, RStudio, Git, and GitHub",
     "section": "Coming Up",
     "text": "Coming Up\n\n\nNext Class\n\nThe next class will be Tuesday, April 9 from 11:00 AM - 12:00 PM CT.\nWe will do a deep dive into the tidyverse and the main functions we use to do data cleaning.\nYou all will clean and manipulate data frames using data from the edbuildr package.\n\n\nHomework\n\nSet up your RStudio interface to your taste (“RStudio Setup and Workflow Tips” slides).\nIf you weren’t able to complete all of the pre-class setup, please do that."
+  },
+  {
+    "objectID": "classes/class_1.html",
+    "href": "classes/class_1.html",
+    "title": "Quantitative Peer Learning Community R Training",
+    "section": "",
+    "text": "Class Link"
+  },
+  {
+    "objectID": "classes/class_1.html#class-1-slides",
+    "href": "classes/class_1.html#class-1-slides",
+    "title": "Quantitative Peer Learning Community R Training",
+    "section": "Class #1 Slides",
+    "text": "Class #1 Slides"
+  },
+  {
+    "objectID": "classes/class_1.html#class-1-recording",
+    "href": "classes/class_1.html#class-1-recording",
+    "title": "Quantitative Peer Learning Community R Training",
+    "section": "Class #1 Recording",
+    "text": "Class #1 Recording"
+  },
+  {
+    "objectID": "slides/class_1/class_1.html#a-couple-of-examples-of-data-visualizations-you-will-be-able-to-do-by-the-end-of-the-course",
+    "href": "slides/class_1/class_1.html#a-couple-of-examples-of-data-visualizations-you-will-be-able-to-do-by-the-end-of-the-course",
+    "title": "Introduction to R, RStudio, Git, and GitHub",
+    "section": "A couple of examples of data visualizations you will be able to do by the end of the course",
+    "text": "A couple of examples of data visualizations you will be able to do by the end of the course"
   }
 ]

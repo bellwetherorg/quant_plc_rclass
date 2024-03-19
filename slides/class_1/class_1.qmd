@@ -85,6 +85,21 @@ We will achieve this by helping you learn how to do the following:
 
 -   Create high-quality presentations using Quarto
 
+## A couple of examples of data visualizations you will be able to do by the end of the course {.smaller .scrollable}
+
+::: columns
+::: {.column width="50%"}
+![](img/pp_diff_map.png){width="500"}
+
+:::
+
+::: {.column width="50%"}
+
+![](img/wsf_vs_current.png){width="600"}
+
+:::
+:::
+
 ## Course website and class structure
 
 ::: columns
@@ -111,7 +126,7 @@ There will be **short** homework assignments to help you build and grow your R s
 ## Course calendar {.smaller}
 
 | **Week** | **Class Date** | **Description**                                                 |
-|:------------:|:------------:|:--------------------------------------------|
+|:--------------:|:--------------:|:----------------------------------------|
 |  Week 1  |    March 19    | Introduction to R, RStudio, Git, and GitHub                     |
 |  Week 2  |    April 9     | Basic data analysis in R (tidyverse)                            |
 |  Week 3  |    April 23    | Basic data visualization in R (ggplot2)                         |
@@ -122,7 +137,6 @@ There will be **short** homework assignments to help you build and grow your R s
 |  Week 8  |  September 3   | Creating maps in R (sf and leaflet)                             |
 |  Week 9  |  September 24  | Introduction to Quarto and creating presentations in R (Quarto) |
 | Week 10  |   October 22   | Debrief the course                                              |
-
 
 # Introduction to R and RStudio
 
@@ -183,6 +197,7 @@ Variables can have different types:
 -   Factor (categorical, ordered variable) `“Low”, “Medium”, “High”`
 
 ## Variables can be stored as single values or as *vectors* of multiple values {.smaller .scrollable}
+
 ```{r}
 #| echo: true
 library(tidyverse)
@@ -266,7 +281,6 @@ mean(athlete_df$name)
 
 ::: {.column width="50%"}
 ![](img/tidy_packages.png){fig-align="center"}
-
 :::
 :::
 
@@ -284,7 +298,6 @@ mean(athlete_df$name)
 
 ::: {.column width="50%"}
 ![](img/working_env_default.png){fig-align="center"}
-
 :::
 :::
 
@@ -330,7 +343,6 @@ This key command will clear your workspace ---- it's an important step to do oft
 
 # Introduction to Git and GitHub
 
-
 ## What is git? {.smaller}
 
 Git is *version control software* -- it allows you to save (commit) changes to files and track those changes over time.
@@ -367,7 +379,6 @@ Source: [Artwork by \@allison_horst](https://twitter.com/allison_horst)
 Source: [Artwork by \@allison_horst](https://twitter.com/allison_horst)
 :::
 
-
 # Next Class and Homework
 
 ## Coming Up {.smaller}
@@ -376,21 +387,18 @@ Source: [Artwork by \@allison_horst](https://twitter.com/allison_horst)
 ::: {.column width="45%"}
 **Next Class**
 
-- The next class will be **Tuesday, April 9 from 11:00 AM - 12:00 PM CT.** 
+-   The next class will be **Tuesday, April 9 from 11:00 AM - 12:00 PM CT.**
 
-- We will do a deep dive into the `tidyverse` and the main functions we use to do data cleaning. 
+-   We will do a deep dive into the `tidyverse` and the main functions we use to do data cleaning.
 
-- You all will clean and manipulate data frames using data from the `edbuildr` package. 
-
+-   You all will clean and manipulate data frames using data from the `edbuildr` package.
 :::
-
 
 ::: {.column width="45%"}
 **Homework**
 
-- Set up your RStudio interface to your taste ("RStudio Setup and Workflow Tips" slides). 
+-   Set up your RStudio interface to your taste ("RStudio Setup and Workflow Tips" slides).
 
-- If you weren't able to complete all of the pre-class setup, please do that.
-
+-   If you weren't able to complete all of the pre-class setup, please do that.
 :::
 :::

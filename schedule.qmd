@@ -12,7 +12,7 @@ All R classes will take place from 11:00 AM - 12:00 PM Central Time. We will als
 |          |                |                                                                 |
 |:------------------|:-----------------:|:----------------------------------|
 | **Week** | **Class Date** | **Description**                                                 |
-| [Week1](https://https://bellwetherorg.github.io/quant_plc_rclass/classes/class_1.html)   |    March 19    | Introduction to R, RStudio, Git, and GitHub                     |
+| Week 1   |    March 19    | Introduction to R, RStudio, Git, and GitHub                     |
 | Week 2   |    April 9     | Basic data analysis in R (tidyverse)                            |
 | Week 3   |    April 23    | Basic data visualization in R (ggplot2)                         |
 | Week 4   |     May 14     | Data cleaning and processing in R part 1                        |

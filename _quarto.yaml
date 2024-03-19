@@ -16,6 +16,8 @@ website:
         text: Setup
       - href: schedule.qmd
         text: Schedule
+      - href: class_materials.qmd
+        text: Class Materials
      
 format:
   html:

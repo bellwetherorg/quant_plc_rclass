@@ -1,5 +1,5 @@
 ---
-title: "Setup"
+title: "Class Materials"
 format: html
 execute:
   eval: false

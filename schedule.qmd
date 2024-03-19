@@ -1,5 +1,5 @@
 ---
-title: "Setup"
+title: "Schedule"
 format: html
 execute:
   eval: false

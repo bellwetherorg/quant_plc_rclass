@@ -117,7 +117,7 @@
   {
     "objectID": "schedule.html",
     "href": "schedule.html",
-    "title": "Setup",
+    "title": "Schedule",
     "section": "",
     "text": "All R classes will take place from 11:00 AM - 12:00 PM Central Time. We will also be recording the R classes in case someone is unable to attend. Krista will host weekly office hours to provide R support and answer questions.\n\n\n\n\n\n\n\n\nWeek\nClass Date\nDescription\n\n\nWeek 1\nMarch 19\nIntroduction to R, RStudio, Git, and GitHub\n\n\nWeek 2\nApril 9\nBasic data analysis in R (tidyverse)\n\n\nWeek 3\nApril 23\nBasic data visualization in R (ggplot2)\n\n\nWeek 4\nMay 14\nData cleaning and processing in R part 1\n\n\nWeek 5\nJune 11\nData cleaning and processing in R part 2\n\n\nWeek 6\nJuly 23\nAdvanced data visualization in R (ggplot2/plotly)\n\n\nWeek 7\nAugust 13\nCensus data in R (tidycensus)\n\n\nWeek 8\nSeptember 3\nCreating maps in R (sf and leaflet)\n\n\nWeek 9\nSeptember 24\nIntroduction to Quarto and creating presentations in R (Quarto)\n\n\nWeek 10\nOctober 22\nDebrief the course",
     "crumbs": [
@@ -127,7 +127,7 @@
   {
     "objectID": "schedule.html#class-schedule",
     "href": "schedule.html#class-schedule",
-    "title": "Setup",
+    "title": "Schedule",
     "section": "",
     "text": "All R classes will take place from 11:00 AM - 12:00 PM Central Time. We will also be recording the R classes in case someone is unable to attend. Krista will host weekly office hours to provide R support and answer questions.\n\n\n\n\n\n\n\n\nWeek\nClass Date\nDescription\n\n\nWeek 1\nMarch 19\nIntroduction to R, RStudio, Git, and GitHub\n\n\nWeek 2\nApril 9\nBasic data analysis in R (tidyverse)\n\n\nWeek 3\nApril 23\nBasic data visualization in R (ggplot2)\n\n\nWeek 4\nMay 14\nData cleaning and processing in R part 1\n\n\nWeek 5\nJune 11\nData cleaning and processing in R part 2\n\n\nWeek 6\nJuly 23\nAdvanced data visualization in R (ggplot2/plotly)\n\n\nWeek 7\nAugust 13\nCensus data in R (tidycensus)\n\n\nWeek 8\nSeptember 3\nCreating maps in R (sf and leaflet)\n\n\nWeek 9\nSeptember 24\nIntroduction to Quarto and creating presentations in R (Quarto)\n\n\nWeek 10\nOctober 22\nDebrief the course",
     "crumbs": [

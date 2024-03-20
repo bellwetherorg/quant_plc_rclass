@@ -61,7 +61,7 @@ bw_secondary <- c("#FFC762", # 1 yellow
 :::
 
 ::: {.column width="50%" style="text-align: center"}
-![Alex Spurrier](img/spurrier.jpg){width="400"}
+![**Alex Spurrier**, Associate Partner](img/spurrier.jpg){width="400"}
 :::
 :::
 

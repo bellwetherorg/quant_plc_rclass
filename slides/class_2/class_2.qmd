@@ -170,15 +170,45 @@ mn_ed_data_clean <- mn_ed_data |>
 
 ```
 
-# Small Group Assignment
+# Small Group Work
 
 ## In pairs, you will work together to create a clean data frame for a state. 
 
 - **Julia and Kelly:** Illinois
-- **Indira and Priyanka:** California 
+- **Indira and Priyanka:** Tennessee
 - **Marisa and Brian:** Maryland 
 - **Ebony and Libby:** Virginia 
-- **Sophie and Nora:** Massachusetts
+- **Sophie and Nora:** Alabama 
+
+Krista and Alex will be circulating to the different pairs to answer questions and
+offer support. 
+
+# Next Class and Homework 
+
+## Coming Up {.smaller}
+
+::: columns
+::: {.column width="45%"}
+**Next Class**
+
+-   The next class will be **Tuesday, April 23 from 11:00 AM - 12:00 PM CT.**
+
+-   We will do a deep dive into the `ggplot2` and do basic data visualization in R. 
+
+-   We will use our clean data frames that we made today to do the data visualization. 
+:::
+
+::: {.column width="45%"}
+**Homework**
+
+-   Finish cleaning and creating the data frame for your assigned state. 
+
+-   
+:::
+:::
+
+
+
 
 
 

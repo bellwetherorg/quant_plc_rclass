@@ -140,42 +140,45 @@ library(edbuildr)
 # Krista likes to denote which spreadsheet is raw for transparency 
 dist_fy19_raw <- masterpull(data_type = "geo")
 
-# filter Minnesota data and clean -----
+# Use the "filter" function to get the Minnesota data -----------
 
-# filter, rename, and mutate data for Minnesota 
 mn_ed_data <- dist_fy19_raw |>
-  filter(State == "Minnesota") |>
+  filter(State == "Minnesota") 
+
+# Use "rename" function to change names of Minnesota variables --------
+
+mn_ed_data <- mn_ed_data |>
   rename(district = NAME,
          county = County,
          enroll = ENROLL, 
-         total_local_rev = LR,
-         total_state_rev = SR,
-         total_state_local_rev = SLR, 
-         urbanicity = dUrbanicity,
-         operational_schools = dOperational_schools, 
-         district_type = dType, 
-         white_enroll = dWhite, 
-         sped_enroll = dIEP, 
-         ell_enroll = dLEP, 
-         econ_dis_enroll = StPov,
-         bipoc_pct = pctNonwhite, 
-         pov_pct = StPovRate,
-         median_house_income = MHI, 
-         median_prop_value = MPV) |>
-  mutate(bipoc_enroll = enroll - white_enroll,
-         ell_pct = ell_enroll/enroll, 
-         sped_pct = sped_enroll/enroll, 
-         local_rev_pp = total_local_rev/enroll,
-         state_rev_pp = total_state_rev/enroll,
-         local_state_rev_pp = total_state_local_rev/enroll) |>
-  select(district, county, enroll, local_rev_pp, state_rev_pp, local_state_rev_pp, 
-         total_local_rev, total_state_rev, total_state_local_rev, urbanicity, 
-         operational_schools, district_type, pov_pct, bipoc_pct, ell_pct, sped_pct)
+         total_local_rev = LR) 
+
+# Use "mutate" function to create a local revenue pp variable -----
+mn_ed_data <- mn_ed_data |>
+  mutate(local_rev_pp = total_local_rev/enroll) 
+
+# Use "select" function to choose the variables you want in your data frame ---------
+
+mn_ed_data <- mn_ed_data |>
+  select(district, county, enroll, total_local_rev, local_rev_pp)
+
+# Filter the districts that do not have enrollment ------
+
+mn_ed_data_clean <- mn_ed_data |>
+  filter(enroll > 0)
+
 
 ```
 
+# Small Group Assignment
 
+## In pairs, you will work together to create a clean data frame for a state. 
 
+- **Julia and Kelly:** Illinois
+- **Indira and Priyanka:** California 
+- **Marisa and Brian:** Maryland 
+- **Ebony and Libby:** Virginia 
+- **Sophie and Nora:** Massachusetts
 
 
 

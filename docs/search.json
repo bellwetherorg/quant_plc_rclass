@@ -1023,7 +1023,7 @@
     "href": "class_materials.html#april-9-2024-class-2-materials",
     "title": "Class Materials",
     "section": "April 9, 2024: Class 2 Materials",
-    "text": "April 9, 2024: Class 2 Materials\n\nLink to class 2 recording (to come)\nLink to slides for class 2 (to come)",
+    "text": "April 9, 2024: Class 2 Materials\n\nClass Recording: Link to class 2 recording will be added after class. Refer to follow-up email for the password to view the recording.\nClass Slides: Link to slides for class 1\nHomework:Finish cleaning and creating the data frame for your assigned state. In the “homework” folder you will find a raw data frame and a script with instructions. Please complete the homework and push updates to the repository by 11:00 AM CT on Monday, April 21. Krista will look it over and provide comments.\nOptional homework: Find a raw data frame that you want to clean. Add it to the “optional_hw” folder” and use the four functions we learned about today to create a clean data frame.",
     "crumbs": [
       "Class Materials"
     ]
@@ -1040,7 +1040,7 @@
     "href": "slides/class_2/class_2.html#agenda",
     "title": "Basic Data Analysis in R (tidyverse)",
     "section": "Agenda",
-    "text": "Agenda"
+    "text": "Agenda\n\nCreating a token and cloning a GitHub repository in RStudio (5 minutes)\nIntroduction to the tidyverse (10 minutes)\nLive coding demonstration (10 minutes)\nPartner work cleaning a data set (30 minutes)\nNext class and homework (5 minutes)"
   },
   {
     "objectID": "slides/class_2/class_2.html#r-is-a-functional-programming-language---most-of-what-you-will-do-in-r-is-work-with-functions",

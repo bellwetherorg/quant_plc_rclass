@@ -1,12 +1,23 @@
+# ---
+# title: "Basic Data Analysis in R (tidyverse)"
+# date: "April 9, 2024"
+# format: 
+#   revealjs:
+#     chalkboard: true
+# execute:
+#   freeze: auto
+#   echo: false
+# ---
+
 ---
 title: "Basic Data Analysis in R (tidyverse)"
 date: "April 9, 2024"
-format: 
-  revealjs:
-    chalkboard: true
-execute:
-  freeze: auto
-  echo: false
+output:
+  quarto::quarto_html:
+    runtime:
+      shiny: false
+    revealjs_presentation:
+      chalkboard: true
 ---
 
 ```{r}

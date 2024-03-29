@@ -12,5 +12,7 @@ format: html
 
 ## April 9, 2024: Class 2 Materials 
 
-- Link to class 2 recording (to come) 
-- Link to slides for class 2 (to come)
+- **Class Recording:** Link to class 2 recording will be added after class. Refer to follow-up email for the password to view the recording. 
+- **Class Slides:** [Link to slides for class 2](https://bellwetherorg.github.io/quant_plc_rclass/slides/class_2.html)
+- **Homework:** Finish cleaning and creating the data frame for your assigned state. In the "homework" folder you will find a raw data frame and a script with instructions. Please complete the homework and push updates to the repository by 11:00 AM CT on Monday, April 21. Krista will look it over and provide comments. 
+-   **Optional homework:** Find a raw data frame that you want to clean. Add it to the "optional_hw" folder" and use the four functions we learned about today to create a clean data frame. 

@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2024-04-09">
 
-<title>Quantitative Peer Learning Community R Training - Basic Data Analysis in R (tidyverse)</title>
+<title>Quantitative Peer Learning Community R Training</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -113,7 +112,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Basic Data Analysis in R (tidyverse)</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -172,19 +171,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#section" id="toc-section" class="nav-link active" data-scroll-target="#section">—</a></li>
-  <li><a href="#title-basic-data-analysis-in-r-tidyverse" id="toc-title-basic-data-analysis-in-r-tidyverse" class="nav-link" data-scroll-target="#title-basic-data-analysis-in-r-tidyverse">title: “Basic Data Analysis in R (tidyverse)”</a></li>
-  <li><a href="#date-april-9-2024" id="toc-date-april-9-2024" class="nav-link" data-scroll-target="#date-april-9-2024">date: “April 9, 2024”</a></li>
-  <li><a href="#format" id="toc-format" class="nav-link" data-scroll-target="#format">format:</a></li>
-  <li><a href="#revealjs" id="toc-revealjs" class="nav-link" data-scroll-target="#revealjs">revealjs:</a></li>
-  <li><a href="#chalkboard-true" id="toc-chalkboard-true" class="nav-link" data-scroll-target="#chalkboard-true">chalkboard: true</a></li>
-  <li><a href="#execute" id="toc-execute" class="nav-link" data-scroll-target="#execute">execute:</a></li>
-  <li><a href="#freeze-auto" id="toc-freeze-auto" class="nav-link" data-scroll-target="#freeze-auto">freeze: auto</a></li>
-  <li><a href="#echo-false" id="toc-echo-false" class="nav-link" data-scroll-target="#echo-false">echo: false</a></li>
-  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1">—</a>
-  <ul class="collapse">
-  <li><a href="#agenda" id="toc-agenda" class="nav-link" data-scroll-target="#agenda">Agenda</a></li>
-  </ul></li>
+  <li><a href="#agenda" id="toc-agenda" class="nav-link active" data-scroll-target="#agenda">Agenda</a></li>
   <li><a href="#introduction-to-the-tidyverse" id="toc-introduction-to-the-tidyverse" class="nav-link" data-scroll-target="#introduction-to-the-tidyverse">Introduction to the <code>tidyverse</code></a>
   <ul class="collapse">
   <li><a href="#r-is-a-functional-programming-language---most-of-what-you-will-do-in-r-is-work-with-functions" id="toc-r-is-a-functional-programming-language---most-of-what-you-will-do-in-r-is-work-with-functions" class="nav-link" data-scroll-target="#r-is-a-functional-programming-language---most-of-what-you-will-do-in-r-is-work-with-functions">R is a functional programming language - most of what you will do in R is work with functions</a></li>
@@ -211,60 +198,53 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Basic Data Analysis in R (tidyverse)</h1>
-</div>
 
 
 
-<div class="quarto-title-meta">
-
-    
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">April 9, 2024</p>
-    </div>
-  </div>
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<section id="section" class="level1">
-<h1>—</h1>
-</section>
-<section id="title-basic-data-analysis-in-r-tidyverse" class="level1">
-<h1>title: “Basic Data Analysis in R (tidyverse)”</h1>
-</section>
-<section id="date-april-9-2024" class="level1">
-<h1>date: “April 9, 2024”</h1>
-</section>
-<section id="format" class="level1">
-<h1>format:</h1>
-</section>
-<section id="revealjs" class="level1">
-<h1>revealjs:</h1>
-</section>
-<section id="chalkboard-true" class="level1">
-<h1>chalkboard: true</h1>
-</section>
-<section id="execute" class="level1">
-<h1>execute:</h1>
-</section>
-<section id="freeze-auto" class="level1">
-<h1>freeze: auto</h1>
-</section>
-<section id="echo-false" class="level1">
-<h1>echo: false</h1>
-</section>
-<section id="section-1" class="level1">
-<h1>—</h1>
+<table class="table">
+<tbody>
+<tr class="odd">
+<td>title: “Basic Data Analysis in R (tidyverse)”</td>
+</tr>
+<tr class="even">
+<td>date: “April 9, 2024”</td>
+</tr>
+<tr class="odd">
+<td>output:</td>
+</tr>
+<tr class="even">
+<td>quarto::quarto_html:</td>
+</tr>
+<tr class="odd">
+<td>format:</td>
+</tr>
+<tr class="even">
+<td>revealjs:</td>
+</tr>
+<tr class="odd">
+<td>chalkboard: true</td>
+</tr>
+<tr class="even">
+<td>execute:</td>
+</tr>
+<tr class="odd">
+<td>freeze: auto</td>
+</tr>
+<tr class="even">
+<td>echo: false</td>
+</tr>
+</tbody>
+</table>
+<!-- --- -->
+<!-- title: "Basic Data Analysis in R (tidyverse)" -->
+<!-- date: "April 9, 2024" -->
+<!-- output: -->
+<!--   quarto::quarto_html: -->
+<!--     runtime: -->
+<!--       shiny: false -->
+<!--     revealjs_presentation: -->
+<!--       chalkboard: true -->
+<!-- --- -->
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(countdown)</span>
@@ -298,7 +278,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Partner work cleaning a data set (30 minutes)</li>
 <li>Next class and homework (5 minutes)</li>
 </ul>
-</section>
 </section>
 <section id="introduction-to-the-tidyverse" class="level1">
 <h1>Introduction to the <code>tidyverse</code></h1>

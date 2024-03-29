@@ -1187,6 +1187,13 @@
     "href": "slides/class_2/class_2.html#in-pairs-you-will-work-together-to-create-a-clean-data-frame-for-a-state.",
     "title": "Basic Data Analysis in R (tidyverse)",
     "section": "In pairs, you will work together to create a clean data frame for a state.",
-    "text": "In pairs, you will work together to create a clean data frame for a state.\n\nJulia and Kelly: Illinois\nIndira and Priyanka: California\nMarisa and Brian: Maryland\nEbony and Libby: Virginia\nSophie and Nora: Massachusetts"
+    "text": "In pairs, you will work together to create a clean data frame for a state.\n\nJulia and Kelly: Illinois\nIndira and Priyanka: Tennessee\nMarisa and Brian: Maryland\nEbony and Libby: Virginia\nSophie and Nora: Alabama\n\nKrista and Alex will be circulating to the different pairs to answer questions and offer support."
+  },
+  {
+    "objectID": "slides/class_2/class_2.html#coming-up",
+    "href": "slides/class_2/class_2.html#coming-up",
+    "title": "Basic Data Analysis in R (tidyverse)",
+    "section": "Coming Up",
+    "text": "Coming Up\n\n\nNext Class\n\nThe next class will be Tuesday, April 23 from 11:00 AM - 12:00 PM CT.\nWe will do a deep dive into the ggplot2 and do basic data visualization in R.\nWe will use our clean data frames that we made today to do the data visualization.\n\n\nHomework\n\nFinish cleaning and creating the data frame for your assigned state.\nIn the “homework” folder you will find a raw data frame and a script with instructions. Please complete the homework and push updates to the repository by 11:00 AM CT on Monday, April 21. Krista will look it over and provide comments.\nOptional homework: Find a raw data frame that you want to clean. Add it to the “optional_hw” folder” and use the four functions we learned about today to create a clean data frame."
   }
 ]

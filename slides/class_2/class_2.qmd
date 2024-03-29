@@ -41,6 +41,12 @@ bw_secondary <- c("#FFC762", # 1 yellow
 
 ## Agenda
 
+- Creating a token and cloning a GitHub repository in RStudio (5 minutes)
+- Introduction to the `tidyverse` (10 minutes)
+- Live coding demonstration (10 minutes)
+- Partner work cleaning a data set (30 minutes)
+- Next class and homework (5 minutes)
+
 # Introduction to the `tidyverse`
 
 ## R is a functional programming language - most of what you will do in R is work with functions 
@@ -170,7 +176,7 @@ mn_ed_data_clean <- mn_ed_data |>
 
 ```
 
-# Small Group Work
+# Partner Work
 
 ## In pairs, you will work together to create a clean data frame for a state. 
 
@@ -185,7 +191,7 @@ offer support.
 
 # Next Class and Homework 
 
-## Coming Up {.smaller}
+## Coming Up {.smaller .scrollable}
 
 ::: columns
 ::: {.column width="45%"}
@@ -199,11 +205,13 @@ offer support.
 :::
 
 ::: {.column width="45%"}
-**Homework**
+**Homework** 
 
 -   Finish cleaning and creating the data frame for your assigned state. 
 
--   
+-   In the "homework" folder you will find a raw data frame and a script with instructions. Please complete the homework and push updates to the repository by 11:00 AM CT on Monday, April 21. Krista will look it over and provide comments. 
+
+-   **Optional homework:** Find a raw data frame that you want to clean. Add it to the "optional_hw" folder" and use the four functions we learned about today to create a clean data frame. 
 :::
 :::
 

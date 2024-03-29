@@ -1033,47 +1033,47 @@
     "href": "slides/class_2/class_2.html",
     "title": "Introduction to the tidyverse",
     "section": "",
-    "text": "title: “Basic Data Analysis in R (tidyverse)”\n\n\ndate: “April 9, 2024”\n\n\noutput:\n\n\nquarto::quarto_html:\n\n\nformat:\n\n\nrevealjs:\n\n\nchalkboard: true\n\n\nexecute:\n\n\nfreeze: auto\n\n\necho: false\nlibrary(tidyverse)\nlibrary(countdown)\nlibrary(tigris)\nlibrary(sf)\nlibrary(scales)\n\n\nbw_primary &lt;- c(\"#6D1E4A\", # 1 plum\n                \"#007786\", # 2 teal\n                \"#0D525A\", # 3 dark green\n                \"#212B46\", # 4 navy\n                \"#5A6675\", # 5 grey\n                \"#F0DEC1\") # 6 cream\n\nbw_secondary &lt;- c(\"#FFC762\", # 1 yellow\n                  \"#FFB653\", # 2 orange\n                  \"#BEC6CE\", # 3 light grey\n                  \"#2E1A4A\", # 4 deep purple\n                  \"#7EA2D1\", # 5 soft blue\n                  \"#CAD3FB\", # 6 lavender\n                  \"#9CD4EA\", # 7 sky\n                  \"#FFA497\") # 8 peach"
+    "text": "title: “Basic Data Analysis in R (tidyverse)” date: “April 9, 2024” output: quarto::quarto_html: format: revealjs: chalkboard: true execute: freeze: auto echo: false\nlibrary(tidyverse)\nlibrary(countdown)\nlibrary(tigris)\nlibrary(sf)\nlibrary(scales)\n\n\nbw_primary &lt;- c(\"#6D1E4A\", # 1 plum\n                \"#007786\", # 2 teal\n                \"#0D525A\", # 3 dark green\n                \"#212B46\", # 4 navy\n                \"#5A6675\", # 5 grey\n                \"#F0DEC1\") # 6 cream\n\nbw_secondary &lt;- c(\"#FFC762\", # 1 yellow\n                  \"#FFB653\", # 2 orange\n                  \"#BEC6CE\", # 3 light grey\n                  \"#2E1A4A\", # 4 deep purple\n                  \"#7EA2D1\", # 5 soft blue\n                  \"#CAD3FB\", # 6 lavender\n                  \"#9CD4EA\", # 7 sky\n                  \"#FFA497\") # 8 peach"
   },
   {
     "objectID": "slides/class_2/class_2.html#agenda",
     "href": "slides/class_2/class_2.html#agenda",
-    "title": "Introduction to the tidyverse",
+    "title": "Basic data analysis (tidyverse)",
     "section": "Agenda",
     "text": "Agenda\n\nCreating a token and cloning a GitHub repository in RStudio (5 minutes)\nIntroduction to the tidyverse (10 minutes)\nLive coding demonstration (10 minutes)\nPartner work cleaning a data set (30 minutes)\nNext class and homework (5 minutes)"
   },
   {
     "objectID": "slides/class_2/class_2.html#r-is-a-functional-programming-language---most-of-what-you-will-do-in-r-is-work-with-functions",
     "href": "slides/class_2/class_2.html#r-is-a-functional-programming-language---most-of-what-you-will-do-in-r-is-work-with-functions",
-    "title": "Introduction to the tidyverse",
+    "title": "Basic data analysis (tidyverse)",
     "section": "R is a functional programming language - most of what you will do in R is work with functions",
     "text": "R is a functional programming language - most of what you will do in R is work with functions\nA function:\n\nTakes a specific input\nPerforms an operation\nReturns in output\n\nFunctions are helpful tools to reduce repetition in typing and improves your code’s consistency, reliability and readability."
   },
   {
     "objectID": "slides/class_2/class_2.html#the-tidyverse-is-a-powerful-collection-of-r-packages-that-work-well-together",
     "href": "slides/class_2/class_2.html#the-tidyverse-is-a-powerful-collection-of-r-packages-that-work-well-together",
-    "title": "Introduction to the tidyverse",
+    "title": "Basic data analysis (tidyverse)",
     "section": "The tidyverse is a powerful collection of R packages that work well together",
     "text": "The tidyverse is a powerful collection of R packages that work well together\n\n\n\n\nThe most popular packages in the R community are past of what is called the “tidyverse,” which includes packages like ggplot2, tidyr, stringr, tibble, and purrr.\nTidyverse packages are built to work together. Every tidyverse package contains functions that can manipulate or visualize data that lives in data frames.\nMost functions in the tidyverse require a data frame (R’s version of a table) as the first argument in each function. The functions can be “chained” together with other functions.\nWe will explore the tidyverse by looking at EdBuild’s FY2019 education data compiled from the F33 survey, SAIPE, EDGE, and CCD. The edbuildr package provides access to clean district data on funding, student demographics, and wealth."
   },
   {
     "objectID": "slides/class_2/class_2.html#to-read-edbuilds-finance-data-into-our-working-environment-we-will-use-the-masterpull-function",
     "href": "slides/class_2/class_2.html#to-read-edbuilds-finance-data-into-our-working-environment-we-will-use-the-masterpull-function",
-    "title": "Introduction to the tidyverse",
+    "title": "Basic data analysis (tidyverse)",
     "section": "To read EdBuild’s finance data into our working environment we will use the masterpull() function",
     "text": "To read EdBuild’s finance data into our working environment we will use the masterpull() function\n\nlibrary(edbuildr)\n\nedbuild_fin_fy19 &lt;- masterpull(data_year = 2019, data_type = \"fin\")\n\nThis code will load the edbuildr package and then download a clean dataframe from EdBuild’s server and store it as a variable called edbuild_fin_fy19.\nThere are three options for the data_type argument:\n\n“geo”: only includes districts with geographic boundaries (no charter/special school districts) that meet EdBuild’s criteria for fiscal analysis\n“fin”: includes all districts that meet EdBuild’s criteria for fiscal analysis\n“full”: includes all districts – TO BE USED WITH CAUTION"
   },
   {
     "objectID": "slides/class_2/class_2.html#the-dplyr-package-provides-many-functions-to-manipulate-your-data-frames-columns-and-rows",
     "href": "slides/class_2/class_2.html#the-dplyr-package-provides-many-functions-to-manipulate-your-data-frames-columns-and-rows",
-    "title": "Introduction to the tidyverse",
+    "title": "Basic data analysis (tidyverse)",
     "section": "The dplyr() package provides many functions to manipulate your data frames’ columns and rows",
     "text": "The dplyr() package provides many functions to manipulate your data frames’ columns and rows\nThe functions you’ll most frequently use from the dplyr packages are:\n\nselect(): names columns to keep from a data frame\nrename(): name columns to keep from a data frame\nfilter(): remove rows that do not meet the condition in the logical statement from the output\nmutate(): create a new column that will be added to the end of your data frame."
   },
   {
     "objectID": "slides/class_2/class_2.html#a-special-operator-called-a-pipe-will-allow-you-to-chain-several-functions-together",
     "href": "slides/class_2/class_2.html#a-special-operator-called-a-pipe-will-allow-you-to-chain-several-functions-together",
-    "title": "Introduction to the tidyverse",
+    "title": "Basic data analysis (tidyverse)",
     "section": "A special operator called a “pipe” will allow you to chain several functions together",
     "text": "A special operator called a “pipe” will allow you to chain several functions together\n\nIn R, the pipe operator is a vertical bar and a greater-than sign: |&gt;\nInstead of “nesting” the results of one function inside of another, the pipe allows you to execute the same command in a more human-readable order.\n\n\n# example of \"nesting\" the result of one function inside another function. \ndf1 &lt;- select(filter(raw_df, enroll &gt; 10000), dist_id, dist_name, enroll, rev_pp)\n\n# example of using the \"pipe\" to produce the same as above \n# read the pipe as \"and then\" to understand what's being done to your data\ndf2 &lt;- raw_df |&gt; # start with raw_df AND THEN DO THIS \n  filter(enroll &gt; 10000) |&gt; # filter for enrollment &gt; 10,000 AND THEN DO THIS \n  select(dist_id, dist_name, enroll, rev_pp) # select only these columns"
   },
@@ -1178,21 +1178,21 @@
   {
     "objectID": "slides/class_2/class_2.html#live-coding-example-exploring_the_tidyverse.r",
     "href": "slides/class_2/class_2.html#live-coding-example-exploring_the_tidyverse.r",
-    "title": "Introduction to the tidyverse",
+    "title": "Basic data analysis (tidyverse)",
     "section": "LIVE CODING EXAMPLE: exploring_the_tidyverse.R",
     "text": "LIVE CODING EXAMPLE: exploring_the_tidyverse.R\n\n# load ----------\n\noptions(scipen = 999)\n\nlibrary(tidyverse)\nlibrary(edbuildr)\n\n# Krista likes to denote which spreadsheet is raw for transparency \ndist_fy19_raw &lt;- masterpull(data_type = \"geo\")\n\n# Use the \"filter\" function to get the Minnesota data -----------\n\nmn_ed_data &lt;- dist_fy19_raw |&gt;\n  filter(State == \"Minnesota\") \n\n# Use \"rename\" function to change names of Minnesota variables --------\n\nmn_ed_data &lt;- mn_ed_data |&gt;\n  rename(district = NAME,\n         county = County,\n         enroll = ENROLL, \n         total_local_rev = LR) \n\n# Use \"mutate\" function to create a local revenue pp variable -----\nmn_ed_data &lt;- mn_ed_data |&gt;\n  mutate(local_rev_pp = total_local_rev/enroll) \n\n# Use \"select\" function to choose the variables you want in your data frame ---------\n\nmn_ed_data &lt;- mn_ed_data |&gt;\n  select(district, county, enroll, total_local_rev, local_rev_pp)\n\n# Filter the districts that do not have enrollment ------\n\nmn_ed_data_clean &lt;- mn_ed_data |&gt;\n  filter(enroll &gt; 0)"
   },
   {
     "objectID": "slides/class_2/class_2.html#in-pairs-you-will-work-together-to-create-a-clean-data-frame-for-a-state.",
     "href": "slides/class_2/class_2.html#in-pairs-you-will-work-together-to-create-a-clean-data-frame-for-a-state.",
-    "title": "Introduction to the tidyverse",
+    "title": "Basic data analysis (tidyverse)",
     "section": "In pairs, you will work together to create a clean data frame for a state.",
     "text": "In pairs, you will work together to create a clean data frame for a state.\n\nJulia and Kelly: Illinois\nIndira and Priyanka: Tennessee\nMarisa and Brian: Maryland\nEbony and Libby: Virginia\nSophie and Nora: Alabama\n\nKrista and Alex will be circulating to the different pairs to answer questions and offer support."
   },
   {
     "objectID": "slides/class_2/class_2.html#coming-up",
     "href": "slides/class_2/class_2.html#coming-up",
-    "title": "Introduction to the tidyverse",
+    "title": "Basic data analysis (tidyverse)",
     "section": "Coming Up",
     "text": "Coming Up\n\n\nNext Class\n\nThe next class will be Tuesday, April 23 from 11:00 AM - 12:00 PM CT.\nWe will do a deep dive into the ggplot2 and do basic data visualization in R.\nWe will use our clean data frames that we made today to do the data visualization.\n\n\nHomework\n\nFinish cleaning and creating the data frame for your assigned state.\nIn the “homework” folder you will find a raw data frame and a script with instructions. Please complete the homework and push updates to the repository by 11:00 AM CT on Monday, April 21. Krista will look it over and provide comments.\nOptional homework: Find a raw data frame that you want to clean. Add it to the “optional_hw” folder” and use the four functions we learned about today to create a clean data frame."
   }

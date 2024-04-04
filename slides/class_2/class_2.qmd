@@ -1,24 +1,12 @@
-# ---
-# title: "Basic data analysis (tidyverse)"
-# date: "April 9, 2023"
-# format: 
-#   revealjs:
-#     chalkboard: true
-# execute:
-#   freeze: auto
-#   echo: false
-# ---
-
-
 ---
 title: "Basic data analysis (tidyverse)"
 date: "April 9, 2023"
-output:
-  html_document:
-    revealjs::revealjs_presentation:
-      chalkboard: true
-runtime:
-  shiny: false
+format: 
+  revealjs:
+    chalkboard: true
+execute:
+  freeze: auto
+  echo: false
 ---
 
 ```{r}

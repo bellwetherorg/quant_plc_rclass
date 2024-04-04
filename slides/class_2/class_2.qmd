@@ -41,10 +41,10 @@ bw_secondary <- c("#FFC762", # 1 yellow
 
 ## Agenda
 
-- Creating a token and cloning a GitHub repository in RStudio (5 minutes)
 - Introduction to the `tidyverse` (10 minutes)
 - Live coding demonstration (10 minutes)
-- Partner work cleaning a data set (30 minutes)
+- Partner work cleaning a data set (20 minutes)
+- Creating a token and cloning a GitHub repository in RStudio (15 minutes)
 - Next class and homework (5 minutes)
 
 # Introduction to the `tidyverse`
@@ -189,6 +189,34 @@ mn_ed_data_clean <- mn_ed_data |>
 Krista and Alex will be circulating to the different pairs to answer questions and
 offer support. 
 
+# Creating a Token and Cloning a GitHub Repository in RStudio
+
+## You will be receiving an email with an invitation to join the GitHub organization for this training
+
+## Once you click the green button, you will be directed to join the organization 
+
+## Bookmark the organization page - your homework assignments will show up here as repositories. 
+
+## To start an assignment, navigate to the repository and copy the HTTPS link that apreas when you click the "Code" button 
+
+## Next, you'll open RStudio and create a new project, seelcting the "Version control" and "Git" options 
+
+## Next, you’ll open RStudio and create a new project, selecting the “Version Control” and “Git” options
+
+## Be sure to select a folder where you want to have your homework files saved before you click “Open”
+
+## You’re now ready to start working on your homework! Start by opening the README.md file
+
+## The README.md file is a text file that will include instructions for your assignment – using the “Visual” option will make it easier to read
+
+## The README.md file is a text file that will include instructions for your assignment – using the “Visual” option will make it easier to read
+
+## Once you’ve completed your assignment, you’ll want to “stage” the changes you’ve made
+
+## Once you’ve completed your assignment, you’ll want to “stage” your changes and then start the “commit” process
+
+## We’ll use GitHub’s “Issues” feature to share feedback on your work
+
 # Next Class and Homework 
 
 ## Coming Up {.smaller .scrollable}
@@ -199,19 +227,14 @@ offer support.
 
 -   The next class will be **Tuesday, April 23 from 11:00 AM - 12:00 PM CT.**
 
--   We will do a deep dive into the `ggplot2` and do basic data visualization in R. 
-
--   We will use our clean data frames that we made today to do the data visualization. 
+-   We will do a deep dive into the `ggplot2` and do basic data visualization in R (scatterplots)
 :::
 
 ::: {.column width="45%"}
 **Homework** 
 
--   Finish cleaning and creating the data frame for your assigned state. 
+-  Coding task: In your homework repository, there is a raw data file that you will clean 
 
--   In the "homework" folder you will find a raw data frame and a script with instructions. Please complete the homework and push updates to the repository by 11:00 AM CT on Monday, April 21. Krista will look it over and provide comments. 
-
--   **Optional homework:** Find a raw data frame that you want to clean. Add it to the "optional_hw" folder" and use the four functions we learned about today to create a clean data frame. 
 :::
 :::
 

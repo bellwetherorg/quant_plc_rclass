@@ -3,7 +3,9 @@
 
 # instructions -------
 
-# You will need to use "rename" function to rename the following variables  
+# You will use the "filter" function to get your state's data 
+
+# You will need to use "rename" function to rename the appropriate variables to have the following names 
 # - state
 # - district_id
 # - sr (state revenue)
@@ -14,8 +16,6 @@
 # - multiracial_enroll
 # - latino_enroll 
 # - indigenous_enroll
-# - mhi (median household income)
-# - mpv (median property value)
 # - stpov (student poverty)
 # - stpop (student population)
 
@@ -30,11 +30,10 @@
 # - white_pct (percent white students)
 # - stpov_pct (student poverty rate)
 
-# You will need to use "select" to select all of the variables you want in your final data frame 
+# You will need to use "filter" to select your state and to get rid of districts with no enrollment 
 
-# You will need to use "filter" to selct your state and to get rid of districts with no enrollment 
-
-# When you are done, make sure you push the updates so the repository so Krista can check your work! 
+# You will need to use "select" to select all of the variables you want in your final data frame.
+# For the partner work we want to include the following variables. 
 
 
 # load ----------
@@ -51,16 +50,23 @@ dist_fy19_raw <- masterpull(data_type = "geo")
 # Use the "filter" function to get your state's data -----------
 
 
+
 # Use "rename" function to change names of your state's variables --------
+
 
 
 # Use "mutate" function to create variables for your state -----
 
 
+
+# Use the "filter" function to get rid of the districts that don't have any enrollment -----------
+
+
+
 # Use "select" function to choose the variables you want in your data frame ---------
 
 
-# Use the "filter" function to get rid of the districts that don't have any enrollment -----------
+
 
 
 

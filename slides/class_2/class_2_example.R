@@ -29,15 +29,18 @@ mn_ed_data <- mn_ed_data |>
 mn_ed_data <- mn_ed_data |>
   mutate(local_rev_pp = total_local_rev/enroll) 
 
-# Use "select" function to choose the variables you want in your data frame ---------
-
-mn_ed_data <- mn_ed_data |>
-  select(district, county, enroll, total_local_rev, local_rev_pp)
-
-# Filter the districts that do not have enrollment ------
+# Filter the districts that do not have enrollment or have NA enrollment ------
 
 mn_ed_data_clean <- mn_ed_data |>
   filter(enroll > 0)
+
+# Use "select" function to choose the variables you want in your data frame ---------
+
+mn_ed_data_clean <- mn_ed_data_clean |>
+  select(district, county, enroll, total_local_rev, local_rev_pp)
+
+
+
 
 
 

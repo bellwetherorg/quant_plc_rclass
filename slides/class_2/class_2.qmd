@@ -2,9 +2,15 @@
 title: "Basic data analysis (tidyverse)"
 date: "April 9, 2023"
 output:
-  html_document:
-    revealjs::revealjs_presentation:
-      chalkboard: true
+  revealjs::revealjs_presentation:
+    transition: slide
+    theme: white
+    center: false
+    slideNumber: true
+    hash: true
+    progress: true
+    width: 960
+    height: 700
 runtime:
   shiny: false
 ---

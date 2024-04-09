@@ -39,6 +39,20 @@ mn_ed_data_clean <- mn_ed_data |>
 mn_ed_data_clean <- mn_ed_data_clean |>
   select(district, county, enroll, total_local_rev, local_rev_pp)
 
+# We can "chain" these functions together using the pipe operator -------
+
+mn_ed_data_one_function <- dist_fy19_raw |>
+  filter(State == "Minnesota") |>
+  rename(district = NAME,
+         county = County,
+         enroll = ENROLL, 
+         total_local_rev = LR) |>
+  mutate(local_rev_pp = total_local_rev/enroll) |>
+  filter(enroll > 0) |>
+  select(district, county, enroll, total_local_rev, local_rev_pp)
+
+
+
 
 
 

@@ -1040,7 +1040,7 @@
     "href": "slides/class_2/class_2.html#agenda",
     "title": "Basic data analysis (tidyverse)",
     "section": "Agenda",
-    "text": "Agenda\n\nCreating a token and cloning a GitHub repository in RStudio (5 minutes)\nIntroduction to the tidyverse (10 minutes)\nLive coding demonstration (10 minutes)\nPartner work cleaning a data set (30 minutes)\nNext class and homework (5 minutes)"
+    "text": "Agenda\n\nIntroduction to the tidyverse (10 minutes)\nLive coding demonstration (10 minutes)\nPartner work cleaning a data set (20 minutes)\nCreating a token and cloning a GitHub repository in RStudio (15 minutes)\nNext class and homework (5 minutes)"
   },
   {
     "objectID": "slides/class_2/class_2.html#r-is-a-functional-programming-language---most-of-what-you-will-do-in-r-is-work-with-functions",
@@ -1180,20 +1180,202 @@
     "href": "slides/class_2/class_2.html#live-coding-example-exploring_the_tidyverse.r",
     "title": "Basic data analysis (tidyverse)",
     "section": "LIVE CODING EXAMPLE: exploring_the_tidyverse.R",
-    "text": "LIVE CODING EXAMPLE: exploring_the_tidyverse.R\n\n# load ----------\n\noptions(scipen = 999)\n\nlibrary(tidyverse)\nlibrary(edbuildr)\n\n# Krista likes to denote which spreadsheet is raw for transparency \ndist_fy19_raw &lt;- masterpull(data_type = \"geo\")\n\n# Use the \"filter\" function to get the Minnesota data -----------\n\nmn_ed_data &lt;- dist_fy19_raw |&gt;\n  filter(State == \"Minnesota\") \n\n# Use \"rename\" function to change names of Minnesota variables --------\n\nmn_ed_data &lt;- mn_ed_data |&gt;\n  rename(district = NAME,\n         county = County,\n         enroll = ENROLL, \n         total_local_rev = LR) \n\n# Use \"mutate\" function to create a local revenue pp variable -----\nmn_ed_data &lt;- mn_ed_data |&gt;\n  mutate(local_rev_pp = total_local_rev/enroll) \n\n# Use \"select\" function to choose the variables you want in your data frame ---------\n\nmn_ed_data &lt;- mn_ed_data |&gt;\n  select(district, county, enroll, total_local_rev, local_rev_pp)\n\n# Filter the districts that do not have enrollment ------\n\nmn_ed_data_clean &lt;- mn_ed_data |&gt;\n  filter(enroll &gt; 0)"
+    "text": "LIVE CODING EXAMPLE: exploring_the_tidyverse.R\n\n# class_2_example \n# Last updated by Krista Kaput, 2024-03-29\n\n# load ----------\n\noptions(scipen = 999)\n\nlibrary(tidyverse)\nlibrary(edbuildr)\n\n# Krista likes to denote which spreadsheet is raw for transparency \ndist_fy19_raw &lt;- masterpull(data_type = \"geo\")\n\n# Use the \"filter\" function to get the Minnesota data -----------\n\nmn_ed_data &lt;- dist_fy19_raw |&gt;\n  filter(State == \"Minnesota\") \n\n# Use \"rename\" function to change names of Minnesota variables --------\n\nmn_ed_data &lt;- mn_ed_data |&gt;\n  rename(district = NAME,\n         county = County,\n         enroll = ENROLL, \n         total_local_rev = LR) \n\n\n# Use \"mutate\" function to create a local revenue pp variable -----\nmn_ed_data &lt;- mn_ed_data |&gt;\n  mutate(local_rev_pp = total_local_rev/enroll) \n\n# Filter the districts that do not have enrollment or have NA enrollment ------\n\nmn_ed_data_clean &lt;- mn_ed_data |&gt;\n  filter(enroll &gt; 0)\n\n# Use \"select\" function to choose the variables you want in your data frame ---------\n\nmn_ed_data_clean &lt;- mn_ed_data_clean |&gt;\n  select(district, county, enroll, total_local_rev, local_rev_pp)"
   },
   {
     "objectID": "slides/class_2/class_2.html#in-pairs-you-will-work-together-to-create-a-clean-data-frame-for-a-state.",
     "href": "slides/class_2/class_2.html#in-pairs-you-will-work-together-to-create-a-clean-data-frame-for-a-state.",
     "title": "Basic data analysis (tidyverse)",
     "section": "In pairs, you will work together to create a clean data frame for a state.",
-    "text": "In pairs, you will work together to create a clean data frame for a state.\n\nJulia and Kelly: Illinois\nIndira and Priyanka: Tennessee\nMarisa and Brian: Maryland\nEbony and Libby: Virginia\nSophie and Nora: Alabama\n\nKrista and Alex will be circulating to the different pairs to answer questions and offer support."
+    "text": "In pairs, you will work together to create a clean data frame for a state.\n\nJulia and Kelly: Illinois\nIndira and Priyanka: Tennessee\nMarisa and Brian: Maryland\nEbony,Teresa, and Libby: Virginia\nSophie and Nora: Massachusetts\n\nKrista and Alex will be circulating to the different pairs to answer questions and offer support."
   },
   {
     "objectID": "slides/class_2/class_2.html#coming-up",
     "href": "slides/class_2/class_2.html#coming-up",
     "title": "Basic data analysis (tidyverse)",
     "section": "Coming Up",
-    "text": "Coming Up\n\n\nNext Class\n\nThe next class will be Tuesday, April 23 from 11:00 AM - 12:00 PM CT.\nWe will do a deep dive into the ggplot2 and do basic data visualization in R.\nWe will use our clean data frames that we made today to do the data visualization.\n\n\nHomework\n\nFinish cleaning and creating the data frame for your assigned state.\nIn the “homework” folder you will find a raw data frame and a script with instructions. Please complete the homework and push updates to the repository by 11:00 AM CT on Monday, April 21. Krista will look it over and provide comments.\nOptional homework: Find a raw data frame that you want to clean. Add it to the “optional_hw” folder” and use the four functions we learned about today to create a clean data frame."
+    "text": "Coming Up\n\n\nNext Class\n\nThe next class will be Tuesday, April 23 from 11:00 AM - 12:00 PM CT.\nWe will do a deep dive into the ggplot2 and do basic data visualization in R (scatterplots)\n\n\nHomework\n\nCoding task: Use the hw_02_template.R file in the /scripts folder to complete the tasks that are outlined in the script.\nHomework is due by COB on Thursday, April 18. This ensures that Krista can review your assignments and provide feedback by the April 23 R Class.\nPlease make sure you commit and then push your homework updates using Git to update the repository."
+  },
+  {
+    "objectID": "slides/class_2/class_2.html#you-will-be-receiving-an-email-with-an-invitation-to-join-the-github-organization-for-this-training",
+    "href": "slides/class_2/class_2.html#you-will-be-receiving-an-email-with-an-invitation-to-join-the-github-organization-for-this-training",
+    "title": "Basic data analysis (tidyverse)",
+    "section": "You will be receiving an email with an invitation to join the GitHub organization for this training",
+    "text": "You will be receiving an email with an invitation to join the GitHub organization for this training"
+  },
+  {
+    "objectID": "slides/class_2/class_2.html#once-you-click-the-green-button-you-will-be-directed-to-join-the-organization",
+    "href": "slides/class_2/class_2.html#once-you-click-the-green-button-you-will-be-directed-to-join-the-organization",
+    "title": "Basic data analysis (tidyverse)",
+    "section": "Once you click the green button, you will be directed to join the organization",
+    "text": "Once you click the green button, you will be directed to join the organization"
+  },
+  {
+    "objectID": "slides/class_2/class_2.html#bookmark-the-organization-page---your-homework-assignments-will-show-up-here-as-repositories.",
+    "href": "slides/class_2/class_2.html#bookmark-the-organization-page---your-homework-assignments-will-show-up-here-as-repositories.",
+    "title": "Basic data analysis (tidyverse)",
+    "section": "Bookmark the organization page - your homework assignments will show up here as repositories.",
+    "text": "Bookmark the organization page - your homework assignments will show up here as repositories."
+  },
+  {
+    "objectID": "slides/class_2/class_2.html#to-start-an-assignment-navigate-to-the-repository-and-copy-the-https-link-that-apreas-when-you-click-the-code-button",
+    "href": "slides/class_2/class_2.html#to-start-an-assignment-navigate-to-the-repository-and-copy-the-https-link-that-apreas-when-you-click-the-code-button",
+    "title": "Basic data analysis (tidyverse)",
+    "section": "To start an assignment, navigate to the repository and copy the HTTPS link that apreas when you click the “Code” button",
+    "text": "To start an assignment, navigate to the repository and copy the HTTPS link that apreas when you click the “Code” button"
+  },
+  {
+    "objectID": "slides/class_2/class_2.html#next-youll-open-rstudio-and-create-a-new-project-seelcting-the-version-control-and-git-options",
+    "href": "slides/class_2/class_2.html#next-youll-open-rstudio-and-create-a-new-project-seelcting-the-version-control-and-git-options",
+    "title": "Basic data analysis (tidyverse)",
+    "section": "Next, you’ll open RStudio and create a new project, seelcting the “Version control” and “Git” options",
+    "text": "Next, you’ll open RStudio and create a new project, seelcting the “Version control” and “Git” options"
+  },
+  {
+    "objectID": "slides/class_2/class_2.html#next-youll-open-rstudio-and-create-a-new-project-selecting-the-version-control-and-git-options",
+    "href": "slides/class_2/class_2.html#next-youll-open-rstudio-and-create-a-new-project-selecting-the-version-control-and-git-options",
+    "title": "Basic data analysis (tidyverse)",
+    "section": "Next, you’ll open RStudio and create a new project, selecting the “Version control” and “Git” options",
+    "text": "Next, you’ll open RStudio and create a new project, selecting the “Version control” and “Git” options"
+  },
+  {
+    "objectID": "slides/class_2/class_2.html#be-sure-to-select-a-folder-where-you-want-to-have-your-homework-files-saved-before-you-click-open",
+    "href": "slides/class_2/class_2.html#be-sure-to-select-a-folder-where-you-want-to-have-your-homework-files-saved-before-you-click-open",
+    "title": "Basic data analysis (tidyverse)",
+    "section": "Be sure to select a folder where you want to have your homework files saved before you click “Open”",
+    "text": "Be sure to select a folder where you want to have your homework files saved before you click “Open”"
+  },
+  {
+    "objectID": "slides/class_2/class_2.html#youre-now-ready-to-start-working-on-your-homework-start-by-opening-the-readme.md-file",
+    "href": "slides/class_2/class_2.html#youre-now-ready-to-start-working-on-your-homework-start-by-opening-the-readme.md-file",
+    "title": "Basic data analysis (tidyverse)",
+    "section": "You’re now ready to start working on your homework! Start by opening the README.md file",
+    "text": "You’re now ready to start working on your homework! Start by opening the README.md file"
+  },
+  {
+    "objectID": "slides/class_2/class_2.html#the-readme.md-file-is-a-text-file-that-will-include-instructions-for-your-assignment-using-the-visual-option-will-make-it-easier-to-read",
+    "href": "slides/class_2/class_2.html#the-readme.md-file-is-a-text-file-that-will-include-instructions-for-your-assignment-using-the-visual-option-will-make-it-easier-to-read",
+    "title": "Basic data analysis (tidyverse)",
+    "section": "The README.md file is a text file that will include instructions for your assignment – using the “Visual” option will make it easier to read",
+    "text": "The README.md file is a text file that will include instructions for your assignment – using the “Visual” option will make it easier to read"
+  },
+  {
+    "objectID": "slides/class_2/class_2.html#the-readme.md-file-is-a-text-file-that-will-include-instructions-for-your-assignment-using-the-visual-option-will-make-it-easier-to-read-1",
+    "href": "slides/class_2/class_2.html#the-readme.md-file-is-a-text-file-that-will-include-instructions-for-your-assignment-using-the-visual-option-will-make-it-easier-to-read-1",
+    "title": "Basic data analysis (tidyverse)",
+    "section": "The README.md file is a text file that will include instructions for your assignment – using the “Visual” option will make it easier to read",
+    "text": "The README.md file is a text file that will include instructions for your assignment – using the “Visual” option will make it easier to read"
+  },
+  {
+    "objectID": "slides/class_2/class_2.html#once-youve-completed-your-assignment-youll-want-to-stage-the-changes-youve-made",
+    "href": "slides/class_2/class_2.html#once-youve-completed-your-assignment-youll-want-to-stage-the-changes-youve-made",
+    "title": "Basic data analysis (tidyverse)",
+    "section": "Once you’ve completed your assignment, you’ll want to “stage” the changes you’ve made",
+    "text": "Once you’ve completed your assignment, you’ll want to “stage” the changes you’ve made"
+  },
+  {
+    "objectID": "slides/class_2/class_2.html#once-youve-completed-your-assignment-youll-want-to-stage-your-changes-and-then-start-the-commit-process",
+    "href": "slides/class_2/class_2.html#once-youve-completed-your-assignment-youll-want-to-stage-your-changes-and-then-start-the-commit-process",
+    "title": "Basic data analysis (tidyverse)",
+    "section": "Once you’ve completed your assignment, you’ll want to “stage” your changes and then start the “commit” process",
+    "text": "Once you’ve completed your assignment, you’ll want to “stage” your changes and then start the “commit” process"
+  },
+  {
+    "objectID": "slides/class_2/class_2.html#well-use-githubs-issues-feature-to-share-feedback-on-your-work",
+    "href": "slides/class_2/class_2.html#well-use-githubs-issues-feature-to-share-feedback-on-your-work",
+    "title": "Basic data analysis (tidyverse)",
+    "section": "We’ll use GitHub’s “Issues” feature to share feedback on your work",
+    "text": "We’ll use GitHub’s “Issues” feature to share feedback on your work"
+  },
+  {
+    "objectID": "slides/class_2/class_2.html#you-will-receive-an-email-with-an-invitation-to-join-the-github-organization-for-this-training",
+    "href": "slides/class_2/class_2.html#you-will-receive-an-email-with-an-invitation-to-join-the-github-organization-for-this-training",
+    "title": "Basic data analysis (tidyverse)",
+    "section": "You will receive an email with an invitation to join the GitHub organization for this training",
+    "text": "You will receive an email with an invitation to join the GitHub organization for this training"
+  },
+  {
+    "objectID": "slides/class_2/class_2.html#once-you-click-the-view-invitation-button-you-will-be-directed-to-join-the-organization",
+    "href": "slides/class_2/class_2.html#once-you-click-the-view-invitation-button-you-will-be-directed-to-join-the-organization",
+    "title": "Basic data analysis (tidyverse)",
+    "section": "Once you click the “View Invitation” button, you will be directed to join the organization",
+    "text": "Once you click the “View Invitation” button, you will be directed to join the organization"
+  },
+  {
+    "objectID": "slides/class_2/class_2.html#to-start-an-assignment-navigate-to-the-repository-and-copy-the-https-link-that-appears-when-you-click-the-code-button",
+    "href": "slides/class_2/class_2.html#to-start-an-assignment-navigate-to-the-repository-and-copy-the-https-link-that-appears-when-you-click-the-code-button",
+    "title": "Basic data analysis (tidyverse)",
+    "section": "To start an assignment, navigate to the repository and copy the HTTPS link that appears when you click the “Code” button",
+    "text": "To start an assignment, navigate to the repository and copy the HTTPS link that appears when you click the “Code” button"
+  },
+  {
+    "objectID": "slides/class_2/class_2.html#next-youll-open-rstudio-and-create-a-new-project-selecting-the-version-control-and-git-options-1",
+    "href": "slides/class_2/class_2.html#next-youll-open-rstudio-and-create-a-new-project-selecting-the-version-control-and-git-options-1",
+    "title": "Basic data analysis (tidyverse)",
+    "section": "Next, you’ll open RStudio and create a new project, selecting the “Version Control” and “Git” options",
+    "text": "Next, you’ll open RStudio and create a new project, selecting the “Version Control” and “Git” options"
+  },
+  {
+    "objectID": "slides/class_2/class_2.html#go-to-httpsgithub.comsettingtokens-and-under-generate-new-token-choose-a-the-classic-option",
+    "href": "slides/class_2/class_2.html#go-to-httpsgithub.comsettingtokens-and-under-generate-new-token-choose-a-the-classic-option",
+    "title": "Basic data analysis (tidyverse)",
+    "section": "Go to https://github.com/setting/tokens and under “Generate New Token” Choose a the “Classic” option",
+    "text": "Go to https://github.com/setting/tokens and under “Generate New Token” Choose a the “Classic” option"
+  },
+  {
+    "objectID": "slides/class_2/class_2.html#name-the-token-something-useful-like-2024-quant-plc-r-class.-you-can-choose-an-expiration-date-but-i-have-chosen-no-expiration-date.-select-the-following-repo-user-gist-and-workflow-and-then-generate-your-token.-save-your-token",
+    "href": "slides/class_2/class_2.html#name-the-token-something-useful-like-2024-quant-plc-r-class.-you-can-choose-an-expiration-date-but-i-have-chosen-no-expiration-date.-select-the-following-repo-user-gist-and-workflow-and-then-generate-your-token.-save-your-token",
+    "title": "Basic data analysis (tidyverse)",
+    "section": "Name the token something useful like “2024-quant-plc-r-class”. You can choose an expiration date, but I have chosen no expiration date. Select the following: “repo”, “user”, “gist”, and “workflow” and then generate your token. SAVE YOUR TOKEN!!!!",
+    "text": "Name the token something useful like “2024-quant-plc-r-class”. You can choose an expiration date, but I have chosen no expiration date. Select the following: “repo”, “user”, “gist”, and “workflow” and then generate your token. SAVE YOUR TOKEN!!!!"
+  },
+  {
+    "objectID": "slides/class_2/class_2.html#go-to-httpsgithub.comsettingtokens",
+    "href": "slides/class_2/class_2.html#go-to-httpsgithub.comsettingtokens",
+    "title": "Basic data analysis (tidyverse)",
+    "section": "Go to https://github.com/setting/tokens",
+    "text": "Go to https://github.com/setting/tokens\nUnder “Generate New Token” Choose the “Classic” option"
+  },
+  {
+    "objectID": "slides/class_2/class_2.html#name-the-token-something-useful-like-2024-quant-plc-r-class",
+    "href": "slides/class_2/class_2.html#name-the-token-something-useful-like-2024-quant-plc-r-class",
+    "title": "Basic data analysis (tidyverse)",
+    "section": "Name the token something useful like “2024-quant-plc-r-class”",
+    "text": "Name the token something useful like “2024-quant-plc-r-class”\nYou can choose an expiration date, but I have chosen no expiration date. Select the following: “repo”, “user”, “gist”, and “workflow” and then generate your token. SAVE YOUR TOKEN!!!!"
+  },
+  {
+    "objectID": "slides/class_2/class_2.html#bookmark-the-organization-page---your-homework-assignments-will-show-up-here-as-repositories",
+    "href": "slides/class_2/class_2.html#bookmark-the-organization-page---your-homework-assignments-will-show-up-here-as-repositories",
+    "title": "Basic data analysis (tidyverse)",
+    "section": "Bookmark the organization page - your homework assignments will show up here as repositories",
+    "text": "Bookmark the organization page - your homework assignments will show up here as repositories"
+  },
+  {
+    "objectID": "slides/class_2/class_2.html#bookmark-the-organization-page",
+    "href": "slides/class_2/class_2.html#bookmark-the-organization-page",
+    "title": "Basic data analysis (tidyverse)",
+    "section": "Bookmark the organization page",
+    "text": "Bookmark the organization page\nYour homework assignments will show up here as repositories"
+  },
+  {
+    "objectID": "slides/class_2/class_2.html#youre-now-ready-to-start-working-on-your-homework",
+    "href": "slides/class_2/class_2.html#youre-now-ready-to-start-working-on-your-homework",
+    "title": "Basic data analysis (tidyverse)",
+    "section": "You’re now ready to start working on your homework!",
+    "text": "You’re now ready to start working on your homework!\nStart by opening the README.md file"
+  },
+  {
+    "objectID": "slides/class_2/class_2.html#the-readme.md-file-is-a-text-file-that-will-include-instructions-for-your-assignment",
+    "href": "slides/class_2/class_2.html#the-readme.md-file-is-a-text-file-that-will-include-instructions-for-your-assignment",
+    "title": "Basic data analysis (tidyverse)",
+    "section": "The README.md file is a text file that will include instructions for your assignment",
+    "text": "The README.md file is a text file that will include instructions for your assignment\nUsing the “Visual” option will make it easier to read"
+  },
+  {
+    "objectID": "slides/class_2/class_2.html#the-readme.md-file-is-a-text-file-that-will-include-instructions-for-your-assignment-1",
+    "href": "slides/class_2/class_2.html#the-readme.md-file-is-a-text-file-that-will-include-instructions-for-your-assignment-1",
+    "title": "Basic data analysis (tidyverse)",
+    "section": "The README.md file is a text file that will include instructions for your assignment",
+    "text": "The README.md file is a text file that will include instructions for your assignment\nUsing the “Visual” option will make it easier to read"
   }
 ]

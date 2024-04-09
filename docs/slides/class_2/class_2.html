@@ -403,10 +403,10 @@
 <section id="agenda" class="slide level2">
 <h2>Agenda</h2>
 <ul>
-<li>Creating a token and cloning a GitHub repository in RStudio (5 minutes)</li>
 <li>Introduction to the <code>tidyverse</code> (10 minutes)</li>
 <li>Live coding demonstration (10 minutes)</li>
-<li>Partner work cleaning a data set (30 minutes)</li>
+<li>Partner work cleaning a data set (20 minutes)</li>
+<li>Creating a token and cloning a GitHub repository in RStudio (15 minutes)</li>
 <li>Next class and homework (5 minutes)</li>
 </ul>
 </section>
@@ -492,42 +492,46 @@
 <section id="live-coding-example-exploring_the_tidyverse.r" class="slide level2">
 <h2>LIVE CODING EXAMPLE: exploring_the_tidyverse.R</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="co"># load ----------</span></span>
-<span id="cb3-2"><a></a></span>
-<span id="cb3-3"><a></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>)</span>
-<span id="cb3-4"><a></a></span>
-<span id="cb3-5"><a></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb3-6"><a></a><span class="fu">library</span>(edbuildr)</span>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="co"># class_2_example </span></span>
+<span id="cb3-2"><a></a><span class="co"># Last updated by Krista Kaput, 2024-03-29</span></span>
+<span id="cb3-3"><a></a></span>
+<span id="cb3-4"><a></a><span class="co"># load ----------</span></span>
+<span id="cb3-5"><a></a></span>
+<span id="cb3-6"><a></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>)</span>
 <span id="cb3-7"><a></a></span>
-<span id="cb3-8"><a></a><span class="co"># Krista likes to denote which spreadsheet is raw for transparency </span></span>
-<span id="cb3-9"><a></a>dist_fy19_raw <span class="ot">&lt;-</span> <span class="fu">masterpull</span>(<span class="at">data_type =</span> <span class="st">"geo"</span>)</span>
+<span id="cb3-8"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb3-9"><a></a><span class="fu">library</span>(edbuildr)</span>
 <span id="cb3-10"><a></a></span>
-<span id="cb3-11"><a></a><span class="co"># Use the "filter" function to get the Minnesota data -----------</span></span>
-<span id="cb3-12"><a></a></span>
-<span id="cb3-13"><a></a>mn_ed_data <span class="ot">&lt;-</span> dist_fy19_raw <span class="sc">|&gt;</span></span>
-<span id="cb3-14"><a></a>  <span class="fu">filter</span>(State <span class="sc">==</span> <span class="st">"Minnesota"</span>) </span>
+<span id="cb3-11"><a></a><span class="co"># Krista likes to denote which spreadsheet is raw for transparency </span></span>
+<span id="cb3-12"><a></a>dist_fy19_raw <span class="ot">&lt;-</span> <span class="fu">masterpull</span>(<span class="at">data_type =</span> <span class="st">"geo"</span>)</span>
+<span id="cb3-13"><a></a></span>
+<span id="cb3-14"><a></a><span class="co"># Use the "filter" function to get the Minnesota data -----------</span></span>
 <span id="cb3-15"><a></a></span>
-<span id="cb3-16"><a></a><span class="co"># Use "rename" function to change names of Minnesota variables --------</span></span>
-<span id="cb3-17"><a></a></span>
-<span id="cb3-18"><a></a>mn_ed_data <span class="ot">&lt;-</span> mn_ed_data <span class="sc">|&gt;</span></span>
-<span id="cb3-19"><a></a>  <span class="fu">rename</span>(<span class="at">district =</span> NAME,</span>
-<span id="cb3-20"><a></a>         <span class="at">county =</span> County,</span>
-<span id="cb3-21"><a></a>         <span class="at">enroll =</span> ENROLL, </span>
-<span id="cb3-22"><a></a>         <span class="at">total_local_rev =</span> LR) </span>
-<span id="cb3-23"><a></a></span>
-<span id="cb3-24"><a></a><span class="co"># Use "mutate" function to create a local revenue pp variable -----</span></span>
-<span id="cb3-25"><a></a>mn_ed_data <span class="ot">&lt;-</span> mn_ed_data <span class="sc">|&gt;</span></span>
-<span id="cb3-26"><a></a>  <span class="fu">mutate</span>(<span class="at">local_rev_pp =</span> total_local_rev<span class="sc">/</span>enroll) </span>
+<span id="cb3-16"><a></a>mn_ed_data <span class="ot">&lt;-</span> dist_fy19_raw <span class="sc">|&gt;</span></span>
+<span id="cb3-17"><a></a>  <span class="fu">filter</span>(State <span class="sc">==</span> <span class="st">"Minnesota"</span>) </span>
+<span id="cb3-18"><a></a></span>
+<span id="cb3-19"><a></a><span class="co"># Use "rename" function to change names of Minnesota variables --------</span></span>
+<span id="cb3-20"><a></a></span>
+<span id="cb3-21"><a></a>mn_ed_data <span class="ot">&lt;-</span> mn_ed_data <span class="sc">|&gt;</span></span>
+<span id="cb3-22"><a></a>  <span class="fu">rename</span>(<span class="at">district =</span> NAME,</span>
+<span id="cb3-23"><a></a>         <span class="at">county =</span> County,</span>
+<span id="cb3-24"><a></a>         <span class="at">enroll =</span> ENROLL, </span>
+<span id="cb3-25"><a></a>         <span class="at">total_local_rev =</span> LR) </span>
+<span id="cb3-26"><a></a></span>
 <span id="cb3-27"><a></a></span>
-<span id="cb3-28"><a></a><span class="co"># Use "select" function to choose the variables you want in your data frame ---------</span></span>
-<span id="cb3-29"><a></a></span>
-<span id="cb3-30"><a></a>mn_ed_data <span class="ot">&lt;-</span> mn_ed_data <span class="sc">|&gt;</span></span>
-<span id="cb3-31"><a></a>  <span class="fu">select</span>(district, county, enroll, total_local_rev, local_rev_pp)</span>
-<span id="cb3-32"><a></a></span>
-<span id="cb3-33"><a></a><span class="co"># Filter the districts that do not have enrollment ------</span></span>
-<span id="cb3-34"><a></a></span>
-<span id="cb3-35"><a></a>mn_ed_data_clean <span class="ot">&lt;-</span> mn_ed_data <span class="sc">|&gt;</span></span>
-<span id="cb3-36"><a></a>  <span class="fu">filter</span>(enroll <span class="sc">&gt;</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-28"><a></a><span class="co"># Use "mutate" function to create a local revenue pp variable -----</span></span>
+<span id="cb3-29"><a></a>mn_ed_data <span class="ot">&lt;-</span> mn_ed_data <span class="sc">|&gt;</span></span>
+<span id="cb3-30"><a></a>  <span class="fu">mutate</span>(<span class="at">local_rev_pp =</span> total_local_rev<span class="sc">/</span>enroll) </span>
+<span id="cb3-31"><a></a></span>
+<span id="cb3-32"><a></a><span class="co"># Filter the districts that do not have enrollment or have NA enrollment ------</span></span>
+<span id="cb3-33"><a></a></span>
+<span id="cb3-34"><a></a>mn_ed_data_clean <span class="ot">&lt;-</span> mn_ed_data <span class="sc">|&gt;</span></span>
+<span id="cb3-35"><a></a>  <span class="fu">filter</span>(enroll <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
+<span id="cb3-36"><a></a></span>
+<span id="cb3-37"><a></a><span class="co"># Use "select" function to choose the variables you want in your data frame ---------</span></span>
+<span id="cb3-38"><a></a></span>
+<span id="cb3-39"><a></a>mn_ed_data_clean <span class="ot">&lt;-</span> mn_ed_data_clean <span class="sc">|&gt;</span></span>
+<span id="cb3-40"><a></a>  <span class="fu">select</span>(district, county, enroll, total_local_rev, local_rev_pp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section></section>
 <section>
@@ -541,11 +545,74 @@
 <li><strong>Julia and Kelly:</strong> Illinois</li>
 <li><strong>Indira and Priyanka:</strong> Tennessee</li>
 <li><strong>Marisa and Brian:</strong> Maryland</li>
-<li><strong>Ebony and Libby:</strong> Virginia</li>
-<li><strong>Sophie and Nora:</strong> Alabama</li>
+<li><strong>Ebony,Teresa, and Libby:</strong> Virginia</li>
+<li><strong>Sophie and Nora:</strong> Massachusetts</li>
 </ul>
 <p>Krista and Alex will be circulating to the different pairs to answer questions and offer support.</p>
 </section></section>
+<section>
+<section id="creating-a-token-and-cloning-a-github-repository-in-rstudio" class="title-slide slide level1 center">
+<h1>Creating a Token and Cloning a GitHub Repository in RStudio</h1>
+
+</section>
+<section id="go-to-httpsgithub.comsettingtokens" class="slide level2 smaller">
+<h2>Go to https://github.com/setting/tokens</h2>
+<p>Under “Generate New Token” Choose the “Classic” option</p>
+
+<img data-src="class_2_images/Screenshot 2024-04-08 at 9.22.12 PM.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="name-the-token-something-useful-like-2024-quant-plc-r-class" class="slide level2 smaller">
+<h2>Name the token something useful like “2024-quant-plc-r-class”</h2>
+<p>You can choose an expiration date, but I have chosen no expiration date. Select the following: “repo”, “user”, “gist”, and “workflow” and then generate your token. SAVE YOUR TOKEN!!!!</p>
+
+<img data-src="class_2_images/Screenshot 2024-04-08 at 9.15.34 PM.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="you-will-receive-an-email-with-an-invitation-to-join-the-github-organization-for-this-training" class="slide level2 smaller">
+<h2>You will receive an email with an invitation to join the GitHub organization for this training</h2>
+
+<img data-src="class_2_images/Screenshot 2024-04-08 at 5.35.56 PM.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="once-you-click-the-view-invitation-button-you-will-be-directed-to-join-the-organization" class="slide level2 smaller">
+<h2>Once you click the “View Invitation” button, you will be directed to join the organization</h2>
+
+<img data-src="class_2_images/Screenshot 2024-04-08 at 8.37.30 PM.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="bookmark-the-organization-page" class="slide level2">
+<h2>Bookmark the organization page</h2>
+<p>Your homework assignments will show up here as repositories</p>
+
+<img data-src="class_2_images/Screenshot 2024-04-08 at 8.38.30 PM.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="to-start-an-assignment-navigate-to-the-repository-and-copy-the-https-link-that-appears-when-you-click-the-code-button" class="slide level2 smaller">
+<h2>To start an assignment, navigate to the repository and copy the HTTPS link that appears when you click the “Code” button</h2>
+
+<img data-src="class_2_images/Screenshot 2024-04-08 at 8.45.25 PM.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="next-youll-open-rstudio-and-create-a-new-project-selecting-the-version-control-and-git-options" class="slide level2 smaller">
+<h2>Next, you’ll open RStudio and create a new project, selecting the “Version control” and “Git” options</h2>
+
+<img data-src="git_process/04-new-proj.png" class="r-stretch"></section>
+<section id="next-youll-open-rstudio-and-create-a-new-project-selecting-the-version-control-and-git-options-1" class="slide level2 smaller">
+<h2>Next, you’ll open RStudio and create a new project, selecting the “Version Control” and “Git” options</h2>
+
+<img data-src="git_process/05-git-proj.png" class="r-stretch"></section>
+<section id="be-sure-to-select-a-folder-where-you-want-to-have-your-homework-files-saved-before-you-click-open" class="slide level2 smaller">
+<h2>Be sure to select a folder where you want to have your homework files saved before you click “Open”</h2>
+
+<img data-src="git_process/06-select-path.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="youre-now-ready-to-start-working-on-your-homework" class="slide level2">
+<h2>You’re now ready to start working on your homework!</h2>
+<p>Start by opening the README.md file</p>
+
+<img data-src="class_2_images/Screenshot 2024-04-08 at 9.04.09 PM.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="the-readme.md-file-is-a-text-file-that-will-include-instructions-for-your-assignment" class="slide level2">
+<h2>The README.md file is a text file that will include instructions for your assignment</h2>
+<p>Using the “Visual” option will make it easier to read</p>
+
+<img data-src="class_2_images/Screenshot 2024-04-08 at 8.49.48 PM.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="the-readme.md-file-is-a-text-file-that-will-include-instructions-for-your-assignment-1" class="slide level2">
+<h2>The README.md file is a text file that will include instructions for your assignment</h2>
+<p>Using the “Visual” option will make it easier to read</p>
+
+<img data-src="class_2_images/Screenshot 2024-04-08 at 8.50.06 PM.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="once-youve-completed-your-assignment-youll-want-to-stage-your-changes-and-then-start-the-commit-process" class="slide level2 smaller">
+<h2>Once you’ve completed your assignment, you’ll want to “stage” your changes and then start the “commit” process</h2>
+
+<img data-src="git_process/12-gh-push.png" class="quarto-figure quarto-figure-center r-stretch"></section></section>
 <section>
 <section id="next-class-and-homework" class="title-slide slide level1 center">
 <h1>Next Class and Homework</h1>
@@ -558,15 +625,14 @@
 <p><strong>Next Class</strong></p>
 <ul>
 <li><p>The next class will be <strong>Tuesday, April 23 from 11:00 AM - 12:00 PM CT.</strong></p></li>
-<li><p>We will do a deep dive into the <code>ggplot2</code> and do basic data visualization in R.</p></li>
-<li><p>We will use our clean data frames that we made today to do the data visualization.</p></li>
+<li><p>We will do a deep dive into the <code>ggplot2</code> and do basic data visualization in R (scatterplots)</p></li>
 </ul>
 </div><div class="column" style="width:45%;">
 <p><strong>Homework</strong></p>
 <ul>
-<li><p>Finish cleaning and creating the data frame for your assigned state.</p></li>
-<li><p>In the “homework” folder you will find a raw data frame and a script with instructions. Please complete the homework and push updates to the repository by 11:00 AM CT on Monday, April 21. Krista will look it over and provide comments.</p></li>
-<li><p><strong>Optional homework:</strong> Find a raw data frame that you want to clean. Add it to the “optional_hw” folder” and use the four functions we learned about today to create a clean data frame.</p></li>
+<li>Coding task: Use the hw_02_template.R file in the /scripts folder to complete the tasks that are outlined in the script.</li>
+<li><strong>Homework is due by COB on Thursday, April 18</strong>. This ensures that Krista can review your assignments and provide feedback by the April 23 R Class.</li>
+<li>Please make sure you commit and then push your homework updates using Git to update the repository.</li>
 </ul>
 </div>
 </div>

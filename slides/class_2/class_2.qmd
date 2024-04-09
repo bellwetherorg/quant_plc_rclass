@@ -41,23 +41,23 @@ bw_secondary <- c("#FFC762", # 1 yellow
 
 ## Agenda
 
-- Introduction to the `tidyverse` (10 minutes)
-- Live coding demonstration (10 minutes)
-- Partner work cleaning a data set (20 minutes)
-- Creating a token and cloning a GitHub repository in RStudio (15 minutes)
-- Next class and homework (5 minutes)
+-   Introduction to the `tidyverse` (10 minutes)
+-   Live coding demonstration (10 minutes)
+-   Partner work cleaning a data set (20 minutes)
+-   Creating a token and cloning a GitHub repository in RStudio (15 minutes)
+-   Next class and homework (5 minutes)
 
 # Introduction to the `tidyverse`
 
-## R is a functional programming language - most of what you will do in R is work with functions 
+## R is a functional programming language - most of what you will do in R is work with functions
 
-A function: 
+A function:
 
-- Takes a specific input
-- Performs an operation 
-- Returns in output 
+-   Takes a specific input
+-   Performs an operation
+-   Returns in output
 
-Functions are helpful tools to reduce repetition in typing and improves your code’s consistency, reliability and readability.
+Functions are helpful tools to reduce repetition in typing and improves your code's consistency, reliability and readability.
 
 ## The tidyverse is a powerful collection of R packages that work well together {.smaller .scrollable}
 
@@ -182,46 +182,79 @@ mn_ed_data_clean <- mn_ed_data_clean |>
 
 # Partner Work
 
-## In pairs, you will work together to create a clean data frame for a state. 
+## In pairs, you will work together to create a clean data frame for a state.
 
-- **Julia and Kelly:** Illinois
-- **Indira and Priyanka:** Tennessee
-- **Marisa and Brian:** Maryland 
-- **Ebony and Libby:** Virginia 
-- **Sophie and Nora:** Alabama 
+-   **Julia and Kelly:** Illinois
+-   **Indira and Priyanka:** Tennessee
+-   **Marisa and Brian:** Maryland
+-   **Ebony,Teresa, and Libby:** Virginia
+-   **Sophie and Nora:** Massachusetts
 
-Krista and Alex will be circulating to the different pairs to answer questions and
-offer support. 
+Krista and Alex will be circulating to the different pairs to answer questions and offer support.
 
 # Creating a Token and Cloning a GitHub Repository in RStudio
 
-## You will be receiving an email with an invitation to join the GitHub organization for this training
+## Go to https://github.com/setting/tokens {.smaller}
 
-## Once you click the green button, you will be directed to join the organization 
+Under "Generate New Token" Choose the "Classic" option
 
-## Bookmark the organization page - your homework assignments will show up here as repositories. 
+![](class_2_images/Screenshot%202024-04-08%20at%209.22.12%20PM.png){fig-align="center"}
 
-## To start an assignment, navigate to the repository and copy the HTTPS link that apreas when you click the "Code" button 
+## Name the token something useful like "2024-quant-plc-r-class" {.smaller}
 
-## Next, you'll open RStudio and create a new project, seelcting the "Version control" and "Git" options 
+You can choose an expiration date, but I have chosen no expiration date. Select the following: "repo", "user", "gist", and "workflow" and then generate your token. SAVE YOUR TOKEN!!!!
 
-## Next, you’ll open RStudio and create a new project, selecting the “Version Control” and “Git” options
+![](class_2_images/Screenshot%202024-04-08%20at%209.15.34%20PM.png){fig-align="center"}
 
-## Be sure to select a folder where you want to have your homework files saved before you click “Open”
+## You will receive an email with an invitation to join the GitHub organization for this training {.smaller}
 
-## You’re now ready to start working on your homework! Start by opening the README.md file
+![](class_2_images/Screenshot%202024-04-08%20at%205.35.56%20PM.png){fig-align="center"}
 
-## The README.md file is a text file that will include instructions for your assignment – using the “Visual” option will make it easier to read
+## Once you click the "View Invitation" button, you will be directed to join the organization {.smaller}
 
-## The README.md file is a text file that will include instructions for your assignment – using the “Visual” option will make it easier to read
+![](class_2_images/Screenshot%202024-04-08%20at%208.37.30%20PM.png){fig-align="center"}
 
-## Once you’ve completed your assignment, you’ll want to “stage” the changes you’ve made
+## Bookmark the organization page 
+Your homework assignments will show up here as repositories
 
-## Once you’ve completed your assignment, you’ll want to “stage” your changes and then start the “commit” process
+![](class_2_images/Screenshot%202024-04-08%20at%208.38.30%20PM.png){fig-align="center"}
 
-## We’ll use GitHub’s “Issues” feature to share feedback on your work
+## To start an assignment, navigate to the repository and copy the HTTPS link that appears when you click the "Code" button {.smaller}
 
-# Next Class and Homework 
+![](class_2_images/Screenshot%202024-04-08%20at%208.45.25%20PM.png){fig-align="center"}
+
+## Next, you'll open RStudio and create a new project, selecting the "Version control" and "Git" options {.smaller}
+
+![](git_process/04-new-proj.png)
+
+## Next, you'll open RStudio and create a new project, selecting the "Version Control" and "Git" options {.smaller}
+
+![](git_process/05-git-proj.png)
+
+## Be sure to select a folder where you want to have your homework files saved before you click "Open" {.smaller}
+
+![](git_process/06-select-path.png){fig-align="center"}
+
+## You're now ready to start working on your homework! 
+Start by opening the README.md file 
+
+![](class_2_images/Screenshot%202024-04-08%20at%209.04.09%20PM.png){fig-align="center"}
+
+## The README.md file is a text file that will include instructions for your assignment
+Using the "Visual" option will make it easier to read 
+
+![](class_2_images/Screenshot%202024-04-08%20at%208.49.48%20PM.png){fig-align="center"}
+
+## The README.md file is a text file that will include instructions for your assignment 
+Using the "Visual" option will make it easier to read 
+
+![](class_2_images/Screenshot%202024-04-08%20at%208.50.06%20PM.png){fig-align="center"}
+
+## Once you've completed your assignment, you'll want to "stage" your changes and then start the "commit" process {.smaller}
+
+![](git_process/12-gh-push.png){fig-align="center"}
+
+# Next Class and Homework
 
 ## Coming Up {.smaller .scrollable}
 
@@ -235,18 +268,13 @@ offer support.
 :::
 
 ::: {.column width="45%"}
-**Homework** 
+**Homework**
 
--  Coding task: In your homework repository, there is a raw data file that you will clean 
+- Coding task: Use the hw_02_template.R file in the /scripts folder to complete the tasks that are outlined in the script. 
+- **Homework is due by COB on Thursday, April 18**. This ensures that Krista can review your assignments and provide feedback by the April 23 R Class. 
+- Please make sure you commit and then push your homework updates using Git to update the repository.
+
+
 
 :::
 :::
-
-
-
-
-
-
-
-
-

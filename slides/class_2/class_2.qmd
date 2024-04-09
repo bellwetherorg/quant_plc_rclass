@@ -206,6 +206,20 @@ You can choose an expiration date, but I have chosen no expiration date. Select 
 
 ![](class_2_images/Screenshot%202024-04-08%20at%209.15.34%20PM.png){fig-align="center"}
 
+## In your RStudio console, install the `usethis`, `gitcreds`, and `gh` packages 
+Type the following code int your console: install.packages(c("usethis", "gitcreds", "gh"))
+
+![](class_2_images/Screenshot%202024-04-09%20at%2010.39.15%20AM.png){fig-align="center"}
+
+## In your RStudio console, type **gitcreds::gitcreds_set()** and then paste your token {.smaller}
+
+![](class_2_images/Screenshot 2024-04-09 at 10.42.26 AM.png){fig-align="center"}
+
+## In your RStudio console, type **gh::gh_whoami()**
+If we set up the token correctly this will show your information and confirm you are all set! 
+
+![](class_2_images/Screenshot 2024-04-09 at 10.45.27 AM.png){fig-align="center"}
+
 ## You will receive an email with an invitation to join the GitHub organization for this training {.smaller}
 
 ![](class_2_images/Screenshot%202024-04-08%20at%205.35.56%20PM.png){fig-align="center"}
@@ -214,7 +228,8 @@ You can choose an expiration date, but I have chosen no expiration date. Select 
 
 ![](class_2_images/Screenshot%202024-04-08%20at%208.37.30%20PM.png){fig-align="center"}
 
-## Bookmark the organization page 
+## Bookmark the organization page
+
 Your homework assignments will show up here as repositories
 
 ![](class_2_images/Screenshot%202024-04-08%20at%208.38.30%20PM.png){fig-align="center"}
@@ -235,18 +250,21 @@ Your homework assignments will show up here as repositories
 
 ![](git_process/06-select-path.png){fig-align="center"}
 
-## You're now ready to start working on your homework! 
-Start by opening the README.md file 
+## You're now ready to start working on your homework!
+
+Start by opening the README.md file
 
 ![](class_2_images/Screenshot%202024-04-08%20at%209.04.09%20PM.png){fig-align="center"}
 
 ## The README.md file is a text file that will include instructions for your assignment
-Using the "Visual" option will make it easier to read 
+
+Using the "Visual" option will make it easier to read
 
 ![](class_2_images/Screenshot%202024-04-08%20at%208.49.48%20PM.png){fig-align="center"}
 
-## The README.md file is a text file that will include instructions for your assignment 
-Using the "Visual" option will make it easier to read 
+## The README.md file is a text file that will include instructions for your assignment
+
+Using the "Visual" option will make it easier to read
 
 ![](class_2_images/Screenshot%202024-04-08%20at%208.50.06%20PM.png){fig-align="center"}
 
@@ -270,11 +288,8 @@ Using the "Visual" option will make it easier to read
 ::: {.column width="45%"}
 **Homework**
 
-- Coding task: Use the hw_02_template.R file in the /scripts folder to complete the tasks that are outlined in the script. 
-- **Homework is due by COB on Thursday, April 18**. This ensures that Krista can review your assignments and provide feedback by the April 23 R Class. 
-- Please make sure you commit and then push your homework updates using Git to update the repository.
-
-
-
+-   Coding task: Use the hw_02_template.R file in the /scripts folder to complete the tasks that are outlined in the script.
+-   **Homework is due by COB on Thursday, April 18**. This ensures that Krista can review your assignments and provide feedback by the April 23 R Class.
+-   Please make sure you commit and then push your homework updates using Git to update the repository.
 :::
 :::

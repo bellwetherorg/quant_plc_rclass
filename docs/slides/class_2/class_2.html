@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2023-04-09">
+<meta name="dcterms.date" content="2024-04-09">
 
-<title>Quantitative Peer Learning Community R Training - Basic data analysis (tidyverse)</title>
+<title>Quantitative Peer Learning Community R Training</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -172,19 +172,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#section" id="toc-section" class="nav-link active" data-scroll-target="#section">—</a></li>
-  <li><a href="#title-basic-data-analysis-tidyverse" id="toc-title-basic-data-analysis-tidyverse" class="nav-link" data-scroll-target="#title-basic-data-analysis-tidyverse">title: “Basic data analysis (tidyverse)”</a></li>
-  <li><a href="#date-april-9-2023" id="toc-date-april-9-2023" class="nav-link" data-scroll-target="#date-april-9-2023">date: “April 9, 2023”</a></li>
-  <li><a href="#format" id="toc-format" class="nav-link" data-scroll-target="#format">format:</a></li>
-  <li><a href="#revealjs" id="toc-revealjs" class="nav-link" data-scroll-target="#revealjs">revealjs:</a></li>
-  <li><a href="#chalkboard-true" id="toc-chalkboard-true" class="nav-link" data-scroll-target="#chalkboard-true">chalkboard: true</a></li>
-  <li><a href="#execute" id="toc-execute" class="nav-link" data-scroll-target="#execute">execute:</a></li>
-  <li><a href="#freeze-auto" id="toc-freeze-auto" class="nav-link" data-scroll-target="#freeze-auto">freeze: auto</a></li>
-  <li><a href="#echo-false" id="toc-echo-false" class="nav-link" data-scroll-target="#echo-false">echo: false</a></li>
-  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1">—</a>
-  <ul class="collapse">
-  <li><a href="#agenda" id="toc-agenda" class="nav-link" data-scroll-target="#agenda">Agenda</a></li>
-  </ul></li>
+  <li><a href="#agenda" id="toc-agenda" class="nav-link active" data-scroll-target="#agenda">Agenda</a></li>
   <li><a href="#introduction-to-the-tidyverse" id="toc-introduction-to-the-tidyverse" class="nav-link" data-scroll-target="#introduction-to-the-tidyverse">Introduction to the <code>tidyverse</code></a>
   <ul class="collapse">
   <li><a href="#r-is-a-functional-programming-language---most-of-what-you-will-do-in-r-is-work-with-functions" id="toc-r-is-a-functional-programming-language---most-of-what-you-will-do-in-r-is-work-with-functions" class="nav-link" data-scroll-target="#r-is-a-functional-programming-language---most-of-what-you-will-do-in-r-is-work-with-functions">R is a functional programming language - most of what you will do in R is work with functions</a></li>
@@ -243,7 +231,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">April 9, 2023</p>
+      <p class="date">April 9, 2024</p>
     </div>
   </div>
   
@@ -255,59 +243,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="section" class="level1">
-<h1>—</h1>
-</section>
-<section id="title-basic-data-analysis-tidyverse" class="level1">
-<h1>title: “Basic data analysis (tidyverse)”</h1>
-</section>
-<section id="date-april-9-2023" class="level1">
-<h1>date: “April 9, 2023”</h1>
-</section>
-<section id="format" class="level1">
-<h1>format:</h1>
-</section>
-<section id="revealjs" class="level1">
-<h1>revealjs:</h1>
-</section>
-<section id="chalkboard-true" class="level1">
-<h1>chalkboard: true</h1>
-</section>
-<section id="execute" class="level1">
-<h1>execute:</h1>
-</section>
-<section id="freeze-auto" class="level1">
-<h1>freeze: auto</h1>
-</section>
-<section id="echo-false" class="level1">
-<h1>echo: false</h1>
-</section>
-<section id="section-1" class="level1">
-<h1>—</h1>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(countdown)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tigris)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>bw_primary <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"#6D1E4A"</span>, <span class="co"># 1 plum</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>                <span class="st">"#007786"</span>, <span class="co"># 2 teal</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>                <span class="st">"#0D525A"</span>, <span class="co"># 3 dark green</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>                <span class="st">"#212B46"</span>, <span class="co"># 4 navy</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>                <span class="st">"#5A6675"</span>, <span class="co"># 5 grey</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>                <span class="st">"#F0DEC1"</span>) <span class="co"># 6 cream</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>bw_secondary <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"#FFC762"</span>, <span class="co"># 1 yellow</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"#FFB653"</span>, <span class="co"># 2 orange</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"#BEC6CE"</span>, <span class="co"># 3 light grey</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"#2E1A4A"</span>, <span class="co"># 4 deep purple</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"#7EA2D1"</span>, <span class="co"># 5 soft blue</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"#CAD3FB"</span>, <span class="co"># 6 lavender</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"#9CD4EA"</span>, <span class="co"># 7 sky</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"#FFA497"</span>) <span class="co"># 8 peach</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 <section id="agenda" class="level2">
 <h2 class="anchored" data-anchor-id="agenda">Agenda</h2>
 <ul>
@@ -317,7 +252,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Creating a token and cloning a GitHub repository in RStudio (15 minutes)</li>
 <li>Next class and homework (5 minutes)</li>
 </ul>
-</section>
 </section>
 <section id="introduction-to-the-tidyverse" class="level1">
 <h1>Introduction to the <code>tidyverse</code></h1>
@@ -351,9 +285,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="to-read-edbuilds-finance-data-into-our-working-environment-we-will-use-the-masterpull-function" class="level2 smaller scrollable">
 <h2 class="smaller scrollable anchored" data-anchor-id="to-read-edbuilds-finance-data-into-our-working-environment-we-will-use-the-masterpull-function">To read EdBuild’s finance data into our working environment we will use the masterpull() function</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(edbuildr)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>edbuild_fin_fy19 <span class="ot">&lt;-</span> <span class="fu">masterpull</span>(<span class="at">data_year =</span> <span class="dv">2019</span>, <span class="at">data_type =</span> <span class="st">"fin"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(edbuildr)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>edbuild_fin_fy19 <span class="ot">&lt;-</span> <span class="fu">masterpull</span>(<span class="at">data_year =</span> <span class="dv">2019</span>, <span class="at">data_type =</span> <span class="st">"fin"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This code will load the <code>edbuildr</code> package and then download a clean dataframe from EdBuild’s server and store it as a variable called <code>edbuild_fin_fy19</code>.</p>
 <p>There are three options for the <code>data_type</code> argument:</p>
@@ -380,14 +314,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Instead of “nesting” the results of one function inside of another, the pipe allows you to execute the same command in a more human-readable order.</p></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># example of "nesting" the result of one function inside another function. </span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">select</span>(<span class="fu">filter</span>(raw_df, enroll <span class="sc">&gt;</span> <span class="dv">10000</span>), dist_id, dist_name, enroll, rev_pp)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># example of using the "pipe" to produce the same as above </span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># read the pipe as "and then" to understand what's being done to your data</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> raw_df <span class="sc">|&gt;</span> <span class="co"># start with raw_df AND THEN DO THIS </span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(enroll <span class="sc">&gt;</span> <span class="dv">10000</span>) <span class="sc">|&gt;</span> <span class="co"># filter for enrollment &gt; 10,000 AND THEN DO THIS </span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(dist_id, dist_name, enroll, rev_pp) <span class="co"># select only these columns</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># example of "nesting" the result of one function inside another function. </span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">select</span>(<span class="fu">filter</span>(raw_df, enroll <span class="sc">&gt;</span> <span class="dv">10000</span>), dist_id, dist_name, enroll, rev_pp)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># example of using the "pipe" to produce the same as above </span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># read the pipe as "and then" to understand what's being done to your data</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> raw_df <span class="sc">|&gt;</span> <span class="co"># start with raw_df AND THEN DO THIS </span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(enroll <span class="sc">&gt;</span> <span class="dv">10000</span>) <span class="sc">|&gt;</span> <span class="co"># filter for enrollment &gt; 10,000 AND THEN DO THIS </span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(dist_id, dist_name, enroll, rev_pp) <span class="co"># select only these columns</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -396,46 +330,58 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="live-coding-example-exploring_the_tidyverse.r" class="level2">
 <h2 class="anchored" data-anchor-id="live-coding-example-exploring_the_tidyverse.r">LIVE CODING EXAMPLE: exploring_the_tidyverse.R</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># class_2_example </span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Last updated by Krista Kaput, 2024-03-29</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># load ----------</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>)</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(edbuildr)</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Krista likes to denote which spreadsheet is raw for transparency </span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>dist_fy19_raw <span class="ot">&lt;-</span> <span class="fu">masterpull</span>(<span class="at">data_type =</span> <span class="st">"geo"</span>)</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the "filter" function to get the Minnesota data -----------</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>mn_ed_data <span class="ot">&lt;-</span> dist_fy19_raw <span class="sc">|&gt;</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(State <span class="sc">==</span> <span class="st">"Minnesota"</span>) </span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Use "rename" function to change names of Minnesota variables --------</span></span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>mn_ed_data <span class="ot">&lt;-</span> mn_ed_data <span class="sc">|&gt;</span></span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">district =</span> NAME,</span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>         <span class="at">county =</span> County,</span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>         <span class="at">enroll =</span> ENROLL, </span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>         <span class="at">total_local_rev =</span> LR) </span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Use "mutate" function to create a local revenue pp variable -----</span></span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>mn_ed_data <span class="ot">&lt;-</span> mn_ed_data <span class="sc">|&gt;</span></span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">local_rev_pp =</span> total_local_rev<span class="sc">/</span>enroll) </span>
-<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter the districts that do not have enrollment or have NA enrollment ------</span></span>
-<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>mn_ed_data_clean <span class="ot">&lt;-</span> mn_ed_data <span class="sc">|&gt;</span></span>
-<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(enroll <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
-<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Use "select" function to choose the variables you want in your data frame ---------</span></span>
-<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>mn_ed_data_clean <span class="ot">&lt;-</span> mn_ed_data_clean <span class="sc">|&gt;</span></span>
-<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(district, county, enroll, total_local_rev, local_rev_pp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># class_2_example </span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Last updated by Krista Kaput, 2024-03-29</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># load ----------</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.0     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.1
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(edbuildr)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Krista likes to denote which spreadsheet is raw for transparency </span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>dist_fy19_raw <span class="ot">&lt;-</span> <span class="fu">masterpull</span>(<span class="at">data_type =</span> <span class="st">"geo"</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the "filter" function to get the Minnesota data -----------</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>mn_ed_data <span class="ot">&lt;-</span> dist_fy19_raw <span class="sc">|&gt;</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(State <span class="sc">==</span> <span class="st">"Minnesota"</span>) </span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Use "rename" function to change names of Minnesota variables --------</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>mn_ed_data <span class="ot">&lt;-</span> mn_ed_data <span class="sc">|&gt;</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">district =</span> NAME,</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>         <span class="at">county =</span> County,</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>         <span class="at">enroll =</span> ENROLL, </span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>         <span class="at">total_local_rev =</span> LR) </span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Use "mutate" function to create a local revenue pp variable -----</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>mn_ed_data <span class="ot">&lt;-</span> mn_ed_data <span class="sc">|&gt;</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">local_rev_pp =</span> total_local_rev<span class="sc">/</span>enroll) </span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter the districts that do not have enrollment or have NA enrollment ------</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>mn_ed_data_clean <span class="ot">&lt;-</span> mn_ed_data <span class="sc">|&gt;</span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(enroll <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Use "select" function to choose the variables you want in your data frame ---------</span></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>mn_ed_data_clean <span class="ot">&lt;-</span> mn_ed_data_clean <span class="sc">|&gt;</span></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(district, county, enroll, total_local_rev, local_rev_pp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>

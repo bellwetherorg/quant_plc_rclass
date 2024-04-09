@@ -1,61 +1,13 @@
----
+ ---
 title: "Basic data analysis (tidyverse)"
-date: "April 9, 2023"
+date: "April 9, 2024"
 output:
-  revealjs::revealjs_presentation:
-    transition: slide
-    theme: white
-    center: false
-    slideNumber: true
-    hash: true
-    progress: true
-    width: 960
-    height: 700
+  html_document: # Specify the output format as HTML document
+    revealjs::revealjs_presentation:
+      chalkboard: true
 runtime:
   shiny: false
 ---
-
-
-# ---
-# title: "Basic data analysis (tidyverse)"
-# date: "April 9, 2023"
-# format: 
-#   revealjs:
-#     chalkboard: true
-# execute:
-#   freeze: auto
-#   echo: false
-# ---
-
-```{r}
-#| output: false
-
-
-library(tidyverse)
-library(countdown)
-library(tigris)
-library(sf)
-library(scales)
-
-
-bw_primary <- c("#6D1E4A", # 1 plum
-                "#007786", # 2 teal
-                "#0D525A", # 3 dark green
-                "#212B46", # 4 navy
-                "#5A6675", # 5 grey
-                "#F0DEC1") # 6 cream
-
-bw_secondary <- c("#FFC762", # 1 yellow
-                  "#FFB653", # 2 orange
-                  "#BEC6CE", # 3 light grey
-                  "#2E1A4A", # 4 deep purple
-                  "#7EA2D1", # 5 soft blue
-                  "#CAD3FB", # 6 lavender
-                  "#9CD4EA", # 7 sky
-                  "#FFA497") # 8 peach
-
-
-```
 
 ## Agenda
 

@@ -1038,42 +1038,42 @@
   {
     "objectID": "slides/class_2/class_2.html#agenda",
     "href": "slides/class_2/class_2.html#agenda",
-    "title": "Basic data analysis (tidyverse)",
+    "title": "Basic data analysis (tidyverse",
     "section": "Agenda",
     "text": "Agenda\n\nIntroduction to the tidyverse (10 minutes)\nLive coding demonstration (10 minutes)\nPartner work cleaning a data set (20 minutes)\nCreating a token and cloning a GitHub repository in RStudio (15 minutes)\nNext class and homework (5 minutes)"
   },
   {
     "objectID": "slides/class_2/class_2.html#r-is-a-functional-programming-language---most-of-what-you-will-do-in-r-is-work-with-functions",
     "href": "slides/class_2/class_2.html#r-is-a-functional-programming-language---most-of-what-you-will-do-in-r-is-work-with-functions",
-    "title": "Basic data analysis (tidyverse)",
+    "title": "Basic data analysis (tidyverse",
     "section": "R is a functional programming language - most of what you will do in R is work with functions",
     "text": "R is a functional programming language - most of what you will do in R is work with functions\nA function:\n\nTakes a specific input\nPerforms an operation\nReturns in output\n\nFunctions are helpful tools to reduce repetition in typing and improves your code’s consistency, reliability and readability."
   },
   {
     "objectID": "slides/class_2/class_2.html#the-tidyverse-is-a-powerful-collection-of-r-packages-that-work-well-together",
     "href": "slides/class_2/class_2.html#the-tidyverse-is-a-powerful-collection-of-r-packages-that-work-well-together",
-    "title": "Basic data analysis (tidyverse)",
+    "title": "Basic data analysis (tidyverse",
     "section": "The tidyverse is a powerful collection of R packages that work well together",
     "text": "The tidyverse is a powerful collection of R packages that work well together\n\n\n\n\nThe most popular packages in the R community are past of what is called the “tidyverse,” which includes packages like ggplot2, tidyr, stringr, tibble, and purrr.\nTidyverse packages are built to work together. Every tidyverse package contains functions that can manipulate or visualize data that lives in data frames.\nMost functions in the tidyverse require a data frame (R’s version of a table) as the first argument in each function. The functions can be “chained” together with other functions.\nWe will explore the tidyverse by looking at EdBuild’s FY2019 education data compiled from the F33 survey, SAIPE, EDGE, and CCD. The edbuildr package provides access to clean district data on funding, student demographics, and wealth."
   },
   {
     "objectID": "slides/class_2/class_2.html#to-read-edbuilds-finance-data-into-our-working-environment-we-will-use-the-masterpull-function",
     "href": "slides/class_2/class_2.html#to-read-edbuilds-finance-data-into-our-working-environment-we-will-use-the-masterpull-function",
-    "title": "Basic data analysis (tidyverse)",
+    "title": "Basic data analysis (tidyverse",
     "section": "To read EdBuild’s finance data into our working environment we will use the masterpull() function",
     "text": "To read EdBuild’s finance data into our working environment we will use the masterpull() function\n\nlibrary(edbuildr)\n\nedbuild_fin_fy19 &lt;- masterpull(data_year = 2019, data_type = \"fin\")\n\nThis code will load the edbuildr package and then download a clean dataframe from EdBuild’s server and store it as a variable called edbuild_fin_fy19.\nThere are three options for the data_type argument:\n\n“geo”: only includes districts with geographic boundaries (no charter/special school districts) that meet EdBuild’s criteria for fiscal analysis\n“fin”: includes all districts that meet EdBuild’s criteria for fiscal analysis\n“full”: includes all districts – TO BE USED WITH CAUTION"
   },
   {
     "objectID": "slides/class_2/class_2.html#the-dplyr-package-provides-many-functions-to-manipulate-your-data-frames-columns-and-rows",
     "href": "slides/class_2/class_2.html#the-dplyr-package-provides-many-functions-to-manipulate-your-data-frames-columns-and-rows",
-    "title": "Basic data analysis (tidyverse)",
+    "title": "Basic data analysis (tidyverse",
     "section": "The dplyr() package provides many functions to manipulate your data frames’ columns and rows",
     "text": "The dplyr() package provides many functions to manipulate your data frames’ columns and rows\nThe functions you’ll most frequently use from the dplyr packages are:\n\nselect(): names columns to keep from a data frame\nrename(): name columns to keep from a data frame\nfilter(): remove rows that do not meet the condition in the logical statement from the output\nmutate(): create a new column that will be added to the end of your data frame."
   },
   {
     "objectID": "slides/class_2/class_2.html#a-special-operator-called-a-pipe-will-allow-you-to-chain-several-functions-together",
     "href": "slides/class_2/class_2.html#a-special-operator-called-a-pipe-will-allow-you-to-chain-several-functions-together",
-    "title": "Basic data analysis (tidyverse)",
+    "title": "Basic data analysis (tidyverse",
     "section": "A special operator called a “pipe” will allow you to chain several functions together",
     "text": "A special operator called a “pipe” will allow you to chain several functions together\n\nIn R, the pipe operator is a vertical bar and a greater-than sign: |&gt;\nInstead of “nesting” the results of one function inside of another, the pipe allows you to execute the same command in a more human-readable order.\n\n\n# example of \"nesting\" the result of one function inside another function. \ndf1 &lt;- select(filter(raw_df, enroll &gt; 10000), dist_id, dist_name, enroll, rev_pp)\n\n# example of using the \"pipe\" to produce the same as above \n# read the pipe as \"and then\" to understand what's being done to your data\ndf2 &lt;- raw_df |&gt; # start with raw_df AND THEN DO THIS \n  filter(enroll &gt; 10000) |&gt; # filter for enrollment &gt; 10,000 AND THEN DO THIS \n  select(dist_id, dist_name, enroll, rev_pp) # select only these columns"
   },
@@ -1178,21 +1178,21 @@
   {
     "objectID": "slides/class_2/class_2.html#live-coding-example-exploring_the_tidyverse.r",
     "href": "slides/class_2/class_2.html#live-coding-example-exploring_the_tidyverse.r",
-    "title": "Basic data analysis (tidyverse)",
+    "title": "Basic data analysis (tidyverse",
     "section": "LIVE CODING EXAMPLE: exploring_the_tidyverse.R",
     "text": "LIVE CODING EXAMPLE: exploring_the_tidyverse.R\n\n# class_2_example \n# Last updated by Krista Kaput, 2024-03-29\n\n# load ----------\n\noptions(scipen = 999)\n\nlibrary(tidyverse)\nlibrary(edbuildr)\n\n# Krista likes to denote which spreadsheet is raw for transparency \ndist_fy19_raw &lt;- masterpull(data_type = \"geo\")\n\n# Use the \"filter\" function to get the Minnesota data -----------\n\nmn_ed_data &lt;- dist_fy19_raw |&gt;\n  filter(State == \"Minnesota\") \n\n# Use \"rename\" function to change names of Minnesota variables --------\n\nmn_ed_data &lt;- mn_ed_data |&gt;\n  rename(district = NAME,\n         county = County,\n         enroll = ENROLL, \n         total_local_rev = LR) \n\n\n# Use \"mutate\" function to create a local revenue pp variable -----\nmn_ed_data &lt;- mn_ed_data |&gt;\n  mutate(local_rev_pp = total_local_rev/enroll) \n\n# Filter the districts that do not have enrollment or have NA enrollment ------\n\nmn_ed_data_clean &lt;- mn_ed_data |&gt;\n  filter(enroll &gt; 0)\n\n# Use \"select\" function to choose the variables you want in your data frame ---------\n\nmn_ed_data_clean &lt;- mn_ed_data_clean |&gt;\n  select(district, county, enroll, total_local_rev, local_rev_pp)"
   },
   {
     "objectID": "slides/class_2/class_2.html#in-pairs-you-will-work-together-to-create-a-clean-data-frame-for-a-state.",
     "href": "slides/class_2/class_2.html#in-pairs-you-will-work-together-to-create-a-clean-data-frame-for-a-state.",
-    "title": "Basic data analysis (tidyverse)",
+    "title": "Basic data analysis (tidyverse",
     "section": "In pairs, you will work together to create a clean data frame for a state.",
     "text": "In pairs, you will work together to create a clean data frame for a state.\n\nJulia and Kelly: Illinois\nIndira and Priyanka: Tennessee\nMarisa and Brian: Maryland\nEbony,Teresa, and Libby: Virginia\nSophie and Nora: Massachusetts\n\nKrista and Alex will be circulating to the different pairs to answer questions and offer support."
   },
   {
     "objectID": "slides/class_2/class_2.html#coming-up",
     "href": "slides/class_2/class_2.html#coming-up",
-    "title": "Basic data analysis (tidyverse)",
+    "title": "Basic data analysis (tidyverse",
     "section": "Coming Up",
     "text": "Coming Up\n\n\nNext Class\n\nThe next class will be Tuesday, April 23 from 11:00 AM - 12:00 PM CT.\nWe will do a deep dive into the ggplot2 and do basic data visualization in R (scatterplots)\n\n\nHomework\n\nCoding task: Use the hw_02_template.R file in the /scripts folder to complete the tasks that are outlined in the script.\nHomework is due by COB on Thursday, April 18. This ensures that Krista can review your assignments and provide feedback by the April 23 R Class.\nPlease make sure you commit and then push your homework updates using Git to update the repository."
   },
@@ -1234,14 +1234,14 @@
   {
     "objectID": "slides/class_2/class_2.html#next-youll-open-rstudio-and-create-a-new-project-selecting-the-version-control-and-git-options",
     "href": "slides/class_2/class_2.html#next-youll-open-rstudio-and-create-a-new-project-selecting-the-version-control-and-git-options",
-    "title": "Basic data analysis (tidyverse)",
+    "title": "Basic data analysis (tidyverse",
     "section": "Next, you’ll open RStudio and create a new project, selecting the “Version control” and “Git” options",
     "text": "Next, you’ll open RStudio and create a new project, selecting the “Version control” and “Git” options"
   },
   {
     "objectID": "slides/class_2/class_2.html#be-sure-to-select-a-folder-where-you-want-to-have-your-homework-files-saved-before-you-click-open",
     "href": "slides/class_2/class_2.html#be-sure-to-select-a-folder-where-you-want-to-have-your-homework-files-saved-before-you-click-open",
-    "title": "Basic data analysis (tidyverse)",
+    "title": "Basic data analysis (tidyverse",
     "section": "Be sure to select a folder where you want to have your homework files saved before you click “Open”",
     "text": "Be sure to select a folder where you want to have your homework files saved before you click “Open”"
   },
@@ -1276,7 +1276,7 @@
   {
     "objectID": "slides/class_2/class_2.html#once-youve-completed-your-assignment-youll-want-to-stage-your-changes-and-then-start-the-commit-process",
     "href": "slides/class_2/class_2.html#once-youve-completed-your-assignment-youll-want-to-stage-your-changes-and-then-start-the-commit-process",
-    "title": "Basic data analysis (tidyverse)",
+    "title": "Basic data analysis (tidyverse",
     "section": "Once you’ve completed your assignment, you’ll want to “stage” your changes and then start the “commit” process",
     "text": "Once you’ve completed your assignment, you’ll want to “stage” your changes and then start the “commit” process"
   },
@@ -1290,28 +1290,28 @@
   {
     "objectID": "slides/class_2/class_2.html#you-will-receive-an-email-with-an-invitation-to-join-the-github-organization-for-this-training",
     "href": "slides/class_2/class_2.html#you-will-receive-an-email-with-an-invitation-to-join-the-github-organization-for-this-training",
-    "title": "Basic data analysis (tidyverse)",
+    "title": "Basic data analysis (tidyverse",
     "section": "You will receive an email with an invitation to join the GitHub organization for this training",
     "text": "You will receive an email with an invitation to join the GitHub organization for this training"
   },
   {
     "objectID": "slides/class_2/class_2.html#once-you-click-the-view-invitation-button-you-will-be-directed-to-join-the-organization",
     "href": "slides/class_2/class_2.html#once-you-click-the-view-invitation-button-you-will-be-directed-to-join-the-organization",
-    "title": "Basic data analysis (tidyverse)",
+    "title": "Basic data analysis (tidyverse",
     "section": "Once you click the “View Invitation” button, you will be directed to join the organization",
     "text": "Once you click the “View Invitation” button, you will be directed to join the organization"
   },
   {
     "objectID": "slides/class_2/class_2.html#to-start-an-assignment-navigate-to-the-repository-and-copy-the-https-link-that-appears-when-you-click-the-code-button",
     "href": "slides/class_2/class_2.html#to-start-an-assignment-navigate-to-the-repository-and-copy-the-https-link-that-appears-when-you-click-the-code-button",
-    "title": "Basic data analysis (tidyverse)",
+    "title": "Basic data analysis (tidyverse",
     "section": "To start an assignment, navigate to the repository and copy the HTTPS link that appears when you click the “Code” button",
     "text": "To start an assignment, navigate to the repository and copy the HTTPS link that appears when you click the “Code” button"
   },
   {
     "objectID": "slides/class_2/class_2.html#next-youll-open-rstudio-and-create-a-new-project-selecting-the-version-control-and-git-options-1",
     "href": "slides/class_2/class_2.html#next-youll-open-rstudio-and-create-a-new-project-selecting-the-version-control-and-git-options-1",
-    "title": "Basic data analysis (tidyverse)",
+    "title": "Basic data analysis (tidyverse",
     "section": "Next, you’ll open RStudio and create a new project, selecting the “Version Control” and “Git” options",
     "text": "Next, you’ll open RStudio and create a new project, selecting the “Version Control” and “Git” options"
   },
@@ -1332,14 +1332,14 @@
   {
     "objectID": "slides/class_2/class_2.html#go-to-httpsgithub.comsettingtokens",
     "href": "slides/class_2/class_2.html#go-to-httpsgithub.comsettingtokens",
-    "title": "Basic data analysis (tidyverse)",
+    "title": "Basic data analysis (tidyverse",
     "section": "Go to https://github.com/setting/tokens",
     "text": "Go to https://github.com/setting/tokens\nUnder “Generate New Token” Choose the “Classic” option"
   },
   {
     "objectID": "slides/class_2/class_2.html#name-the-token-something-useful-like-2024-quant-plc-r-class",
     "href": "slides/class_2/class_2.html#name-the-token-something-useful-like-2024-quant-plc-r-class",
-    "title": "Basic data analysis (tidyverse)",
+    "title": "Basic data analysis (tidyverse",
     "section": "Name the token something useful like “2024-quant-plc-r-class”",
     "text": "Name the token something useful like “2024-quant-plc-r-class”\nYou can choose an expiration date, but I have chosen no expiration date. Select the following: “repo”, “user”, “gist”, and “workflow” and then generate your token. SAVE YOUR TOKEN!!!!"
   },
@@ -1353,28 +1353,28 @@
   {
     "objectID": "slides/class_2/class_2.html#bookmark-the-organization-page",
     "href": "slides/class_2/class_2.html#bookmark-the-organization-page",
-    "title": "Basic data analysis (tidyverse)",
+    "title": "Basic data analysis (tidyverse",
     "section": "Bookmark the organization page",
     "text": "Bookmark the organization page\nYour homework assignments will show up here as repositories"
   },
   {
     "objectID": "slides/class_2/class_2.html#youre-now-ready-to-start-working-on-your-homework",
     "href": "slides/class_2/class_2.html#youre-now-ready-to-start-working-on-your-homework",
-    "title": "Basic data analysis (tidyverse)",
+    "title": "Basic data analysis (tidyverse",
     "section": "You’re now ready to start working on your homework!",
     "text": "You’re now ready to start working on your homework!\nStart by opening the README.md file"
   },
   {
     "objectID": "slides/class_2/class_2.html#the-readme.md-file-is-a-text-file-that-will-include-instructions-for-your-assignment",
     "href": "slides/class_2/class_2.html#the-readme.md-file-is-a-text-file-that-will-include-instructions-for-your-assignment",
-    "title": "Basic data analysis (tidyverse)",
+    "title": "Basic data analysis (tidyverse",
     "section": "The README.md file is a text file that will include instructions for your assignment",
     "text": "The README.md file is a text file that will include instructions for your assignment\nUsing the “Visual” option will make it easier to read"
   },
   {
     "objectID": "slides/class_2/class_2.html#the-readme.md-file-is-a-text-file-that-will-include-instructions-for-your-assignment-1",
     "href": "slides/class_2/class_2.html#the-readme.md-file-is-a-text-file-that-will-include-instructions-for-your-assignment-1",
-    "title": "Basic data analysis (tidyverse)",
+    "title": "Basic data analysis (tidyverse",
     "section": "The README.md file is a text file that will include instructions for your assignment",
     "text": "The README.md file is a text file that will include instructions for your assignment\nUsing the “Visual” option will make it easier to read"
   },
@@ -1388,21 +1388,21 @@
   {
     "objectID": "slides/class_2/class_2.html#in-your-rstudio-console-type-gitcredsgitcreds_set-and-then-paste-your-token",
     "href": "slides/class_2/class_2.html#in-your-rstudio-console-type-gitcredsgitcreds_set-and-then-paste-your-token",
-    "title": "Basic data analysis (tidyverse)",
+    "title": "Basic data analysis (tidyverse",
     "section": "In your RStudio console, type gitcreds::gitcreds_set() and then paste your token",
     "text": "In your RStudio console, type gitcreds::gitcreds_set() and then paste your token"
   },
   {
     "objectID": "slides/class_2/class_2.html#in-your-rstudio-console-type-ghgh_whoami",
     "href": "slides/class_2/class_2.html#in-your-rstudio-console-type-ghgh_whoami",
-    "title": "Basic data analysis (tidyverse)",
+    "title": "Basic data analysis (tidyverse",
     "section": "In your RStudio console, type gh::gh_whoami()",
     "text": "In your RStudio console, type gh::gh_whoami()\nIf we set up the token correctly this will show your information and confirm you are all set!"
   },
   {
     "objectID": "slides/class_2/class_2.html#in-your-rstudio-console-install-the-usethis-gitcreds-and-gh-packages",
     "href": "slides/class_2/class_2.html#in-your-rstudio-console-install-the-usethis-gitcreds-and-gh-packages",
-    "title": "Basic data analysis (tidyverse)",
+    "title": "Basic data analysis (tidyverse",
     "section": "In your RStudio console, install the usethis, gitcreds, and gh packages",
     "text": "In your RStudio console, install the usethis, gitcreds, and gh packages\nType the following code int your console: install.packages(c(“usethis”, “gitcreds”, “gh”))"
   }

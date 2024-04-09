@@ -40,6 +40,47 @@ remotes::install_github("edbuild/edbuildr")
 
 ## Step 4: Install Git
 
-**Git** is an Open Source Distributed Version Control System, meaning it helps with tracking content, version control, and sharing information. Instructions on how to download Git can be found [here](https://github.com/git-guides/install-git).
+**Git** is an Open Source Distributed Version Control System, meaning it helps with tracking content, version control, and sharing information. Instructions for downloading Git can be found below: 
+
+- **Windows**: Instructions for downloading and confirming Git is working can be found [here](https://kinsta.com/knowledgebase/install-git/#how-to-install-git-on-windows). 
+- **Mac**: Instructions for downloading Git can be found [here](https://kinsta.com/knowledgebase/install-git/#how-to-install-git-on-macos). Personally, I used the ["MacPorts"](https://git-scm.com/download/mac) option. Once you have downloaded Git, in the "Terminal" pane, paste the code in the order it specifies and run it by hitting return: 
+
+```{r}
+#| eval: false
+
+# INSTRUCTIONS FOR MAC 
+
+# First copy and paste this code into the terminal 
+xcode-select --install #Press enter 
+
+# Then copy and paste this code in the terminal to confirm that you have downloaded Git
+git version #Press enter 
+
+```
+
+## Step 5: Setting up RStudio for Cloning GitHub respositories 
+
+Once you have confirmed Git is working on your machine, copy and paste the following code in the "Console" pane and run it by hitting return. See the [class 2 slides](https://bellwetherorg.github.io/quant_plc_rclass/slides/class_2/class_2.html) for more information. 
+
+```{r}
+#| eval: false
+
+# First install these package in the console pane and press enter
+
+install.packages(c("usethis", "gitcreds", "gh")) #Press enter 
+
+# Once you have installed the packages, then copy and paste this code into the console pane 
+# and pres enter 
+
+gitcreds::gitcreds_set() # Press enter
+
+# When prompted, provide your token and press enter
+
+# Once you have provided your token, copy and paste the this code into the console pane 
+# and press enter. You should see your credentials listed, confirming you set up your 
+# token authentication correctly. 
+
+gh::gh_whoami() # Press enter
 
 
+```

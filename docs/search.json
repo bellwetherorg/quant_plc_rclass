@@ -1194,7 +1194,7 @@
     "href": "slides/class_2/class_2.html#coming-up",
     "title": "Basic data analysis (tidyverse)",
     "section": "Coming Up",
-    "text": "Coming Up\n\n\nNext Class\n\nThe next class will be Tuesday, April 23 from 11:00 AM - 12:00 PM CT.\nWe will do a deep dive into the ggplot2 and do basic data visualization in R (scatterplots)\n\n\nHomework\n\nCoding task: Use the hw_02_template.R file in the /scripts folder to complete the tasks that are outlined in the script.\nHomework is due by COB on Thursday, April 18. This ensures that Krista can review your assignments and provide feedback by the April 23 R Class.\nPlease make sure you commit and then push your homework updates using Git to update the repository."
+    "text": "Coming Up\n\n\nNext Class\n\nThe next class will be Tuesday, April 23 from 11:00 AM - 12:00 PM CT.\nWe will do a deep dive into the ggplot2 and do basic data visualization in R (scatterplots)\n\n\nHomework\n\nNone. If you want to practice what we learned in class, please finish the partner work, save the script to your desktop, and send it to Krista by COB on April 18. Krista will get feedback to you before the April 23 class."
   },
   {
     "objectID": "slides/class_2/class_2.html#you-will-be-receiving-an-email-with-an-invitation-to-join-the-github-organization-for-this-training",
@@ -1405,5 +1405,25 @@
     "title": "Basic data analysis (tidyverse)",
     "section": "In your RStudio console, install the usethis, gitcreds, and gh packages",
     "text": "In your RStudio console, install the usethis, gitcreds, and gh packages\nType the following code int your console: install.packages(c(“usethis”, “gitcreds”, “gh”))"
+  },
+  {
+    "objectID": "setup.html#step-4-install-git",
+    "href": "setup.html#step-4-install-git",
+    "title": "Setup",
+    "section": "Step 4: Install Git",
+    "text": "Step 4: Install Git\nGit is an Open Source Distributed Version Control System, meaning it helps with tracking content, version control, and sharing information. Instructions for downloading Git can be found below:\n\nWindows: Instructions for downloading and confirming Git is working can be found here.\nMac: Instructions for downloading Git can be found here. Personally, I used the “MacPorts” option. Once you have downloaded Git, in the “Terminal” pane, paste the code in the order it specifies and run it by hitting return:\n\n\n# INSTRUCTIONS FOR MAC \n\n# First copy and paste this code into the terminal \nxcode-select --install #Press enter \n\n# Then copy and paste this code in the terminal to confirm that you have downloaded Git\ngit version #Press enter",
+    "crumbs": [
+      "Setup"
+    ]
+  },
+  {
+    "objectID": "setup.html#step-5-setting-up-rstudio-for-cloning-github-respositories",
+    "href": "setup.html#step-5-setting-up-rstudio-for-cloning-github-respositories",
+    "title": "Setup",
+    "section": "Step 5: Setting up RStudio for Cloning GitHub respositories",
+    "text": "Step 5: Setting up RStudio for Cloning GitHub respositories\nOnce you have confirmed Git is working on your machine, copy and paste the following code in the “Console” pane and run it by hitting return. See the class 2 slides for more information.\n\n# First install these package in the console pane and press enter\n\ninstall.packages(c(\"usethis\", \"gitcreds\", \"gh\")) #Press enter \n\n# Once you have installed the packages, then copy and paste this code into the console pane \n# and pres enter \n\ngitcreds::gitcreds_set() # Press enter\n\n# When prompted, provide your token and press enter\n\n# Once you have provided your token, copy and paste the this code into the console pane \n# and press enter. You should see your credentials listed, confirming you set up your \n# token authentication correctly. \n\ngh::gh_whoami() # Press enter",
+    "crumbs": [
+      "Setup"
+    ]
   }
 ]

@@ -258,8 +258,8 @@ Using the "Visual" option will make it easier to read
 ::: {.column width="45%"}
 **Homework**
 
--   Coding task: Use the hw_02_template.R file in the /scripts folder to complete the tasks that are outlined in the script.
--   **Homework is due by COB on Thursday, April 18**. This ensures that Krista can review your assignments and provide feedback by the April 23 R Class.
--   Please make sure you commit and then push your homework updates using Git to update the repository.
+-   None. If you want to practice what we learned in class, please finish the partner work, save the script to your desktop, and send it to Krista by **COB on April 18**. Krista will get feedback to you before the April 23 class. 
+
+
 :::
 :::

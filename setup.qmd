@@ -38,4 +38,8 @@ install.packages(c("tidyverse", "readxl", "remotes"))
 remotes::install_github("edbuild/edbuildr")
 ```
 
+## Step 4: Install Git
+
+**Git** is an Open Source Distributed Version Control System, meaning it helps with tracking content, version control, and sharing information. Instructions on how to download Git can be found [here](https://github.com/git-guides/install-git).
+
 

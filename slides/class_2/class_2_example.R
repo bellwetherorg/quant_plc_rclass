@@ -3,6 +3,7 @@
 
 # load ----------
 
+# When we are printing out numbers that it isn't using scientific notation 
 options(scipen = 999)
 
 library(tidyverse)

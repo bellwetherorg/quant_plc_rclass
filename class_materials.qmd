@@ -13,5 +13,5 @@ format: html
 ## April 9, 2024: Class 2 Materials 
 
 - **Class Recording:** [Link to class 2 recording](https://vimeo.com/932587660?share=copy). Refer to follow-up email for the password to view the recording. 
-- **Class Slides:** [Link to slides for class 2](https://bellwetherorg.github.io/quant_plc_rclass/slides/class_2.html)
+- **Class Slides:** [Link to slides for class 2](https://bellwetherorg.github.io/quant_plc_rclass/slides/class_2/class_2.html)
 - **Homework:** None. To practice what we learned, please complete the in-class partner work. **If you want Krista to review the script, please save it to your desktop and send it to her by COB on April 18**

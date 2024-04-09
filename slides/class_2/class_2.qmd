@@ -1,5 +1,5 @@
 ---
-title: "Basic data analysis (tidyverse"
+title: "Basic data analysis (tidyverse)"
 date: "April 9, 2023"
 output:
   html_document:

@@ -19,5 +19,5 @@ format: html
 ## April 23, 2024: Class 3 Materials 
 
 - **Class Recording:** Link to class 3 recording will be uploaded after class. 
-- **Class Slides:** [Link to draft slides for class 3](https://bellwetherorg.github.io/quant_plc_rclass/docs/slides/class_3/class_3.html)
-- **Homework:** 
+- **Class Slides:** Link to class 3 slides will by uploaded by EOD on April 22
+- **Homework:** TBD

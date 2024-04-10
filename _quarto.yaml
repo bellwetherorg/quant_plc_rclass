@@ -18,6 +18,8 @@ website:
         text: Schedule
       - href: class_materials.qmd
         text: Class Materials
+      - href: resources.qmd
+        text: R Resources
      
 format:
   html:

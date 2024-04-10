@@ -1,8 +1,0 @@
----
-title: "Office Hours"
-format: html
-execute:
-  eval: false
----
-
-If you 

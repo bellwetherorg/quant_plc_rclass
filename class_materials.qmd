@@ -14,10 +14,12 @@ format: html
 
 - **Class Recording:** [Link to class 2 recording](https://vimeo.com/932587660?share=copy). Refer to follow-up email for the password to view the recording. 
 - **Class Slides:** [Link to slides for class 2](https://bellwetherorg.github.io/quant_plc_rclass/slides/class_2/class_2.html)
+- **R Script:** [Link to R script for class 2](https://gist.github.com/kkaput23/bbe57b6121901b98644639d8f1528e3d)
 - **Homework:** None. To practice what we learned, please complete the in-class partner work. **If you want Krista to review the script, please save it to your desktop and send it to her by COB on April 18**
 
 ## April 23, 2024: Class 3 Materials 
 
 - **Class Recording:** Link to class 3 recording will be uploaded after class. 
-- **Class Slides:** Link to class 3 slides will by uploaded by EOD on April 22
+- **Class Slides:** Link to class 3 slides will by uploaded by EOD on April 22.
+- **R Script:** Link to class 3 R script will be uploaded by EOD on April 22.
 - **Homework:** TBD

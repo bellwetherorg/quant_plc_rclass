@@ -54,10 +54,32 @@ mn_ed_data <- dist_fy19_raw |>
 ggplot(mn_ed_data, aes(x = pov_pct, y = local_rev_pp)) +
   geom_point()
 
+# Step #2: Address the missing Minnesota values ----------
 
+mn_na_dist <- mn_ed_data |>
+  filter(is.na(local_rev_pp) | is.na(pov_pct)) |>
+  arrange(district_type) 
 
+view(mn_na_dist)
 
+# The missing data makes sense. All eight of the rows don't have any available data.
 
+# Step #3: Clean up formatting of the scatter plot elements -------------
+
+# create tidy df
+mn_ed_clean <- mn_ed_data |>
+  filter(!is.na(local_rev_pp), 
+         !is.na(pov_pct))
+
+view(mn_ed_clean)
+
+# Drop the 2 districts that have no enrollment
+mn_ed_clean <- mn_ed_clean |>
+  filter(enroll > 0)
+
+# first minnesota plot w/ clean data
+ggplot(mn_ed_clean, aes(x = pov_pct, y = local_rev_pp)) +
+  geom_point()
 
 
 

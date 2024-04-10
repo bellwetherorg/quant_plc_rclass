@@ -15,7 +15,6 @@ output:
       center: true # Center the content on each slide
       chalkboard: true # Enable chalkboard mode for reveal.js
 ---
-
 ```{r}
 #| output: false
 

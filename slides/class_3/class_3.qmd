@@ -90,14 +90,11 @@ mn_ed_data <- dist_fy19_raw |>
 
 ## Agenda
 
--   Review `tidyverse` and four main functions
--   Visualizing local revenue data with `ggplot2`
--   Cloning a GitHub repository in GitHub
+-   Visualizing local education revenue data with `ggplot2`
+-   Cloning a GitHub repository in RStudio
 -   Homework and next class
 
-# Review `tidyverse` and four main functions
-
-# Visualizing local revenue data with `ggplot2`
+# Visualizing local education revenue data with `ggplot2`
 
 ## The `ggplot2` package is the most widely-used data visualization approach in the R ecosystem.
 
@@ -108,7 +105,6 @@ mn_ed_data <- dist_fy19_raw |>
 # Using `ggplot2` is like baking! {.smaller}
 
 ![](Screenshot%202024-04-10%20at%205.06.00%20PM.png){fig-align="center" width="1117"}
-
 # Iterating your way to beauty with `ggplot2` using Minnesota data
 
 ## Step 1: Create a basic plot {.smaller}

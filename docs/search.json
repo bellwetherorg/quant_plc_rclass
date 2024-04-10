@@ -1431,7 +1431,7 @@
     "href": "slides/class_3/class_3.html#agenda",
     "title": "Basic data visualization using ggplot2",
     "section": "Agenda",
-    "text": "Agenda\n\nReview tidyverse and four main functions\nVisualizing local revenue data with ggplot2\nCloning a GitHub repository in GitHub\nHomework and next class"
+    "text": "Agenda\n\nVisualizing local education revenue data with ggplot2\nCloning a GitHub repository in RStudio\nHomework and next class"
   },
   {
     "objectID": "slides/class_3/class_3.html#the-ggplot2-package-is-the-most-widely-used-data-visualization-approach-in-the-r-ecosystem.",

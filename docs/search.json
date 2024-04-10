@@ -1425,5 +1425,257 @@
     "crumbs": [
       "Setup"
     ]
+  },
+  {
+    "objectID": "slides/class_3/class_3.html#agenda",
+    "href": "slides/class_3/class_3.html#agenda",
+    "title": "Basic data visualization using ggplot2",
+    "section": "Agenda",
+    "text": "Agenda\n\nReview tidyverse and four main functions\nVisualizing local revenue data with ggplot2\nCloning a GitHub repository in GitHub\nHomework and next class"
+  },
+  {
+    "objectID": "slides/class_3/class_3.html#the-ggplot2-package-is-the-most-widely-used-data-visualization-approach-in-the-r-ecosystem.",
+    "href": "slides/class_3/class_3.html#the-ggplot2-package-is-the-most-widely-used-data-visualization-approach-in-the-r-ecosystem.",
+    "title": "Basic data visualization using ggplot2",
+    "section": "The ggplot2 package is the most widely-used data visualization approach in the R ecosystem.",
+    "text": "The ggplot2 package is the most widely-used data visualization approach in the R ecosystem.\n\nPlots in ggplot2 are created by starting with your data, then building up layers\nOnce your specify your data, you can add layers of “geoms” to create your plot\nToday we will use geom_histogram() and geom_point()"
+  },
+  {
+    "objectID": "slides/class_3/class_3.html#step-1-create-a-basic-plot",
+    "href": "slides/class_3/class_3.html#step-1-create-a-basic-plot",
+    "title": "Basic data visualization using ggplot2",
+    "section": "Step 1: Create a basic plot",
+    "text": "Step 1: Create a basic plot\n\n# first minnesota plot \nggplot(mn_ed_data, aes(x = pov_pct, y = local_rev_pp)) +\n  geom_point()\n\nWarning: Removed 8 rows containing missing values or values outside the scale range\n(`geom_point()`)."
+  },
+  {
+    "objectID": "slides/class_3/class_3.html#step-2-address-missing-values",
+    "href": "slides/class_3/class_3.html#step-2-address-missing-values",
+    "title": "Basic data visualization using ggplot2",
+    "section": "Step 2: Address missing values",
+    "text": "Step 2: Address missing values\nWe need to figure out what’s going on with our missing values before we go any further!\n\n# investigate missing values \nmn_na_dist &lt;- mn_ed_data |&gt;\n  filter(is.na(local_rev_pp) | is.na(pov_pct)) |&gt;\n  arrange(district_type) \n\nview(mn_na_dist)\n\nThe missing data makes sense. All eight of the rows don’t have any available data."
+  },
+  {
+    "objectID": "slides/class_3/class_3.html#step-3-clean-up-formatting-of-chart-elements-15",
+    "href": "slides/class_3/class_3.html#step-3-clean-up-formatting-of-chart-elements-15",
+    "title": "Basic data visualization using ggplot2",
+    "section": "Step 3: Clean up formatting of chart elements (1/5)",
+    "text": "Step 3: Clean up formatting of chart elements (1/5)\nNow that we understand our missing data, we can create an updated dataframe and re-plot our newly cleaned data.\n\n# create tidy df\nmn_ed_clean &lt;- mn_ed_data |&gt;\n  filter(!is.na(local_rev_pp), \n         !is.na(pov_pct))\n\nview(mn_ed_clean)\n\n# Drop the 2 districts that have no enrollment\nmn_ed_clean &lt;- mn_ed_clean |&gt;\n  filter(enroll &gt; 0)\n\n# first minnesota plot w/ clean data\nggplot(mn_ed_clean, aes(x = pov_pct, y = local_rev_pp)) +\n  geom_point()"
+  },
+  {
+    "objectID": "slides/class_3/class_3.html#step-3-clean-up-formatting-of-chart-elements-15-output",
+    "href": "slides/class_3/class_3.html#step-3-clean-up-formatting-of-chart-elements-15-output",
+    "title": "Basic data visualization using ggplot2",
+    "section": "Step 3: Clean up formatting of chart elements (1/5)",
+    "text": "Step 3: Clean up formatting of chart elements (1/5)"
+  },
+  {
+    "objectID": "slides/class_3/class_3.html#step-3-clean-up-formatting-of-chart-elements-25",
+    "href": "slides/class_3/class_3.html#step-3-clean-up-formatting-of-chart-elements-25",
+    "title": "Basic data visualization using ggplot2",
+    "section": "Step 3: Clean up formatting of chart elements (2/5)",
+    "text": "Step 3: Clean up formatting of chart elements (2/5)\nWe see some overlap in the points. Reducing the opacity of the points can be accomplished by setting the alpha parameter in geom_point() to a value less than 1. Setting it to .5 will make data points 50% translucent.\n\n# reduce opacity of points\nggplot(mn_ed_clean, aes(x = pov_pct, y = local_rev_pp)) +\n  geom_point(alpha = .5)"
+  },
+  {
+    "objectID": "slides/class_3/class_3.html#step-3-clean-up-formatting-of-chart-elements-35",
+    "href": "slides/class_3/class_3.html#step-3-clean-up-formatting-of-chart-elements-35",
+    "title": "Basic data visualization using ggplot2",
+    "section": "Step 3: Clean up formatting of chart elements (3/5)",
+    "text": "Step 3: Clean up formatting of chart elements (3/5)\nLet’s take care of some formatting issues.\nOur axes don’t look great - the decimals ought to be percentages and the vertical axis represents dollars. Here, the scales package provides some help.\n\n# format axes \nlibrary(scales)\n\n# format the x and y axes\nggplot(mn_ed_clean, aes(x = pov_pct, y = local_rev_pp)) +\n  geom_point(alpha = .5) + \n# make sure you have the `scales` package loaded!\n  scale_x_continuous(labels = label_percent()) +\n  scale_y_continuous(labels = label_dollar())"
+  },
+  {
+    "objectID": "slides/class_3/class_3.html#step-3-clean-up-formatting-of-chart-elements-35-output",
+    "href": "slides/class_3/class_3.html#step-3-clean-up-formatting-of-chart-elements-35-output",
+    "title": "Basic data visualization using ggplot2",
+    "section": "Step 3: Clean up formatting of chart elements (3/5)",
+    "text": "Step 3: Clean up formatting of chart elements (3/5)"
+  },
+  {
+    "objectID": "slides/class_3/class_3.html#step-3-clean-up-formatting-of-chart-elements-45",
+    "href": "slides/class_3/class_3.html#step-3-clean-up-formatting-of-chart-elements-45",
+    "title": "Basic data visualization using ggplot2",
+    "section": "Step 3: Clean up formatting of chart elements (4/5)",
+    "text": "Step 3: Clean up formatting of chart elements (4/5)\nNext, we should add some labels to our axes that make sense, along with a title for our plot and a caption that details our data sources.\n\n# add data labels \nggplot(mn_ed_clean, aes(x = pov_pct, y = local_rev_pp)) +\n  geom_point(alpha = .5) + \n# make sure you have the `scales` package loaded!\n  scale_x_continuous(labels = label_percent()) +\n  scale_y_continuous(labels = label_dollar()) + \n    labs(x = \"Student Poverty Rate\", y = \"Local Per-Pupil Revenue\",\n       title = \"Local Per-Pupil Revenue by Student Povert Rate in Minnesota School Districts\",\n       caption = \"Source: Edbuild Data, 2019\")"
+  },
+  {
+    "objectID": "slides/class_3/class_3.html#step-3-clean-up-formatting-of-chart-elements-45-output",
+    "href": "slides/class_3/class_3.html#step-3-clean-up-formatting-of-chart-elements-45-output",
+    "title": "Basic data visualization using ggplot2",
+    "section": "Step 3: Clean up formatting of chart elements (4/5)",
+    "text": "Step 3: Clean up formatting of chart elements (4/5)"
+  },
+  {
+    "objectID": "slides/class_3/class_3.html#step-3-clean-up-formatting-of-chart-elements-55",
+    "href": "slides/class_3/class_3.html#step-3-clean-up-formatting-of-chart-elements-55",
+    "title": "Basic data visualization using ggplot2",
+    "section": "Step 3: Clean up formatting of chart elements (5/5)",
+    "text": "Step 3: Clean up formatting of chart elements (5/5)\nThemes can be used to change the appearance of elements in your plot. There are many stock options, but I prefer theme_bw() for its clean appearance and helpful and unobtrusive grid lines.\n\n# change theme\nggplot(mn_ed_clean, aes(x = pov_pct, y = local_rev_pp)) +\n  geom_point(alpha = .5) + \n  scale_x_continuous(labels = label_percent()) +\n  scale_y_continuous(labels = label_dollar()) + \n    labs(x = \"Student Poverty Rate\", y = \"Local Per-Pupil Revenue\",\n       title = \"Local Per-Pupil Revenue by Student Povert Rate in Minnesota School Districts\",\n       caption = \"Source: Edbuild Data, 2019\") +\n  theme_bw()"
+  },
+  {
+    "objectID": "slides/class_3/class_3.html#step-3-clean-up-formatting-of-chart-elements-55-output",
+    "href": "slides/class_3/class_3.html#step-3-clean-up-formatting-of-chart-elements-55-output",
+    "title": "Basic data visualization using ggplot2",
+    "section": "Step 3: Clean up formatting of chart elements (5/5)",
+    "text": "Step 3: Clean up formatting of chart elements (5/5)"
+  },
+  {
+    "objectID": "slides/class_3/class_3.html#step-4-add-a-new-layer-of-data",
+    "href": "slides/class_3/class_3.html#step-4-add-a-new-layer-of-data",
+    "title": "Basic data visualization using ggplot2",
+    "section": "Step 4: Add a new layer of data",
+    "text": "Step 4: Add a new layer of data\nNow that we have a decent-looking graph, let’s add in a new data element to vary point size by enrollment.\n\n# add size element \nggplot(mn_ed_clean, aes(x = pov_pct, y = local_rev_pp, size = enroll)) +\n  geom_point(alpha = .5) + \n  scale_x_continuous(labels = label_percent()) +\n  scale_y_continuous(labels = label_dollar()) +\n    labs(x = \"Student Poverty Rate\", y = \"Local Per-Pupil Revenue\",\n       title = \"Local Per-Pupil Revenue by Student Povert Rate in Minnesota School Districts\",\n       caption = \"Source: Edbuild Data, 2019\") +\n  theme_bw()"
+  },
+  {
+    "objectID": "slides/class_3/class_3.html#step-4-add-a-new-layer-of-data-output",
+    "href": "slides/class_3/class_3.html#step-4-add-a-new-layer-of-data-output",
+    "title": "Basic data visualization using ggplot2",
+    "section": "Step 4: Add a new layer of data",
+    "text": "Step 4: Add a new layer of data"
+  },
+  {
+    "objectID": "slides/class_3/class_3.html#step-5-tidy-up-formatting-12",
+    "href": "slides/class_3/class_3.html#step-5-tidy-up-formatting-12",
+    "title": "Basic data visualization using ggplot2",
+    "section": "Step 5: Tidy up formatting (1/2)",
+    "text": "Step 5: Tidy up formatting (1/2)\nAdding a new variable for size creates a legend. We need to tidy the legend’s labels and the title.\n\n# clean up the legend\nggplot(mn_ed_clean, aes(x = pov_pct, y = local_rev_pp, size = enroll)) +\n  geom_point(alpha = .5) + \n  scale_x_continuous(labels = label_percent()) +\n  scale_y_continuous(labels = label_dollar()) + \n  # change legend label formatting\n  scale_size(labels = comma) +\n    labs(x = \"Student Poverty Rate\", y = \"Local Per-Pupil Revenue\",\n       title = \"Local Per-Pupil Revenue by Student Povert Rate in Minnesota School Districts\",\n       caption = \"Source: Edbuild Data, 2019\",\n       # add nice label for size element\n  size = \"Enrollment\") +\n  theme_bw()"
+  },
+  {
+    "objectID": "slides/class_3/class_3.html#step-5-tidy-up-formatting-12-output",
+    "href": "slides/class_3/class_3.html#step-5-tidy-up-formatting-12-output",
+    "title": "Basic data visualization using ggplot2",
+    "section": "Step 5: Tidy up formatting (1/2)",
+    "text": "Step 5: Tidy up formatting (1/2)"
+  },
+  {
+    "objectID": "slides/class_3/class_3.html#step-5-tidy-up-formatting-22",
+    "href": "slides/class_3/class_3.html#step-5-tidy-up-formatting-22",
+    "title": "Basic data visualization using ggplot2",
+    "section": "Step 5: Tidy up formatting (2/2)",
+    "text": "Step 5: Tidy up formatting (2/2)\nWe can also adjust some paramenters to allow for more visual contrast in size. By default, ggplot2 will adjust points’ radii based on the size variable. Using area is a more visually honest way to represent the data, so let’s make that change.\n\n# create more contrast in size\nggplot(mn_ed_clean, aes(x = pov_pct, y = local_rev_pp, size = enroll)) +\n  geom_point(alpha = .5) + \n  scale_x_continuous(labels = label_percent()) +\n  scale_y_continuous(labels = label_dollar()) + \n  # change size scaling to vary by area, not radius + change max size\n  scale_size_area(labels = label_comma(), max_size = 10) + \n  labs(x = \"Student Poverty Rate\", y = \"Local Per-Pupil Revenue\",\n       title = \"Local Per-Pupil Revenue by Student Povert Rate in Minnesota School Districts\",\n       caption = \"Source: Edbuild Data, 2019\",\n       # add nice label for size element\n       size = \"Enrollment\") +\n  theme_bw()"
+  },
+  {
+    "objectID": "slides/class_3/class_3.html#step-5-tidy-up-formatting-22-output",
+    "href": "slides/class_3/class_3.html#step-5-tidy-up-formatting-22-output",
+    "title": "Basic data visualization using ggplot2",
+    "section": "Step 5: Tidy up formatting (2/2)",
+    "text": "Step 5: Tidy up formatting (2/2)"
+  },
+  {
+    "objectID": "slides/class_3/class_3.html#step-6-repeat-steps-4-5-as-needed-15",
+    "href": "slides/class_3/class_3.html#step-6-repeat-steps-4-5-as-needed-15",
+    "title": "Basic data visualization using ggplot2",
+    "section": "Step 6: Repeat steps 4-5 as needed (1/5)",
+    "text": "Step 6: Repeat steps 4-5 as needed (1/5)\nAdding color can be helpful. Let’s add color based on urbanicity.\n\n# add in color based on urbanicity\nggplot(mn_ed_clean, aes(x = pov_pct, y = local_rev_pp, size = enroll,\n                        color = urbanicity)) +\n  geom_point(alpha = .5) + \n  scale_x_continuous(labels = percent_format(accuracy = 1)) +\n  scale_size_area(labels = comma, max_size = 10) + \n  labs(x = \"Student Poverty Rate\", y = \"Local Per-Pupil Revenue\",\n       title = \"Local  Per-Pupil Revenue by Student Povert Rate in Minnesota School Districts\",\n       caption = \"Source: Edbuild Data, 2019\",\n       size = \"Enrollment\") +\n  theme_bw()"
+  },
+  {
+    "objectID": "slides/class_3/class_3.html#step-6-repeat-steps-4-5-as-needed-15-output",
+    "href": "slides/class_3/class_3.html#step-6-repeat-steps-4-5-as-needed-15-output",
+    "title": "Basic data visualization using ggplot2",
+    "section": "Step 6: Repeat steps 4-5 as needed (1/5)",
+    "text": "Step 6: Repeat steps 4-5 as needed (1/5)"
+  },
+  {
+    "objectID": "slides/class_3/class_3.html#step-6-repeat-steps-4-5-as-needed-25",
+    "href": "slides/class_3/class_3.html#step-6-repeat-steps-4-5-as-needed-25",
+    "title": "Basic data visualization using ggplot2",
+    "section": "Step 6: Repeat steps 4-5 as needed (2/5)",
+    "text": "Step 6: Repeat steps 4-5 as needed (2/5)\nThat doesn’t look great. Let’s use some more functions from the tidyverse to clean up the data a little more to reduce 11 urbanicity levels to four, then tidy up the legend label.\n\n# clean up the unicorn vomit\nmn_ed_clean &lt;- mn_ed_clean |&gt;\n  mutate(urbanicity = fct_collapse(as.factor(urbanicity),\n                                   City = c(\"11-City: Large\", \n                                            \"12-City: Mid-size\",\n                                            \"13-City: Small\"),\n                                   Suburb = c(\"21-Suburb: Large\",\n                                              \"22-Suburb: Mid-size\",\n                                             \"23-Suburb: Small\"),\n                                   Town = c(\"31-Town: Fringe\",\n                                            \"32-Town: Distant\",\n                                            \"33-Town: Remote\"),\n                                   Rural = c(\"41-Rural: Fringe\",\n                                             \"42-Rural: Distant\",\n                                             \"43-Rural: Remote\")))\n\n\nggplot(mn_ed_clean, aes(x = pov_pct, y = local_rev_pp, size = enroll,\n                        color = urbanicity)) +\n  geom_point(alpha = .5) + \n  scale_x_continuous(labels = label_percent()) +\n  scale_y_continuous(labels = label_dollar()) +\n  scale_size_area(labels = label_comma(), max_size = 10) +  \n  labs(x = \"Student Poverty Rate\", y = \"Local Per-Pupil Revenue\",\n       title = \"Local  Per-Pupil Revenue by Student Povert Rate in Minnesota School Districts\",\n       caption = \"Source: Edbuild Data, 2019\",\n       size = \"Enrollment\") +\n  theme_bw()"
+  },
+  {
+    "objectID": "slides/class_3/class_3.html#step-6-repeat-steps-4-5-as-needed-25-output",
+    "href": "slides/class_3/class_3.html#step-6-repeat-steps-4-5-as-needed-25-output",
+    "title": "Basic data visualization using ggplot2",
+    "section": "Step 6: Repeat steps 4-5 as needed (2/5)",
+    "text": "Step 6: Repeat steps 4-5 as needed (2/5)"
+  },
+  {
+    "objectID": "slides/class_3/class_3.html#step-6-repeat-steps-4-5-as-needed-35",
+    "href": "slides/class_3/class_3.html#step-6-repeat-steps-4-5-as-needed-35",
+    "title": "Basic data visualization using ggplot2",
+    "section": "Step 6: Repeat steps 4-5 as needed (3/5)",
+    "text": "Step 6: Repeat steps 4-5 as needed (3/5)\nWe can and should adjust the colors used. R recognizes some pretty funky color names, which can be found in this helpful cheat sheet.\n\n# adjust colors manually\nggplot(mn_ed_clean, aes(x = pov_pct, y = local_rev_pp, size = enroll,\n                        color = urbanicity)) +\n  geom_point(alpha = .5) + \n    # create manual color palette\n  # color names pulled from a pdf y'all should bookmark\n  # http://www.stat.columbia.edu/~tzheng/files/Rcolor.pdf\n  scale_color_manual(values = c(\"tomato3\", \"steelblue2\",\n                                \"seagreen3\", \"orchid1\")) +\n  scale_x_continuous(labels = label_percent()) +\n  scale_y_continuous(labels = label_dollar()) +\n  scale_size_area(labels = label_comma(), max_size = 10) + \n  labs(x = \"Student Poverty Rate\", y = \"Local Per-Pupil Revenue\",\n       title = \"Local  Per-Pupil Revenue by Student Povert Rate in Minnesota School Districts\",\n       caption = \"Source: Edbuild Data, 2019\",\n       size = \"Enrollment\") +\n  theme_bw()"
+  },
+  {
+    "objectID": "slides/class_3/class_3.html#step-6-repeat-steps-4-5-as-needed-35-output",
+    "href": "slides/class_3/class_3.html#step-6-repeat-steps-4-5-as-needed-35-output",
+    "title": "Basic data visualization using ggplot2",
+    "section": "Step 6: Repeat steps 4-5 as needed (3/5)",
+    "text": "Step 6: Repeat steps 4-5 as needed (3/5)"
+  },
+  {
+    "objectID": "slides/class_3/class_3.html#step-6-repeat-steps-4-5-as-needed-45",
+    "href": "slides/class_3/class_3.html#step-6-repeat-steps-4-5-as-needed-45",
+    "title": "Basic data visualization using ggplot2",
+    "section": "Step 6: Repeat steps 4-5 as needed (4/5)",
+    "text": "Step 6: Repeat steps 4-5 as needed (4/5)\nWe should strive to make our analyses as accessible as possible. The viridis package includes some color palettes that are friendly for folks with color blindness, which affects 5-10 percent of the US population.\n\n# use colors better for visual impairments\nlibrary(viridis)\n# adjust colors manually\n\nggplot(mn_ed_clean, aes(x = pov_pct, y = local_rev_pp, size = enroll,\n                        color = urbanicity)) +\n  geom_point(alpha = .5) + \n  # use a colorblind-friendly palette\n  scale_color_viridis_d() +\n  scale_x_continuous(labels = label_percent()) +\n  scale_y_continuous(labels = label_dollar()) +\n  scale_size_area(labels = label_comma(), max_size = 10) + \n  labs(x = \"Student Poverty Rate\", y = \"Local Per-Pupil Revenue\",\n       title = \"Local  Per-Pupil Revenue by Student Povert Rate in Minnesota School Districts\",\n       caption = \"Source: Edbuild Data, 2019\",\n       size = \"Enrollment\") +\n  theme_bw()"
+  },
+  {
+    "objectID": "slides/class_3/class_3.html#step-6-repeat-steps-4-5-as-needed-45-output",
+    "href": "slides/class_3/class_3.html#step-6-repeat-steps-4-5-as-needed-45-output",
+    "title": "Basic data visualization using ggplot2",
+    "section": "Step 6: Repeat steps 4-5 as needed (4/5)",
+    "text": "Step 6: Repeat steps 4-5 as needed (4/5)"
+  },
+  {
+    "objectID": "slides/class_3/class_3.html#step-6-repeat-steps-4-5-as-needed-55",
+    "href": "slides/class_3/class_3.html#step-6-repeat-steps-4-5-as-needed-55",
+    "title": "Basic data visualization using ggplot2",
+    "section": "Step 6: Repeat steps 4-5 as needed (5/5)",
+    "text": "Step 6: Repeat steps 4-5 as needed (5/5)\nLet’s adjust the range of colors used to exclude that hard-to-see yellow.\n\n# that yellow is hard to see - let's adjust the range\nggplot(mn_ed_clean, aes(x = pov_pct, y = local_rev_pp, size = enroll,\n                        color = urbanicity)) +\n  geom_point(alpha = .5) + \n  # adjust color range\n  scale_color_viridis_d(end = .8) +\n  scale_x_continuous(labels = label_percent()) +\n  scale_y_continuous(labels = label_dollar()) +\n  scale_size_area(labels = label_comma(), max_size = 10) + \n  labs(x = \"Student Poverty Rate\", y = \"Local Per-Pupil Revenue\",\n       title = \"Local  Per-Pupil Revenue by Student Povert Rate in Minnesota School Districts\",\n       caption = \"Source: Edbuild Data, 2019\",\n       size = \"Enrollment\") +\n  theme_bw()"
+  },
+  {
+    "objectID": "slides/class_3/class_3.html#step-6-repeat-steps-4-5-as-needed-55-output",
+    "href": "slides/class_3/class_3.html#step-6-repeat-steps-4-5-as-needed-55-output",
+    "title": "Basic data visualization using ggplot2",
+    "section": "Step 6: Repeat steps 4-5 as needed (5/5)",
+    "text": "Step 6: Repeat steps 4-5 as needed (5/5)"
+  },
+  {
+    "objectID": "slides/class_3/class_3.html#step-7-replace-a-layer-of-data",
+    "href": "slides/class_3/class_3.html#step-7-replace-a-layer-of-data",
+    "title": "Basic data visualization using ggplot2",
+    "section": "Step 7: Replace a layer of data",
+    "text": "Step 7: Replace a layer of data\nSometimes color isn’t the answer - let’s try facets instead.\n\n# use facets instead of color\nggplot(mn_ed_clean, aes(x = pov_pct, y = local_rev_pp, size = enroll)) +\n  geom_point(alpha = .5) + \n  # add facet by urbanicity\n  facet_wrap(~urbanicity) +\n  scale_x_continuous(labels = label_percent()) +\n  scale_y_continuous(labels = label_dollar()) +\n  scale_size_area(labels = label_comma(), max_size = 10) + \n  labs(x = \"Student Poverty Rate\", y = \"Local Per-Pupil Revenue\",\n       title = \"Local  Per-Pupil Revenue by Student Povert Rate in Minnesota School Districts\",\n       caption = \"Source: Edbuild Data, 2019\",\n       size = \"Enrollment\") +\n  theme_bw()"
+  },
+  {
+    "objectID": "slides/class_3/class_3.html#step-7-replace-a-layer-of-data-output",
+    "href": "slides/class_3/class_3.html#step-7-replace-a-layer-of-data-output",
+    "title": "Basic data visualization using ggplot2",
+    "section": "Step 7: Replace a layer of data",
+    "text": "Step 7: Replace a layer of data"
+  },
+  {
+    "objectID": "slides/class_3/class_3.html#use-edbuildr-data-to-create-state-summaries",
+    "href": "slides/class_3/class_3.html#use-edbuildr-data-to-create-state-summaries",
+    "title": "Basic data visualization using ggplot2",
+    "section": "Use Edbuildr data to create state summaries",
+    "text": "Use Edbuildr data to create state summaries\nSummarize the state level data and calculate the median for enrollment, number of schools, median household income, median property value, and more.\n\n# summarise ------------\n\n# create a state summary dataframe\nstate_summary &lt;- dist_fy19_raw |&gt; \n  group_by(State) |&gt; \n  summarise(enroll_med = median(ENROLL, na.rm = T),\n            n_schools_med = median(dOperational_schools, na.rm = T),\n            nonwhite_pct_med = median(pctNonwhite, na.rm = T),\n            st_pov_rate_med = median(StPovRate, na.rm = T),\n            sd_area_med = median(sd_area, na.rm = T),\n            student_per_sq_mile_med = median(student_per_sq_mile, na.rm = T),\n            mhi_med = median(MHI, na.rm = T),\n            mpv_med = median(MPV, na.rm = T),\n            state_loc_rev_pp_med = median(SLRPP, na.rm = T))"
+  },
+  {
+    "objectID": "slides/class_3/class_3.html#use-edbuildr-data-to-create-state-summaries-output",
+    "href": "slides/class_3/class_3.html#use-edbuildr-data-to-create-state-summaries-output",
+    "title": "Basic data visualization using ggplot2",
+    "section": "Use Edbuildr data to create state summaries",
+    "text": "Use Edbuildr data to create state summaries"
+  },
+  {
+    "objectID": "slides/class_3/class_3.html#create-histograms-13",
+    "href": "slides/class_3/class_3.html#create-histograms-13",
+    "title": "Basic data visualization using ggplot2",
+    "section": "Create histograms (1/3)",
+    "text": "Create histograms (1/3)\nUse a histogram to visualize the distribution of median property values across states.\n\n# histogram of median property value\nggplot(data = state_summary) +\n  geom_histogram(mapping = aes(x = mpv_med), binwidth = 40000)"
+  },
+  {
+    "objectID": "slides/class_3/class_3.html#create-histograms-23",
+    "href": "slides/class_3/class_3.html#create-histograms-23",
+    "title": "Basic data visualization using ggplot2",
+    "section": "Create histograms (2/3)",
+    "text": "Create histograms (2/3)\nUse a histogram to visualize the distribution of median household income across states.\n\n# histogram of median household income\nggplot(data = state_summary) +\n  geom_histogram(mapping = aes(x = mhi_med), binwidth = 3000)"
+  },
+  {
+    "objectID": "slides/class_3/class_3.html#create-histograms-33",
+    "href": "slides/class_3/class_3.html#create-histograms-33",
+    "title": "Basic data visualization using ggplot2",
+    "section": "Create histograms (3/3)",
+    "text": "Create histograms (3/3)\nUse a histogram to visualize the distribution of state and local per-pupil funding across states.\n\n# histogram of state + local pp rev\nggplot(data = state_summary) +\n  geom_histogram(mapping = aes(x = state_loc_rev_pp_med), binwidth = 2000)"
   }
 ]

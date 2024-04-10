@@ -58,7 +58,6 @@ ggplot(mn_ed_data, aes(x = pov_pct, y = local_rev_pp)) +
 
 mn_na_dist <- mn_ed_data |>
   # The "filter" function is used to select rows. the "is.na" is telling R to choose the following rows that have an NA. 
-  # The | is an OR operator, meaning to pull rows that have NA for local_rev_pp OR pov_pct
   filter(is.na(enroll)) 
 
 # The data frame will automatically open in a new tab 

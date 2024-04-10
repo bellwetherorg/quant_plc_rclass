@@ -104,7 +104,8 @@ mn_ed_data <- dist_fy19_raw |>
 
 # Using `ggplot2` is like baking! {.smaller}
 
-![](Screenshot%202024-04-10%20at%205.06.00%20PM.png){fig-align="center" width="1117"}
+![](Screenshot 2024-04-10 at 5.06.00 PM.png){fig-align="center"}
+
 # Iterating your way to beauty with `ggplot2` using Minnesota data
 
 ## Step 1: Create a basic plot {.smaller}
@@ -128,10 +129,12 @@ We need to figure out what's going on with our missing values before we go any f
 #| echo: true
 # investigate missing values 
 mn_na_dist <- mn_ed_data |>
-  filter(is.na(local_rev_pp) | is.na(pov_pct)) |>
-  arrange(district_type) 
+  # The "filter" function is used to select rows. the "is.na" is telling R to choose the following rows that have an NA. 
+  filter(is.na(enroll)) 
 
+# The data frame will automatically open in a new tab 
 view(mn_na_dist)
+
 
 ```
 
@@ -146,15 +149,14 @@ Now that we understand our missing data, we can create an updated dataframe and 
 #| output-location: slide
 #| message: true
 
-# create tidy df
+# We should also check to see the districts that have no enrollment 
+
+mn_no_enroll <- mn_ed_data |> 
+  filter(enroll == 0)
+
+
+# Drop the districts that have no enrollment or their enrollment is NA 
 mn_ed_clean <- mn_ed_data |>
-  filter(!is.na(local_rev_pp), 
-         !is.na(pov_pct))
-
-view(mn_ed_clean)
-
-# Drop the 2 districts that have no enrollment
-mn_ed_clean <- mn_ed_clean |>
   filter(enroll > 0)
 
 # first minnesota plot w/ clean data
@@ -334,11 +336,11 @@ ggplot(mn_ed_clean, aes(x = pov_pct, y = local_rev_pp, size = enroll,
 ```
 
 ## Step 6: Repeat steps 4-5 as needed (2/5) {.smaller .scrollable}
- 
+
 That doesn't look great. Let's use some more functions from the `tidyverse` to clean up the data a little more to reduce 11 urbanicity levels to four, then tidy up the legend label.
 
-- `as.factor`: Function that is used to convert a vector ior a column in a dataframe into a factor. Factors are used to represent categorical data where the possible values of the variable are limited. 
-- `fct_collapse`: Part of the `forcats` package and is a function that is used to collapse or group levels of a factor into new levels. This can be useful for combining similar categories or reducing the number of levels in a factor.
+-   `as.factor`: Function that is used to convert a vector ior a column in a dataframe into a factor. Factors are used to represent categorical data where the possible values of the variable are limited.
+-   `fct_collapse`: Part of the `forcats` package and is a function that is used to collapse or group levels of a factor into new levels. This can be useful for combining similar categories or reducing the number of levels in a factor.
 
 ```{r}
 #| echo: true

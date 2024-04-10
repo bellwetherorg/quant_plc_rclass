@@ -422,10 +422,15 @@
 <li>Today we will use <code>geom_point()</code></li>
 </ul>
 </section></section>
-<section>
 <section id="using-ggplot2-is-like-baking" class="title-slide slide level1 smaller center">
 <h1>Using <code>ggplot2</code> is like baking!</h1>
-<p><img data-src="Screenshot 2024-04-10 at 5.06.00 PM.png" class="quarto-figure quarto-figure-center" width="1117"> # Iterating your way to beauty with <code>ggplot2</code> using Minnesota data</p>
+
+<img data-src="Screenshot 2024-04-10 at 5.06.00 PM.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+
+<section>
+<section id="iterating-your-way-to-beauty-with-ggplot2-using-minnesota-data" class="title-slide slide level1 center">
+<h1>Iterating your way to beauty with <code>ggplot2</code> using Minnesota data</h1>
+
 </section>
 <section id="step-1-create-a-basic-plot" class="slide level2 smaller">
 <h2>Step 1: Create a basic plot</h2>
@@ -446,10 +451,11 @@
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="co"># investigate missing values </span></span>
 <span id="cb3-2"><a></a>mn_na_dist <span class="ot">&lt;-</span> mn_ed_data <span class="sc">|&gt;</span></span>
-<span id="cb3-3"><a></a>  <span class="fu">filter</span>(<span class="fu">is.na</span>(local_rev_pp) <span class="sc">|</span> <span class="fu">is.na</span>(pov_pct)) <span class="sc">|&gt;</span></span>
-<span id="cb3-4"><a></a>  <span class="fu">arrange</span>(district_type) </span>
+<span id="cb3-3"><a></a>  <span class="co"># The "filter" function is used to select rows. the "is.na" is telling R to choose the following rows that have an NA. </span></span>
+<span id="cb3-4"><a></a>  <span class="fu">filter</span>(<span class="fu">is.na</span>(enroll)) </span>
 <span id="cb3-5"><a></a></span>
-<span id="cb3-6"><a></a><span class="fu">view</span>(mn_na_dist)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-6"><a></a><span class="co"># The data frame will automatically open in a new tab </span></span>
+<span id="cb3-7"><a></a><span class="fu">view</span>(mn_na_dist)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The missing data makes sense. All eight of the rows don’t have any available data.</p>
 </section>
@@ -457,20 +463,19 @@
 <h2>Step 3: Clean up formatting of the scatter plot elements (1/5)</h2>
 <p>Now that we understand our missing data, we can create an updated dataframe and re-plot our newly cleaned data.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="co"># create tidy df</span></span>
-<span id="cb4-2"><a></a>mn_ed_clean <span class="ot">&lt;-</span> mn_ed_data <span class="sc">|&gt;</span></span>
-<span id="cb4-3"><a></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(local_rev_pp), </span>
-<span id="cb4-4"><a></a>         <span class="sc">!</span><span class="fu">is.na</span>(pov_pct))</span>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="co"># We should also check to see the districts that have no enrollment </span></span>
+<span id="cb4-2"><a></a></span>
+<span id="cb4-3"><a></a>mn_no_enroll <span class="ot">&lt;-</span> mn_ed_data <span class="sc">|&gt;</span> </span>
+<span id="cb4-4"><a></a>  <span class="fu">filter</span>(enroll <span class="sc">==</span> <span class="dv">0</span>)</span>
 <span id="cb4-5"><a></a></span>
-<span id="cb4-6"><a></a><span class="fu">view</span>(mn_ed_clean)</span>
-<span id="cb4-7"><a></a></span>
-<span id="cb4-8"><a></a><span class="co"># Drop the 2 districts that have no enrollment</span></span>
-<span id="cb4-9"><a></a>mn_ed_clean <span class="ot">&lt;-</span> mn_ed_clean <span class="sc">|&gt;</span></span>
-<span id="cb4-10"><a></a>  <span class="fu">filter</span>(enroll <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
-<span id="cb4-11"><a></a></span>
-<span id="cb4-12"><a></a><span class="co"># first minnesota plot w/ clean data</span></span>
-<span id="cb4-13"><a></a><span class="fu">ggplot</span>(mn_ed_clean, <span class="fu">aes</span>(<span class="at">x =</span> pov_pct, <span class="at">y =</span> local_rev_pp)) <span class="sc">+</span></span>
-<span id="cb4-14"><a></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-6"><a></a></span>
+<span id="cb4-7"><a></a><span class="co"># Drop the districts that have no enrollment or their enrollment is NA </span></span>
+<span id="cb4-8"><a></a>mn_ed_clean <span class="ot">&lt;-</span> mn_ed_data <span class="sc">|&gt;</span></span>
+<span id="cb4-9"><a></a>  <span class="fu">filter</span>(enroll <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
+<span id="cb4-10"><a></a></span>
+<span id="cb4-11"><a></a><span class="co"># first minnesota plot w/ clean data</span></span>
+<span id="cb4-12"><a></a><span class="fu">ggplot</span>(mn_ed_clean, <span class="fu">aes</span>(<span class="at">x =</span> pov_pct, <span class="at">y =</span> local_rev_pp)) <span class="sc">+</span></span>
+<span id="cb4-13"><a></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 </section>

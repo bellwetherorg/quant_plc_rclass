@@ -1452,7 +1452,7 @@
     "href": "slides/class_3/class_3.html#step-2-address-missing-values",
     "title": "Basic data visualization using ggplot2",
     "section": "Step 2: Address missing values",
-    "text": "Step 2: Address missing values\nWe need to figure out what’s going on with our missing values before we go any further!\n\n# investigate missing values \nmn_na_dist &lt;- mn_ed_data |&gt;\n  filter(is.na(local_rev_pp) | is.na(pov_pct)) |&gt;\n  arrange(district_type) \n\nview(mn_na_dist)\n\nThe missing data makes sense. All eight of the rows don’t have any available data."
+    "text": "Step 2: Address missing values\nWe need to figure out what’s going on with our missing values before we go any further!\n\n# investigate missing values \nmn_na_dist &lt;- mn_ed_data |&gt;\n  # The \"filter\" function is used to select rows. the \"is.na\" is telling R to choose the following rows that have an NA. \n  filter(is.na(enroll)) \n\n# The data frame will automatically open in a new tab \nview(mn_na_dist)\n\nThe missing data makes sense. All eight of the rows don’t have any available data."
   },
   {
     "objectID": "slides/class_3/class_3.html#step-3-clean-up-formatting-of-chart-elements-15",
@@ -1938,7 +1938,7 @@
     "href": "slides/class_3/class_3.html#step-3-clean-up-formatting-of-the-scatter-plot-elements-15",
     "title": "Basic data visualization using ggplot2",
     "section": "Step 3: Clean up formatting of the scatter plot elements (1/5)",
-    "text": "Step 3: Clean up formatting of the scatter plot elements (1/5)\nNow that we understand our missing data, we can create an updated dataframe and re-plot our newly cleaned data.\n\n# create tidy df\nmn_ed_clean &lt;- mn_ed_data |&gt;\n  filter(!is.na(local_rev_pp), \n         !is.na(pov_pct))\n\nview(mn_ed_clean)\n\n# Drop the 2 districts that have no enrollment\nmn_ed_clean &lt;- mn_ed_clean |&gt;\n  filter(enroll &gt; 0)\n\n# first minnesota plot w/ clean data\nggplot(mn_ed_clean, aes(x = pov_pct, y = local_rev_pp)) +\n  geom_point()"
+    "text": "Step 3: Clean up formatting of the scatter plot elements (1/5)\nNow that we understand our missing data, we can create an updated dataframe and re-plot our newly cleaned data.\n\n# We should also check to see the districts that have no enrollment \n\nmn_no_enroll &lt;- mn_ed_data |&gt; \n  filter(enroll == 0)\n\n\n# Drop the districts that have no enrollment or their enrollment is NA \nmn_ed_clean &lt;- mn_ed_data |&gt;\n  filter(enroll &gt; 0)\n\n# first minnesota plot w/ clean data\nggplot(mn_ed_clean, aes(x = pov_pct, y = local_rev_pp)) +\n  geom_point()"
   },
   {
     "objectID": "slides/class_3/class_3.html#step-3-clean-up-formatting-of-the-scatter-plot-elements-15-output",

@@ -96,6 +96,9 @@
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto.css">
+  <link rel="stylesheet" href=".smaller h1 {
+  font-size: 0.5em; /* Adjust the font size as needed */
+}">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -425,12 +428,17 @@
 <li>Today we will use <code>geom_point()</code></li>
 </ul>
 </section></section>
+<section id="using-ggplot2-is-like-baking" class="title-slide slide level1 smaller center">
+<h1>Using <code>ggplot2</code> is like baking!</h1>
+
+<img data-src="Screenshot 2024-04-10 at 5.06.00 PM.png" class="quarto-figure quarto-figure-center r-stretch" width="1117"></section>
+
 <section>
 <section id="iterating-your-way-to-beauty-with-ggplot2-using-minnesota-data" class="title-slide slide level1 center">
 <h1>Iterating your way to beauty with <code>ggplot2</code> using Minnesota data</h1>
 
 </section>
-<section id="step-1-create-a-basic-plot" class="slide level2">
+<section id="step-1-create-a-basic-plot" class="slide level2 smaller">
 <h2>Step 1: Create a basic plot</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="co"># first minnesota plot </span></span>
@@ -443,7 +451,7 @@
 
 </div>
 <img data-src="class_3_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section>
-<section id="step-2-address-missing-values" class="slide level2">
+<section id="step-2-address-missing-values" class="slide level2 smaller">
 <h2>Step 2: Address missing values</h2>
 <p>We need to figure out what’s going on with our missing values before we go any further!</p>
 <div class="cell">
@@ -456,8 +464,8 @@
 </div>
 <p>The missing data makes sense. All eight of the rows don’t have any available data.</p>
 </section>
-<section id="step-3-clean-up-formatting-of-chart-elements-15" class="slide level2">
-<h2>Step 3: Clean up formatting of chart elements (1/5)</h2>
+<section id="step-3-clean-up-formatting-of-the-scatter-plot-elements-15" class="slide level2 smaller">
+<h2>Step 3: Clean up formatting of the scatter plot elements (1/5)</h2>
 <p>Now that we understand our missing data, we can create an updated dataframe and re-plot our newly cleaned data.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="co"># create tidy df</span></span>
@@ -477,7 +485,7 @@
 </div>
 
 </section>
-<section id="step-3-clean-up-formatting-of-chart-elements-15-output" class="slide level2 output-location-slide"><h2>Step 3: Clean up formatting of chart elements (1/5)</h2><div class="cell output-location-slide">
+<section id="step-3-clean-up-formatting-of-the-scatter-plot-elements-15-output" class="slide level2 smaller output-location-slide"><h2>Step 3: Clean up formatting of the scatter plot elements (1/5)</h2><div class="cell output-location-slide">
 <div class="cell-output-display">
 <div>
 <figure>
@@ -485,7 +493,7 @@
 </figure>
 </div>
 </div>
-</div></section><section id="step-3-clean-up-formatting-of-chart-elements-25" class="slide level2">
+</div></section><section id="step-3-clean-up-formatting-of-chart-elements-25" class="slide level2 smaller">
 <h2>Step 3: Clean up formatting of chart elements (2/5)</h2>
 <p>We see some overlap in the points. Reducing the opacity of the points can be accomplished by setting the <code>alpha</code> parameter in geom_point() to a value less than 1. Setting it to .5 will make data points 50% translucent.</p>
 <div class="cell">
@@ -495,7 +503,7 @@
 
 </div>
 <img data-src="class_3_files/figure-revealjs/unnamed-chunk-5-1.png" width="960" class="r-stretch"></section>
-<section id="step-3-clean-up-formatting-of-chart-elements-35" class="slide level2">
+<section id="step-3-clean-up-formatting-of-chart-elements-35" class="slide level2 smaller">
 <h2>Step 3: Clean up formatting of chart elements (3/5)</h2>
 <p>Let’s take care of some formatting issues.</p>
 <p>Our axes don’t look great - the decimals ought to be percentages and the vertical axis represents dollars. Here, the <code>scales</code> package provides some help.</p>
@@ -512,7 +520,7 @@
 </div>
 
 </section>
-<section id="step-3-clean-up-formatting-of-chart-elements-35-output" class="slide level2 output-location-slide"><h2>Step 3: Clean up formatting of chart elements (3/5)</h2><div class="cell output-location-slide">
+<section id="step-3-clean-up-formatting-of-chart-elements-35-output" class="slide level2 smaller output-location-slide"><h2>Step 3: Clean up formatting of chart elements (3/5)</h2><div class="cell output-location-slide">
 <div class="cell-output-display">
 <div>
 <figure>
@@ -520,7 +528,7 @@
 </figure>
 </div>
 </div>
-</div></section><section id="step-3-clean-up-formatting-of-chart-elements-45" class="slide level2">
+</div></section><section id="step-3-clean-up-formatting-of-chart-elements-45" class="slide level2 smaller scrollable">
 <h2>Step 3: Clean up formatting of chart elements (4/5)</h2>
 <p>Next, we should add some labels to our axes that make sense, along with a title for our plot and a caption that details our data sources.</p>
 <div class="cell">
@@ -536,7 +544,7 @@
 </div>
 
 </section>
-<section id="step-3-clean-up-formatting-of-chart-elements-45-output" class="slide level2 output-location-slide"><h2>Step 3: Clean up formatting of chart elements (4/5)</h2><div class="cell output-location-slide">
+<section id="step-3-clean-up-formatting-of-chart-elements-45-output" class="slide level2 smaller scrollable output-location-slide"><h2>Step 3: Clean up formatting of chart elements (4/5)</h2><div class="cell output-location-slide">
 <div class="cell-output-display">
 <div>
 <figure>
@@ -544,7 +552,7 @@
 </figure>
 </div>
 </div>
-</div></section><section id="step-3-clean-up-formatting-of-chart-elements-55" class="slide level2">
+</div></section><section id="step-3-clean-up-formatting-of-chart-elements-55" class="slide level2 smaller scrollable">
 <h2>Step 3: Clean up formatting of chart elements (5/5)</h2>
 <p>Themes can be used to change the appearance of elements in your plot. There are many stock options, but I prefer <code>theme_bw()</code> for its clean appearance and helpful and unobtrusive grid lines.</p>
 <div class="cell">
@@ -560,7 +568,7 @@
 </div>
 
 </section>
-<section id="step-3-clean-up-formatting-of-chart-elements-55-output" class="slide level2 output-location-slide"><h2>Step 3: Clean up formatting of chart elements (5/5)</h2><div class="cell output-location-slide">
+<section id="step-3-clean-up-formatting-of-chart-elements-55-output" class="slide level2 smaller scrollable output-location-slide"><h2>Step 3: Clean up formatting of chart elements (5/5)</h2><div class="cell output-location-slide">
 <div class="cell-output-display">
 <div>
 <figure>
@@ -568,7 +576,7 @@
 </figure>
 </div>
 </div>
-</div></section><section id="step-4-add-a-new-layer-of-data" class="slide level2">
+</div></section><section id="step-4-add-a-new-layer-of-data" class="slide level2 smaller scrollable">
 <h2>Step 4: Add a new layer of data</h2>
 <p>Now that we have a decent-looking graph, let’s add in a new data element to vary point size by enrollment.</p>
 <div class="cell">
@@ -584,7 +592,7 @@
 </div>
 
 </section>
-<section id="step-4-add-a-new-layer-of-data-output" class="slide level2 output-location-slide"><h2>Step 4: Add a new layer of data</h2><div class="cell output-location-slide">
+<section id="step-4-add-a-new-layer-of-data-output" class="slide level2 smaller scrollable output-location-slide"><h2>Step 4: Add a new layer of data</h2><div class="cell output-location-slide">
 <div class="cell-output-display">
 <div>
 <figure>
@@ -592,7 +600,7 @@
 </figure>
 </div>
 </div>
-</div></section><section id="step-5-tidy-up-formatting-12" class="slide level2">
+</div></section><section id="step-5-tidy-up-formatting-12" class="slide level2 smaller scrollable">
 <h2>Step 5: Tidy up formatting (1/2)</h2>
 <p>Adding a new variable for size creates a legend. We need to tidy the legend’s labels and the title.</p>
 <div class="cell">
@@ -612,7 +620,7 @@
 </div>
 
 </section>
-<section id="step-5-tidy-up-formatting-12-output" class="slide level2 output-location-slide"><h2>Step 5: Tidy up formatting (1/2)</h2><div class="cell output-location-slide">
+<section id="step-5-tidy-up-formatting-12-output" class="slide level2 smaller scrollable output-location-slide"><h2>Step 5: Tidy up formatting (1/2)</h2><div class="cell output-location-slide">
 <div class="cell-output-display">
 <div>
 <figure>
@@ -620,7 +628,7 @@
 </figure>
 </div>
 </div>
-</div></section><section id="step-5-tidy-up-formatting-22" class="slide level2">
+</div></section><section id="step-5-tidy-up-formatting-22" class="slide level2 smaller scrollable">
 <h2>Step 5: Tidy up formatting (2/2)</h2>
 <p>We can also adjust some paramenters to allow for more visual contrast in size. By default, <code>ggplot2</code> will adjust points’ radii based on the size variable. Using area is a more visually honest way to represent the data, so let’s make that change.</p>
 <div class="cell">
@@ -640,7 +648,7 @@
 </div>
 
 </section>
-<section id="step-5-tidy-up-formatting-22-output" class="slide level2 output-location-slide"><h2>Step 5: Tidy up formatting (2/2)</h2><div class="cell output-location-slide">
+<section id="step-5-tidy-up-formatting-22-output" class="slide level2 smaller scrollable output-location-slide"><h2>Step 5: Tidy up formatting (2/2)</h2><div class="cell output-location-slide">
 <div class="cell-output-display">
 <div>
 <figure>
@@ -648,7 +656,7 @@
 </figure>
 </div>
 </div>
-</div></section><section id="step-6-repeat-steps-4-5-as-needed-15" class="slide level2">
+</div></section><section id="step-6-repeat-steps-4-5-as-needed-15" class="slide level2 smaller scrollable">
 <h2>Step 6: Repeat steps 4-5 as needed (1/5)</h2>
 <p>Adding color can be helpful. Let’s add color based on urbanicity.</p>
 <div class="cell">
@@ -666,7 +674,7 @@
 </div>
 
 </section>
-<section id="step-6-repeat-steps-4-5-as-needed-15-output" class="slide level2 output-location-slide"><h2>Step 6: Repeat steps 4-5 as needed (1/5)</h2><div class="cell output-location-slide">
+<section id="step-6-repeat-steps-4-5-as-needed-15-output" class="slide level2 smaller scrollable output-location-slide"><h2>Step 6: Repeat steps 4-5 as needed (1/5)</h2><div class="cell output-location-slide">
 <div class="cell-output-display">
 <div>
 <figure>
@@ -674,9 +682,13 @@
 </figure>
 </div>
 </div>
-</div></section><section id="step-6-repeat-steps-4-5-as-needed-25" class="slide level2">
+</div></section><section id="step-6-repeat-steps-4-5-as-needed-25" class="slide level2 smaller scrollable">
 <h2>Step 6: Repeat steps 4-5 as needed (2/5)</h2>
 <p>That doesn’t look great. Let’s use some more functions from the <code>tidyverse</code> to clean up the data a little more to reduce 11 urbanicity levels to four, then tidy up the legend label.</p>
+<ul>
+<li><code>as.factor</code>: Function that is used to convert a vector ior a column in a dataframe into a factor. Factors are used to represent categorical data where the possible values of the variable are limited.</li>
+<li><code>fct_collapse</code>: Part of the <code>forcats</code> package and is a function that is used to collapse or group levels of a factor into new levels. This can be useful for combining similar categories or reducing the number of levels in a factor.</li>
+</ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="co"># clean up the unicorn vomit</span></span>
 <span id="cb13-2"><a></a>mn_ed_clean <span class="ot">&lt;-</span> mn_ed_clean <span class="sc">|&gt;</span></span>
@@ -709,7 +721,7 @@
 </div>
 
 </section>
-<section id="step-6-repeat-steps-4-5-as-needed-25-output" class="slide level2 output-location-slide"><h2>Step 6: Repeat steps 4-5 as needed (2/5)</h2><div class="cell output-location-slide">
+<section id="step-6-repeat-steps-4-5-as-needed-25-output" class="slide level2 smaller scrollable output-location-slide"><h2>Step 6: Repeat steps 4-5 as needed (2/5)</h2><div class="cell output-location-slide">
 <div class="cell-output-display">
 <div>
 <figure>
@@ -717,7 +729,7 @@
 </figure>
 </div>
 </div>
-</div></section><section id="step-6-repeat-steps-4-5-as-needed-35" class="slide level2">
+</div></section><section id="step-6-repeat-steps-4-5-as-needed-35" class="slide level2 smaller scrollable">
 <h2>Step 6: Repeat steps 4-5 as needed (3/5)</h2>
 <p>We can and should adjust the colors used. R recognizes some pretty funky color names, which can be found in this helpful cheat sheet.</p>
 <div class="cell">
@@ -741,7 +753,7 @@
 </div>
 
 </section>
-<section id="step-6-repeat-steps-4-5-as-needed-35-output" class="slide level2 output-location-slide"><h2>Step 6: Repeat steps 4-5 as needed (3/5)</h2><div class="cell output-location-slide">
+<section id="step-6-repeat-steps-4-5-as-needed-35-output" class="slide level2 smaller scrollable output-location-slide"><h2>Step 6: Repeat steps 4-5 as needed (3/5)</h2><div class="cell output-location-slide">
 <div class="cell-output-display">
 <div>
 <figure>
@@ -749,7 +761,7 @@
 </figure>
 </div>
 </div>
-</div></section><section id="step-6-repeat-steps-4-5-as-needed-45" class="slide level2">
+</div></section><section id="step-6-repeat-steps-4-5-as-needed-45" class="slide level2 smaller scrollable">
 <h2>Step 6: Repeat steps 4-5 as needed (4/5)</h2>
 <p>We should strive to make our analyses as accessible as possible. The <code>viridis</code> package includes some color palettes that are friendly for folks with color blindness, which affects 5-10 percent of the US population.</p>
 <div class="cell">
@@ -773,7 +785,7 @@
 </div>
 
 </section>
-<section id="step-6-repeat-steps-4-5-as-needed-45-output" class="slide level2 output-location-slide"><h2>Step 6: Repeat steps 4-5 as needed (4/5)</h2><div class="cell output-location-slide">
+<section id="step-6-repeat-steps-4-5-as-needed-45-output" class="slide level2 smaller scrollable output-location-slide"><h2>Step 6: Repeat steps 4-5 as needed (4/5)</h2><div class="cell output-location-slide">
 <div class="cell-output-display">
 <div>
 <figure>
@@ -781,7 +793,7 @@
 </figure>
 </div>
 </div>
-</div></section><section id="step-6-repeat-steps-4-5-as-needed-55" class="slide level2">
+</div></section><section id="step-6-repeat-steps-4-5-as-needed-55" class="slide level2 smaller scrollable">
 <h2>Step 6: Repeat steps 4-5 as needed (5/5)</h2>
 <p>Let’s adjust the range of colors used to exclude that hard-to-see yellow.</p>
 <div class="cell">
@@ -802,7 +814,7 @@
 </div>
 
 </section>
-<section id="step-6-repeat-steps-4-5-as-needed-55-output" class="slide level2 output-location-slide"><h2>Step 6: Repeat steps 4-5 as needed (5/5)</h2><div class="cell output-location-slide">
+<section id="step-6-repeat-steps-4-5-as-needed-55-output" class="slide level2 smaller scrollable output-location-slide"><h2>Step 6: Repeat steps 4-5 as needed (5/5)</h2><div class="cell output-location-slide">
 <div class="cell-output-display">
 <div>
 <figure>
@@ -810,7 +822,7 @@
 </figure>
 </div>
 </div>
-</div></section><section id="step-7-replace-a-layer-of-data" class="slide level2">
+</div></section><section id="step-7-replace-a-layer-of-data" class="slide level2 smaller scrollable">
 <h2>Step 7: Replace a layer of data</h2>
 <p>Sometimes color isn’t the answer - let’s try facets instead.</p>
 <div class="cell">
@@ -829,7 +841,7 @@
 <span id="cb17-13"><a></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
-</section><section id="step-7-replace-a-layer-of-data-output" class="slide level2 output-location-slide"><h2>Step 7: Replace a layer of data</h2><div class="cell output-location-slide">
+</section><section id="step-7-replace-a-layer-of-data-output" class="slide level2 smaller scrollable output-location-slide"><h2>Step 7: Replace a layer of data</h2><div class="cell output-location-slide">
 <div class="cell-output-display">
 <div>
 <figure>

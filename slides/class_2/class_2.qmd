@@ -1,6 +1,11 @@
 ---
 title: "Basic data analysis (tidyverse)"
 date: "April 9, 2024"
+css:
+  - |
+    .smaller h1 {
+      font-size: 1.5em; /* Adjust the font size as needed */
+    }
 output:
   quarto::quarto_presentation:
     format: revealjs

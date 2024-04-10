@@ -1578,7 +1578,7 @@
     "href": "slides/class_3/class_3.html#step-6-repeat-steps-4-5-as-needed-25",
     "title": "Basic data visualization using ggplot2",
     "section": "Step 6: Repeat steps 4-5 as needed (2/5)",
-    "text": "Step 6: Repeat steps 4-5 as needed (2/5)\nThat doesn’t look great. Let’s use some more functions from the tidyverse to clean up the data a little more to reduce 11 urbanicity levels to four, then tidy up the legend label.\n\n# clean up the unicorn vomit\nmn_ed_clean &lt;- mn_ed_clean |&gt;\n  mutate(urbanicity = fct_collapse(as.factor(urbanicity),\n                                   City = c(\"11-City: Large\", \n                                            \"12-City: Mid-size\",\n                                            \"13-City: Small\"),\n                                   Suburb = c(\"21-Suburb: Large\",\n                                              \"22-Suburb: Mid-size\",\n                                             \"23-Suburb: Small\"),\n                                   Town = c(\"31-Town: Fringe\",\n                                            \"32-Town: Distant\",\n                                            \"33-Town: Remote\"),\n                                   Rural = c(\"41-Rural: Fringe\",\n                                             \"42-Rural: Distant\",\n                                             \"43-Rural: Remote\")))\n\n\nggplot(mn_ed_clean, aes(x = pov_pct, y = local_rev_pp, size = enroll,\n                        color = urbanicity)) +\n  geom_point(alpha = .5) + \n  scale_x_continuous(labels = label_percent()) +\n  scale_y_continuous(labels = label_dollar()) +\n  scale_size_area(labels = label_comma(), max_size = 10) +  \n  labs(x = \"Student Poverty Rate\", y = \"Local Per-Pupil Revenue\",\n       title = \"Local  Per-Pupil Revenue by Student Povert Rate in Minnesota School Districts\",\n       caption = \"Source: Edbuild Data, 2019\",\n       size = \"Enrollment\") +\n  theme_bw()"
+    "text": "Step 6: Repeat steps 4-5 as needed (2/5)\nThat doesn’t look great. Let’s use some more functions from the tidyverse to clean up the data a little more to reduce 11 urbanicity levels to four, then tidy up the legend label.\n\nas.factor: Function that is used to convert a vector ior a column in a dataframe into a factor. Factors are used to represent categorical data where the possible values of the variable are limited.\nfct_collapse: Part of the forcats package and is a function that is used to collapse or group levels of a factor into new levels. This can be useful for combining similar categories or reducing the number of levels in a factor.\n\n\n# clean up the unicorn vomit\nmn_ed_clean &lt;- mn_ed_clean |&gt;\n  mutate(urbanicity = fct_collapse(as.factor(urbanicity),\n                                   City = c(\"11-City: Large\", \n                                            \"12-City: Mid-size\",\n                                            \"13-City: Small\"),\n                                   Suburb = c(\"21-Suburb: Large\",\n                                              \"22-Suburb: Mid-size\",\n                                             \"23-Suburb: Small\"),\n                                   Town = c(\"31-Town: Fringe\",\n                                            \"32-Town: Distant\",\n                                            \"33-Town: Remote\"),\n                                   Rural = c(\"41-Rural: Fringe\",\n                                             \"42-Rural: Distant\",\n                                             \"43-Rural: Remote\")))\n\n\nggplot(mn_ed_clean, aes(x = pov_pct, y = local_rev_pp, size = enroll,\n                        color = urbanicity)) +\n  geom_point(alpha = .5) + \n  scale_x_continuous(labels = label_percent()) +\n  scale_y_continuous(labels = label_dollar()) +\n  scale_size_area(labels = label_comma(), max_size = 10) +  \n  labs(x = \"Student Poverty Rate\", y = \"Local Per-Pupil Revenue\",\n       title = \"Local  Per-Pupil Revenue by Student Povert Rate in Minnesota School Districts\",\n       caption = \"Source: Edbuild Data, 2019\",\n       size = \"Enrollment\") +\n  theme_bw()"
   },
   {
     "objectID": "slides/class_3/class_3.html#step-6-repeat-steps-4-5-as-needed-25-output",
@@ -1932,5 +1932,19 @@
     "crumbs": [
       "Class Materials"
     ]
+  },
+  {
+    "objectID": "slides/class_3/class_3.html#step-3-clean-up-formatting-of-the-scatter-plot-elements-15",
+    "href": "slides/class_3/class_3.html#step-3-clean-up-formatting-of-the-scatter-plot-elements-15",
+    "title": "Basic data visualization using ggplot2",
+    "section": "Step 3: Clean up formatting of the scatter plot elements (1/5)",
+    "text": "Step 3: Clean up formatting of the scatter plot elements (1/5)\nNow that we understand our missing data, we can create an updated dataframe and re-plot our newly cleaned data.\n\n# create tidy df\nmn_ed_clean &lt;- mn_ed_data |&gt;\n  filter(!is.na(local_rev_pp), \n         !is.na(pov_pct))\n\nview(mn_ed_clean)\n\n# Drop the 2 districts that have no enrollment\nmn_ed_clean &lt;- mn_ed_clean |&gt;\n  filter(enroll &gt; 0)\n\n# first minnesota plot w/ clean data\nggplot(mn_ed_clean, aes(x = pov_pct, y = local_rev_pp)) +\n  geom_point()"
+  },
+  {
+    "objectID": "slides/class_3/class_3.html#step-3-clean-up-formatting-of-the-scatter-plot-elements-15-output",
+    "href": "slides/class_3/class_3.html#step-3-clean-up-formatting-of-the-scatter-plot-elements-15-output",
+    "title": "Basic data visualization using ggplot2",
+    "section": "Step 3: Clean up formatting of the scatter plot elements (1/5)",
+    "text": "Step 3: Clean up formatting of the scatter plot elements (1/5)"
   }
 ]

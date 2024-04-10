@@ -1,6 +1,11 @@
 ---
 title: "Basic data visualization using `ggplot2`"
 date: "April 23, 2024"
+css:
+  - |
+    .smaller h1 {
+      font-size: 0.5em; /* Adjust the font size as needed */
+    }
 output:
   quarto::quarto_presentation:
     format: revealjs
@@ -82,16 +87,15 @@ mn_ed_data <- dist_fy19_raw |>
 
 
 ```
+
 ## Agenda
 
-- Review `tidyverse` and four main functions
-- Visualizing local revenue data with `ggplot2`
-- Cloning a GitHub repository in GitHub
-- Homework and next class 
+-   Review `tidyverse` and four main functions
+-   Visualizing local revenue data with `ggplot2`
+-   Cloning a GitHub repository in GitHub
+-   Homework and next class
 
 # Review `tidyverse` and four main functions
-
-
 
 # Visualizing local revenue data with `ggplot2`
 
@@ -101,9 +105,13 @@ mn_ed_data <- dist_fy19_raw |>
 -   Once your specify your data, you can add layers of "geoms" to create your plot
 -   Today we will use `geom_point()`
 
+# Using `ggplot2` is like baking! {.smaller}
+
+![](Screenshot%202024-04-10%20at%205.06.00%20PM.png){fig-align="center" width="1117"}
+
 # Iterating your way to beauty with `ggplot2` using Minnesota data
 
-## Step 1: Create a basic plot
+## Step 1: Create a basic plot {.smaller}
 
 ```{r}
 #| echo: true
@@ -116,7 +124,7 @@ ggplot(mn_ed_data, aes(x = pov_pct, y = local_rev_pp)) +
 
 ```
 
-## Step 2: Address missing values
+## Step 2: Address missing values {.smaller}
 
 We need to figure out what's going on with our missing values before we go any further!
 
@@ -133,7 +141,7 @@ view(mn_na_dist)
 
 The missing data makes sense. All eight of the rows don't have any available data.
 
-## Step 3: Clean up formatting of chart elements (1/5)
+## Step 3: Clean up formatting of the scatter plot elements (1/5) {.smaller}
 
 Now that we understand our missing data, we can create an updated dataframe and re-plot our newly cleaned data.
 
@@ -160,7 +168,7 @@ ggplot(mn_ed_clean, aes(x = pov_pct, y = local_rev_pp)) +
 
 ```
 
-## Step 3: Clean up formatting of chart elements (2/5)
+## Step 3: Clean up formatting of chart elements (2/5) {.smaller}
 
 We see some overlap in the points. Reducing the opacity of the points can be accomplished by setting the `alpha` parameter in geom_point() to a value less than 1. Setting it to .5 will make data points 50% translucent.
 
@@ -173,7 +181,7 @@ ggplot(mn_ed_clean, aes(x = pov_pct, y = local_rev_pp)) +
 
 ```
 
-## Step 3: Clean up formatting of chart elements (3/5)
+## Step 3: Clean up formatting of chart elements (3/5) {.smaller}
 
 Let's take care of some formatting issues.
 
@@ -196,7 +204,7 @@ ggplot(mn_ed_clean, aes(x = pov_pct, y = local_rev_pp)) +
 
 ```
 
-## Step 3: Clean up formatting of chart elements (4/5)
+## Step 3: Clean up formatting of chart elements (4/5) {.smaller .scrollable}
 
 Next, we should add some labels to our axes that make sense, along with a title for our plot and a caption that details our data sources.
 
@@ -216,7 +224,7 @@ ggplot(mn_ed_clean, aes(x = pov_pct, y = local_rev_pp)) +
 
 ```
 
-## Step 3: Clean up formatting of chart elements (5/5)
+## Step 3: Clean up formatting of chart elements (5/5) {.smaller .scrollable}
 
 Themes can be used to change the appearance of elements in your plot. There are many stock options, but I prefer `theme_bw()` for its clean appearance and helpful and unobtrusive grid lines.
 
@@ -237,7 +245,7 @@ ggplot(mn_ed_clean, aes(x = pov_pct, y = local_rev_pp)) +
 
 ```
 
-## Step 4: Add a new layer of data
+## Step 4: Add a new layer of data {.smaller .scrollable}
 
 Now that we have a decent-looking graph, let's add in a new data element to vary point size by enrollment.
 
@@ -258,7 +266,7 @@ ggplot(mn_ed_clean, aes(x = pov_pct, y = local_rev_pp, size = enroll)) +
 
 ```
 
-## Step 5: Tidy up formatting (1/2)
+## Step 5: Tidy up formatting (1/2) {.smaller .scrollable}
 
 Adding a new variable for size creates a legend. We need to tidy the legend's labels and the title.
 
@@ -283,7 +291,7 @@ ggplot(mn_ed_clean, aes(x = pov_pct, y = local_rev_pp, size = enroll)) +
 
 ```
 
-## Step 5: Tidy up formatting (2/2)
+## Step 5: Tidy up formatting (2/2) {.smaller .scrollable}
 
 We can also adjust some paramenters to allow for more visual contrast in size. By default, `ggplot2` will adjust points' radii based on the size variable. Using area is a more visually honest way to represent the data, so let's make that change.
 
@@ -307,7 +315,7 @@ ggplot(mn_ed_clean, aes(x = pov_pct, y = local_rev_pp, size = enroll)) +
 
 ```
 
-## Step 6: Repeat steps 4-5 as needed (1/5)
+## Step 6: Repeat steps 4-5 as needed (1/5) {.smaller .scrollable}
 
 Adding color can be helpful. Let's add color based on urbanicity.
 
@@ -322,16 +330,19 @@ ggplot(mn_ed_clean, aes(x = pov_pct, y = local_rev_pp, size = enroll,
   scale_x_continuous(labels = percent_format(accuracy = 1)) +
   scale_size_area(labels = comma, max_size = 10) + 
   labs(x = "Student Poverty Rate", y = "Local Per-Pupil Revenue",
-       title = "Local  Per-Pupil Revenue by Student Povert Rate in Minnesota School Districts",
+       title = "Local Per-Pupil Revenue by Student Povert Rate in Minnesota School Districts",
        caption = "Source: Edbuild Data, 2019",
        size = "Enrollment") +
   theme_bw()
 
 ```
 
-## Step 6: Repeat steps 4-5 as needed (2/5)
-
+## Step 6: Repeat steps 4-5 as needed (2/5) {.smaller .scrollable}
+ 
 That doesn't look great. Let's use some more functions from the `tidyverse` to clean up the data a little more to reduce 11 urbanicity levels to four, then tidy up the legend label.
+
+- `as.factor`: Function that is used to convert a vector ior a column in a dataframe into a factor. Factors are used to represent categorical data where the possible values of the variable are limited. 
+- `fct_collapse`: Part of the `forcats` package and is a function that is used to collapse or group levels of a factor into new levels. This can be useful for combining similar categories or reducing the number of levels in a factor.
 
 ```{r}
 #| echo: true
@@ -361,7 +372,7 @@ ggplot(mn_ed_clean, aes(x = pov_pct, y = local_rev_pp, size = enroll,
   scale_y_continuous(labels = label_dollar()) +
   scale_size_area(labels = label_comma(), max_size = 10) +  
   labs(x = "Student Poverty Rate", y = "Local Per-Pupil Revenue",
-       title = "Local  Per-Pupil Revenue by Student Povert Rate in Minnesota School Districts",
+       title = "Local Per-Pupil Revenue by Student Povert Rate in Minnesota School Districts",
        caption = "Source: Edbuild Data, 2019",
        size = "Enrollment") +
   theme_bw()
@@ -369,7 +380,7 @@ ggplot(mn_ed_clean, aes(x = pov_pct, y = local_rev_pp, size = enroll,
 
 ```
 
-## Step 6: Repeat steps 4-5 as needed (3/5)
+## Step 6: Repeat steps 4-5 as needed (3/5) {.smaller .scrollable}
 
 We can and should adjust the colors used. R recognizes some pretty funky color names, which can be found in this helpful cheat sheet.
 
@@ -390,7 +401,7 @@ ggplot(mn_ed_clean, aes(x = pov_pct, y = local_rev_pp, size = enroll,
   scale_y_continuous(labels = label_dollar()) +
   scale_size_area(labels = label_comma(), max_size = 10) + 
   labs(x = "Student Poverty Rate", y = "Local Per-Pupil Revenue",
-       title = "Local  Per-Pupil Revenue by Student Povert Rate in Minnesota School Districts",
+       title = "Local Per-Pupil Revenue by Student Povert Rate in Minnesota School Districts",
        caption = "Source: Edbuild Data, 2019",
        size = "Enrollment") +
   theme_bw()
@@ -398,7 +409,7 @@ ggplot(mn_ed_clean, aes(x = pov_pct, y = local_rev_pp, size = enroll,
 
 ```
 
-## Step 6: Repeat steps 4-5 as needed (4/5)
+## Step 6: Repeat steps 4-5 as needed (4/5) {.smaller .scrollable}
 
 We should strive to make our analyses as accessible as possible. The `viridis` package includes some color palettes that are friendly for folks with color blindness, which affects 5-10 percent of the US population.
 
@@ -419,7 +430,7 @@ ggplot(mn_ed_clean, aes(x = pov_pct, y = local_rev_pp, size = enroll,
   scale_y_continuous(labels = label_dollar()) +
   scale_size_area(labels = label_comma(), max_size = 10) + 
   labs(x = "Student Poverty Rate", y = "Local Per-Pupil Revenue",
-       title = "Local  Per-Pupil Revenue by Student Povert Rate in Minnesota School Districts",
+       title = "Local Per-Pupil Revenue by Student Povert Rate in Minnesota School Districts",
        caption = "Source: Edbuild Data, 2019",
        size = "Enrollment") +
   theme_bw()
@@ -427,7 +438,7 @@ ggplot(mn_ed_clean, aes(x = pov_pct, y = local_rev_pp, size = enroll,
 
 ```
 
-## Step 6: Repeat steps 4-5 as needed (5/5)
+## Step 6: Repeat steps 4-5 as needed (5/5) {.smaller .scrollable}
 
 Let's adjust the range of colors used to exclude that hard-to-see yellow.
 
@@ -445,7 +456,7 @@ ggplot(mn_ed_clean, aes(x = pov_pct, y = local_rev_pp, size = enroll,
   scale_y_continuous(labels = label_dollar()) +
   scale_size_area(labels = label_comma(), max_size = 10) + 
   labs(x = "Student Poverty Rate", y = "Local Per-Pupil Revenue",
-       title = "Local  Per-Pupil Revenue by Student Povert Rate in Minnesota School Districts",
+       title = "Local Per-Pupil Revenue by Student Povert Rate in Minnesota School Districts",
        caption = "Source: Edbuild Data, 2019",
        size = "Enrollment") +
   theme_bw()
@@ -453,7 +464,7 @@ ggplot(mn_ed_clean, aes(x = pov_pct, y = local_rev_pp, size = enroll,
 
 ```
 
-## Step 7: Replace a layer of data
+## Step 7: Replace a layer of data {.smaller .scrollable}
 
 Sometimes color isn't the answer - let's try facets instead.
 
@@ -470,7 +481,7 @@ ggplot(mn_ed_clean, aes(x = pov_pct, y = local_rev_pp, size = enroll)) +
   scale_y_continuous(labels = label_dollar()) +
   scale_size_area(labels = label_comma(), max_size = 10) + 
   labs(x = "Student Poverty Rate", y = "Local Per-Pupil Revenue",
-       title = "Local  Per-Pupil Revenue by Student Povert Rate in Minnesota School Districts",
+       title = "Local Per-Pupil Revenue by Student Povert Rate in Minnesota School Districts",
        caption = "Source: Edbuild Data, 2019",
        size = "Enrollment") +
   theme_bw()
@@ -488,7 +499,7 @@ ggplot(mn_ed_clean, aes(x = pov_pct, y = local_rev_pp, size = enroll)) +
 
 -   The next class will be **Tuesday, May 14 from 11:00 AM - 12:00 PM CT.**
 
--   We will build on our data cleaning and analysis skills, including how to join multiple data sets 
+-   We will build on our data cleaning and analysis skills, including how to join multiple data sets
 :::
 
 ::: {.column width="45%"}
@@ -496,13 +507,6 @@ ggplot(mn_ed_clean, aes(x = pov_pct, y = local_rev_pp, size = enroll)) +
 
 -   In the homework repository, follow the steps to clean, analyze, and visualize data for Vermont
 
--   **Homework is due by COB on Friday, May 10.** This ensures Krista has enough time to go through the homework and provide feedback before the next class. 
+-   **Homework is due by COB on Friday, May 10.** This ensures Krista has enough time to go through the homework and provide feedback before the next class.
 :::
 :::
-
-
-
-
-
-
-

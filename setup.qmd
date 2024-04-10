@@ -38,6 +38,16 @@ install.packages(c("tidyverse", "readxl", "remotes"))
 remotes::install_github("edbuild/edbuildr")
 ```
 
+If you are having trouble installing `ebuildr` try the following code: 
+
+```{r}
+#| eval: false
+install.packages("devtools") 
+devtools::install_github('EdBuild/edbuildr')
+
+```
+
+
 ## Step 4: Install Git
 
 **Git** is an Open Source Distributed Version Control System, meaning it helps with tracking content, version control, and sharing information. Instructions for downloading Git can be found below: 

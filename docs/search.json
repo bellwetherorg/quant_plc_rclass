@@ -1039,8 +1039,8 @@
     "objectID": "slides/class_2/class_2.html#agenda",
     "href": "slides/class_2/class_2.html#agenda",
     "title": "Basic data analysis (tidyverse)",
-    "section": "Agenda",
-    "text": "Agenda\n\nIntroduction to the tidyverse (10 minutes)\nLive coding demonstration (10 minutes)\nPartner work cleaning a data set (20 minutes)\nCreating a token and cloning a GitHub repository in RStudio (15 minutes)\nNext class and homework (5 minutes)"
+    "section": "",
+    "text": "Introduction to the tidyverse (10 minutes)\nLive coding demonstration (10 minutes)\nPartner work cleaning a data set (20 minutes)\nCreating a token and cloning a GitHub repository in RStudio (15 minutes)\nNext class and homework (5 minutes)"
   },
   {
     "objectID": "slides/class_2/class_2.html#r-is-a-functional-programming-language---most-of-what-you-will-do-in-r-is-work-with-functions",
@@ -1180,7 +1180,7 @@
     "href": "slides/class_2/class_2.html#live-coding-example-exploring_the_tidyverse.r",
     "title": "Basic data analysis (tidyverse)",
     "section": "LIVE CODING EXAMPLE: exploring_the_tidyverse.R",
-    "text": "LIVE CODING EXAMPLE: exploring_the_tidyverse.R\n\n# class_2_example \n# Last updated by Krista Kaput, 2024-03-29\n\n# load ----------\n\noptions(scipen = 999)\n\nlibrary(tidyverse)\nlibrary(edbuildr)\n\n# Krista likes to denote which spreadsheet is raw for transparency \ndist_fy19_raw &lt;- masterpull(data_type = \"geo\")\n\n# Use the \"filter\" function to get the Minnesota data -----------\n\nmn_ed_data &lt;- dist_fy19_raw |&gt;\n  filter(State == \"Minnesota\") \n\n# Use \"rename\" function to change names of Minnesota variables --------\n\nmn_ed_data &lt;- mn_ed_data |&gt;\n  rename(district = NAME,\n         county = County,\n         enroll = ENROLL, \n         total_local_rev = LR) \n\n\n# Use \"mutate\" function to create a local revenue pp variable -----\nmn_ed_data &lt;- mn_ed_data |&gt;\n  mutate(local_rev_pp = total_local_rev/enroll) \n\n# Filter the districts that do not have enrollment or have NA enrollment ------\n\nmn_ed_data_clean &lt;- mn_ed_data |&gt;\n  filter(enroll &gt; 0)\n\n# Use \"select\" function to choose the variables you want in your data frame ---------\n\nmn_ed_data_clean &lt;- mn_ed_data_clean |&gt;\n  select(district, county, enroll, total_local_rev, local_rev_pp)"
+    "text": "LIVE CODING EXAMPLE: exploring_the_tidyverse.R\n\n# class_2_example \n# Last updated by Krista Kaput, 2024-03-29\n\n# load ----------\n\noptions(scipen = 999)\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.0     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nlibrary(edbuildr)\n\n# Krista likes to denote which spreadsheet is raw for transparency \ndist_fy19_raw &lt;- masterpull(data_type = \"geo\")\n\n# Use the \"filter\" function to get the Minnesota data -----------\n\nmn_ed_data &lt;- dist_fy19_raw |&gt;\n  filter(State == \"Minnesota\") \n\n# Use \"rename\" function to change names of Minnesota variables --------\n\nmn_ed_data &lt;- mn_ed_data |&gt;\n  rename(district = NAME,\n         county = County,\n         enroll = ENROLL, \n         total_local_rev = LR) \n\n\n# Use \"mutate\" function to create a local revenue pp variable -----\nmn_ed_data &lt;- mn_ed_data |&gt;\n  mutate(local_rev_pp = total_local_rev/enroll) \n\n# Filter the districts that do not have enrollment or have NA enrollment ------\n\nmn_ed_data_clean &lt;- mn_ed_data |&gt;\n  filter(enroll &gt; 0)\n\n# Use \"select\" function to choose the variables you want in your data frame ---------\n\nmn_ed_data_clean &lt;- mn_ed_data_clean |&gt;\n  select(district, county, enroll, total_local_rev, local_rev_pp)"
   },
   {
     "objectID": "slides/class_2/class_2.html#in-pairs-you-will-work-together-to-create-a-clean-data-frame-for-a-state.",
@@ -1430,8 +1430,8 @@
     "objectID": "slides/class_3/class_3.html#agenda",
     "href": "slides/class_3/class_3.html#agenda",
     "title": "Basic data visualization using ggplot2",
-    "section": "Agenda",
-    "text": "Agenda\n\nVisualizing local education revenue data with ggplot2\nCloning a GitHub repository in RStudio\nHomework and next class"
+    "section": "",
+    "text": "Visualizing local education revenue data with ggplot2\nCloning a GitHub repository in RStudio\nHomework and next class"
   },
   {
     "objectID": "slides/class_3/class_3.html#the-ggplot2-package-is-the-most-widely-used-data-visualization-approach-in-the-r-ecosystem.",
@@ -1830,7 +1830,7 @@
     "href": "slides/class_3/class_3.html",
     "title": "Basic data visualization using ggplot2",
     "section": "",
-    "text": "library(tidyverse)\nlibrary(countdown)\nlibrary(tigris)\nlibrary(sf)\nlibrary(scales)\nlibrary(edbuildr)\nlibrary(viridis)\n\nbw_primary &lt;- c(\"#6D1E4A\", # 1 plum\n                \"#007786\", # 2 teal\n                \"#0D525A\", # 3 dark green\n                \"#212B46\", # 4 navy\n                \"#5A6675\", # 5 grey\n                \"#F0DEC1\") # 6 cream\n\nbw_secondary &lt;- c(\"#FFC762\", # 1 yellow\n                  \"#FFB653\", # 2 orange\n                  \"#BEC6CE\", # 3 light grey\n                  \"#2E1A4A\", # 4 deep purple\n                  \"#7EA2D1\", # 5 soft blue\n                  \"#CAD3FB\", # 6 lavender\n                  \"#9CD4EA\", # 7 sky\n                  \"#FFA497\") # 8 peach\n\n\n# Krista likes to denote which spreadsheet is raw for transparency \ndist_fy19_raw &lt;- masterpull(data_type = \"geo\")\n\n# filter Minnesota data and clean -----\n\n# filter, rename, and mutate data for Minnesota \nmn_ed_data &lt;- dist_fy19_raw |&gt;\n  filter(State == \"Minnesota\") |&gt;\n  rename(district = NAME,\n         county = County,\n         enroll = ENROLL, \n         total_local_rev = LR,\n         total_state_rev = SR,\n         total_state_local_rev = SLR, \n         urbanicity = dUrbanicity,\n         operational_schools = dOperational_schools, \n         district_type = dType, \n         white_enroll = dWhite, \n         sped_enroll = dIEP, \n         ell_enroll = dLEP, \n         econ_dis_enroll = StPov,\n         bipoc_pct = pctNonwhite, \n         pov_pct = StPovRate,\n         median_house_income = MHI, \n         median_prop_value = MPV) |&gt;\n  mutate(bipoc_enroll = enroll - white_enroll,\n         ell_pct = ell_enroll/enroll, \n         sped_pct = sped_enroll/enroll, \n         local_rev_pp = total_local_rev/enroll,\n         state_rev_pp = total_state_rev/enroll,\n         local_state_rev_pp = total_state_local_rev/enroll) |&gt;\n  select(district, county, enroll, local_rev_pp, state_rev_pp, local_state_rev_pp, \n         total_local_rev, total_state_rev, total_state_local_rev, urbanicity, \n         operational_schools, district_type, pov_pct, bipoc_pct, ell_pct, sped_pct)"
+    "text": "Visualizing local education revenue data with ggplot2\nCloning a GitHub repository in RStudio\nHomework and next class"
   },
   {
     "objectID": "slides/class_3/class_3_test.html#step-3-clean-up-formatting-of-chart-elements-15-output",
@@ -1928,7 +1928,7 @@
     "href": "class_materials.html#april-23-2024-class-3-materials",
     "title": "Class Materials",
     "section": "April 23, 2024: Class 3 Materials",
-    "text": "April 23, 2024: Class 3 Materials\n\nClass Recording: Link to class 3 recording will be uploaded after class.\nClass Slides: Link to class 3 slides will by uploaded by EOD on April 22.\nR Script: Link to class 3 R script will be uploaded by EOD on April 22.\nHomework: TBD",
+    "text": "April 23, 2024: Class 3 Materials\n\nClass Recording: Link to class 3 recording will be uploaded after class.\nClass Slides: Link to slides for class 3\nR Script: Link to R script for class 3\nHomework: Use the hw_03_template.R file in the /scripts folder to clean and analyze edbuildr data for Vermont and create four scatter plots. Homework is due by COB on Friday, May 10. This ensures Krista can review your assignments and provide feedback by the May 14th R Class. Please commit and then push your homework updates using Git to update the repository.",
     "crumbs": [
       "Class Materials"
     ]

@@ -22,6 +22,9 @@ Have questions? [Sign up for Krista's office hours](https://calendar.app.google/
 ## April 23, 2024: Class 3 Materials 
 
 - **Class Recording:** Link to class 3 recording will be uploaded after class. 
-- **Class Slides:** Link to class 3 slides will by uploaded by EOD on April 22.
-- **R Script:** Link to class 3 R script will be uploaded by EOD on April 22.
-- **Homework:** TBD
+- **Class Slides:** [Link to slides for class 3](https://bellwetherorg.github.io/quant_plc_rclass/slides/class_3/class_3.html)
+- **R Script:** [Link to R script for class 3](https://gist.github.com/kkaput23/9ada2aa32f017eba94ccaa02c0207717)
+- **Homework:** Use the `hw_03_template.R` file in the `/scripts` folder to clean and analyze `edbuildr` data for Vermont and create four scatter plots. Homework is due by **COB on Friday, May 10.** This ensures Krista can review your assignments and provide feedback by the May 14th R Class. Please commit and then push your homework updates using Git to update the repository.
+
+
+

@@ -13,4 +13,10 @@ This hands-on book teaches novices and experienced R users how to write efficien
 
 ## Resources on R Packages
 
-- 
+- **[`tidyverse`](https://www.tidyverse.org/packages/)**: The core tidyverse includes the packages that you’re likely to use in everyday data analyses.
+- **[`ggplot2`](https://ggplot2.tidyverse.org/)**: ggplot2 is a system for declaratively creating graphics, based on The Grammar of Graphics. You provide the data, tell ggplot2 how to map variables to aesthetics, what graphical primitives to use, and it takes care of the details.
+- **[`dplyr`](https://dplyr.tidyverse.org/)**: dplyr is a grammar of data manipulation, providing a consistent set of verbs that help you solve the most common data manipulation challenges.
+- **[`readr`](https://readr.tidyverse.org/)**: The goal of readr is to provide a fast and friendly way to read rectangular data from delimited files, such as comma-separated values (CSV) and tab-separated values (TSV). It is designed to parse many types of data found in the wild, while providing an informative problem report when parsing leads to unexpected results.
+
+
+

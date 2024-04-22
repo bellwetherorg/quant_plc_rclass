@@ -293,23 +293,6 @@ ggplot(mn_ed_clean, aes(x = pov_pct, y = local_rev_pp, size = enroll,
        size = "Enrollment") +
   theme_bw()
 
-# Step #7: Replace a layer of data 
-# Sometimes color isn't the answer - let's try facets instead.
-
-# use facets instead of color
-ggplot(mn_ed_clean, aes(x = pov_pct, y = local_rev_pp, size = enroll)) +
-  geom_point(alpha = .5) + 
-  # add facet by urbanicity
-  facet_wrap(~urbanicity) +
-  scale_x_continuous(labels = label_percent()) +
-  scale_y_continuous(labels = label_dollar()) +
-  scale_size_area(labels = label_comma(), max_size = 10) + 
-  labs(x = "Student Poverty Rate", y = "Local Per-Pupil Revenue",
-       title = "Local Per-Pupil Revenue by Student Povert Rate in Minnesota School Districts",
-       caption = "Source: Edbuild Data, 2019",
-       size = "Enrollment") +
-  theme_bw()
-
 
 
 

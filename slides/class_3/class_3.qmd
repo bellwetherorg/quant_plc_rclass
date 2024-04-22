@@ -104,7 +104,7 @@ mn_ed_data <- dist_fy19_raw |>
 
 # Using `ggplot2` is like baking! {.smaller}
 
-![](Screenshot 2024-04-10 at 5.06.00 PM.png){fig-align="center"}
+![](Screenshot%202024-04-10%20at%205.06.00%20PM.png){fig-align="center"}
 
 # Iterating your way to beauty with `ggplot2` using Minnesota data
 
@@ -462,30 +462,59 @@ ggplot(mn_ed_clean, aes(x = pov_pct, y = local_rev_pp, size = enroll,
 
 ```
 
-## Step 7: Replace a layer of data {.smaller .scrollable}
+# Cloning a GitHub repository in RStudio
 
-Sometimes color isn't the answer - let's try facets instead.
+## You will receive an email with an invitation to join the GitHub organization for this training {.smaller}
 
-```{r}
-#| echo: true
-#| output-location: slide
+![](Screenshot%202024-04-22%20at%201.37.25%20PM.png){fig-align="center"}
 
-# use facets instead of color
-ggplot(mn_ed_clean, aes(x = pov_pct, y = local_rev_pp, size = enroll)) +
-  geom_point(alpha = .5) + 
-  # add facet by urbanicity
-  facet_wrap(~urbanicity) +
-  scale_x_continuous(labels = label_percent()) +
-  scale_y_continuous(labels = label_dollar()) +
-  scale_size_area(labels = label_comma(), max_size = 10) + 
-  labs(x = "Student Poverty Rate", y = "Local Per-Pupil Revenue",
-       title = "Local Per-Pupil Revenue by Student Povert Rate in Minnesota School Districts",
-       caption = "Source: Edbuild Data, 2019",
-       size = "Enrollment") +
-  theme_bw()
+## Once you click the "View Invitation" button, you will be directed to join the organization {.smaller}
 
+![](Screenshot%202024-04-22%20at%201.47.33%20PM.png){fig-align="center"}
 
-```
+## Bookmark the organization page
+
+Your homework assignments will show up here as repositories
+
+![](Screenshot%202024-04-22%20at%201.47.46%20PM.png){fig-align="center"}
+
+## To start an assignment, navigate to the repository and copy the HTTPS link that appears when you click the "Code" button {.smaller}
+
+![](Screenshot%202024-04-22%20at%201.49.26%20PM.png){fig-align="center"}
+
+## Next, you'll open RStudio and create a new project, selecting the "Version control" and "Git" options {.smaller}
+
+![](git_process/04-new-proj.png){fig-align="center"}
+
+## Next, you'll open RStudio and create a new project, selecting the "Version Control" and "Git" options {.smaller}
+
+![](git_process/05-git-proj.png){fig-align="center"}
+
+## Be sure to select a folder where you want to have your homework files saved before you click "Open" {.smaller}
+
+![](git_process/06-select-path.png){fig-align="center"}
+
+## You're now ready to start working on your homework!
+
+Start by opening the README.md file
+
+![](Screenshot 2024-04-22 at 3.30.25 PM.png){fig-align="center"}
+
+## The README.md file is a text file that will include instructions for your assignment
+
+Using the "Visual" option will make it easier to read
+
+![](Screenshot 2024-04-22 at 3.30.35 PM.png){fig-align="center"}
+
+## The README.md file is a text file that will include instructions for your assignment
+
+Using the "Visual" option will make it easier to read
+
+![](Screenshot 2024-04-22 at 3.30.43 PM.png){fig-align="center"}
+
+## Once you've completed your assignment, you'll want to "stage" your changes and then start the "commit" process {.smaller}
+
+![](git_process/12-gh-push.png){fig-align="center"}
 
 # Next Class and Homework
 

@@ -188,19 +188,21 @@ You can choose an expiration date, but I have chosen no expiration date. Select 
 
 ![](class_2_images/Screenshot%202024-04-08%20at%209.15.34%20PM.png){fig-align="center"}
 
-## In your RStudio console, install the `usethis`, `gitcreds`, and `gh` packages 
+## In your RStudio console, install the `usethis`, `gitcreds`, and `gh` packages
+
 Type the following code int your console: install.packages(c("usethis", "gitcreds", "gh"))
 
 ![](class_2_images/Screenshot%202024-04-09%20at%2010.39.15%20AM.png){fig-align="center"}
 
 ## In your RStudio console, type **gitcreds::gitcreds_set()** and then paste your token {.smaller}
 
-![](class_2_images/Screenshot 2024-04-09 at 10.42.26 AM.png){fig-align="center"}
+![](class_2_images/Screenshot%202024-04-09%20at%2010.42.26%20AM.png){fig-align="center"}
 
 ## In your RStudio console, type **gh::gh_whoami()**
-If we set up the token correctly this will show your information and confirm you are all set! 
 
-![](class_2_images/Screenshot 2024-04-09 at 10.45.27 AM.png){fig-align="center"}
+If we set up the token correctly this will show your information and confirm you are all set!
+
+![](class_2_images/Screenshot%202024-04-09%20at%2010.45.27%20AM.png){fig-align="center"}
 
 ## You will receive an email with an invitation to join the GitHub organization for this training {.smaller}
 
@@ -270,8 +272,6 @@ Using the "Visual" option will make it easier to read
 ::: {.column width="45%"}
 **Homework**
 
--   None. If you want to practice what we learned in class, please finish the partner work, save the script to your desktop, and send it to Krista by **COB on April 18**. Krista will get feedback to you before the April 23 class. 
-
-
+-   None. If you want to practice what we learned in class, please finish the partner work, save the script to your desktop, and send it to Krista by **COB on April 18**. Krista will get feedback to you before the April 23 class.
 :::
 :::

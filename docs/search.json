@@ -1953,5 +1953,82 @@
     "title": "Office Hours",
     "section": "",
     "text": "If you"
+  },
+  {
+    "objectID": "slides/class_3/class_3.html#you-will-receive-an-email-with-an-invitation-to-join-the-github-organization-for-this-training",
+    "href": "slides/class_3/class_3.html#you-will-receive-an-email-with-an-invitation-to-join-the-github-organization-for-this-training",
+    "title": "Basic data visualization using ggplot2",
+    "section": "You will receive an email with an invitation to join the GitHub organization for this training",
+    "text": "You will receive an email with an invitation to join the GitHub organization for this training"
+  },
+  {
+    "objectID": "slides/class_3/class_3.html#once-you-click-the-view-invitation-button-you-will-be-directed-to-join-the-organization",
+    "href": "slides/class_3/class_3.html#once-you-click-the-view-invitation-button-you-will-be-directed-to-join-the-organization",
+    "title": "Basic data visualization using ggplot2",
+    "section": "Once you click the “View Invitation” button, you will be directed to join the organization",
+    "text": "Once you click the “View Invitation” button, you will be directed to join the organization"
+  },
+  {
+    "objectID": "slides/class_3/class_3.html#bookmark-the-organization-page",
+    "href": "slides/class_3/class_3.html#bookmark-the-organization-page",
+    "title": "Basic data visualization using ggplot2",
+    "section": "Bookmark the organization page",
+    "text": "Bookmark the organization page\nYour homework assignments will show up here as repositories"
+  },
+  {
+    "objectID": "slides/class_3/class_3.html#to-start-an-assignment-navigate-to-the-repository-and-copy-the-https-link-that-appears-when-you-click-the-code-button",
+    "href": "slides/class_3/class_3.html#to-start-an-assignment-navigate-to-the-repository-and-copy-the-https-link-that-appears-when-you-click-the-code-button",
+    "title": "Basic data visualization using ggplot2",
+    "section": "To start an assignment, navigate to the repository and copy the HTTPS link that appears when you click the “Code” button",
+    "text": "To start an assignment, navigate to the repository and copy the HTTPS link that appears when you click the “Code” button"
+  },
+  {
+    "objectID": "slides/class_3/class_3.html#next-youll-open-rstudio-and-create-a-new-project-selecting-the-version-control-and-git-options",
+    "href": "slides/class_3/class_3.html#next-youll-open-rstudio-and-create-a-new-project-selecting-the-version-control-and-git-options",
+    "title": "Basic data visualization using ggplot2",
+    "section": "Next, you’ll open RStudio and create a new project, selecting the “Version control” and “Git” options",
+    "text": "Next, you’ll open RStudio and create a new project, selecting the “Version control” and “Git” options"
+  },
+  {
+    "objectID": "slides/class_3/class_3.html#next-youll-open-rstudio-and-create-a-new-project-selecting-the-version-control-and-git-options-1",
+    "href": "slides/class_3/class_3.html#next-youll-open-rstudio-and-create-a-new-project-selecting-the-version-control-and-git-options-1",
+    "title": "Basic data visualization using ggplot2",
+    "section": "Next, you’ll open RStudio and create a new project, selecting the “Version Control” and “Git” options",
+    "text": "Next, you’ll open RStudio and create a new project, selecting the “Version Control” and “Git” options"
+  },
+  {
+    "objectID": "slides/class_3/class_3.html#be-sure-to-select-a-folder-where-you-want-to-have-your-homework-files-saved-before-you-click-open",
+    "href": "slides/class_3/class_3.html#be-sure-to-select-a-folder-where-you-want-to-have-your-homework-files-saved-before-you-click-open",
+    "title": "Basic data visualization using ggplot2",
+    "section": "Be sure to select a folder where you want to have your homework files saved before you click “Open”",
+    "text": "Be sure to select a folder where you want to have your homework files saved before you click “Open”"
+  },
+  {
+    "objectID": "slides/class_3/class_3.html#youre-now-ready-to-start-working-on-your-homework",
+    "href": "slides/class_3/class_3.html#youre-now-ready-to-start-working-on-your-homework",
+    "title": "Basic data visualization using ggplot2",
+    "section": "You’re now ready to start working on your homework!",
+    "text": "You’re now ready to start working on your homework!\nStart by opening the README.md file"
+  },
+  {
+    "objectID": "slides/class_3/class_3.html#the-readme.md-file-is-a-text-file-that-will-include-instructions-for-your-assignment",
+    "href": "slides/class_3/class_3.html#the-readme.md-file-is-a-text-file-that-will-include-instructions-for-your-assignment",
+    "title": "Basic data visualization using ggplot2",
+    "section": "The README.md file is a text file that will include instructions for your assignment",
+    "text": "The README.md file is a text file that will include instructions for your assignment\nUsing the “Visual” option will make it easier to read"
+  },
+  {
+    "objectID": "slides/class_3/class_3.html#the-readme.md-file-is-a-text-file-that-will-include-instructions-for-your-assignment-1",
+    "href": "slides/class_3/class_3.html#the-readme.md-file-is-a-text-file-that-will-include-instructions-for-your-assignment-1",
+    "title": "Basic data visualization using ggplot2",
+    "section": "The README.md file is a text file that will include instructions for your assignment",
+    "text": "The README.md file is a text file that will include instructions for your assignment\nUsing the “Visual” option will make it easier to read"
+  },
+  {
+    "objectID": "slides/class_3/class_3.html#once-youve-completed-your-assignment-youll-want-to-stage-your-changes-and-then-start-the-commit-process",
+    "href": "slides/class_3/class_3.html#once-youve-completed-your-assignment-youll-want-to-stage-your-changes-and-then-start-the-commit-process",
+    "title": "Basic data visualization using ggplot2",
+    "section": "Once you’ve completed your assignment, you’ll want to “stage” your changes and then start the “commit” process",
+    "text": "Once you’ve completed your assignment, you’ll want to “stage” your changes and then start the “commit” process"
   }
 ]

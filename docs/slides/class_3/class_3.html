@@ -807,8 +807,7 @@
 <span id="cb16-14"><a></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
-</section>
-<section id="step-6-repeat-steps-4-5-as-needed-55-output" class="slide level2 smaller scrollable output-location-slide"><h2>Step 6: Repeat steps 4-5 as needed (5/5)</h2><div class="cell output-location-slide">
+</section><section id="step-6-repeat-steps-4-5-as-needed-55-output" class="slide level2 smaller scrollable output-location-slide"><h2>Step 6: Repeat steps 4-5 as needed (5/5)</h2><div class="cell output-location-slide">
 <div class="cell-output-display">
 <div>
 <figure>
@@ -816,34 +815,60 @@
 </figure>
 </div>
 </div>
-</div></section><section id="step-7-replace-a-layer-of-data" class="slide level2 smaller scrollable">
-<h2>Step 7: Replace a layer of data</h2>
-<p>Sometimes color isn’t the answer - let’s try facets instead.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="co"># use facets instead of color</span></span>
-<span id="cb17-2"><a></a><span class="fu">ggplot</span>(mn_ed_clean, <span class="fu">aes</span>(<span class="at">x =</span> pov_pct, <span class="at">y =</span> local_rev_pp, <span class="at">size =</span> enroll)) <span class="sc">+</span></span>
-<span id="cb17-3"><a></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> .<span class="dv">5</span>) <span class="sc">+</span> </span>
-<span id="cb17-4"><a></a>  <span class="co"># add facet by urbanicity</span></span>
-<span id="cb17-5"><a></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>urbanicity) <span class="sc">+</span></span>
-<span id="cb17-6"><a></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> <span class="fu">label_percent</span>()) <span class="sc">+</span></span>
-<span id="cb17-7"><a></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">label_dollar</span>()) <span class="sc">+</span></span>
-<span id="cb17-8"><a></a>  <span class="fu">scale_size_area</span>(<span class="at">labels =</span> <span class="fu">label_comma</span>(), <span class="at">max_size =</span> <span class="dv">10</span>) <span class="sc">+</span> </span>
-<span id="cb17-9"><a></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Student Poverty Rate"</span>, <span class="at">y =</span> <span class="st">"Local Per-Pupil Revenue"</span>,</span>
-<span id="cb17-10"><a></a>       <span class="at">title =</span> <span class="st">"Local Per-Pupil Revenue by Student Povert Rate in Minnesota School Districts"</span>,</span>
-<span id="cb17-11"><a></a>       <span class="at">caption =</span> <span class="st">"Source: Edbuild Data, 2019"</span>,</span>
-<span id="cb17-12"><a></a>       <span class="at">size =</span> <span class="st">"Enrollment"</span>) <span class="sc">+</span></span>
-<span id="cb17-13"><a></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-
-</section><section id="step-7-replace-a-layer-of-data-output" class="slide level2 smaller scrollable output-location-slide"><h2>Step 7: Replace a layer of data</h2><div class="cell output-location-slide">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="class_3_files/figure-revealjs/unnamed-chunk-17-1.png" width="960"></p>
-</figure>
-</div>
-</div>
 </div></section></section>
+<section>
+<section id="cloning-a-github-repository-in-rstudio" class="title-slide slide level1 center">
+<h1>Cloning a GitHub repository in RStudio</h1>
+
+</section>
+<section id="you-will-receive-an-email-with-an-invitation-to-join-the-github-organization-for-this-training" class="slide level2 smaller">
+<h2>You will receive an email with an invitation to join the GitHub organization for this training</h2>
+
+<img data-src="Screenshot 2024-04-22 at 1.37.25 PM.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="once-you-click-the-view-invitation-button-you-will-be-directed-to-join-the-organization" class="slide level2 smaller">
+<h2>Once you click the “View Invitation” button, you will be directed to join the organization</h2>
+
+<img data-src="Screenshot 2024-04-22 at 1.47.33 PM.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="bookmark-the-organization-page" class="slide level2">
+<h2>Bookmark the organization page</h2>
+<p>Your homework assignments will show up here as repositories</p>
+
+<img data-src="Screenshot 2024-04-22 at 1.47.46 PM.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="to-start-an-assignment-navigate-to-the-repository-and-copy-the-https-link-that-appears-when-you-click-the-code-button" class="slide level2 smaller">
+<h2>To start an assignment, navigate to the repository and copy the HTTPS link that appears when you click the “Code” button</h2>
+
+<img data-src="Screenshot 2024-04-22 at 1.49.26 PM.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="next-youll-open-rstudio-and-create-a-new-project-selecting-the-version-control-and-git-options" class="slide level2 smaller">
+<h2>Next, you’ll open RStudio and create a new project, selecting the “Version control” and “Git” options</h2>
+
+<img data-src="git_process/04-new-proj.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="next-youll-open-rstudio-and-create-a-new-project-selecting-the-version-control-and-git-options-1" class="slide level2 smaller">
+<h2>Next, you’ll open RStudio and create a new project, selecting the “Version Control” and “Git” options</h2>
+
+<img data-src="git_process/05-git-proj.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="be-sure-to-select-a-folder-where-you-want-to-have-your-homework-files-saved-before-you-click-open" class="slide level2 smaller">
+<h2>Be sure to select a folder where you want to have your homework files saved before you click “Open”</h2>
+
+<img data-src="git_process/06-select-path.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="youre-now-ready-to-start-working-on-your-homework" class="slide level2">
+<h2>You’re now ready to start working on your homework!</h2>
+<p>Start by opening the README.md file</p>
+
+<img data-src="Screenshot 2024-04-22 at 3.30.25 PM.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="the-readme.md-file-is-a-text-file-that-will-include-instructions-for-your-assignment" class="slide level2">
+<h2>The README.md file is a text file that will include instructions for your assignment</h2>
+<p>Using the “Visual” option will make it easier to read</p>
+
+<img data-src="Screenshot 2024-04-22 at 3.30.35 PM.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="the-readme.md-file-is-a-text-file-that-will-include-instructions-for-your-assignment-1" class="slide level2">
+<h2>The README.md file is a text file that will include instructions for your assignment</h2>
+<p>Using the “Visual” option will make it easier to read</p>
+
+<img data-src="Screenshot 2024-04-22 at 3.30.43 PM.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="once-youve-completed-your-assignment-youll-want-to-stage-your-changes-and-then-start-the-commit-process" class="slide level2 smaller">
+<h2>Once you’ve completed your assignment, you’ll want to “stage” your changes and then start the “commit” process</h2>
+
+<img data-src="git_process/12-gh-push.png" class="quarto-figure quarto-figure-center r-stretch"></section></section>
 <section>
 <section id="next-class-and-homework" class="title-slide slide level1 center">
 <h1>Next Class and Homework</h1>

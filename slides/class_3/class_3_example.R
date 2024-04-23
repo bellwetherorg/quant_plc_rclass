@@ -8,6 +8,7 @@ options(scipen = 999)
 
 library(tidyverse)
 library(edbuildr)
+library(scales)
 
 # Krista likes to denote which spreadsheet is raw for transparency 
 dist_fy19_raw <- masterpull(data_type = "geo")
@@ -93,7 +94,7 @@ ggplot(mn_ed_clean, aes(x = pov_pct, y = local_rev_pp)) +
 # ought to be percentages and the vertical axis represents dollars. Here, the `scales` package provides some help.
 
 # format axes 
-install.packages("scales")
+# install.packages("scales")
 library(scales)
 
 # format the x and y axes
@@ -113,7 +114,7 @@ ggplot(mn_ed_clean, aes(x = pov_pct, y = local_rev_pp)) +
   scale_x_continuous(labels = label_percent()) +
   scale_y_continuous(labels = label_dollar()) + 
   labs(x = "Student Poverty Rate", y = "Local Per-Pupil Revenue",
-       title = "Local Per-Pupil Revenue by Student Povert Rate in Minnesota School Districts",
+       title = "Local Per-Pupil Revenue by Student Poverty Rate in Minnesota School Districts",
        caption = "Source: Edbuild Data, 2019") 
 
 # Themes can be used to change the appearance of elements in your plot. 
@@ -125,7 +126,7 @@ ggplot(mn_ed_clean, aes(x = pov_pct, y = local_rev_pp)) +
   scale_x_continuous(labels = label_percent()) +
   scale_y_continuous(labels = label_dollar()) + 
   labs(x = "Student Poverty Rate", y = "Local Per-Pupil Revenue",
-       title = "Local Per-Pupil Revenue by Student Povert Rate in Minnesota School Districts",
+       title = "Local Per-Pupil Revenue by Student Poverty Rate in Minnesota School Districts",
        caption = "Source: Edbuild Data, 2019") +
   theme_bw()
 
@@ -258,7 +259,7 @@ ggplot(mn_ed_clean, aes(x = pov_pct, y = local_rev_pp, size = enroll,
 # with color blindness, which affects 5-10 percent of the US population.
 
 # use colors better for visual impairments
-install.packages("viridis")
+# install.packages("viridis")
 library(viridis)
 
 # adjust colors manually
@@ -290,7 +291,7 @@ ggplot(mn_ed_clean, aes(x = pov_pct, y = local_rev_pp, size = enroll,
   labs(x = "Student Poverty Rate", y = "Local Per-Pupil Revenue",
        title = "Local Per-Pupil Revenue by Student Povert Rate in Minnesota School Districts",
        caption = "Source: Edbuild Data, 2019",
-       size = "Enrollment") +
+       size = "Enrollment", color = "Urbanicity") +
   theme_bw()
 
 

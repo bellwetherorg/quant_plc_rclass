@@ -1,0 +1,175 @@
+---
+title: "WEEK 4 ADD TITLE "
+date: "May 13, 2024"
+css:
+  - |
+    .smaller h1 {
+      font-size: 0.5em; /* Adjust the font size as needed */
+    }
+output:
+  quarto::quarto_presentation:
+    format: revealjs
+    theme: "simple" # Choose a theme for your presentation (e.g., simple, serif, solarized, etc.)
+    incremental: true # Whether to display content incrementally (one step at a time)
+    self_contained: true # Whether to create a standalone HTML file
+    highlight_style: "github" # Syntax highlighting style (e.g., github, monokai, etc.)
+    revealjs:
+      controls: true # Display navigation controls (e.g., arrows, slide number, etc.)
+      progress: true # Display a progress bar
+      slideNumber: true # Display slide numbers
+      center: true # Center the content on each slide
+      chalkboard: true # Enable chalkboard mode for reveal.js
+---
+
+```{r}
+#| output: false
+
+
+library(tidyverse)
+library(countdown)
+library(tigris)
+library(sf)
+library(scales)
+library(edbuildr)
+library(viridis)
+
+bw_primary <- c("#6D1E4A", # 1 plum
+                "#007786", # 2 teal
+                "#0D525A", # 3 dark green
+                "#212B46", # 4 navy
+                "#5A6675", # 5 grey
+                "#F0DEC1") # 6 cream
+
+bw_secondary <- c("#FFC762", # 1 yellow
+                  "#FFB653", # 2 orange
+                  "#BEC6CE", # 3 light grey
+                  "#2E1A4A", # 4 deep purple
+                  "#7EA2D1", # 5 soft blue
+                  "#CAD3FB", # 6 lavender
+                  "#9CD4EA", # 7 sky
+                  "#FFA497") # 8 peach
+
+
+```
+
+## Agenda
+
+-   Homework review
+-   Principles of tidy data
+-   Techniques to clean messy data
+-   Joining data sets
+-   Homework and next class
+
+# Homework Review
+
+## Solving a common problem with the homework
+
+TKTK
+
+# Principles of tidy data
+
+## Cleaning your data: One of the most important and under-appreciated stages of good data analysis
+
+Education finance data, like all other data, rarely come to us in a format that is plug-and-play ready for analysis
+
+A high-quality analysis of your state's school finance system must start with gathering and cleaning relevant data.
+
+**"Tidy data sets are all alike, but every messy data set is messy in its own way." - Hadley Wickham**
+
+## The principles of "tidy data" provide a helpful vision of what good, clean data should look like {.smaller}
+
+::: columns
+::: {.column width="40%"}
+Tidy data follows three rules:
+
+1.  Each column is a variable
+2.  Each row is an observation
+3.  Each cell is a value
+:::
+
+::: {.column width="60%"}
+![Source: R for Data Science](https://d33wubrfki0l68.cloudfront.net/6f1ddb544fc5c69a2478e444ab8112fb0eea23f8/08547/images/r4ds/tidy-1.png){fig-align="center" width="3520"}
+:::
+:::
+
+## Building tidy data sets will bring consistency to your data across scripts and projects.
+
+It also makes it easier to work with functions in the `tidyverse` which are built to work well with "tidy" data.
+
+ADD A VISUAL
+
+## It takes some work to make data tidy, including the use of functions to reshape your data {.smaller}
+
+data sets can violate the principles of tidy data in several ways. The most common way is for a variable to be embedded across columns. For example, multiple columns can represent data from different years. In this case, a variable (year) is actually represented by column names instead of being captured in its own "year" column.
+
+## **Solution:** If your data includes a variable that is embedded across several column names, use **pivot_longer()** {.smaller}
+
+![Source: R for Data Science](https://epirhandbook.com/en/images/pivoting/pivot_longer_new.png)
+
+## In-class coding example: How to use **pivot_longer()**
+
+KRISTA TO ADD EXAMPLE IN A SCRIPT
+
+## If your data includes data from a single observation spread across multiple rows, use **pivot_wider()** {.smaller}
+
+![Source: R for Data Science](https://bcheggeseth.github.io/112_fall_2022/images/pivot_wider.png)
+
+## In-class coding example: How to use **pivot_wider()**
+
+KRISTA TO ADD EXAMPLE IN A SCRIPT
+
+# Techniques to clean messy data
+
+## Cleaning data can be challenging, but it's easier if you take a systematic approach to every raw data file {.smaller}
+
++-------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Step Number                   | Goal                                                                                                                                                                          |
++===============================+:==============================================================================================================================================================================+
+| 1.  Data import               | Ensure your import function is set up to read the data properly                                                                                                               |
++-------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| 2.  Column names              | Reformat or manually create column names that are:                                                                                                                            |
+|                               |                                                                                                                                                                               |
+|                               | -   lowercase                                                                                                                                                                 |
+|                               |                                                                                                                                                                               |
+|                               | -   use underscores instead of spaces                                                                                                                                         |
+|                               |                                                                                                                                                                               |
+|                               | -   do not begin with a number                                                                                                                                                |
+|                               |                                                                                                                                                                               |
+|                               | -   follow a consistent format                                                                                                                                                |
+|                               |                                                                                                                                                                               |
+|                               |     -   Ex. rev_local_fy18 and rev_state_fy18                                                                                                                                 |
++-------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| 3.  Mis-formatted data        | Work with functions from base R like `as.numeric` or from the `tidyverse()` package like `stringr` to clean the data that appear in a different format than the one you want. |
++-------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| 4.  Missing data and outliers | Identify where in your data set there are missing variables and/or outliers. This may be more of an iterative process as you explore your data.                               |
++-------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+## In-class coding example
+
+TKTKT
+
+## Your data will rarely come in a single table, so you will need to use join functions to merge the dataframes {.smaller}
+
+To join two dataframes, they need to share a common column with a unique identifier.
+
+State departments of education typically assign a unique ID number to each school district. **Make sure this is available in your data sets.**
+
+Joining data sets on a name (e.g. school or district) can create problems based on:
+
+-   Capitalization (Mcgregor v. McGregor)
+-   Abbreviation (St. Paul v. Saint Paul)
+-   Mis-spelling (it happens!)
+
+## Using `left_join()` to merge data sets will help preserve your data
+
+::: columns
+::: {.column width="50%"}
+-   Once you have dataframes that share a common ID column, start with your most reliable set of data (typically student count data like ADM or enrollment) and use left_join() to attach additional data to that table.
+-   This approach will preserve your original data, keeping the number of rows (e.g. districts or schools) consistent as you use left_join() to add data by adding more columns.
+-   When a record in the "left" dataframe does not have a match in the "right" dataframe, left_join() will impute a value of NA for all such instances.
+:::
+
+::: {.column width="50%"}
+![Source: R for Data Science](https://d33wubrfki0l68.cloudfront.net/6f1ddb544fc5c69a2478e444ab8112fb0eea23f8/08547/images/r4ds/tidy-1.png){fig-align="center" width="3520"}
+:::
+:::

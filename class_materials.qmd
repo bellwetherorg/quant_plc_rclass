@@ -37,4 +37,10 @@ library(scales)
 library(viridis)
 ```
 
+## May 13, 2024: Class 4 Materials 
+
+- **Class Recording:** Link to class 4 recording will be uploaded after class. 
+- **Class Slides:** [Link to slides for class 4]()
+- **R Script:** TKTK 
+- **Homework:** TKTK
 

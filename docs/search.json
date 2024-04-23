@@ -2090,5 +2090,148 @@
     "crumbs": [
       "R Resources"
     ]
+  },
+  {
+    "objectID": "slides/class_4/class_4.html#agenda",
+    "href": "slides/class_4/class_4.html#agenda",
+    "title": "WEEK 4 ADD TITLE",
+    "section": "Agenda",
+    "text": "Agenda\n\nHomework review\nPrinciples of tidy data\nTechniques to clean messy data\nJoining data sets\nHomework and next class"
+  },
+  {
+    "objectID": "slides/class_4/class_4.html#solving-a-common-problem-with-the-homework",
+    "href": "slides/class_4/class_4.html#solving-a-common-problem-with-the-homework",
+    "title": "WEEK 4 ADD TITLE",
+    "section": "Solving a common problem with the homework",
+    "text": "Solving a common problem with the homework\nTKTK"
+  },
+  {
+    "objectID": "slides/class_4/class_4.html#cleaning-your-data-one-of-the-most-important-and-under-appreciated-stages-of-good-data-analysis",
+    "href": "slides/class_4/class_4.html#cleaning-your-data-one-of-the-most-important-and-under-appreciated-stages-of-good-data-analysis",
+    "title": "WEEK 4 ADD TITLE",
+    "section": "Cleaning your data: One of the most important and under-appreciated stages of good data analysis",
+    "text": "Cleaning your data: One of the most important and under-appreciated stages of good data analysis\nEducation finance data, like all other data, rarely come to us in a format that is plug-and-play ready for analysis\nA high-quality analysis of your state’s school finance system must start with gathering and cleaning relevant data.\n“Tidy data sets are all alike, but every messy data set is messy in its own way.” - Hadley Wickham"
+  },
+  {
+    "objectID": "slides/class_4/class_4.html#the-principles-of-tidy-data-provide-a-helpful-vision-of-what-good-clean-data-should-look-like.",
+    "href": "slides/class_4/class_4.html#the-principles-of-tidy-data-provide-a-helpful-vision-of-what-good-clean-data-should-look-like.",
+    "title": "Data cleaning and processing in R",
+    "section": "The principles of “tidy data” provide a helpful vision of what good, clean data should look like.",
+    "text": "The principles of “tidy data” provide a helpful vision of what good, clean data should look like.\nTidy data follows three rules:\n\nEach column is a variable\nEach row is an observation\nEach cell is a value\n\n\n\nSource: R for Data Science"
+  },
+  {
+    "objectID": "slides/class_4/class_4.html#the-principles-of-tidy-data-provide-a-helpful-vision-of-what-good-clean-data-should-look-like",
+    "href": "slides/class_4/class_4.html#the-principles-of-tidy-data-provide-a-helpful-vision-of-what-good-clean-data-should-look-like",
+    "title": "WEEK 4 ADD TITLE",
+    "section": "The principles of “tidy data” provide a helpful vision of what good, clean data should look like",
+    "text": "The principles of “tidy data” provide a helpful vision of what good, clean data should look like\n\n\nTidy data follows three rules:\n\nEach column is a variable\nEach row is an observation\nEach cell is a value\n\n\n\n\n\nSource: R for Data Science"
+  },
+  {
+    "objectID": "slides/class_4/class_4.html#if-your-data-includes-a-variable-that-is-embedded-across-several-column-names-use-pivot_longer",
+    "href": "slides/class_4/class_4.html#if-your-data-includes-a-variable-that-is-embedded-across-several-column-names-use-pivot_longer",
+    "title": "Data cleaning and processing in R",
+    "section": "If your data includes a variable that is embedded across several column names, use pivot_longer()",
+    "text": "If your data includes a variable that is embedded across several column names, use pivot_longer()\n\nSource: R for Data Science"
+  },
+  {
+    "objectID": "slides/class_4/class_4.html#in-class-coding-example-how-to-use-pivot_longer",
+    "href": "slides/class_4/class_4.html#in-class-coding-example-how-to-use-pivot_longer",
+    "title": "WEEK 4 ADD TITLE",
+    "section": "In-class coding example: How to use pivot_longer()",
+    "text": "In-class coding example: How to use pivot_longer()\nKRISTA TO ADD EXAMPLE IN A SCRIPT"
+  },
+  {
+    "objectID": "slides/class_4/class_4.html#if-your-data-includes-data-from-a-single-observation-spread-across-multiple-rows-use-pivot_wider",
+    "href": "slides/class_4/class_4.html#if-your-data-includes-data-from-a-single-observation-spread-across-multiple-rows-use-pivot_wider",
+    "title": "WEEK 4 ADD TITLE",
+    "section": "If your data includes data from a single observation spread across multiple rows, use pivot_wider()",
+    "text": "If your data includes data from a single observation spread across multiple rows, use pivot_wider()\n\nSource: R for Data Science"
+  },
+  {
+    "objectID": "slides/class_4/class_4.html#in-class-coding-example-how-to-use-pivot_wider",
+    "href": "slides/class_4/class_4.html#in-class-coding-example-how-to-use-pivot_wider",
+    "title": "WEEK 4 ADD TITLE",
+    "section": "In-class coding example: How to use pivot_wider()",
+    "text": "In-class coding example: How to use pivot_wider()\nKRISTA TO ADD EXAMPLE IN A SCRIPT"
+  },
+  {
+    "objectID": "slides/class_4/class_4.html#cleaning-data-can-be-challenging-but-its-easier-if-you-take-a-systematic-approach-to-every-raw-data-file",
+    "href": "slides/class_4/class_4.html#cleaning-data-can-be-challenging-but-its-easier-if-you-take-a-systematic-approach-to-every-raw-data-file",
+    "title": "WEEK 4 ADD TITLE",
+    "section": "Cleaning data can be challenging, but it’s easier if you take a systematic approach to every raw data file",
+    "text": "Cleaning data can be challenging, but it’s easier if you take a systematic approach to every raw data file\n\n\n\n\n\n\n\nStep Number\nGoal\n\n\n\n\n\nData import\n\nEnsure your import function is set up to read the data properly\n\n\n\nColumn names\n\nReformat or manually create column names that are:\n\nlowercase\nuse underscores instead of spaces\ndo not begin with a number\nfollow a consistent format\n\nEx. rev_local_fy18 and rev_state_fy18\n\n\n\n\n\nMis-formatted data\n\nWork with functions from base R like as.numeric or from the tidyverse() package like stringr to clean the data that appear in a different format than the one you want.\n\n\n\nMissing data and outliers\n\nIdentify where in your data set there are missing variables and/or outliers. This may be more of an iterative process as you explore your data."
+  },
+  {
+    "objectID": "slides/class_4/class_4.html#in-class-coding-example",
+    "href": "slides/class_4/class_4.html#in-class-coding-example",
+    "title": "WEEK 4 ADD TITLE",
+    "section": "In-class coding example",
+    "text": "In-class coding example\nTKTKT"
+  },
+  {
+    "objectID": "slides/class_4/class_4.html#building-tidy-datasets-will-bring-consistency-to-your-data-across-scripts-and-projects.-it-also-makes-it-easier-to-work-with-functions-in-the-tidyverse-which-are-built-to-work-well-with-tidy-data.",
+    "href": "slides/class_4/class_4.html#building-tidy-datasets-will-bring-consistency-to-your-data-across-scripts-and-projects.-it-also-makes-it-easier-to-work-with-functions-in-the-tidyverse-which-are-built-to-work-well-with-tidy-data.",
+    "title": "Data cleaning and processing in R",
+    "section": "Building tidy datasets will bring consistency to your data across scripts and projects. It also makes it easier to work with functions in the tidyverse which are built to work well with “tidy” data.",
+    "text": "Building tidy datasets will bring consistency to your data across scripts and projects. It also makes it easier to work with functions in the tidyverse which are built to work well with “tidy” data."
+  },
+  {
+    "objectID": "slides/class_4/class_4.html#it-takes-some-work-to-make-data-tidy-including-the-use-of-functions-to-reshape-your-data",
+    "href": "slides/class_4/class_4.html#it-takes-some-work-to-make-data-tidy-including-the-use-of-functions-to-reshape-your-data",
+    "title": "WEEK 4 ADD TITLE",
+    "section": "It takes some work to make data tidy, including the use of functions to reshape your data",
+    "text": "It takes some work to make data tidy, including the use of functions to reshape your data\ndata sets can violate the principles of tidy data in several ways. The most common way is for a variable to be embedded across columns. For example, multiple columns can represent data from different years. In this case, a variable (year) is actually represented by column names instead of being captured in its own “year” column."
+  },
+  {
+    "objectID": "slides/class_4/class_4.html#building-tidy-datasets-will-bring-consistency-to-your-data-across-scripts-and-projects.",
+    "href": "slides/class_4/class_4.html#building-tidy-datasets-will-bring-consistency-to-your-data-across-scripts-and-projects.",
+    "title": "Data cleaning and processing in R",
+    "section": "Building tidy datasets will bring consistency to your data across scripts and projects.",
+    "text": "Building tidy datasets will bring consistency to your data across scripts and projects.\nIt also makes it easier to work with functions in the tidyverse which are built to work well with “tidy” data.\nADD A VISUAL"
+  },
+  {
+    "objectID": "slides/class_4/class_4.html#solution-if-your-data-includes-a-variable-that-is-embedded-across-several-column-names-use-pivot_longer",
+    "href": "slides/class_4/class_4.html#solution-if-your-data-includes-a-variable-that-is-embedded-across-several-column-names-use-pivot_longer",
+    "title": "WEEK 4 ADD TITLE",
+    "section": "Solution: If your data includes a variable that is embedded across several column names, use pivot_longer()",
+    "text": "Solution: If your data includes a variable that is embedded across several column names, use pivot_longer()\n\nSource: R for Data Science"
+  },
+  {
+    "objectID": "slides/class_4/class_4.html#building-tidy-data-sets-will-bring-consistency-to-your-data-across-scripts-and-projects.",
+    "href": "slides/class_4/class_4.html#building-tidy-data-sets-will-bring-consistency-to-your-data-across-scripts-and-projects.",
+    "title": "WEEK 4 ADD TITLE",
+    "section": "Building tidy data sets will bring consistency to your data across scripts and projects.",
+    "text": "Building tidy data sets will bring consistency to your data across scripts and projects.\nIt also makes it easier to work with functions in the tidyverse which are built to work well with “tidy” data.\nADD A VISUAL"
+  },
+  {
+    "objectID": "slides/class_4/class_4.html#your-data-will-rarely-come-in-a-single-table-so-you-will-need-to-use-join-functions-to-merge-the-dataframes",
+    "href": "slides/class_4/class_4.html#your-data-will-rarely-come-in-a-single-table-so-you-will-need-to-use-join-functions-to-merge-the-dataframes",
+    "title": "WEEK 4 ADD TITLE",
+    "section": "Your data will rarely come in a single table, so you will need to use join functions to merge the dataframes",
+    "text": "Your data will rarely come in a single table, so you will need to use join functions to merge the dataframes\nTo join two dataframes, they need to share a common column with a unique identifier.\nState departments of education typically assign a unique ID number to each school district. Make sure this is available in your data sets.\nJoining data sets on a name (e.g. school or district) can create problems based on:\n\nCapitalization (Mcgregor v. McGregor)\nAbbreviation (St. Paul v. Saint Paul)\nMis-spelling (it happens!)"
+  },
+  {
+    "objectID": "slides/class_4/class_4.html#using-left_join-to-merge-data-sets-will-help-preserve-your-data",
+    "href": "slides/class_4/class_4.html#using-left_join-to-merge-data-sets-will-help-preserve-your-data",
+    "title": "WEEK 4 ADD TITLE",
+    "section": "Using left_join() to merge data sets will help preserve your data",
+    "text": "Using left_join() to merge data sets will help preserve your data\n\n\n\nOnce you have dataframes that share a common ID column, start with your most reliable set of data (typically student count data like ADM or enrollment) and use left_join() to attach additional data to that table.\nThis approach will preserve your original data, keeping the number of rows (e.g. districts or schools) consistent as you use left_join() to add data by adding more columns.\nWhen a record in the “left” dataframe does not have a match in the “right” dataframe, left_join() will impute a value of NA for all such instances.\n\n\n\n\n\nSource: R for Data Science"
+  },
+  {
+    "objectID": "slides/class_4/class_4.html",
+    "href": "slides/class_4/class_4.html",
+    "title": "Homework Review",
+    "section": "",
+    "text": "itle: “Data cleaning and processing in R”\n\n\nate: “May 13, 2024”\n\n\nss:\n\n\n- |\n\n\n.smaller h1 {\n\n\nfont-size: 0.5em; /* Adjust the font size as needed */\n\n\n}\n\n\nutput:\n\n\nquarto::quarto_presentation:\n\n\nformat: revealjs\n\n\ntheme: “simple” # Choose a theme for your presentation (e.g., simple, serif, solarized, etc.)\n\n\nincremental: true # Whether to display content incrementally (one step at a time)\n\n\nself_contained: true # Whether to create a standalone HTML file\n\n\nhighlight_style: “github” # Syntax highlighting style (e.g., github, monokai, etc.)\n\n\nrevealjs:\n\n\ncontrols: true # Display navigation controls (e.g., arrows, slide number, etc.)\n\n\nprogress: true # Display a progress bar\n\n\nslideNumber: true # Display slide numbers\n\n\ncenter: true # Center the content on each slide\n\n\nchalkboard: true # Enable chalkboard mode for reveal.js\nlibrary(tidyverse)\nlibrary(countdown)\nlibrary(tigris)\nlibrary(sf)\nlibrary(scales)\nlibrary(edbuildr)\nlibrary(viridis)\n\nbw_primary &lt;- c(\"#6D1E4A\", # 1 plum\n                \"#007786\", # 2 teal\n                \"#0D525A\", # 3 dark green\n                \"#212B46\", # 4 navy\n                \"#5A6675\", # 5 grey\n                \"#F0DEC1\") # 6 cream\n\nbw_secondary &lt;- c(\"#FFC762\", # 1 yellow\n                  \"#FFB653\", # 2 orange\n                  \"#BEC6CE\", # 3 light grey\n                  \"#2E1A4A\", # 4 deep purple\n                  \"#7EA2D1\", # 5 soft blue\n                  \"#CAD3FB\", # 6 lavender\n                  \"#9CD4EA\", # 7 sky\n                  \"#FFA497\") # 8 peach"
+  },
+  {
+    "objectID": "class_materials.html#may-13-2024-class-4-materials",
+    "href": "class_materials.html#may-13-2024-class-4-materials",
+    "title": "Class Materials",
+    "section": "May 13, 2024: Class 4 Materials",
+    "text": "May 13, 2024: Class 4 Materials\n\nClass Recording: Link to class 4 recording will be uploaded after class.\nClass Slides: Link to slides for class 4\nR Script: TKTK\nHomework: TKTK",
+    "crumbs": [
+      "Class Materials"
+    ]
   }
 ]

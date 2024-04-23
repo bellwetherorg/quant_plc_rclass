@@ -26,5 +26,15 @@ Have questions? [Sign up for Krista's office hours](https://calendar.app.google/
 - **R Script:** [Link to R script for class 3](https://gist.github.com/kkaput23/9ada2aa32f017eba94ccaa02c0207717)
 - **Homework:** Use the `hw_03_template.R` file in the `/scripts` folder to clean and analyze `edbuildr` data for Vermont and create four scatter plots. Homework is due by **COB on Friday, May 10.** This ensures Krista can review your assignments and provide feedback by the May 14th R Class. Please commit and then push your homework updates using Git to update the repository.
 
+In the `hw_03_template.R` file, please make sure you have the following packages loaded at the top of the script. 
+
+```{r}
+#| eval: false
+
+library(tidyverse)
+library(edbuildr)
+library(scales)
+library(viridis)
+```
 
 

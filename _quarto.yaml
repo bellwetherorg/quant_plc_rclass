@@ -27,6 +27,9 @@ format:
       - cosmo
       - theme/site_format.scss
     toc: true
+  revealjs:
+    logo: images/primary_full-color.png
+    theme: theme/slides.scss
 
 
     

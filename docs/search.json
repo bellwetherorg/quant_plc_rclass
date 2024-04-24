@@ -2159,7 +2159,7 @@
     "href": "slides/class_4/class_4.html#cleaning-data-can-be-challenging-but-its-easier-if-you-take-a-systematic-approach-to-every-raw-data-file",
     "title": "WEEK 4 ADD TITLE",
     "section": "Cleaning data can be challenging, but it’s easier if you take a systematic approach to every raw data file",
-    "text": "Cleaning data can be challenging, but it’s easier if you take a systematic approach to every raw data file\n\n\n\n\n\n\n\nStep Number\nGoal\n\n\n\n\n\nData import\n\nEnsure your import function is set up to read the data properly\n\n\n\nColumn names\n\nReformat or manually create column names that are:\n\nlowercase\nuse underscores instead of spaces\ndo not begin with a number\nfollow a consistent format\n\nEx. rev_local_fy18 and rev_state_fy18\n\n\n\n\n\nMis-formatted data\n\nWork with functions from base R like as.numeric or from the tidyverse() package like stringr to clean the data that appear in a different format than the one you want.\n\n\n\nMissing data and outliers\n\nIdentify where in your data set there are missing variables and/or outliers. This may be more of an iterative process as you explore your data."
+    "text": "Cleaning data can be challenging, but it’s easier if you take a systematic approach to every raw data file"
   },
   {
     "objectID": "slides/class_4/class_4.html#in-class-coding-example",

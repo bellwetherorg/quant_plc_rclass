@@ -9,7 +9,9 @@ css:
 output:
   quarto::quarto_presentation:
     format: revealjs
-    theme: "simple" # Choose a theme for your presentation (e.g., simple, serif, solarized, etc.)
+    theme: 
+      logo: images/primary_full-color.png
+      theme: theme/slides.scss # Choose a theme for your presentation (e.g., simple, serif, solarized, etc.)
     incremental: true # Whether to display content incrementally (one step at a time)
     self_contained: true # Whether to create a standalone HTML file
     highlight_style: "github" # Syntax highlighting style (e.g., github, monokai, etc.)
@@ -122,27 +124,8 @@ KRISTA TO ADD EXAMPLE IN A SCRIPT
 
 ## Cleaning data can be challenging, but it's easier if you take a systematic approach to every raw data file {.smaller}
 
-+-------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Step Number                   | Goal                                                                                                                                                                          |
-+===============================+:==============================================================================================================================================================================+
-| 1.  Data import               | Ensure your import function is set up to read the data properly                                                                                                               |
-+-------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| 2.  Column names              | Reformat or manually create column names that are:                                                                                                                            |
-|                               |                                                                                                                                                                               |
-|                               | -   lowercase                                                                                                                                                                 |
-|                               |                                                                                                                                                                               |
-|                               | -   use underscores instead of spaces                                                                                                                                         |
-|                               |                                                                                                                                                                               |
-|                               | -   do not begin with a number                                                                                                                                                |
-|                               |                                                                                                                                                                               |
-|                               | -   follow a consistent format                                                                                                                                                |
-|                               |                                                                                                                                                                               |
-|                               |     -   Ex. rev_local_fy18 and rev_state_fy18                                                                                                                                 |
-+-------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| 3.  Mis-formatted data        | Work with functions from base R like `as.numeric` or from the `tidyverse()` package like `stringr` to clean the data that appear in a different format than the one you want. |
-+-------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| 4.  Missing data and outliers | Identify where in your data set there are missing variables and/or outliers. This may be more of an iterative process as you explore your data.                               |
-+-------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
 
 ## In-class coding example
 

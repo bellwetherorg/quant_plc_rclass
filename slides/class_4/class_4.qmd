@@ -106,7 +106,7 @@ Data sets can violate the principles of tidy data in several ways. The most comm
 
 ![Source: R for Data Science](https://epirhandbook.com/en/images/pivoting/pivot_longer_new.png)
 
-## Live coding example: Using `pivot_longer()` function
+## Live coding example: Using `pivot_longer()` function {.smaller}
 
 Key arguments of the `pivot_longer()` function:
 
@@ -114,7 +114,36 @@ Key arguments of the `pivot_longer()` function:
 -   `names_to`: The name for the new character column
 -   `values_to`: The name for the new values column
 
-TKTK CODING EXAMPLE
+```{r}
+
+# idea_clean.R
+# lasted updated 2024-04-26 by Krista Kaput
+
+# load -----
+
+library(tidyverse)
+library(readxl)
+library(dplyr)
+
+section_611_raw <- read_excel("data/raw/IDEA Part B FY 2011 to FY 2022 .xlsx", 
+                                 sheet = "Grants to States")
+
+# clean the special education data -----
+
+section_611_longer <- section_611_raw |>
+  # Makes all the letters in a column lowercase
+  rename_with(tolower) |>
+  select(state, fy2016, fy2017, fy2018, fy2019, fy2020, fy2021, fy2022) |>
+  pivot_longer(cols = starts_with("fy"), # The columns start with "fy"
+               names_to = "fiscal_year", # the names of the columns will become a value in the "fiscal_year" column
+               values_to = "idea_funding") |> # The values in the "fy" columns will be in the new column "idea_funding"
+  
+  # Use the gsub that's part of mutate to remove the "fy" from the fiscal years
+  mutate(fiscal_year = as.numeric(gsub("^fy", "", fiscal_year))) |>
+  mutate(idea_category = "Part B, Grants to States")
+
+
+```
 
 ## It takes a bit of work to make data tidy, including the use of functions to reshape your data, cont. {.smaller}
 
@@ -131,7 +160,7 @@ Breaking down the code:
 -   `names_from`: The column with values that include multiple variables; will be pivoted into column names.
 -   `values_from`: The column with values will be used as cell values after pivoting.
 
-TKTK CODING EXAMPLE
+
 
 # Techniques to clean messy data
 

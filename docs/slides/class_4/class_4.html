@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.4.550">
 
   <meta name="dcterms.date" content="2024-05-13">
-  <title>Quantitative Peer Learning Community R Training - WEEK 4 ADD TITLE</title>
+  <title>Quantitative Peer Learning Community R Training - Data Cleaning and Processing in R: Part 1</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -329,7 +329,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">WEEK 4 ADD TITLE</h1>
+  <h1 class="title">Data Cleaning and Processing in R: Part 1</h1>
 
 <div class="quarto-title-authors">
 </div>
@@ -362,54 +362,61 @@
 </section>
 <section id="cleaning-your-data-one-of-the-most-important-and-under-appreciated-stages-of-good-data-analysis" class="slide level2">
 <h2>Cleaning your data: One of the most important and under-appreciated stages of good data analysis</h2>
-<p>Education finance data, like all other data, rarely come to us in a format that is plug-and-play ready for analysis</p>
-<p>A high-quality analysis of your state’s school finance system must start with gathering and cleaning relevant data.</p>
-<p><strong>“Tidy data sets are all alike, but every messy data set is messy in its own way.” - Hadley Wickham</strong></p>
+<ul>
+<li><p>Most data rarely come to us in a format that is plug-and-play ready for analysis.</p></li>
+<li><p>High-quality data analysis must start with gathering and cleaning relevant data.</p></li>
+<li><p>This starts with ensuring that each data frame of raw data you read into R goes through a process of becoming “tidy” — once you have tidy data, merging and visualizing data becomes much easier.</p></li>
+<li><p>The process of tidying your data is also helpful for identifying anomalies or outliers in your raw data files.</p></li>
+</ul>
+<blockquote>
+<p><strong>“Tidy data sets are all alike, but every messy data set is messy in its own way.”</strong> - Hadley Wickham</p>
+</blockquote>
 </section>
-<section id="the-principles-of-tidy-data-provide-a-helpful-vision-of-what-good-clean-data-should-look-like" class="slide level2 smaller">
+<section id="the-principles-of-tidy-data-provide-a-helpful-vision-of-what-good-clean-data-should-look-like" class="slide level2">
 <h2>The principles of “tidy data” provide a helpful vision of what good, clean data should look like</h2>
-<div class="columns">
-<div class="column" style="width:40%;">
 <p>Tidy data follows three rules:</p>
 <ol type="1">
 <li>Each column is a variable</li>
 <li>Each row is an observation</li>
 <li>Each cell is a value</li>
 </ol>
-</div><div class="column" style="width:60%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="https://d33wubrfki0l68.cloudfront.net/6f1ddb544fc5c69a2478e444ab8112fb0eea23f8/08547/images/r4ds/tidy-1.png" class="quarto-figure quarto-figure-center" width="3520"></p>
-<figcaption>Source: R for Data Science</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="building-tidy-data-sets-will-bring-consistency-to-your-data-across-scripts-and-projects." class="slide level2">
-<h2>Building tidy data sets will bring consistency to your data across scripts and projects.</h2>
-<p>It also makes it easier to work with functions in the <code>tidyverse</code> which are built to work well with “tidy” data.</p>
-<p>ADD A VISUAL</p>
-</section>
+
+<img data-src="https://d33wubrfki0l68.cloudfront.net/6f1ddb544fc5c69a2478e444ab8112fb0eea23f8/08547/images/r4ds/tidy-1.png" class="quarto-figure quarto-figure-center r-stretch" width="3520"><p class="caption">Source: R for Data Science</p></section>
+<section id="building-tidy-datasets-will-bring-consistency-to-your-data-across-scriptsprojects" class="slide level2">
+<h2>Building tidy datasets will bring consistency to your data across scripts/projects</h2>
+<p>Tidy datasets also make it easier to work with functions in the <code>tidyverse</code>, which is built to work will with “tidy” data</p>
+
+<img data-src="https://bookdown.org/michela_cameletti/rcodingfordatascience/images/4_tidyverse-packages.png" class="quarto-figure quarto-figure-center r-stretch"></section>
 <section id="it-takes-some-work-to-make-data-tidy-including-the-use-of-functions-to-reshape-your-data" class="slide level2 smaller">
 <h2>It takes some work to make data tidy, including the use of functions to reshape your data</h2>
-<p>data sets can violate the principles of tidy data in several ways. The most common way is for a variable to be embedded across columns. For example, multiple columns can represent data from different years. In this case, a variable (year) is actually represented by column names instead of being captured in its own “year” column.</p>
-</section>
-<section id="solution-if-your-data-includes-a-variable-that-is-embedded-across-several-column-names-use-pivot_longer" class="slide level2 smaller">
-<h2><strong>Solution:</strong> If your data includes a variable that is embedded across several column names, use <strong>pivot_longer()</strong></h2>
+<p>Data sets can violate the principles of tidy data in several ways. The most common way is for a variable to be embedded across columns. For example, multiple columns can represent data from different years. In this case, a variable (year) is actually represented by column names instead of being captured in its own “year” column.</p>
+<p><strong>Solution:</strong> If your data includes a variable that is embedded across several column names, use the <strong>pivot_longer()</strong> function</p>
 
 <img data-src="https://epirhandbook.com/en/images/pivoting/pivot_longer_new.png" class="r-stretch quarto-figure-center"><p class="caption">Source: R for Data Science</p></section>
-<section id="in-class-coding-example-how-to-use-pivot_longer" class="slide level2">
-<h2>In-class coding example: How to use <strong>pivot_longer()</strong></h2>
-<p>KRISTA TO ADD EXAMPLE IN A SCRIPT</p>
+<section id="live-coding-example-using-pivot_longer-function" class="slide level2">
+<h2>Live coding example: Using <code>pivot_longer()</code> function</h2>
+<p>Key arguments of the <code>pivot_longer()</code> function:</p>
+<ul>
+<li><code>cols</code>: The names of the columns to pivot using tidy-select</li>
+<li><code>names_to</code>: The name for the new character column</li>
+<li><code>values_to</code>: The name for the new values column</li>
+</ul>
+<p>TKTK CODING EXAMPLE</p>
 </section>
-<section id="if-your-data-includes-data-from-a-single-observation-spread-across-multiple-rows-use-pivot_wider" class="slide level2 smaller">
-<h2>If your data includes data from a single observation spread across multiple rows, use <strong>pivot_wider()</strong></h2>
+<section id="it-takes-a-bit-of-work-to-make-data-tidy-including-the-use-of-functions-to-reshape-your-data-cont." class="slide level2 smaller">
+<h2>It takes a bit of work to make data tidy, including the use of functions to reshape your data, cont.</h2>
+<p>A single observation may be spread across multiple rows: This can happen when one column includes multiple variable types within it. And example would be if a dataframe had a “data_type” column that included entries like “n_tested” and “pct_prof”.</p>
+<p><strong>Solution:</strong> If your data includes data from a single observation spread across multiple rows, use the <strong>pivot_wider()</strong> function</p>
 
 <img data-src="https://bcheggeseth.github.io/112_fall_2022/images/pivot_wider.png" class="r-stretch quarto-figure-center"><p class="caption">Source: R for Data Science</p></section>
-<section id="in-class-coding-example-how-to-use-pivot_wider" class="slide level2">
-<h2>In-class coding example: How to use <strong>pivot_wider()</strong></h2>
-<p>KRISTA TO ADD EXAMPLE IN A SCRIPT</p>
+<section id="live-coding-example-using-pivot_wider-function" class="slide level2">
+<h2>Live coding example: Using <code>pivot_wider()</code> function</h2>
+<p>Breaking down the code:</p>
+<ul>
+<li><code>names_from</code>: The column with values that include multiple variables; will be pivoted into column names.</li>
+<li><code>values_from</code>: The column with values will be used as cell values after pivoting.</li>
+</ul>
+<p>TKTK CODING EXAMPLE</p>
 </section></section>
 <section>
 <section id="techniques-to-clean-messy-data" class="title-slide slide level1 center">
@@ -418,14 +425,50 @@
 </section>
 <section id="cleaning-data-can-be-challenging-but-its-easier-if-you-take-a-systematic-approach-to-every-raw-data-file" class="slide level2 smaller">
 <h2>Cleaning data can be challenging, but it’s easier if you take a systematic approach to every raw data file</h2>
+<table>
+<colgroup>
+<col style="width: 11%">
+<col style="width: 88%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Step</th>
+<th>Goal</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Data import</td>
+<td>Ensure your import function is set up to read the data properly</td>
+</tr>
+<tr class="even">
+<td>Column names</td>
+<td><p>Reformat or manually create column names that are:</p>
+<ul>
+<li><p>lowercase</p></li>
+<li><p>use underscores instead of spaces</p></li>
+<li><p>do not begin with a number</p></li>
+<li><p>follow a consistent format</p></li>
+</ul></td>
+</tr>
+<tr class="odd">
+<td>Mis-formatted data</td>
+<td>Work with functions from base R like <code>as.numeric()</code> or from the <code>tidyverse</code> packages like <code>stringr</code> to clean the data that appear in a different format than you want.</td>
+</tr>
+<tr class="even">
+<td>Missing data</td>
+<td>Identify where in your dataset there are missing variables and/or outliers - this may be more of an iterative process as your explore your data.</td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="in-class-coding-example" class="slide level2">
 <h2>In-class coding example</h2>
-<p>TKTKT</p>
+<p>TKTK</p>
 </section>
-<section id="your-data-will-rarely-come-in-a-single-table-so-you-will-need-to-use-join-functions-to-merge-the-dataframes" class="slide level2 smaller">
-<h2>Your data will rarely come in a single table, so you will need to use join functions to merge the dataframes</h2>
-<p>To join two dataframes, they need to share a common column with a unique identifier.</p>
+<section id="your-data-will-rarely-come-in-a-single-table-so-you-will-need-to-use-join-functions-to-merge-the-data-frames" class="slide level2 smaller">
+<h2>Your data will rarely come in a single table, so you will need to use join functions to merge the data frames</h2>
+<p>To join two data frames, they need to share a common column with a unique identifier.</p>
 <p>State departments of education typically assign a unique ID number to each school district. <strong>Make sure this is available in your data sets.</strong></p>
 <p>Joining data sets on a name (e.g.&nbsp;school or district) can create problems based on:</p>
 <ul>
@@ -434,24 +477,30 @@
 <li>Mis-spelling (it happens!)</li>
 </ul>
 </section>
-<section id="using-left_join-to-merge-data-sets-will-help-preserve-your-data" class="slide level2">
+<section id="using-left_join-to-merge-data-sets-will-help-preserve-your-data" class="slide level2 smaller">
 <h2>Using <code>left_join()</code> to merge data sets will help preserve your data</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
 <ul>
-<li>Once you have dataframes that share a common ID column, start with your most reliable set of data (typically student count data like ADM or enrollment) and use left_join() to attach additional data to that table.</li>
-<li>This approach will preserve your original data, keeping the number of rows (e.g.&nbsp;districts or schools) consistent as you use left_join() to add data by adding more columns.</li>
-<li>When a record in the “left” dataframe does not have a match in the “right” dataframe, left_join() will impute a value of NA for all such instances.</li>
+<li>Once you have dataframes that share a common ID column, start with your most reliable set of data (typically student count data like ADM or enrollment) and use <code>left_join()</code> to attach additional data to that table.</li>
+<li>This approach will preserve your original data, keeping the number of rows (e.g.&nbsp;districts or schools) consistent as you use <code>left_join()</code> to add data by adding more columns.</li>
+<li>When a record in the “left” dataframe does not have a match in the “right” dataframe, <code>left_join()</code> will impute a value of <code>NA</code> for all such instances.</li>
 </ul>
-</div><div class="column" style="width:50%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="https://d33wubrfki0l68.cloudfront.net/6f1ddb544fc5c69a2478e444ab8112fb0eea23f8/08547/images/r4ds/tidy-1.png" class="quarto-figure quarto-figure-center" width="3520"></p>
-<figcaption>Source: R for Data Science</figcaption>
-</figure>
-</div>
-</div>
-</div>
+
+<img data-src="https://d33wubrfki0l68.cloudfront.net/3abea0b730526c3f053a3838953c35a0ccbe8980/7f29b/diagrams/join-inner.png" class="quarto-figure quarto-figure-center r-stretch"><p class="caption">Source: R for Data Science</p></section>
+<section id="coding-example-how-to-use-left_join" class="slide level2">
+<h2>Coding example: How to use left_join()</h2>
+<ul>
+<li><strong>Example 1:</strong> The common ID columns have the same variable names (sch_id)</li>
+<li><strong>Example 2:</strong> The common ID columns have different variable names. The sch_clean dataframe’s variable is sch_id, while the sch_el data frame’s variable name is school_id. The column names can be different, but the values within the cells must be the same so we can join them.</li>
+</ul>
+</section>
+<section id="as-you-merge-dataframes-be-sure-to-use-the-anti_join-function-to-examine-missing-data" class="slide level2 smaller">
+<h2>As you merge dataframes, be sure to use the <code>anti_join()</code> function to examine missing data</h2>
+<p>Using the <code>anti_join()</code> function from the dplyr package in R returns all rows in one data frame that do not have matching values in another data frame. Using <code>anti_join()</code> allows you to explore the incongruities in your data.</p>
+
+<img data-src="https://bookdown.org/sulgi/r4ds/diagrams/join-anti.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="coding-example-how-to-use-the-anti_join-function" class="slide level2">
+<h2>Coding example: How to use the <code>anti_join()</code> function</h2>
+<p>TKTK</p>
 
 <div class="quarto-auto-generated-content">
 <p><img src="../../images/primary_full-color.png" class="slide-logo"></p>

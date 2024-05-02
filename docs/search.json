@@ -2166,7 +2166,7 @@
     "href": "slides/class_4/class_4.html#in-class-coding-example",
     "title": "Data Cleaning and Processing in R: Part 1",
     "section": "In-class coding example",
-    "text": "In-class coding example\nTKTK"
+    "text": "In-class coding example\n\nmn_graduation_school_fy23_clean &lt;- mn_graduation_school_fy23_raw |&gt;\n  \n  # using \"tolower\" to make all the values in the column lowercase\n  mutate(dst_nam = tolower(dst_nam),\n         sch_nam = tolower(sch_nam)) |&gt;\n  \n  # using \"str_to_title\" makes the first letter of each word capitalized\n  mutate(dst_nam = str_to_title(dst_nam),\n         sch_nam = str_to_title(sch_nam)) |&gt;\n  \n  # using \"str_replace_all\" turns \"Dist\" and \"Dist.\"into \"District\"\n  mutate(dst_nam = str_replace_all(dst_nam, c(\"Dist\\\\b\" = \"District\", \"Dist\\\\.\" = \"District\", \"District\\\\.\" = \"District\")))"
   },
   {
     "objectID": "slides/class_4/class_4.html#building-tidy-datasets-will-bring-consistency-to-your-data-across-scripts-and-projects.-it-also-makes-it-easier-to-work-with-functions-in-the-tidyverse-which-are-built-to-work-well-with-tidy-data.",
@@ -2253,7 +2253,7 @@
     "href": "slides/class_4/class_4.html#live-coding-example-using-pivot_longer-function",
     "title": "Data Cleaning and Processing in R: Part 1",
     "section": "Live coding example: Using pivot_longer() function",
-    "text": "Live coding example: Using pivot_longer() function\nKey arguments of the pivot_longer() function:\n\ncols: The names of the columns to pivot using tidy-select\nnames_to: The name for the new character column\nvalues_to: The name for the new values column\n\nTKTK CODING EXAMPLE"
+    "text": "Live coding example: Using pivot_longer() function\nKey arguments of the pivot_longer() function:\n\ncols: The names of the columns to pivot using tidy-select\nnames_to: The name for the new character column\nvalues_to: The name for the new values column\n\n\n# clean the special education data -----\n\nsection_611_longer &lt;- section_611_raw |&gt;\n  # Makes all the letters in a column lowercase\n  rename_with(tolower) |&gt;\n  select(state, fy2016, fy2017, fy2018, fy2019, fy2020, fy2021, fy2022) |&gt;\n  pivot_longer(cols = starts_with(\"fy\"), # The columns start with \"fy\"\n               names_to = \"fiscal_year\", # the names of the columns will become a value in the \"fiscal_year\" column\n               values_to = \"idea_funding\") |&gt; # The values in the \"fy\" columns will be in the new column \"idea_funding\"\n  # Use the gsub to remove the \"fy\" from the fiscal years so that the values are just the year\n  mutate(fiscal_year = as.numeric(gsub(\"^fy\", \"\", fiscal_year))) |&gt;\n  mutate(idea_category = \"Part B, Grants to States\")"
   },
   {
     "objectID": "slides/class_4/class_4.html#it-takes-a-bit-of-work-to-make-data-tidy-including-the-use-of-functions-to-reshape-your-data-cont.",
@@ -2267,7 +2267,7 @@
     "href": "slides/class_4/class_4.html#live-coding-example-using-pivot_wider-function",
     "title": "Data Cleaning and Processing in R: Part 1",
     "section": "Live coding example: Using pivot_wider() function",
-    "text": "Live coding example: Using pivot_wider() function\nBreaking down the code:\n\nnames_from: The column with values that include multiple variables; will be pivoted into column names.\nvalues_from: The column with values will be used as cell values after pivoting.\n\nTKTK CODING EXAMPLE"
+    "text": "Live coding example: Using pivot_wider() function\nBreaking down the code:\n\nnames_from: The column with values that include multiple variables; will be pivoted into column names.\nvalues_from: The column with values will be used as cell values after pivoting.\n\n\n# Use pivot_wider with the 2023 graduation rate data \n\nmn_graduation_fy23_wider &lt;- mn_graduation_fy23_raw |&gt;\n  # Makes all the letters in a column lowercase\n  rename_with(tolower) |&gt;\n  # rename the columns so there isn't a space in-between the words\n  rename(district = \"district name\",\n         dist_id = \"district number\",\n         dist_type = \"district type\",\n         group_category = \"group category\",\n         student_group = \"student group\",\n         ending_status = \"ending status\",\n         four_yr_grad_pct = \"four year percent\") |&gt;\n  # Select the columns we want to include in our dataframe for the pivot_wider\n  select(district, dist_id, dist_type, group_category, student_group, ending_status, four_yr_grad_pct) |&gt;\n  # filter so that we are only looking at students who graduated in four years\n  filter(ending_status == \"Graduate\") |&gt;\n  # filter the student demographics because we only want to look at race/ethnicity data\n  filter(group_category == \"Race/Ethnicity\") |&gt;\n  # Pivot_wider! \n  pivot_wider(names_from = \"student_group\", # The names of the columns are from the student group column values\n              values_from = \"four_yr_grad_pct\")"
   },
   {
     "objectID": "slides/class_4/class_4.html#your-data-will-rarely-come-in-a-single-table-so-you-will-need-to-use-join-functions-to-merge-the-data-frames",
@@ -2281,7 +2281,7 @@
     "href": "slides/class_4/class_4.html#coding-example-how-to-use-left_join",
     "title": "Data Cleaning and Processing in R: Part 1",
     "section": "Coding example: How to use left_join()",
-    "text": "Coding example: How to use left_join()\n\nExample 1: The common ID columns have the same variable names (sch_id)\nExample 2: The common ID columns have different variable names. The sch_clean dataframe’s variable is sch_id, while the sch_el data frame’s variable name is school_id. The column names can be different, but the values within the cells must be the same so we can join them."
+    "text": "Coding example: How to use left_join()\n\nExample 1: The common ID columns have the same variable names (dist_id)\nExample 2: The common ID columns have different variable names. The sch_clean dataframe’s variable is sch_id, while the sch_el data frame’s variable name is school_id. The column names can be different, but the values within the cells must be the same so we can join them.\n\n\n# Use left_join() function to join the the illinoi data -------\n\n# EXAMPLE 1: Join them with the same \"dist_id\" name \n\nexample_1_il_finance_testing_fy23 &lt;- il_test_data_fy23_clean |&gt;\n  left_join(il_finance_fy23_same_id, by = \"dist_id\")\n\n\n# EXAMPLE 2: Join them with different column names, but they're the same values\nexample_2_il_finance_testing_fy23 &lt;- il_test_data_fy23_clean |&gt;\n  left_join(il_finance_fy23_diff_id, by = c(\"dist_id\" = \"rcdts\"))"
   },
   {
     "objectID": "slides/class_4/class_4.html#as-you-merge-dataframes-be-sure-to-use-the-anti_join-function-to-examine-missing-data",
@@ -2302,6 +2302,13 @@
     "href": "slides/class_4/class_4.html#coding-example-how-to-use-the-anti_join-function",
     "title": "Data Cleaning and Processing in R: Part 1",
     "section": "Coding example: How to use the anti_join() function",
-    "text": "Coding example: How to use the anti_join() function\nTKTK"
+    "text": "Coding example: How to use the anti_join() function"
+  },
+  {
+    "objectID": "slides/class_4/class_4.html#in-class-coding-example-minnesota-graduation-data",
+    "href": "slides/class_4/class_4.html#in-class-coding-example-minnesota-graduation-data",
+    "title": "Data Cleaning and Processing in R: Part 1",
+    "section": "In-class coding example: Minnesota graduation data",
+    "text": "In-class coding example: Minnesota graduation data\nWe can manipulate the district and school data using the following functions:\n\ntolower(): Converts characters to lowercase. It’s commonly used when dealing with character data, such as strings, to ensure uniformity in text processing and comparisons.\nstr_to_title(): Converts strings to title case. Title case means that the first letter of each word is capitalized, while all other letters are in lowercase.\nstr_replace_all(): Replaces all occurrences of a pattern within a string with a specified replacement.\n\n\nmn_graduation_school_fy23_clean &lt;- mn_graduation_school_fy23_raw |&gt;\n  \n  # using \"tolower\" to make all the values in the column lowercase\n  mutate(dst_nam = tolower(dst_nam),\n         sch_nam = tolower(sch_nam)) |&gt;\n  \n  # using \"str_to_title\" makes the first letter of each word capitalized\n  mutate(dst_nam = str_to_title(dst_nam),\n         sch_nam = str_to_title(sch_nam)) |&gt;\n  \n  # using \"str_replace_all\" turns \"Dist\" and \"Dist.\"into \"District\"\n  mutate(dst_nam = str_replace_all(dst_nam, c(\"Dist\\\\b\" = \"District\", \"Dist\\\\.\" = \"District\", \"District\\\\.\" = \"District\")))"
   }
 ]

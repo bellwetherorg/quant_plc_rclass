@@ -26,7 +26,6 @@ output:
 ```{r}
 #| output: false
 
-
 library(tidyverse)
 library(countdown)
 library(tigris)
@@ -34,6 +33,10 @@ library(sf)
 library(scales)
 library(edbuildr)
 library(viridis)
+library(readxl)
+
+
+
 
 bw_primary <- c("#6D1E4A", # 1 plum
                 "#007786", # 2 teal
@@ -106,7 +109,7 @@ Data sets can violate the principles of tidy data in several ways. The most comm
 
 ![Source: R for Data Science](https://epirhandbook.com/en/images/pivoting/pivot_longer_new.png)
 
-## Live coding example: Using `pivot_longer()` function {.smaller}
+## Live coding example: Using `pivot_longer()` function 
 
 Key arguments of the `pivot_longer()` function:
 
@@ -114,19 +117,8 @@ Key arguments of the `pivot_longer()` function:
 -   `names_to`: The name for the new character column
 -   `values_to`: The name for the new values column
 
-```{r}
+```{r echo=TRUE, eval=FALSE}
 
-# idea_clean.R
-# lasted updated 2024-04-26 by Krista Kaput
-
-# load -----
-
-library(tidyverse)
-library(readxl)
-library(dplyr)
-
-section_611_raw <- read_excel("data/raw/IDEA Part B FY 2011 to FY 2022 .xlsx", 
-                                 sheet = "Grants to States")
 
 # clean the special education data -----
 
@@ -152,14 +144,14 @@ A single observation may be spread across multiple rows: This can happen when on
 
 ![Source: R for Data Science](https://bcheggeseth.github.io/112_fall_2022/images/pivot_wider.png)
 
-## Live coding example: Using `pivot_wider()` function
+## Live coding example: Using `pivot_wider()` function {.smaller}
 
 Breaking down the code:
 
 -   `names_from`: The column with values that include multiple variables; will be pivoted into column names.
 -   `values_from`: The column with values will be used as cell values after pivoting.
 
-```{r}
+```{r echo=TRUE, eval=FALSE}
 
 # Use pivot_wider with the 2023 graduation rate data 
 
@@ -185,7 +177,7 @@ mn_graduation_fy23_wider <- mn_graduation_fy23_raw |>
               values_from = "four_yr_grad_pct") 
 
 
-````
+```
 
 # Techniques to clean messy data
 
@@ -211,9 +203,30 @@ mn_graduation_fy23_wider <- mn_graduation_fy23_raw |>
 | Missing data       | Identify where in your dataset there are missing variables and/or outliers - this may be more of an iterative process as your explore your data.                       |
 +--------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-## In-class coding example
+## In-class coding example: Minnesota graduation data {.smaller}
 
-TKTK
+We can manipulate the district and school data using the following functions: 
+
+- `tolower()`: Converts characters to lowercase. It's commonly used when dealing with character data, such as strings, to ensure uniformity in text processing and comparisons.
+- `str_to_title()`: Converts strings to title case. Title case means that the first letter of each word is capitalized, while all other letters are in lowercase.
+- `str_replace_all()`: Replaces all occurrences of a pattern within a string with a specified replacement.
+
+```{r echo=TRUE, eval=FALSE}
+
+mn_graduation_school_fy23_clean <- mn_graduation_school_fy23_raw |>
+  
+  # using "tolower" to make all the values in the column lowercase
+  mutate(dst_nam = tolower(dst_nam),
+         sch_nam = tolower(sch_nam)) |>
+  
+  # using "str_to_title" makes the first letter of each word capitalized
+  mutate(dst_nam = str_to_title(dst_nam),
+         sch_nam = str_to_title(sch_nam)) |>
+  
+  # using "str_replace_all" turns "Dist" and "Dist."into "District"
+  mutate(dst_nam = str_replace_all(dst_nam, c("Dist\\b" = "District", "Dist\\." = "District", "District\\." = "District")))
+
+```
 
 ## Your data will rarely come in a single table, so you will need to use join functions to merge the data frames {.smaller}
 
@@ -237,8 +250,24 @@ Joining data sets on a name (e.g. school or district) can create problems based 
 
 ## Coding example: How to use left_join()
 
--   **Example 1:** The common ID columns have the same variable names (sch_id)
+-   **Example 1:** The common ID columns have the same variable names (dist_id)
 -   **Example 2:** The common ID columns have different variable names. The sch_clean dataframe's variable is sch_id, while the sch_el data frame's variable name is school_id. The column names can be different, but the values within the cells must be the same so we can join them.
+
+```{r echo=TRUE, eval=FALSE}
+
+# Use left_join() function to join the the illinoi data -------
+
+# EXAMPLE 1: Join them with the same "dist_id" name 
+
+example_1_il_finance_testing_fy23 <- il_test_data_fy23_clean |>
+  left_join(il_finance_fy23_same_id, by = "dist_id")
+
+
+# EXAMPLE 2: Join them with different column names, but they're the same values
+example_2_il_finance_testing_fy23 <- il_test_data_fy23_clean |>
+  left_join(il_finance_fy23_diff_id, by = c("dist_id" = "rcdts"))
+
+```
 
 ## As you merge dataframes, be sure to use the `anti_join()` function to examine missing data {.smaller}
 
@@ -248,7 +277,7 @@ Using the `anti_join()` function from the dplyr package in R returns all rows in
 
 ## Coding example: How to use the `anti_join()` function
 
-TKTK 
+
 
 
 

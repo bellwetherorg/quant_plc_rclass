@@ -1,6 +1,6 @@
 ---
 title: "Data Cleaning and Processing in R: Part 1"
-date: "May 13, 2024"
+date: "May 14, 2024"
 css:
   - |
     .smaller h1 {
@@ -269,13 +269,30 @@ example_2_il_finance_testing_fy23 <- il_test_data_fy23_clean |>
 
 ```
 
-## As you merge dataframes, be sure to use the `anti_join()` function to examine missing data {.smaller}
+# Next Class and Homework
 
-Using the `anti_join()` function from the dplyr package in R returns all rows in one data frame that do not have matching values in another data frame. Using `anti_join()` allows you to explore the incongruities in your data.
+## Coming Up {.smaller}
 
-![](https://bookdown.org/sulgi/r4ds/diagrams/join-anti.png){fig-align="center"}
+::: columns
+::: {.column width="45%"}
+**Next Class**
 
-## Coding example: How to use the `anti_join()` function
+-   The next class will be **Tuesday, June 11 from 11:00 AM - 12:00 PM CT.**
+
+-   We will build on our data cleaning and analysis skills, including how to create unique identifiers 
+:::
+
+::: {.column width="45%"}
+**Homework**
+
+-   In the homework repository, follow the steps to clean, analyze, and visualize data for Vermont
+
+-   **Homework is due by COB on Wednesday, June 5.** This ensures Krista has enough time to go through the homework and provide feedback before the next class.
+:::
+:::
+
+
+
 
 
 

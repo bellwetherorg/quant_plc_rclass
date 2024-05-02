@@ -10,7 +10,7 @@
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.4.550">
 
-  <meta name="dcterms.date" content="2024-05-13">
+  <meta name="dcterms.date" content="2024-05-14">
   <title>Quantitative Peer Learning Community R Training - Data Cleaning and Processing in R: Part 1</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -399,7 +399,7 @@
 <div class="quarto-title-authors">
 </div>
 
-  <p class="date">2024-05-13</p>
+  <p class="date">2024-05-14</p>
 </section>
 <section id="agenda" class="slide level2">
 <h2>Agenda</h2>
@@ -625,14 +625,29 @@
 <span id="cb4-10"><a></a>example_2_il_finance_testing_fy23 <span class="ot">&lt;-</span> il_test_data_fy23_clean <span class="sc">|&gt;</span></span>
 <span id="cb4-11"><a></a>  <span class="fu">left_join</span>(il_finance_fy23_diff_id, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"dist_id"</span> <span class="ot">=</span> <span class="st">"rcdts"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="as-you-merge-dataframes-be-sure-to-use-the-anti_join-function-to-examine-missing-data" class="slide level2 smaller">
-<h2>As you merge dataframes, be sure to use the <code>anti_join()</code> function to examine missing data</h2>
-<p>Using the <code>anti_join()</code> function from the dplyr package in R returns all rows in one data frame that do not have matching values in another data frame. Using <code>anti_join()</code> allows you to explore the incongruities in your data.</p>
+</section></section>
+<section>
+<section id="next-class-and-homework" class="title-slide slide level1 center">
+<h1>Next Class and Homework</h1>
 
-<img data-src="https://bookdown.org/sulgi/r4ds/diagrams/join-anti.png" class="quarto-figure quarto-figure-center r-stretch"></section>
-<section id="coding-example-how-to-use-the-anti_join-function" class="slide level2">
-<h2>Coding example: How to use the <code>anti_join()</code> function</h2>
+</section>
+<section id="coming-up" class="slide level2 smaller">
+<h2>Coming Up</h2>
+<div class="columns">
+<div class="column" style="width:45%;">
+<p><strong>Next Class</strong></p>
+<ul>
+<li><p>The next class will be <strong>Tuesday, June 11 from 11:00 AM - 12:00 PM CT.</strong></p></li>
+<li><p>We will build on our data cleaning and analysis skills, including how to create unique identifiers</p></li>
+</ul>
+</div><div class="column" style="width:45%;">
+<p><strong>Homework</strong></p>
+<ul>
+<li><p>In the homework repository, follow the steps to clean, analyze, and visualize data for Vermont</p></li>
+<li><p><strong>Homework is due by COB on Wednesday, June 5.</strong> This ensures Krista has enough time to go through the homework and provide feedback before the next class.</p></li>
+</ul>
+</div>
+</div>
 
 <div class="quarto-auto-generated-content">
 <p><img src="../../images/primary_full-color.png" class="slide-logo"></p>

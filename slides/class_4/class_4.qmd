@@ -251,7 +251,7 @@ Joining data sets on a name (e.g. school or district) can create problems based 
 ## Coding example: How to use left_join()
 
 -   **Example 1:** The common ID columns have the same variable names (dist_id)
--   **Example 2:** The common ID columns have different variable names. The sch_clean dataframe's variable is sch_id, while the sch_el data frame's variable name is school_id. The column names can be different, but the values within the cells must be the same so we can join them.
+-   **Example 2:** The common ID columns have different variable names. The il_test_data_fy23_clean dataframe's variable is dist_id, while the example_2_il_finance_testing_fy23 dataframe's variable name is rcdts. The column names can be different, but the values within the cells must be the same so we can join them.
 
 ```{r echo=TRUE, eval=FALSE}
 
@@ -264,6 +264,7 @@ example_1_il_finance_testing_fy23 <- il_test_data_fy23_clean |>
 
 
 # EXAMPLE 2: Join them with different column names, but they're the same values
+# dist_id comes from because it's in the il_test_data_fy23_clean dataframe 
 example_2_il_finance_testing_fy23 <- il_test_data_fy23_clean |>
   left_join(il_finance_fy23_diff_id, by = c("dist_id" = "rcdts"))
 
@@ -271,7 +272,7 @@ example_2_il_finance_testing_fy23 <- il_test_data_fy23_clean |>
 
 # Next Class and Homework
 
-## Coming Up {.smaller}
+## Coming Up 
 
 ::: columns
 ::: {.column width="45%"}

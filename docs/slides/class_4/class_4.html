@@ -610,7 +610,7 @@
 <h2>Coding example: How to use left_join()</h2>
 <ul>
 <li><strong>Example 1:</strong> The common ID columns have the same variable names (dist_id)</li>
-<li><strong>Example 2:</strong> The common ID columns have different variable names. The sch_clean dataframe’s variable is sch_id, while the sch_el data frame’s variable name is school_id. The column names can be different, but the values within the cells must be the same so we can join them.</li>
+<li><strong>Example 2:</strong> The common ID columns have different variable names. The il_test_data_fy23_clean dataframe’s variable is dist_id, while the example_2_il_finance_testing_fy23 dataframe’s variable name is rcdts. The column names can be different, but the values within the cells must be the same so we can join them.</li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="co"># Use left_join() function to join the the illinoi data -------</span></span>
@@ -622,8 +622,9 @@
 <span id="cb4-7"><a></a></span>
 <span id="cb4-8"><a></a></span>
 <span id="cb4-9"><a></a><span class="co"># EXAMPLE 2: Join them with different column names, but they're the same values</span></span>
-<span id="cb4-10"><a></a>example_2_il_finance_testing_fy23 <span class="ot">&lt;-</span> il_test_data_fy23_clean <span class="sc">|&gt;</span></span>
-<span id="cb4-11"><a></a>  <span class="fu">left_join</span>(il_finance_fy23_diff_id, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"dist_id"</span> <span class="ot">=</span> <span class="st">"rcdts"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-10"><a></a><span class="co"># dist_id comes from because it's in the il_test_data_fy23_clean dataframe </span></span>
+<span id="cb4-11"><a></a>example_2_il_finance_testing_fy23 <span class="ot">&lt;-</span> il_test_data_fy23_clean <span class="sc">|&gt;</span></span>
+<span id="cb4-12"><a></a>  <span class="fu">left_join</span>(il_finance_fy23_diff_id, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"dist_id"</span> <span class="ot">=</span> <span class="st">"rcdts"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section></section>
 <section>
@@ -631,7 +632,7 @@
 <h1>Next Class and Homework</h1>
 
 </section>
-<section id="coming-up" class="slide level2 smaller">
+<section id="coming-up" class="slide level2">
 <h2>Coming Up</h2>
 <div class="columns">
 <div class="column" style="width:45%;">

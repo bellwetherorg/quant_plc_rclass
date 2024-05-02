@@ -137,8 +137,7 @@ section_611_longer <- section_611_raw |>
   pivot_longer(cols = starts_with("fy"), # The columns start with "fy"
                names_to = "fiscal_year", # the names of the columns will become a value in the "fiscal_year" column
                values_to = "idea_funding") |> # The values in the "fy" columns will be in the new column "idea_funding"
-  
-  # Use the gsub that's part of mutate to remove the "fy" from the fiscal years
+  # Use the gsub to remove the "fy" from the fiscal years so that the values are just the year
   mutate(fiscal_year = as.numeric(gsub("^fy", "", fiscal_year))) |>
   mutate(idea_category = "Part B, Grants to States")
 
@@ -160,7 +159,33 @@ Breaking down the code:
 -   `names_from`: The column with values that include multiple variables; will be pivoted into column names.
 -   `values_from`: The column with values will be used as cell values after pivoting.
 
+```{r}
 
+# Use pivot_wider with the 2023 graduation rate data 
+
+mn_graduation_fy23_wider <- mn_graduation_fy23_raw |>
+  # Makes all the letters in a column lowercase
+  rename_with(tolower) |>
+  # rename the columns so there isn't a space in-between the words
+  rename(district = "district name",
+         dist_id = "district number",
+         dist_type = "district type",
+         group_category = "group category",
+         student_group = "student group",
+         ending_status = "ending status",
+         four_yr_grad_pct = "four year percent") |>
+  # Select the columns we want to include in our dataframe for the pivot_wider
+  select(district, dist_id, dist_type, group_category, student_group, ending_status, four_yr_grad_pct) |>
+  # filter so that we are only looking at students who graduated in four years
+  filter(ending_status == "Graduate") |>
+  # filter the student demographics because we only want to look at race/ethnicity data
+  filter(group_category == "Race/Ethnicity") |>
+  # Pivot_wider! 
+  pivot_wider(names_from = "student_group", # The names of the columns are from the student group column values
+              values_from = "four_yr_grad_pct") 
+
+
+````
 
 # Techniques to clean messy data
 

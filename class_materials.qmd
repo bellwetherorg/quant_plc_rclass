@@ -1,32 +1,31 @@
 ---
 title: "Class Materials"
 format: html
-
 ---
 
-Have questions? [Sign up for Krista's office hours](https://calendar.app.google/aYywwCLgS8XwKK7H9)! 
+Have questions? [Sign up for Krista's office hours](https://calendar.app.google/aYywwCLgS8XwKK7H9)!
 
 ## March 19, 2024: Class 1 Materials
 
-- **Class Recording:** [Link to class 1 recording](https://vimeo.com/925123310). Refer to follow-up email for the password to view the recording. 
-- **Class Slides:** [Link to slides for class 1](https://bellwetherorg.github.io/quant_plc_rclass/slides/class_1/class_1.html)
-- **Homework:** Set up your RStudio interface to your taste ("RStudio Setup and Workflow Tips" slides) and complete the pre-class set up. 
+-   **Class Recording:** [Link to class 1 recording](https://vimeo.com/925123310). Refer to follow-up email for the password to view the recording.
+-   **Class Slides:** [Link to slides for class 1](https://bellwetherorg.github.io/quant_plc_rclass/slides/class_1/class_1.html)
+-   **Homework:** Set up your RStudio interface to your taste ("RStudio Setup and Workflow Tips" slides) and complete the pre-class set up.
 
-## April 9, 2024: Class 2 Materials 
+## April 9, 2024: Class 2 Materials
 
-- **Class Recording:** [Link to class 2 recording](https://vimeo.com/932587660?share=copy). Refer to follow-up email for the password to view the recording. 
-- **Class Slides:** [Link to slides for class 2](https://bellwetherorg.github.io/quant_plc_rclass/slides/class_2/class_2.html)
-- **R Script:** [Link to R script for class 2](https://gist.github.com/kkaput23/bbe57b6121901b98644639d8f1528e3d)
-- **Homework:** None. To practice what we learned, please complete the in-class partner work. **If you want Krista to review the script, please save it to your desktop and send it to her by COB on April 18**
+-   **Class Recording:** [Link to class 2 recording](https://vimeo.com/932587660?share=copy). Refer to follow-up email for the password to view the recording.
+-   **Class Slides:** [Link to slides for class 2](https://bellwetherorg.github.io/quant_plc_rclass/slides/class_2/class_2.html)
+-   **R Script:** [Link to R script for class 2](https://gist.github.com/kkaput23/bbe57b6121901b98644639d8f1528e3d)
+-   **Homework:** None. To practice what we learned, please complete the in-class partner work. **If you want Krista to review the script, please save it to your desktop and send it to her by COB on April 18**
 
-## April 23, 2024: Class 3 Materials 
+## April 23, 2024: Class 3 Materials
 
-- **Class Recording:** [Link to class 3 recording](https://vimeo.com/938285934?share=copy). Refer to follow-up email for the password to view the recording. 
-- **Class Slides:** [Link to slides for class 3](https://bellwetherorg.github.io/quant_plc_rclass/slides/class_3/class_3.html)
-- **R Script:** [Link to R script for class 3](https://gist.github.com/kkaput23/9ada2aa32f017eba94ccaa02c0207717)
-- **Homework:** Use the `hw_03_template.R` file in the `/scripts` folder to clean and analyze `edbuildr` data for Vermont and create four scatter plots. Homework is due by **COB on Friday, May 10.** This ensures Krista can review your assignments and provide feedback by the May 14th R Class. Please commit and then push your homework updates using Git to update the repository.
+-   **Class Recording:** [Link to class 3 recording](https://vimeo.com/938285934?share=copy). Refer to follow-up email for the password to view the recording.
+-   **Class Slides:** [Link to slides for class 3](https://bellwetherorg.github.io/quant_plc_rclass/slides/class_3/class_3.html)
+-   **R Script:** [Link to R script for class 3](https://gist.github.com/kkaput23/9ada2aa32f017eba94ccaa02c0207717)
+-   **Homework:** Use the `hw_03_template.R` file in the `/scripts` folder to clean and analyze `edbuildr` data for Vermont and create four scatter plots. Homework is due by **COB on Friday, May 10.** This ensures Krista can review your assignments and provide feedback by the May 14th R Class. Please commit and then push your homework updates using Git to update the repository.
 
-In the `hw_03_template.R` file, please make sure you have the following packages loaded at the top of the script. 
+In the `hw_03_template.R` file, please make sure you have the following packages loaded at the top of the script.
 
 ```{r}
 #| eval: false
@@ -37,10 +36,18 @@ library(scales)
 library(viridis)
 ```
 
-## May 13, 2024: Class 4 Materials 
+## May 13, 2024: Class 4 Materials
 
-- **Class Recording:** Link to class 4 recording will be uploaded after class. 
-- **Class Slides:** [Link to slides for class 4]()
-- **R Script:** TKTK 
-- **Homework:** TKTK
+-   **Class Recording:** Link to class 4 recording will be uploaded after class.
 
+-   **Class Slides:** [Link to slides for class 4](https://bellwetherorg.github.io/quant_plc_rclass/slides/class_4/class_4.html)
+
+-   **R Script:** See the `wk-4-class-examples` repository for the class scripts.
+
+-   **Homework:** There are three homework scripts in the `/scripts` folder. **Homework is due by COB on Wednesday, June 5**. Please commit and then push your homework updates using Git to update the repository. Complete the scripts in the following order:
+
+    -   `hw_04_pivot_wider.R`: I have created a "fill in the blank" R code structure. Fill in the blanks and make sure the data frame is manipulated to be wider.
+
+    -   `hw_04_pivot_longer.R`: I have created a "fill in the blank" R code structure. Fill in the blanks and make sure the data frame is manipulated to be longer.
+
+    -   `hw_04_join_data.R`: Clean the two data frames, identify the unique id, and then join them.

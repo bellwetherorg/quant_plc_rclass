@@ -2229,7 +2229,7 @@
     "href": "class_materials.html#may-13-2024-class-4-materials",
     "title": "Class Materials",
     "section": "May 13, 2024: Class 4 Materials",
-    "text": "May 13, 2024: Class 4 Materials\n\nClass Recording: Link to class 4 recording will be uploaded after class.\nClass Slides: Link to slides for class 4\nR Script: TKTK\nHomework: TKTK",
+    "text": "May 13, 2024: Class 4 Materials\n\nClass Recording: Link to class 4 recording will be uploaded after class.\nClass Slides: Link to slides for class 4\nR Script: See the wk-4-class-examples repository for the class scripts.\nHomework: There are three homework scripts in the /scripts folder. Homework is due by COB on Wednesday, June 5. Please commit and then push your homework updates using Git to update the repository. Complete the scripts in the following order:\n\nhw_04_pivot_wider.R: I have created a “fill in the blank” R code structure. Fill in the blanks and make sure the data frame is manipulated to be wider.\nhw_04_pivot_longer.R: I have created a “fill in the blank” R code structure. Fill in the blanks and make sure the data frame is manipulated to be longer.\nhw_04_join_data.R: Clean the two data frames, identify the unique id, and then join them.",
     "crumbs": [
       "Class Materials"
     ]

@@ -107,7 +107,7 @@ il_finance_fy23_diff_id <- il_finance_fy23_raw |>
 
 # Use left_join() function to join the the illinoi data -------
 
-# EXAMPLE 1: Join them with the same "dist_id" name 
+# EXAMPLE 1: Join them with the same "dist_id" name
 
 example_1_il_finance_testing_fy23 <- il_test_data_fy23_clean |>
   left_join(il_finance_fy23_same_id, by = "dist_id")

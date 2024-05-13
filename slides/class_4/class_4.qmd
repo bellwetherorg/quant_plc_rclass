@@ -67,9 +67,32 @@ bw_secondary <- c("#FFC762", # 1 yellow
 
 # Homework Review
 
-## Solving a common problem with the homework
+## Homework Review: Format Scatter Plots
 
-TKTK
+For those who turned in homework, you all did a great job with creating clean data frames and everyone made scatter plots. We were mixed on formatting scatter plots. The code below includes all the key elements of a beautified scatter plot.
+
+```{r echo=TRUE, eval=FALSE}
+
+ggplot(vt_ed_data, aes (x = mpv, y = local_rev_pp, size = enroll, color = stpovrate)) + 
+  geom_point(alpha = .5) +
+  scale_color_viridis(labels = label_percent()) + # This line indicates that the color label is a percent 
+  scale_x_continuous (labels = label_dollar()) + # This line labels the x-axis with dollar signs 
+  scale_y_continuous (labels = label_dollar()) + # This line labels the y-axis with dollar signs 
+  scale_size_area(labels = label_comma(), max_size = 10) + # This indicates that the size label should have a comma
+  labs(x = "Median Property Value", y = "Local Per-Pupil Revenue",
+       title = "Vermont Local Per-Pupil Revenue by Property Value",
+       caption = "Source: Edbuild Data, 2019",
+       size = "Enrollment",
+       color = "Poverty Rate") +
+  theme_bw()
+
+```
+
+## Homework Review: Format Scatter Plots
+
+The final scatter plot has formatted labels, legend, and title.
+
+![](Rplot.png){fig-align="center"}
 
 # Principles of tidy data
 
@@ -109,7 +132,7 @@ Data sets can violate the principles of tidy data in several ways. The most comm
 
 ![Source: R for Data Science](https://epirhandbook.com/en/images/pivoting/pivot_longer_new.png)
 
-## Live coding example: Using `pivot_longer()` function 
+## Live coding example: Using `pivot_longer()` function
 
 Key arguments of the `pivot_longer()` function:
 
@@ -205,11 +228,11 @@ mn_graduation_fy23_wider <- mn_graduation_fy23_raw |>
 
 ## In-class coding example: Minnesota graduation data {.smaller}
 
-We can manipulate the district and school data using the following functions: 
+We can manipulate the district and school data using the following functions:
 
-- `tolower()`: Converts characters to lowercase. It's commonly used when dealing with character data, such as strings, to ensure uniformity in text processing and comparisons.
-- `str_to_title()`: Converts strings to title case. Title case means that the first letter of each word is capitalized, while all other letters are in lowercase.
-- `str_replace_all()`: Replaces all occurrences of a pattern within a string with a specified replacement.
+-   `tolower()`: Converts characters to lowercase. It's commonly used when dealing with character data, such as strings, to ensure uniformity in text processing and comparisons.
+-   `str_to_title()`: Converts strings to title case. Title case means that the first letter of each word is capitalized, while all other letters are in lowercase.
+-   `str_replace_all()`: Replaces all occurrences of a pattern within a string with a specified replacement.
 
 ```{r echo=TRUE, eval=FALSE}
 
@@ -272,7 +295,7 @@ example_2_il_finance_testing_fy23 <- il_test_data_fy23_clean |>
 
 # Next Class and Homework
 
-## Coming Up 
+## Coming Up
 
 ::: columns
 ::: {.column width="45%"}
@@ -280,7 +303,7 @@ example_2_il_finance_testing_fy23 <- il_test_data_fy23_clean |>
 
 -   The next class will be **Tuesday, June 11 from 11:00 AM - 12:00 PM CT.**
 
--   We will build on our data cleaning and analysis skills, including how to create unique identifiers 
+-   We will build on our data cleaning and analysis skills, including how to create unique identifiers
 :::
 
 ::: {.column width="45%"}
@@ -291,11 +314,3 @@ example_2_il_finance_testing_fy23 <- il_test_data_fy23_clean |>
 -   **Homework is due by COB on Wednesday, June 5.** This ensures Krista has enough time to go through the homework and provide feedback before the next class.
 :::
 :::
-
-
-
-
-
-
-
-

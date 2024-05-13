@@ -2317,5 +2317,40 @@
     "title": "Data Cleaning and Processing in R: Part 1",
     "section": "Coming Up",
     "text": "Coming Up\n\n\nNext Class\n\nThe next class will be Tuesday, June 11 from 11:00 AM - 12:00 PM CT.\nWe will build on our data cleaning and analysis skills, including how to create unique identifiers\n\n\nHomework\n\nIn the homework repository, follow the steps to clean, analyze, and visualize data for Vermont\nHomework is due by COB on Wednesday, June 5. This ensures Krista has enough time to go through the homework and provide feedback before the next class."
+  },
+  {
+    "objectID": "slides/class_4/class_4.html#homework-review-scatterplot-formatting",
+    "href": "slides/class_4/class_4.html#homework-review-scatterplot-formatting",
+    "title": "Data Cleaning and Processing in R: Part 1",
+    "section": "Homework Review: Scatterplot Formatting",
+    "text": "Homework Review: Scatterplot Formatting"
+  },
+  {
+    "objectID": "slides/class_4/class_4.html#homework-review-format-scatterplots",
+    "href": "slides/class_4/class_4.html#homework-review-format-scatterplots",
+    "title": "Data Cleaning and Processing in R: Part 1",
+    "section": "Homework Review: Format Scatterplots",
+    "text": "Homework Review: Format Scatterplots\nFor those who turned in homework, you all did a great job with creating clean data frames and everyone made scatter plots. We were mixed on formatting scatter plots. The code below includes all the key elements of a beautified scatter plot.\n\nggplot(vt_ed_data, aes (x = mpv, y = local_rev_pp, size = enroll, color = stpovrate)) + \n  geom_point(alpha = .5) +\n  scale_color_viridis(labels = label_percent()) + # This line indicates that the color label is a percent \n  scale_x_continuous (labels = label_dollar()) + # This line labels the x-axis with dollar signs \n  scale_y_continuous (labels = label_dollar()) + # This line labels the y-axis with dollar signs \n  scale_size_area(labels = label_comma(), max_size = 10) + # This indicates that the size label should have a comma\n  labs(x = \"Median Property Value\", y = \"Local Per-Pupil Revenue\",\n       title = \"Vermont Local Per-Pupil Revenue by Property Value\",\n       caption = \"Source: Edbuild Data, 2019\",\n       size = \"Enrollment\",\n       color = \"Poverty Rate\") +\n  theme_bw()"
+  },
+  {
+    "objectID": "slides/class_4/class_4.html#homework-review-format-scatterplots-1",
+    "href": "slides/class_4/class_4.html#homework-review-format-scatterplots-1",
+    "title": "Data Cleaning and Processing in R: Part 1",
+    "section": "Homework Review: Format Scatterplots",
+    "text": "Homework Review: Format Scatterplots\nThe final scatter plot has formatted labels, legend, and title."
+  },
+  {
+    "objectID": "slides/class_4/class_4.html#homework-review-format-scatter-plots",
+    "href": "slides/class_4/class_4.html#homework-review-format-scatter-plots",
+    "title": "Data Cleaning and Processing in R: Part 1",
+    "section": "Homework Review: Format Scatter Plots",
+    "text": "Homework Review: Format Scatter Plots\nFor those who turned in homework, you all did a great job with creating clean data frames and everyone made scatter plots. We were mixed on formatting scatter plots. The code below includes all the key elements of a beautified scatter plot.\n\nggplot(vt_ed_data, aes (x = mpv, y = local_rev_pp, size = enroll, color = stpovrate)) + \n  geom_point(alpha = .5) +\n  scale_color_viridis(labels = label_percent()) + # This line indicates that the color label is a percent \n  scale_x_continuous (labels = label_dollar()) + # This line labels the x-axis with dollar signs \n  scale_y_continuous (labels = label_dollar()) + # This line labels the y-axis with dollar signs \n  scale_size_area(labels = label_comma(), max_size = 10) + # This indicates that the size label should have a comma\n  labs(x = \"Median Property Value\", y = \"Local Per-Pupil Revenue\",\n       title = \"Vermont Local Per-Pupil Revenue by Property Value\",\n       caption = \"Source: Edbuild Data, 2019\",\n       size = \"Enrollment\",\n       color = \"Poverty Rate\") +\n  theme_bw()"
+  },
+  {
+    "objectID": "slides/class_4/class_4.html#homework-review-format-scatter-plots-1",
+    "href": "slides/class_4/class_4.html#homework-review-format-scatter-plots-1",
+    "title": "Data Cleaning and Processing in R: Part 1",
+    "section": "Homework Review: Format Scatter Plots",
+    "text": "Homework Review: Format Scatter Plots\nThe final scatter plot has formatted labels, legend, and title."
   }
 ]

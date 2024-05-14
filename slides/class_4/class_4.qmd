@@ -94,6 +94,50 @@ The final scatter plot has formatted labels, legend, and title.
 
 ![](Rplot.png){fig-align="center"}
 
+## Homework Review: Packages and Pipe Operator {.smaller}
+
+R won't do something unless you tell it to do it. With that in mind, a few of general reminders: 
+
+- Load your packages at the top of your script
+- Use the pipe operator (|>) to chain the functions together
+- A function will not work by itself. You need to tell R which current data frame it will manipulate to create the new data frame
+
+```{r echo=TRUE, eval=FALSE}
+
+# load -----
+
+library(tidyverse)
+library(edbuildr)
+library(scales)
+library(viridis)
+
+# clean the data ------
+
+vt_ed_data <- vt_ed_data |>
+  rename(state = State,
+         district_id = state_id,
+         enroll = ENROLL,
+         sr = SR,
+         lr = LR,
+         srpp_cola = SRPP_cola,
+         lrpp_cola = LRPP_cola,
+         total_enroll = dEnroll_district,
+         sped_count = dIEP,
+         mpv = MPV,
+         mhi = MHI,
+         stpovrate = StPovRate) |>
+  mutate(state_rev_pp = sr/enroll,
+         local_rev_pp = lr/enroll,
+         local_rev_pp_diff = lrpp_cola - local_rev_pp,
+         state_rev_pp_diff = srpp_cola - state_rev_pp,
+         sped_pct = sped_count/enroll) |>
+  filter(enroll > 0) |>
+  select(state, district_id, enroll, state_rev_pp, local_rev_pp, srpp_cola, lrpp_cola,
+         local_rev_pp_diff, state_rev_pp_diff, sped_pct, mpv, mhi, stpovrate)
+
+
+`````
+
 # Principles of tidy data
 
 ## Cleaning your data: One of the most important and under-appreciated stages of good data analysis

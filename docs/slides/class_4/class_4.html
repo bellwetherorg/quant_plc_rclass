@@ -438,7 +438,48 @@
 <h2>Homework Review: Format Scatter Plots</h2>
 <p>The final scatter plot has formatted labels, legend, and title.</p>
 
-<img data-src="Rplot.png" class="quarto-figure quarto-figure-center r-stretch"></section></section>
+<img data-src="Rplot.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="homework-review-packages-and-pipe-operator" class="slide level2 smaller">
+<h2>Homework Review: Packages and Pipe Operator</h2>
+<p>R won’t do something unless you tell it to do it. With that in mind, a few of general reminders:</p>
+<ul>
+<li>Load your packages at the top of your script</li>
+<li>Use the pipe operator (|&gt;) to chain the functions together</li>
+<li>A function will not work by itself. You need to tell R which current data frame it will manipulate to create the new data frame</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="co"># load -----</span></span>
+<span id="cb2-2"><a></a></span>
+<span id="cb2-3"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-4"><a></a><span class="fu">library</span>(edbuildr)</span>
+<span id="cb2-5"><a></a><span class="fu">library</span>(scales)</span>
+<span id="cb2-6"><a></a><span class="fu">library</span>(viridis)</span>
+<span id="cb2-7"><a></a></span>
+<span id="cb2-8"><a></a><span class="co"># clean the data ------</span></span>
+<span id="cb2-9"><a></a></span>
+<span id="cb2-10"><a></a>vt_ed_data <span class="ot">&lt;-</span> vt_ed_data <span class="sc">|&gt;</span></span>
+<span id="cb2-11"><a></a>  <span class="fu">rename</span>(<span class="at">state =</span> State,</span>
+<span id="cb2-12"><a></a>         <span class="at">district_id =</span> state_id,</span>
+<span id="cb2-13"><a></a>         <span class="at">enroll =</span> ENROLL,</span>
+<span id="cb2-14"><a></a>         <span class="at">sr =</span> SR,</span>
+<span id="cb2-15"><a></a>         <span class="at">lr =</span> LR,</span>
+<span id="cb2-16"><a></a>         <span class="at">srpp_cola =</span> SRPP_cola,</span>
+<span id="cb2-17"><a></a>         <span class="at">lrpp_cola =</span> LRPP_cola,</span>
+<span id="cb2-18"><a></a>         <span class="at">total_enroll =</span> dEnroll_district,</span>
+<span id="cb2-19"><a></a>         <span class="at">sped_count =</span> dIEP,</span>
+<span id="cb2-20"><a></a>         <span class="at">mpv =</span> MPV,</span>
+<span id="cb2-21"><a></a>         <span class="at">mhi =</span> MHI,</span>
+<span id="cb2-22"><a></a>         <span class="at">stpovrate =</span> StPovRate) <span class="sc">|&gt;</span></span>
+<span id="cb2-23"><a></a>  <span class="fu">mutate</span>(<span class="at">state_rev_pp =</span> sr<span class="sc">/</span>enroll,</span>
+<span id="cb2-24"><a></a>         <span class="at">local_rev_pp =</span> lr<span class="sc">/</span>enroll,</span>
+<span id="cb2-25"><a></a>         <span class="at">local_rev_pp_diff =</span> lrpp_cola <span class="sc">-</span> local_rev_pp,</span>
+<span id="cb2-26"><a></a>         <span class="at">state_rev_pp_diff =</span> srpp_cola <span class="sc">-</span> state_rev_pp,</span>
+<span id="cb2-27"><a></a>         <span class="at">sped_pct =</span> sped_count<span class="sc">/</span>enroll) <span class="sc">|&gt;</span></span>
+<span id="cb2-28"><a></a>  <span class="fu">filter</span>(enroll <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-29"><a></a>  <span class="fu">select</span>(state, district_id, enroll, state_rev_pp, local_rev_pp, srpp_cola, lrpp_cola,</span>
+<span id="cb2-30"><a></a>         local_rev_pp_diff, state_rev_pp_diff, sped_pct, mpv, mhi, stpovrate)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section></section>
 <section>
 <section id="principles-of-tidy-data" class="title-slide slide level1 center">
 <h1>Principles of tidy data</h1>
@@ -486,18 +527,18 @@
 <li><code>values_to</code>: The name for the new values column</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="co"># clean the special education data -----</span></span>
-<span id="cb2-2"><a></a></span>
-<span id="cb2-3"><a></a>section_611_longer <span class="ot">&lt;-</span> section_611_raw <span class="sc">|&gt;</span></span>
-<span id="cb2-4"><a></a>  <span class="co"># Makes all the letters in a column lowercase</span></span>
-<span id="cb2-5"><a></a>  <span class="fu">rename_with</span>(tolower) <span class="sc">|&gt;</span></span>
-<span id="cb2-6"><a></a>  <span class="fu">select</span>(state, fy2016, fy2017, fy2018, fy2019, fy2020, fy2021, fy2022) <span class="sc">|&gt;</span></span>
-<span id="cb2-7"><a></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">"fy"</span>), <span class="co"># The columns start with "fy"</span></span>
-<span id="cb2-8"><a></a>               <span class="at">names_to =</span> <span class="st">"fiscal_year"</span>, <span class="co"># the names of the columns will become a value in the "fiscal_year" column</span></span>
-<span id="cb2-9"><a></a>               <span class="at">values_to =</span> <span class="st">"idea_funding"</span>) <span class="sc">|&gt;</span> <span class="co"># The values in the "fy" columns will be in the new column "idea_funding"</span></span>
-<span id="cb2-10"><a></a>  <span class="co"># Use the gsub to remove the "fy" from the fiscal years so that the values are just the year</span></span>
-<span id="cb2-11"><a></a>  <span class="fu">mutate</span>(<span class="at">fiscal_year =</span> <span class="fu">as.numeric</span>(<span class="fu">gsub</span>(<span class="st">"^fy"</span>, <span class="st">""</span>, fiscal_year))) <span class="sc">|&gt;</span></span>
-<span id="cb2-12"><a></a>  <span class="fu">mutate</span>(<span class="at">idea_category =</span> <span class="st">"Part B, Grants to States"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="co"># clean the special education data -----</span></span>
+<span id="cb3-2"><a></a></span>
+<span id="cb3-3"><a></a>section_611_longer <span class="ot">&lt;-</span> section_611_raw <span class="sc">|&gt;</span></span>
+<span id="cb3-4"><a></a>  <span class="co"># Makes all the letters in a column lowercase</span></span>
+<span id="cb3-5"><a></a>  <span class="fu">rename_with</span>(tolower) <span class="sc">|&gt;</span></span>
+<span id="cb3-6"><a></a>  <span class="fu">select</span>(state, fy2016, fy2017, fy2018, fy2019, fy2020, fy2021, fy2022) <span class="sc">|&gt;</span></span>
+<span id="cb3-7"><a></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">"fy"</span>), <span class="co"># The columns start with "fy"</span></span>
+<span id="cb3-8"><a></a>               <span class="at">names_to =</span> <span class="st">"fiscal_year"</span>, <span class="co"># the names of the columns will become a value in the "fiscal_year" column</span></span>
+<span id="cb3-9"><a></a>               <span class="at">values_to =</span> <span class="st">"idea_funding"</span>) <span class="sc">|&gt;</span> <span class="co"># The values in the "fy" columns will be in the new column "idea_funding"</span></span>
+<span id="cb3-10"><a></a>  <span class="co"># Use the gsub to remove the "fy" from the fiscal years so that the values are just the year</span></span>
+<span id="cb3-11"><a></a>  <span class="fu">mutate</span>(<span class="at">fiscal_year =</span> <span class="fu">as.numeric</span>(<span class="fu">gsub</span>(<span class="st">"^fy"</span>, <span class="st">""</span>, fiscal_year))) <span class="sc">|&gt;</span></span>
+<span id="cb3-12"><a></a>  <span class="fu">mutate</span>(<span class="at">idea_category =</span> <span class="st">"Part B, Grants to States"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="it-takes-a-bit-of-work-to-make-data-tidy-including-the-use-of-functions-to-reshape-your-data-cont." class="slide level2 smaller">
@@ -514,28 +555,28 @@
 <li><code>values_from</code>: The column with values will be used as cell values after pivoting.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="co"># Use pivot_wider with the 2023 graduation rate data </span></span>
-<span id="cb3-2"><a></a></span>
-<span id="cb3-3"><a></a>mn_graduation_fy23_wider <span class="ot">&lt;-</span> mn_graduation_fy23_raw <span class="sc">|&gt;</span></span>
-<span id="cb3-4"><a></a>  <span class="co"># Makes all the letters in a column lowercase</span></span>
-<span id="cb3-5"><a></a>  <span class="fu">rename_with</span>(tolower) <span class="sc">|&gt;</span></span>
-<span id="cb3-6"><a></a>  <span class="co"># rename the columns so there isn't a space in-between the words</span></span>
-<span id="cb3-7"><a></a>  <span class="fu">rename</span>(<span class="at">district =</span> <span class="st">"district name"</span>,</span>
-<span id="cb3-8"><a></a>         <span class="at">dist_id =</span> <span class="st">"district number"</span>,</span>
-<span id="cb3-9"><a></a>         <span class="at">dist_type =</span> <span class="st">"district type"</span>,</span>
-<span id="cb3-10"><a></a>         <span class="at">group_category =</span> <span class="st">"group category"</span>,</span>
-<span id="cb3-11"><a></a>         <span class="at">student_group =</span> <span class="st">"student group"</span>,</span>
-<span id="cb3-12"><a></a>         <span class="at">ending_status =</span> <span class="st">"ending status"</span>,</span>
-<span id="cb3-13"><a></a>         <span class="at">four_yr_grad_pct =</span> <span class="st">"four year percent"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb3-14"><a></a>  <span class="co"># Select the columns we want to include in our dataframe for the pivot_wider</span></span>
-<span id="cb3-15"><a></a>  <span class="fu">select</span>(district, dist_id, dist_type, group_category, student_group, ending_status, four_yr_grad_pct) <span class="sc">|&gt;</span></span>
-<span id="cb3-16"><a></a>  <span class="co"># filter so that we are only looking at students who graduated in four years</span></span>
-<span id="cb3-17"><a></a>  <span class="fu">filter</span>(ending_status <span class="sc">==</span> <span class="st">"Graduate"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb3-18"><a></a>  <span class="co"># filter the student demographics because we only want to look at race/ethnicity data</span></span>
-<span id="cb3-19"><a></a>  <span class="fu">filter</span>(group_category <span class="sc">==</span> <span class="st">"Race/Ethnicity"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb3-20"><a></a>  <span class="co"># Pivot_wider! </span></span>
-<span id="cb3-21"><a></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> <span class="st">"student_group"</span>, <span class="co"># The names of the columns are from the student group column values</span></span>
-<span id="cb3-22"><a></a>              <span class="at">values_from =</span> <span class="st">"four_yr_grad_pct"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="co"># Use pivot_wider with the 2023 graduation rate data </span></span>
+<span id="cb4-2"><a></a></span>
+<span id="cb4-3"><a></a>mn_graduation_fy23_wider <span class="ot">&lt;-</span> mn_graduation_fy23_raw <span class="sc">|&gt;</span></span>
+<span id="cb4-4"><a></a>  <span class="co"># Makes all the letters in a column lowercase</span></span>
+<span id="cb4-5"><a></a>  <span class="fu">rename_with</span>(tolower) <span class="sc">|&gt;</span></span>
+<span id="cb4-6"><a></a>  <span class="co"># rename the columns so there isn't a space in-between the words</span></span>
+<span id="cb4-7"><a></a>  <span class="fu">rename</span>(<span class="at">district =</span> <span class="st">"district name"</span>,</span>
+<span id="cb4-8"><a></a>         <span class="at">dist_id =</span> <span class="st">"district number"</span>,</span>
+<span id="cb4-9"><a></a>         <span class="at">dist_type =</span> <span class="st">"district type"</span>,</span>
+<span id="cb4-10"><a></a>         <span class="at">group_category =</span> <span class="st">"group category"</span>,</span>
+<span id="cb4-11"><a></a>         <span class="at">student_group =</span> <span class="st">"student group"</span>,</span>
+<span id="cb4-12"><a></a>         <span class="at">ending_status =</span> <span class="st">"ending status"</span>,</span>
+<span id="cb4-13"><a></a>         <span class="at">four_yr_grad_pct =</span> <span class="st">"four year percent"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb4-14"><a></a>  <span class="co"># Select the columns we want to include in our dataframe for the pivot_wider</span></span>
+<span id="cb4-15"><a></a>  <span class="fu">select</span>(district, dist_id, dist_type, group_category, student_group, ending_status, four_yr_grad_pct) <span class="sc">|&gt;</span></span>
+<span id="cb4-16"><a></a>  <span class="co"># filter so that we are only looking at students who graduated in four years</span></span>
+<span id="cb4-17"><a></a>  <span class="fu">filter</span>(ending_status <span class="sc">==</span> <span class="st">"Graduate"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb4-18"><a></a>  <span class="co"># filter the student demographics because we only want to look at race/ethnicity data</span></span>
+<span id="cb4-19"><a></a>  <span class="fu">filter</span>(group_category <span class="sc">==</span> <span class="st">"Race/Ethnicity"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb4-20"><a></a>  <span class="co"># Pivot_wider! </span></span>
+<span id="cb4-21"><a></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> <span class="st">"student_group"</span>, <span class="co"># The names of the columns are from the student group column values</span></span>
+<span id="cb4-22"><a></a>              <span class="at">values_from =</span> <span class="st">"four_yr_grad_pct"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section></section>
 <section>
@@ -591,18 +632,18 @@
 <li><code>str_replace_all()</code>: Replaces all occurrences of a pattern within a string with a specified replacement.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>mn_graduation_school_fy23_clean <span class="ot">&lt;-</span> mn_graduation_school_fy23_raw <span class="sc">|&gt;</span></span>
-<span id="cb4-2"><a></a>  </span>
-<span id="cb4-3"><a></a>  <span class="co"># using "tolower" to make all the values in the column lowercase</span></span>
-<span id="cb4-4"><a></a>  <span class="fu">mutate</span>(<span class="at">dst_nam =</span> <span class="fu">tolower</span>(dst_nam),</span>
-<span id="cb4-5"><a></a>         <span class="at">sch_nam =</span> <span class="fu">tolower</span>(sch_nam)) <span class="sc">|&gt;</span></span>
-<span id="cb4-6"><a></a>  </span>
-<span id="cb4-7"><a></a>  <span class="co"># using "str_to_title" makes the first letter of each word capitalized</span></span>
-<span id="cb4-8"><a></a>  <span class="fu">mutate</span>(<span class="at">dst_nam =</span> <span class="fu">str_to_title</span>(dst_nam),</span>
-<span id="cb4-9"><a></a>         <span class="at">sch_nam =</span> <span class="fu">str_to_title</span>(sch_nam)) <span class="sc">|&gt;</span></span>
-<span id="cb4-10"><a></a>  </span>
-<span id="cb4-11"><a></a>  <span class="co"># using "str_replace_all" turns "Dist" and "Dist."into "District"</span></span>
-<span id="cb4-12"><a></a>  <span class="fu">mutate</span>(<span class="at">dst_nam =</span> <span class="fu">str_replace_all</span>(dst_nam, <span class="fu">c</span>(<span class="st">"Dist</span><span class="sc">\\</span><span class="st">b"</span> <span class="ot">=</span> <span class="st">"District"</span>, <span class="st">"Dist</span><span class="sc">\\</span><span class="st">."</span> <span class="ot">=</span> <span class="st">"District"</span>, <span class="st">"District</span><span class="sc">\\</span><span class="st">."</span> <span class="ot">=</span> <span class="st">"District"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>mn_graduation_school_fy23_clean <span class="ot">&lt;-</span> mn_graduation_school_fy23_raw <span class="sc">|&gt;</span></span>
+<span id="cb5-2"><a></a>  </span>
+<span id="cb5-3"><a></a>  <span class="co"># using "tolower" to make all the values in the column lowercase</span></span>
+<span id="cb5-4"><a></a>  <span class="fu">mutate</span>(<span class="at">dst_nam =</span> <span class="fu">tolower</span>(dst_nam),</span>
+<span id="cb5-5"><a></a>         <span class="at">sch_nam =</span> <span class="fu">tolower</span>(sch_nam)) <span class="sc">|&gt;</span></span>
+<span id="cb5-6"><a></a>  </span>
+<span id="cb5-7"><a></a>  <span class="co"># using "str_to_title" makes the first letter of each word capitalized</span></span>
+<span id="cb5-8"><a></a>  <span class="fu">mutate</span>(<span class="at">dst_nam =</span> <span class="fu">str_to_title</span>(dst_nam),</span>
+<span id="cb5-9"><a></a>         <span class="at">sch_nam =</span> <span class="fu">str_to_title</span>(sch_nam)) <span class="sc">|&gt;</span></span>
+<span id="cb5-10"><a></a>  </span>
+<span id="cb5-11"><a></a>  <span class="co"># using "str_replace_all" turns "Dist" and "Dist."into "District"</span></span>
+<span id="cb5-12"><a></a>  <span class="fu">mutate</span>(<span class="at">dst_nam =</span> <span class="fu">str_replace_all</span>(dst_nam, <span class="fu">c</span>(<span class="st">"Dist</span><span class="sc">\\</span><span class="st">b"</span> <span class="ot">=</span> <span class="st">"District"</span>, <span class="st">"Dist</span><span class="sc">\\</span><span class="st">."</span> <span class="ot">=</span> <span class="st">"District"</span>, <span class="st">"District</span><span class="sc">\\</span><span class="st">."</span> <span class="ot">=</span> <span class="st">"District"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="your-data-will-rarely-come-in-a-single-table-so-you-will-need-to-use-join-functions-to-merge-the-data-frames" class="slide level2 smaller">
@@ -632,18 +673,18 @@
 <li><strong>Example 2:</strong> The common ID columns have different variable names. The il_test_data_fy23_clean dataframe’s variable is dist_id, while the example_2_il_finance_testing_fy23 dataframe’s variable name is rcdts. The column names can be different, but the values within the cells must be the same so we can join them.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="co"># Use left_join() function to join the the illinoi data -------</span></span>
-<span id="cb5-2"><a></a></span>
-<span id="cb5-3"><a></a><span class="co"># EXAMPLE 1: Join them with the same "dist_id" name </span></span>
-<span id="cb5-4"><a></a></span>
-<span id="cb5-5"><a></a>example_1_il_finance_testing_fy23 <span class="ot">&lt;-</span> il_test_data_fy23_clean <span class="sc">|&gt;</span></span>
-<span id="cb5-6"><a></a>  <span class="fu">left_join</span>(il_finance_fy23_same_id, <span class="at">by =</span> <span class="st">"dist_id"</span>)</span>
-<span id="cb5-7"><a></a></span>
-<span id="cb5-8"><a></a></span>
-<span id="cb5-9"><a></a><span class="co"># EXAMPLE 2: Join them with different column names, but they're the same values</span></span>
-<span id="cb5-10"><a></a><span class="co"># dist_id comes from because it's in the il_test_data_fy23_clean dataframe </span></span>
-<span id="cb5-11"><a></a>example_2_il_finance_testing_fy23 <span class="ot">&lt;-</span> il_test_data_fy23_clean <span class="sc">|&gt;</span></span>
-<span id="cb5-12"><a></a>  <span class="fu">left_join</span>(il_finance_fy23_diff_id, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"dist_id"</span> <span class="ot">=</span> <span class="st">"rcdts"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="co"># Use left_join() function to join the the illinoi data -------</span></span>
+<span id="cb6-2"><a></a></span>
+<span id="cb6-3"><a></a><span class="co"># EXAMPLE 1: Join them with the same "dist_id" name </span></span>
+<span id="cb6-4"><a></a></span>
+<span id="cb6-5"><a></a>example_1_il_finance_testing_fy23 <span class="ot">&lt;-</span> il_test_data_fy23_clean <span class="sc">|&gt;</span></span>
+<span id="cb6-6"><a></a>  <span class="fu">left_join</span>(il_finance_fy23_same_id, <span class="at">by =</span> <span class="st">"dist_id"</span>)</span>
+<span id="cb6-7"><a></a></span>
+<span id="cb6-8"><a></a></span>
+<span id="cb6-9"><a></a><span class="co"># EXAMPLE 2: Join them with different column names, but they're the same values</span></span>
+<span id="cb6-10"><a></a><span class="co"># dist_id comes from because it's in the il_test_data_fy23_clean dataframe </span></span>
+<span id="cb6-11"><a></a>example_2_il_finance_testing_fy23 <span class="ot">&lt;-</span> il_test_data_fy23_clean <span class="sc">|&gt;</span></span>
+<span id="cb6-12"><a></a>  <span class="fu">left_join</span>(il_finance_fy23_diff_id, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"dist_id"</span> <span class="ot">=</span> <span class="st">"rcdts"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section></section>
 <section>

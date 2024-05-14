@@ -15,7 +15,7 @@ format: html
 - **[`readr`](https://readr.tidyverse.org/)**: The goal of readr is to provide a fast and friendly way to read rectangular data from delimited files, such as comma-separated values (CSV) and tab-separated values (TSV). It is designed to parse many types of data found in the wild, while providing an informative problem report when parsing leads to unexpected results.
 - **[`viridis`](https://sjmgarnier.github.io/viridis/articles/intro-to-viridis.html)**: Provides a series of color maps that are designed to improve graph readability for readers with common forms of color blindness and/or color vision deficiency. 
 - **[`scales`](https://scales.r-lib.org/)**: Provides the internal scaling infrastructure used by ggplot2, and gives you tools to override the default breaks, labels, transformations and palettes.
-- **[`tidyr`](https://scales.r-lib.org/)**: Provides the internal scaling infrastructure used by ggplot2, and gives you tools to override the default breaks, labels, transformations and palettes.
+- **[`tidyr`](https://tidyr.tidyverse.org/)**: Designed to help you tidy up your messy data into a structured, organized format that is conducive to analysis and visualization. It offers a suite of functions for reshaping and transforming your data, making it easier to work with in downstream analyses. 
 
 ## Free PDF Versions of Books on R
 

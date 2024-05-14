@@ -38,7 +38,7 @@ library(viridis)
 
 ## May 13, 2024: Class 4 Materials
 
--   **Class Recording:** Link to class 4 recording will be uploaded after class.
+-   **Class Recording:** [Link to class 4 recording](https://vimeo.com/946282723?share=copy)
 -   **Class Slides:** [Link to slides for class 4](https://bellwetherorg.github.io/quant_plc_rclass/slides/class_4/class_4.html)
 -   **R Script:** See the `wk-4-class-examples` repository for the class scripts.
 -   **Homework:** There are three homework scripts in the `/scripts` folder. **Homework is due by COB on Wednesday, June 5**. Please commit and then push your homework updates using Git to update the repository. Complete the scripts in the following order:

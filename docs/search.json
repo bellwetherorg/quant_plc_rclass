@@ -2359,5 +2359,12 @@
     "title": "Data Cleaning and Processing in R: Part 1",
     "section": "Homework Review: Packages and Pipe Operator",
     "text": "Homework Review: Packages and Pipe Operator\nR won’t do something unless you tell it to do it. With that in mind, a few of general reminders:\n\nLoad your packages at the top of your script\nUse the pipe operator (|&gt;) to chain the functions together\nA function will not work by itself. You need to tell R which current data frame it will manipulate to create the new data frame\n\n\n# load -----\n\nlibrary(tidyverse)\nlibrary(edbuildr)\nlibrary(scales)\nlibrary(viridis)\n\n# clean the data ------\n\nvt_ed_data &lt;- vt_ed_data |&gt;\n  rename(state = State,\n         district_id = state_id,\n         enroll = ENROLL,\n         sr = SR,\n         lr = LR,\n         srpp_cola = SRPP_cola,\n         lrpp_cola = LRPP_cola,\n         total_enroll = dEnroll_district,\n         sped_count = dIEP,\n         mpv = MPV,\n         mhi = MHI,\n         stpovrate = StPovRate) |&gt;\n  mutate(state_rev_pp = sr/enroll,\n         local_rev_pp = lr/enroll,\n         local_rev_pp_diff = lrpp_cola - local_rev_pp,\n         state_rev_pp_diff = srpp_cola - state_rev_pp,\n         sped_pct = sped_count/enroll) |&gt;\n  filter(enroll &gt; 0) |&gt;\n  select(state, district_id, enroll, state_rev_pp, local_rev_pp, srpp_cola, lrpp_cola,\n         local_rev_pp_diff, state_rev_pp_diff, sped_pct, mpv, mhi, stpovrate)"
+  },
+  {
+    "objectID": "slides/class_4/class_4.html#building-tidy-data-sets-will-bring-consistency-to-your-data-across-scriptsprojects-.smaller",
+    "href": "slides/class_4/class_4.html#building-tidy-data-sets-will-bring-consistency-to-your-data-across-scriptsprojects-.smaller",
+    "title": "Data Cleaning and Processing in R: Part 1",
+    "section": "Building tidy data sets will bring consistency to your data across scripts/projects {.smaller)}",
+    "text": "Building tidy data sets will bring consistency to your data across scripts/projects {.smaller)}\nTidy data sets also make it easier to work with functions in the tidyverse, which is built to work will with “tidy” data. The package we will focus on today is the tidyr package, which is designed to help you tidy up your messy data into a structured, organized format that is conducive to analysis and visualization. It offers a suite of functions for reshaping and transforming your data, making it easier to work with in downstream analyses."
   }
 ]

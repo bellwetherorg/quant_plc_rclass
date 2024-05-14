@@ -162,9 +162,9 @@ Tidy data follows three rules:
 
 ![Source: R for Data Science](https://d33wubrfki0l68.cloudfront.net/6f1ddb544fc5c69a2478e444ab8112fb0eea23f8/08547/images/r4ds/tidy-1.png){fig-align="center" width="3520"}
 
-## Building tidy datasets will bring consistency to your data across scripts/projects
+## Building tidy data sets will bring consistency to your data across scripts/projects {.smaller)}
 
-Tidy datasets also make it easier to work with functions in the `tidyverse`, which is built to work will with "tidy" data
+Tidy data sets also make it easier to work with functions in the `tidyverse`, which is built to work will with "tidy" data. The package we will focus on today is the `tidyr` package, which is designed to help you tidy up your messy data into a structured, organized format that is conducive to analysis and visualization. It offers a suite of functions for reshaping and transforming your data, making it easier to work with in downstream analyses.
 
 ![](https://bookdown.org/michela_cameletti/rcodingfordatascience/images/4_tidyverse-packages.png){fig-align="center"}
 

@@ -7,7 +7,7 @@ format: html
 - **[Stack Overflow](https://stackoverflow.com/questions)**: A public platform where developers can find and contribute answers to technical challenges, including R. 
 - **[Posit Community](https://forum.posit.co/)**: A community for all things Posit. This is the place for any questions about package development, particularly (but not exclusively) for any questions about devtools, roxygen2, testthat, and friends.
 
-## R Packages 
+## R Packages Used in Class
 
 - **[`tidyverse`](https://www.tidyverse.org/packages/)**: The core tidyverse includes the packages that you’re likely to use in everyday data analyses.
 - **[`ggplot2`](https://ggplot2.tidyverse.org/)**: ggplot2 is a system for declaratively creating graphics, based on The Grammar of Graphics. You provide the data, tell ggplot2 how to map variables to aesthetics, what graphical primitives to use, and it takes care of the details.
@@ -16,6 +16,7 @@ format: html
 - **[`viridis`](https://sjmgarnier.github.io/viridis/articles/intro-to-viridis.html)**: Provides a series of color maps that are designed to improve graph readability for readers with common forms of color blindness and/or color vision deficiency. 
 - **[`scales`](https://scales.r-lib.org/)**: Provides the internal scaling infrastructure used by ggplot2, and gives you tools to override the default breaks, labels, transformations and palettes.
 - **[`tidyr`](https://tidyr.tidyverse.org/)**: Designed to help you tidy up your messy data into a structured, organized format that is conducive to analysis and visualization. It offers a suite of functions for reshaping and transforming your data, making it easier to work with in downstream analyses. 
+- **[`stringr`](https://stringr.tidyverse.org/articles/stringr.html)**: Designed to make working with strings (text data) more intuitive and efficient. It provides a consistent set of functions for common string operations, making it easier to manipulate and analyze textual data.
 
 ## Free PDF Versions of Books on R
 

@@ -2373,5 +2373,15 @@
     "title": "Data Cleaning and Processing in R: Part 1",
     "section": "Building tidy data sets will bring consistency to your data across scripts/projects",
     "text": "Building tidy data sets will bring consistency to your data across scripts/projects\nTidy data sets also make it easier to work with functions in the tidyverse, which is built to work will with “tidy” data. The package we will focus on today is the tidyr package, which is designed to help you tidy up your messy data into a structured, organized format that is conducive to analysis and visualization. It offers a suite of functions for reshaping and transforming your data, making it easier to work with in downstream analyses."
+  },
+  {
+    "objectID": "resources.html#r-packages-used-in-class",
+    "href": "resources.html#r-packages-used-in-class",
+    "title": "R Resources",
+    "section": "R Packages Used in Class",
+    "text": "R Packages Used in Class\n\ntidyverse: The core tidyverse includes the packages that you’re likely to use in everyday data analyses.\nggplot2: ggplot2 is a system for declaratively creating graphics, based on The Grammar of Graphics. You provide the data, tell ggplot2 how to map variables to aesthetics, what graphical primitives to use, and it takes care of the details.\ndplyr: dplyr is a grammar of data manipulation, providing a consistent set of verbs that help you solve the most common data manipulation challenges.\nreadr: The goal of readr is to provide a fast and friendly way to read rectangular data from delimited files, such as comma-separated values (CSV) and tab-separated values (TSV). It is designed to parse many types of data found in the wild, while providing an informative problem report when parsing leads to unexpected results.\nviridis: Provides a series of color maps that are designed to improve graph readability for readers with common forms of color blindness and/or color vision deficiency.\nscales: Provides the internal scaling infrastructure used by ggplot2, and gives you tools to override the default breaks, labels, transformations and palettes.\ntidyr: Designed to help you tidy up your messy data into a structured, organized format that is conducive to analysis and visualization. It offers a suite of functions for reshaping and transforming your data, making it easier to work with in downstream analyses.\nstringr: Designed to make working with strings (text data) more intuitive and efficient. It provides a consistent set of functions for common string operations, making it easier to manipulate and analyze textual data.",
+    "crumbs": [
+      "R Resources"
+    ]
   }
 ]

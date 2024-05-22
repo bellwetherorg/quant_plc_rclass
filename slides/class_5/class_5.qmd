@@ -61,12 +61,12 @@ bw_secondary <- c("#FFC762", # 1 yellow
 
 -   Homework review
 -   Creating unique identifiers to join data frames
--   Summarizing data 
+-   Summarizing data
 -   Homework and next class
 
 # Homework Review
 
-# Creating Unique Identifiers 
+# Creating Unique Identifiers
 
 ## Your data will rarely come in a single table, so you will need to use join functions to merge the data frames {.smaller}
 
@@ -80,11 +80,31 @@ Joining data sets on a name (e.g. school or district) can create problems based 
 -   Abbreviation (St. Paul v. Saint Paul)
 -   Mis-spelling (it happens!)
 
-## We can use 
+## The identifiers are not always in the same format. We can use
 
-# Summarizing Data 
+# Summarizing Data
 
+## We can use the `group_by()` function to summarize data {.smaller}
 
+::: columns
+::: {.column width="45%"}
+
+The `group_by()` function is part of the `dplyr` package. The primary purpose of `group_by()` is to group a data frame by one or more variables, which allows you to perform operations on subsets of the data independently.
+
+-   Used to define groups of rows based on the values of one or more columns
+-   It is usually followed by summarizing functions like `summarize()`, `mutate()`, or other dplyr functions to perform calculations within each group.
+-   It simplifies data analysis tasks by allowing you to focus on grouped subsets of the data.
+
+:::
+
+::: {.column width="45%"}
+
+![](https://swcarpentry.github.io/r-novice-gapminder/fig/13-dplyr-fig3.png)
+
+:::
+:::
+
+## Live Coding Example: Minnesota FRPL Data 
 
 
 

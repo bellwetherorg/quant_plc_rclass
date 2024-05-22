@@ -45,3 +45,11 @@ library(viridis)
     -   `hw_04_pivot_wider.R`: I have created a "fill in the blank" R code structure. Fill in the blanks and make sure the data frame is manipulated to be wider.
     -   `hw_04_pivot_longer.R`: I have created a "fill in the blank" R code structure. Fill in the blanks and make sure the data frame is manipulated to be longer.
     -   `hw_04_join_data.R`: Clean the two data frames, identify the unique id, and then join them.
+    
+## June 11, 2024: Class 5 Materials 
+
+-   **Class Recording:** Link to class 5 recording will be added after class. 
+-   **Class Slides:** [Link to slides for class 4](https://bellwetherorg.github.io/quant_plc_rclass/slides/class_5/class_5.html)
+-   **R Script:** See the `wk-5-class-examples` repository for the class scripts.
+-   **Homework:** Class 5 homework will be posted after lass. 
+    

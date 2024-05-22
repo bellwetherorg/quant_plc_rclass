@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2024-06-11">
 
-<title>Quantitative Peer Learning Community R Training - Class Materials</title>
+<title>Quantitative Peer Learning Community R Training - Data Cleaning and Processing in R: Part 2</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -57,21 +58,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -101,6 +102,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
+<link rel="stylesheet" href=".smaller h1 {
+  font-size: 0.5em; /* Adjust the font size as needed */
+}">
 </head>
 
 <body class="nav-sidebar docked">
@@ -112,7 +116,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./class_materials.html">Class Materials</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Data Cleaning and Processing in R: Part 2</li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -126,8 +130,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
-      <a href="./index.html" class="sidebar-logo-link">
-      <img src="./images/primary_one-color_reverse.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <a href="../../index.html" class="sidebar-logo-link">
+      <img src="../../images/primary_one-color_reverse.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -139,31 +143,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Home</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./setup.html" class="sidebar-item-text sidebar-link">
+  <a href="../../setup.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Setup</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./schedule.html" class="sidebar-item-text sidebar-link">
+  <a href="../../schedule.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Schedule</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./class_materials.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../class_materials.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Class Materials</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./resources.html" class="sidebar-item-text sidebar-link">
+  <a href="../../resources.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">R Resources</span></a>
   </div>
 </li>
@@ -177,20 +181,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#march-19-2024-class-1-materials" id="toc-march-19-2024-class-1-materials" class="nav-link active" data-scroll-target="#march-19-2024-class-1-materials">March 19, 2024: Class 1 Materials</a></li>
-  <li><a href="#april-9-2024-class-2-materials" id="toc-april-9-2024-class-2-materials" class="nav-link" data-scroll-target="#april-9-2024-class-2-materials">April 9, 2024: Class 2 Materials</a></li>
-  <li><a href="#april-23-2024-class-3-materials" id="toc-april-23-2024-class-3-materials" class="nav-link" data-scroll-target="#april-23-2024-class-3-materials">April 23, 2024: Class 3 Materials</a></li>
-  <li><a href="#may-13-2024-class-4-materials" id="toc-may-13-2024-class-4-materials" class="nav-link" data-scroll-target="#may-13-2024-class-4-materials">May 13, 2024: Class 4 Materials</a></li>
-  <li><a href="#june-11-2024-class-5-materials" id="toc-june-11-2024-class-5-materials" class="nav-link" data-scroll-target="#june-11-2024-class-5-materials">June 11, 2024: Class 5 Materials</a></li>
+  <li><a href="#agenda" id="toc-agenda" class="nav-link active" data-scroll-target="#agenda">Agenda</a></li>
+  <li><a href="#homework-review" id="toc-homework-review" class="nav-link" data-scroll-target="#homework-review">Homework Review</a></li>
+  <li><a href="#creating-unique-identifiers" id="toc-creating-unique-identifiers" class="nav-link" data-scroll-target="#creating-unique-identifiers">Creating Unique Identifiers</a>
+  <ul class="collapse">
+  <li><a href="#your-data-will-rarely-come-in-a-single-table-so-you-will-need-to-use-join-functions-to-merge-the-data-frames" id="toc-your-data-will-rarely-come-in-a-single-table-so-you-will-need-to-use-join-functions-to-merge-the-data-frames" class="nav-link" data-scroll-target="#your-data-will-rarely-come-in-a-single-table-so-you-will-need-to-use-join-functions-to-merge-the-data-frames">Your data will rarely come in a single table, so you will need to use join functions to merge the data frames</a></li>
+  <li><a href="#the-identifiers-are-not-always-in-the-same-format.-we-can-use" id="toc-the-identifiers-are-not-always-in-the-same-format.-we-can-use" class="nav-link" data-scroll-target="#the-identifiers-are-not-always-in-the-same-format.-we-can-use">The identifiers are not always in the same format. We can use</a></li>
+  </ul></li>
+  <li><a href="#summarizing-data" id="toc-summarizing-data" class="nav-link" data-scroll-target="#summarizing-data">Summarizing Data</a>
+  <ul class="collapse">
+  <li><a href="#we-can-use-the-group_by-function-to-summarize-data" id="toc-we-can-use-the-group_by-function-to-summarize-data" class="nav-link" data-scroll-target="#we-can-use-the-group_by-function-to-summarize-data">We can use the <code>group_by()</code> function to summarize data</a></li>
+  <li><a href="#live-coding-example-minnesota-frpl-data" id="toc-live-coding-example-minnesota-frpl-data" class="nav-link" data-scroll-target="#live-coding-example-minnesota-frpl-data">Live Coding Example: Minnesota FRPL Data</a></li>
+  </ul></li>
   </ul>
-</nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="class_5.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Class Materials</h1>
+<h1 class="title">Data Cleaning and Processing in R: Part 2</h1>
 </div>
 
 
@@ -198,6 +209,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="quarto-title-meta">
 
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 11, 2024</p>
+    </div>
+  </div>
   
     
   </div>
@@ -207,64 +224,86 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Have questions? <a href="https://calendar.app.google/aYywwCLgS8XwKK7H9">Sign up for Krista’s office hours</a>!</p>
-<section id="march-19-2024-class-1-materials" class="level2">
-<h2 class="anchored" data-anchor-id="march-19-2024-class-1-materials">March 19, 2024: Class 1 Materials</h2>
-<ul>
-<li><strong>Class Recording:</strong> <a href="https://vimeo.com/925123310">Link to class 1 recording</a>. Refer to follow-up email for the password to view the recording.</li>
-<li><strong>Class Slides:</strong> <a href="https://bellwetherorg.github.io/quant_plc_rclass/slides/class_1/class_1.html">Link to slides for class 1</a></li>
-<li><strong>Homework:</strong> Set up your RStudio interface to your taste (“RStudio Setup and Workflow Tips” slides) and complete the pre-class set up.</li>
-</ul>
-</section>
-<section id="april-9-2024-class-2-materials" class="level2">
-<h2 class="anchored" data-anchor-id="april-9-2024-class-2-materials">April 9, 2024: Class 2 Materials</h2>
-<ul>
-<li><strong>Class Recording:</strong> <a href="https://vimeo.com/932587660?share=copy">Link to class 2 recording</a>. Refer to follow-up email for the password to view the recording.</li>
-<li><strong>Class Slides:</strong> <a href="https://bellwetherorg.github.io/quant_plc_rclass/slides/class_2/class_2.html">Link to slides for class 2</a></li>
-<li><strong>R Script:</strong> <a href="https://gist.github.com/kkaput23/bbe57b6121901b98644639d8f1528e3d">Link to R script for class 2</a></li>
-<li><strong>Homework:</strong> None. To practice what we learned, please complete the in-class partner work. <strong>If you want Krista to review the script, please save it to your desktop and send it to her by COB on April 18</strong></li>
-</ul>
-</section>
-<section id="april-23-2024-class-3-materials" class="level2">
-<h2 class="anchored" data-anchor-id="april-23-2024-class-3-materials">April 23, 2024: Class 3 Materials</h2>
-<ul>
-<li><strong>Class Recording:</strong> <a href="https://vimeo.com/938285934?share=copy">Link to class 3 recording</a>. Refer to follow-up email for the password to view the recording.</li>
-<li><strong>Class Slides:</strong> <a href="https://bellwetherorg.github.io/quant_plc_rclass/slides/class_3/class_3.html">Link to slides for class 3</a></li>
-<li><strong>R Script:</strong> <a href="https://gist.github.com/kkaput23/9ada2aa32f017eba94ccaa02c0207717">Link to R script for class 3</a></li>
-<li><strong>Homework:</strong> Use the <code>hw_03_template.R</code> file in the <code>/scripts</code> folder to clean and analyze <code>edbuildr</code> data for Vermont and create four scatter plots. Homework is due by <strong>COB on Friday, May 10.</strong> This ensures Krista can review your assignments and provide feedback by the May 14th R Class. Please commit and then push your homework updates using Git to update the repository.</li>
-</ul>
-<p>In the <code>hw_03_template.R</code> file, please make sure you have the following packages loaded at the top of the script.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(edbuildr)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(viridis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(countdown)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tigris)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(edbuildr)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(viridis)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>bw_primary <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"#6D1E4A"</span>, <span class="co"># 1 plum</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>                <span class="st">"#007786"</span>, <span class="co"># 2 teal</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>                <span class="st">"#0D525A"</span>, <span class="co"># 3 dark green</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>                <span class="st">"#212B46"</span>, <span class="co"># 4 navy</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>                <span class="st">"#5A6675"</span>, <span class="co"># 5 grey</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>                <span class="st">"#F0DEC1"</span>) <span class="co"># 6 cream</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>bw_secondary <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"#FFC762"</span>, <span class="co"># 1 yellow</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"#FFB653"</span>, <span class="co"># 2 orange</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"#BEC6CE"</span>, <span class="co"># 3 light grey</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"#2E1A4A"</span>, <span class="co"># 4 deep purple</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"#7EA2D1"</span>, <span class="co"># 5 soft blue</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"#CAD3FB"</span>, <span class="co"># 6 lavender</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"#9CD4EA"</span>, <span class="co"># 7 sky</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"#FFA497"</span>) <span class="co"># 8 peach</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="agenda" class="level2">
+<h2 class="anchored" data-anchor-id="agenda">Agenda</h2>
+<ul>
+<li>Homework review</li>
+<li>Creating unique identifiers to join data frames</li>
+<li>Summarizing data</li>
+<li>Homework and next class</li>
+</ul>
+</section>
+<section id="homework-review" class="level1">
+<h1>Homework Review</h1>
+</section>
+<section id="creating-unique-identifiers" class="level1">
+<h1>Creating Unique Identifiers</h1>
+<section id="your-data-will-rarely-come-in-a-single-table-so-you-will-need-to-use-join-functions-to-merge-the-data-frames" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="your-data-will-rarely-come-in-a-single-table-so-you-will-need-to-use-join-functions-to-merge-the-data-frames">Your data will rarely come in a single table, so you will need to use join functions to merge the data frames</h2>
+<p>To join two data frames, they need to share a common column with a unique identifier.</p>
+<p>State departments of education typically assign a unique ID number to each school district. <strong>Make sure this is available in your data sets.</strong></p>
+<p>Joining data sets on a name (e.g.&nbsp;school or district) can create problems based on:</p>
+<ul>
+<li>Capitalization (Mcgregor v. McGregor)</li>
+<li>Abbreviation (St.&nbsp;Paul v. Saint Paul)</li>
+<li>Mis-spelling (it happens!)</li>
+</ul>
+</section>
+<section id="the-identifiers-are-not-always-in-the-same-format.-we-can-use" class="level2">
+<h2 class="anchored" data-anchor-id="the-identifiers-are-not-always-in-the-same-format.-we-can-use">The identifiers are not always in the same format. We can use</h2>
+</section>
+</section>
+<section id="summarizing-data" class="level1">
+<h1>Summarizing Data</h1>
+<section id="we-can-use-the-group_by-function-to-summarize-data" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="we-can-use-the-group_by-function-to-summarize-data">We can use the <code>group_by()</code> function to summarize data</h2>
+<div class="columns">
+<div class="column" style="width:45%;">
+<p>The <code>group_by()</code> function is part of the <code>dplyr</code> package. The primary purpose of <code>group_by()</code> is to group a data frame by one or more variables, which allows you to perform operations on subsets of the data independently.</p>
+<ul>
+<li>Used to define groups of rows based on the values of one or more columns</li>
+<li>It is usually followed by summarizing functions like <code>summarize()</code>, <code>mutate()</code>, or other dplyr functions to perform calculations within each group.</li>
+<li>It simplifies data analysis tasks by allowing you to focus on grouped subsets of the data.</li>
+</ul>
+</div><div class="column" style="width:45%;">
+<p><img src="https://swcarpentry.github.io/r-novice-gapminder/fig/13-dplyr-fig3.png" class="img-fluid"></p>
+</div>
 </div>
 </section>
-<section id="may-13-2024-class-4-materials" class="level2">
-<h2 class="anchored" data-anchor-id="may-13-2024-class-4-materials">May 13, 2024: Class 4 Materials</h2>
-<ul>
-<li><strong>Class Recording:</strong> <a href="https://vimeo.com/946282723?share=copy">Link to class 4 recording</a></li>
-<li><strong>Class Slides:</strong> <a href="https://bellwetherorg.github.io/quant_plc_rclass/slides/class_4/class_4.html">Link to slides for class 4</a></li>
-<li><strong>R Script:</strong> See the <code>wk-4-class-examples</code> repository for the class scripts.</li>
-<li><strong>Homework:</strong> There are three homework scripts in the <code>/scripts</code> folder. <strong>Homework is due by COB on Wednesday, June 5</strong>. Please commit and then push your homework updates using Git to update the repository. Complete the scripts in the following order:
-<ul>
-<li><code>hw_04_pivot_wider.R</code>: I have created a “fill in the blank” R code structure. Fill in the blanks and make sure the data frame is manipulated to be wider.</li>
-<li><code>hw_04_pivot_longer.R</code>: I have created a “fill in the blank” R code structure. Fill in the blanks and make sure the data frame is manipulated to be longer.</li>
-<li><code>hw_04_join_data.R</code>: Clean the two data frames, identify the unique id, and then join them.</li>
-</ul></li>
-</ul>
+<section id="live-coding-example-minnesota-frpl-data" class="level2">
+<h2 class="anchored" data-anchor-id="live-coding-example-minnesota-frpl-data">Live Coding Example: Minnesota FRPL Data</h2>
+
+
 </section>
-<section id="june-11-2024-class-5-materials" class="level2">
-<h2 class="anchored" data-anchor-id="june-11-2024-class-5-materials">June 11, 2024: Class 5 Materials</h2>
-<ul>
-<li><strong>Class Recording:</strong> Link to class 5 recording will be added after class.</li>
-<li><strong>Class Slides:</strong> <a href="https://bellwetherorg.github.io/quant_plc_rclass/slides/class_5/class_5.html">Link to slides for class 4</a></li>
-<li><strong>R Script:</strong> See the <code>wk-5-class-examples</code> repository for the class scripts.</li>
-<li><strong>Homework:</strong> Class 5 homework will be posted after lass.</li>
-</ul>
-
-
 </section>
 
 </main> <!-- /main -->

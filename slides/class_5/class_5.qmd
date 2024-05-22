@@ -88,7 +88,69 @@ in R, `paste()` and `paste0()` are both functions that are used to concatenate s
 - The `paste0()` function is a convenience function that concatenates strings without any separator. It is equivalent to using `paste(..., sep = "")`.
 
 ## Live coding example: Minnesota MCA and FRPL data 
+```{r echo=TRUE, eval=FALSE}
 
+# Create the unique identifier -----
+
+# Create a unique identifer with paste0
+mn_mca_frpl_district_fy22_clean <- mn_mca_frpl_district_fy22 |>
+  # This tells us that we want the number to have 4 values 
+  mutate(dist_number = str_pad(dist_number, width = 4, pad = "0"),
+         dist_id = paste0(dist_type, dist_number))
+
+# Another way to do this is with paste
+
+mn_mca_frpl_district_fy22_other <- mn_mca_frpl_district_fy22 |>
+  # This tells us that we want the number to have 4 values 
+  mutate(dist_number = str_pad(dist_number, width = 4, pad = "0"),
+         dist_id = paste(dist_type, dist_number, sep = ""))
+
+# Join the MCA and FRPL data -----
+
+# mn_mca_frpl_data <- mn_mca_frpl_district_fy22_clean |>
+#   left_join(mn_frpl_district_clean, by = "dist_id") 
+# Once we have shown this example, we will comment this out otherwise we will get 
+# en error 
+
+# We have an error because they are incompatible types. The "dist_id" in the 
+# "mn_frpl_district_clean" data frame is a number and the "dist_id" variable in the 
+# "mn_mca_frpl_district_fy22_clean" is a "character. We can convert either of them, 
+# but for this example we will convert the id to a number
+
+mn_mca_frpl_join <- mn_mca_frpl_district_fy22_clean|>
+  mutate(dist_id = as.numeric(dist_id, na.rm = T)) |>
+  left_join(mn_frpl_district_clean, by = "dist_id") 
+
+# We notice that there are two districts. To rectify this we will remove the 
+# extra district from one of the data frames. I will choose to remove the district 
+# column in mn_frpl_district_clean because it's uppercase 
+
+mn_frpl_district_clean <- mn_frpl_district_clean |>
+  # We can use the subtract the sign in front of a column so that it won't be included in the data frame 
+  select(-district)
+
+# When we join the data frames there will only be one district column 
+mn_mca_frpl_join_no_extra_district <- mn_mca_frpl_district_fy22_clean|>
+  mutate(dist_id = as.numeric(dist_id, na.rm = T)) |> # This mean that anything with an NA is read as 0 
+  left_join(mn_frpl_district_clean, by = "dist_id") |>
+  # This removes the two columns we no longer want
+  select(-dist_type, -dist_number) 
+
+# Clean up the joined data frame ----
+
+# We notice that there are no charter schools in the FRPL data, so we will drop that 
+mn_mca_frpl_district <- mn_mca_frpl_join_no_extra_district |>
+  filter(total_enroll > 0) |>
+  # we also notice that the counts fo the MCA tests are characters, and not numbers
+  # so we will convert them into numbers 
+  mutate(does_not_meet_count = as.numeric(does_not_meet_count, na.rm = T),
+         partially_meets_count = as.numeric(partially_meets_count, na.rm = T),
+         meets_count = as.numeric(meets_count, na.rm = T),
+         exceeds_count = as.numeric(exceeds_count, na.rm = T)) |>
+  select(dist_id, district, total_enroll, everything())
+
+
+```
 
 # Summarizing Data
 
@@ -125,6 +187,40 @@ After the `group_by()` function is used, then there are several different functi
 - The `n_distinct()` function counts the number of distinct values in each group. 
 
 ## Live Coding Example: Minnesota FRPL Data 
+
+```{r echo=TRUE, eval=FALSE}
+
+# Summarize the school data to create a district summary -----
+
+mca_frpl_district_summary <- mca_frpl_school_fy22_clean |>
+  # We are going to group the data by the dist_id, which is the unique 
+  # district identifier we created 
+  group_by(dist_id) |>
+  # The "first" indicates to keep the first value. So this will keep the 
+  # identification for district and dist_id
+  summarise(dist_id = first(dist_id), 
+            district = first(district),
+            # The "sum" totals the values of the columns we are specifying
+            total_tested = sum(total_tested, na.rm = T),
+            does_not_meet_count = sum(does_not_meet_count, na.rm =T),
+            partially_meets_count = sum(partially_meets_count, na.rm = T),
+            meets_count = sum(meets_count, na.rm = T),
+            exceeds_count = sum(exceeds_count, na.rm = T))
+
+# We can also make a state summary -----
+
+mca_frpl_state_summary <- mca_frpl_district_summary |>
+  # We do not need to use group_by() because we are only going to have one value
+  summarise(total_tested = sum(total_tested, na.rm = T),
+            does_not_meet_count = sum(does_not_meet_count, na.rm =T),
+            partially_meets_count = sum(partially_meets_count, na.rm = T),
+            meets_count = sum(meets_count, na.rm = T),
+            exceeds_count = sum(exceeds_count, na.rm = T)) |>
+  mutate(state = "Minnesota") |>
+  select(state, everything())
+
+
+```
 
 
 

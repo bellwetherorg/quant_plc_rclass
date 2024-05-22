@@ -21,7 +21,7 @@ mn_frpl_district_raw <- read_csv("slides/class_5/SchoolDistrictsFreeReducedPrice
 
 # clean the MCA data ------
 
-mn_mca_frpl_district_fy22_clean <- mn_mca_frpl_district_fy22_raw |>
+mn_mca_frpl_district_fy22 <- mn_mca_frpl_district_fy22_raw |>
   rename_with(tolower) |> # This makes all of the column names lower cased
   filter(grade == 0) |>
   rename(dist_number = "district number",
@@ -49,7 +49,20 @@ mn_frpl_district_clean <- mn_frpl_district_raw |>
   select(dist_id, district, total_enroll, free_lunch_count, reduced_lunch_count,
          frpl_count)
 
-# Create the unique identifer -----
+# Create the unique identifier -----
+
+# Create a unique identifer with paste0
+mn_mca_frpl_district_fy22_clean <- mn_mca_frpl_district_fy22 |>
+  # This tells us that we want the number to have 4 values 
+  mutate(dist_number = str_pad(dist_number, width = 4, pad = "0"),
+         dist_id = paste0(dist_type, dist_number))
+
+# Another way to do this is with paste
+
+mn_mca_frpl_district_fy22_other <- mn_mca_frpl_district_fy22 |>
+  # This tells us that we want the number to have 4 values 
+  mutate(dist_number = str_pad(dist_number, width = 4, pad = "0"),
+         dist_id = paste(dist_type, dist_number, sep = ""))
 
 # We know that we need 
 

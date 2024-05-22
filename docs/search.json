@@ -2435,5 +2435,12 @@
     "title": "Data Cleaning and Processing in R: Part 2",
     "section": "Live Coding Example: Minnesota FRPL Data",
     "text": "Live Coding Example: Minnesota FRPL Data"
+  },
+  {
+    "objectID": "slides/class_5/class_5.html#the-identifiers-are-not-always-in-the-same-format.-we-can-use-paste-and-paste0-to-combine-two-columns-ot-create-an-identifer",
+    "href": "slides/class_5/class_5.html#the-identifiers-are-not-always-in-the-same-format.-we-can-use-paste-and-paste0-to-combine-two-columns-ot-create-an-identifer",
+    "title": "Data Cleaning and Processing in R: Part 2",
+    "section": "The identifiers are not always in the same format. We can use paste() and paste0() to combine two columns ot create an identifer",
+    "text": "The identifiers are not always in the same format. We can use paste() and paste0() to combine two columns ot create an identifer\nin R, paste() and paste0() are both functions that are used to concatenate strings, but they differ in how they handle separators:\n\nThe paste() function concatenates strings and allows you to specify a separator between the strings using the sep argument. If you do not specify a separator, it defaults to a space (” “).\nThe paste0() function is a convenience function that concatenates strings without any separator. It is equivalent to using paste(..., sep = \"\")."
   }
 ]

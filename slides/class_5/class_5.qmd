@@ -80,7 +80,14 @@ Joining data sets on a name (e.g. school or district) can create problems based 
 -   Abbreviation (St. Paul v. Saint Paul)
 -   Mis-spelling (it happens!)
 
-## The identifiers are not always in the same format. We can use
+## The identifiers are not always in the same format. We can use `paste()` and `paste0()` to combine two columns ot create an identifer
+
+in R, `paste()` and `paste0()` are both functions that are used to concatenate strings, but they differ in how they handle separators: 
+
+- The `paste()` function concatenates strings and allows you to specify a separator between the strings using the `sep` argument. If you do not specify a separator, it defaults to a space (" ").
+- The `paste0()` function is a convenience function that concatenates strings without any separator. It is equivalent to using `paste(..., sep = "")`.
+
+## Live coding example: Minnesota MCA and FRPL data 
 
 # Summarizing Data
 

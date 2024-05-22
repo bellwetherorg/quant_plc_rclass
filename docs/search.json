@@ -2442,5 +2442,19 @@
     "title": "Data Cleaning and Processing in R: Part 2",
     "section": "The identifiers are not always in the same format. We can use paste() and paste0() to combine two columns ot create an identifer",
     "text": "The identifiers are not always in the same format. We can use paste() and paste0() to combine two columns ot create an identifer\nin R, paste() and paste0() are both functions that are used to concatenate strings, but they differ in how they handle separators:\n\nThe paste() function concatenates strings and allows you to specify a separator between the strings using the sep argument. If you do not specify a separator, it defaults to a space (” “).\nThe paste0() function is a convenience function that concatenates strings without any separator. It is equivalent to using paste(..., sep = \"\")."
+  },
+  {
+    "objectID": "slides/class_5/class_5.html#live-coding-example-minnesota-mca-and-frpl-data",
+    "href": "slides/class_5/class_5.html#live-coding-example-minnesota-mca-and-frpl-data",
+    "title": "Data Cleaning and Processing in R: Part 2",
+    "section": "Live coding example: Minnesota MCA and FRPL data",
+    "text": "Live coding example: Minnesota MCA and FRPL data"
+  },
+  {
+    "objectID": "slides/class_5/class_5.html#common-functions-for-summarizing-data",
+    "href": "slides/class_5/class_5.html#common-functions-for-summarizing-data",
+    "title": "Data Cleaning and Processing in R: Part 2",
+    "section": "Common functions for summarizing data",
+    "text": "Common functions for summarizing data\nAfter the group_by() function is used, then there are several different functions we can use with the summarise() function to summarize the data. A few are listed below:\n\nThe sum() function calculates the sum of the values in each group.\n\nThe first() function returns the first value in each group.\nThe last() function returns the last value in each group.\nThe median() function calculates the median of values in each group.\nThe min() and max() functions minds the minimum and maximum value in each group.\nThe n() function counts the number of observations in each group.\nThe n_distinct() function counts the number of distinct values in each group."
   }
 ]

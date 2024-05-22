@@ -373,6 +373,9 @@
 <li>The <code>paste()</code> function concatenates strings and allows you to specify a separator between the strings using the <code>sep</code> argument. If you do not specify a separator, it defaults to a space (” “).</li>
 <li>The <code>paste0()</code> function is a convenience function that concatenates strings without any separator. It is equivalent to using <code>paste(..., sep = "")</code>.</li>
 </ul>
+</section>
+<section id="live-coding-example-minnesota-mca-and-frpl-data" class="slide level2">
+<h2>Live coding example: Minnesota MCA and FRPL data</h2>
 </section></section>
 <section>
 <section id="summarizing-data" class="title-slide slide level1 center">
@@ -393,6 +396,20 @@
 <p><img data-src="https://swcarpentry.github.io/r-novice-gapminder/fig/13-dplyr-fig3.png"></p>
 </div>
 </div>
+</section>
+<section id="common-functions-for-summarizing-data" class="slide level2 smaller">
+<h2>Common functions for summarizing data</h2>
+<p>After the <code>group_by()</code> function is used, then there are several different functions we can use with the <code>summarise()</code> function to summarize the data. A few are listed below:</p>
+<ul>
+<li>The <code>sum()</code> function calculates the sum of the values in each group.<br>
+</li>
+<li>The <code>first()</code> function returns the first value in each group.</li>
+<li>The <code>last()</code> function returns the last value in each group.</li>
+<li>The <code>median()</code> function calculates the median of values in each group.</li>
+<li>The <code>min()</code> and <code>max()</code> functions minds the minimum and maximum value in each group.</li>
+<li>The <code>n()</code> function counts the number of observations in each group.</li>
+<li>The <code>n_distinct()</code> function counts the number of distinct values in each group.</li>
+</ul>
 </section>
 <section id="live-coding-example-minnesota-frpl-data" class="slide level2">
 <h2>Live Coding Example: Minnesota FRPL Data</h2>

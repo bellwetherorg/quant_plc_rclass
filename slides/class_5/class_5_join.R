@@ -1,4 +1,4 @@
-# class_5_example 
+# class_5_join_example 
 # lasted updated 2024-05-22 by Krista Kaput
 
 # load -----
@@ -64,10 +64,53 @@ mn_mca_frpl_district_fy22_other <- mn_mca_frpl_district_fy22 |>
   mutate(dist_number = str_pad(dist_number, width = 4, pad = "0"),
          dist_id = paste(dist_type, dist_number, sep = ""))
 
-# We know that we need 
+# Join the MCA and FRPL data -----
 
+# mn_mca_frpl_data <- mn_mca_frpl_district_fy22_clean |>
+#   left_join(mn_frpl_district_clean, by = "dist_id") 
+# Once we have shown this example, we will comment this out otherwise we will get 
+# en error 
 
-# Tidy workd space -----
+# We have an error because they are incompatible types. The "dist_id" in the 
+# "mn_frpl_district_clean" data frame is a number and the "dist_id" variable in the 
+# "mn_mca_frpl_district_fy22_clean" is a "character. We can convert either of them, 
+# but for this example we will convert the id to a number
+
+mn_mca_frpl_join <- mn_mca_frpl_district_fy22_clean|>
+  mutate(dist_id = as.numeric(dist_id, na.rm = T)) |>
+  left_join(mn_frpl_district_clean, by = "dist_id") 
+
+# We notice that there are two districts. To rectify this we will remove the 
+# extra district from one of the data frames. I will choose to remove the district 
+# column in mn_frpl_district_clean because it's uppercase 
+
+mn_frpl_district_clean <- mn_frpl_district_clean |>
+  # We can use the subtract the sign in front of a column so that it won't be included in the data frame 
+  select(-district)
+
+# When we join the data frames there will only be one district column 
+mn_mca_frpl_join_no_extra_district <- mn_mca_frpl_district_fy22_clean|>
+  mutate(dist_id = as.numeric(dist_id, na.rm = T)) |> # This mean that anything with an NA is read as 0 
+  left_join(mn_frpl_district_clean, by = "dist_id") |>
+  # This removes the two columns we no longer want
+  select(-dist_type, -dist_number) 
+
+# Clean up the joined data frame ----
+
+# We notice that there are no charter schools in the FRPL data, so we will drop that 
+mn_mca_frpl_district <- mn_mca_frpl_join_no_extra_district |>
+  filter(total_enroll > 0) |>
+  # we also notice that the counts fo the MCA tests are characters, and not numbers
+  # so we will convert them into numbers 
+  mutate(does_not_meet_count = as.numeric(does_not_meet_count, na.rm = T),
+         partially_meets_count = as.numeric(partially_meets_count, na.rm = T),
+         meets_count = as.numeric(meets_count, na.rm = T),
+         exceeds_count = as.numeric(exceeds_count, na.rm = T)) |>
+  select(dist_id, district, total_enroll, everything())
+
+# Export the data -----
+
+# Tidy work space -----
 
 rm(mn_mca_frpl_district_fy22_raw, mn_frpl_district_raw)
 

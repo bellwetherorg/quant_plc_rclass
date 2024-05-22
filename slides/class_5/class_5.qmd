@@ -89,6 +89,7 @@ in R, `paste()` and `paste0()` are both functions that are used to concatenate s
 
 ## Live coding example: Minnesota MCA and FRPL data 
 
+
 # Summarizing Data
 
 ## We can use the `group_by()` function to summarize data {.smaller}
@@ -110,6 +111,18 @@ The `group_by()` function is part of the `dplyr` package. The primary purpose of
 
 :::
 :::
+
+## Common functions for summarizing data {.smaller}
+
+After the `group_by()` function is used, then there are several different functions we can use with the `summarise()` function to summarize the data. A few are listed below: 
+
+- The `sum()` function calculates the sum of the values in each group.  
+- The `first()` function returns the first value in each group. 
+- The `last()` function returns the last value in each group. 
+- The `median()` function calculates the median of values in each group. 
+- The `min()` and `max()` functions minds the minimum and maximum value in each group. 
+- The `n()` function counts the number of observations in each group. 
+- The `n_distinct()` function counts the number of distinct values in each group. 
 
 ## Live Coding Example: Minnesota FRPL Data 
 

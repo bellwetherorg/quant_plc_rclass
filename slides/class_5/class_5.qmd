@@ -1,0 +1,92 @@
+---
+title: "Data Cleaning and Processing in R: Part 2"
+date: "June 11, 2024"
+css:
+  - |
+    .smaller h1 {
+      font-size: 0.5em; /* Adjust the font size as needed */
+    }
+output:
+  quarto::quarto_presentation:
+    format: revealjs
+    theme: 
+      logo: images/primary_full-color.png
+      theme: theme/slides.scss # Choose a theme for your presentation (e.g., simple, serif, solarized, etc.)
+    incremental: true # Whether to display content incrementally (one step at a time)
+    self_contained: true # Whether to create a standalone HTML file
+    highlight_style: "github" # Syntax highlighting style (e.g., github, monokai, etc.)
+    revealjs:
+      controls: true # Display navigation controls (e.g., arrows, slide number, etc.)
+      progress: true # Display a progress bar
+      slideNumber: true # Display slide numbers
+      center: true # Center the content on each slide
+      chalkboard: true # Enable chalkboard mode for reveal.js
+---
+
+```{r}
+#| output: false
+
+library(tidyverse)
+library(countdown)
+library(tigris)
+library(sf)
+library(scales)
+library(edbuildr)
+library(viridis)
+library(readxl)
+
+
+
+
+bw_primary <- c("#6D1E4A", # 1 plum
+                "#007786", # 2 teal
+                "#0D525A", # 3 dark green
+                "#212B46", # 4 navy
+                "#5A6675", # 5 grey
+                "#F0DEC1") # 6 cream
+
+bw_secondary <- c("#FFC762", # 1 yellow
+                  "#FFB653", # 2 orange
+                  "#BEC6CE", # 3 light grey
+                  "#2E1A4A", # 4 deep purple
+                  "#7EA2D1", # 5 soft blue
+                  "#CAD3FB", # 6 lavender
+                  "#9CD4EA", # 7 sky
+                  "#FFA497") # 8 peach
+
+
+```
+
+## Agenda
+
+-   Homework review
+-   Creating unique identifiers to join data frames
+-   Summarizing data 
+-   Homework and next class
+
+# Homework Review
+
+# Creating Unique Identifiers 
+
+## Your data will rarely come in a single table, so you will need to use join functions to merge the data frames {.smaller}
+
+To join two data frames, they need to share a common column with a unique identifier.
+
+State departments of education typically assign a unique ID number to each school district. **Make sure this is available in your data sets.**
+
+Joining data sets on a name (e.g. school or district) can create problems based on:
+
+-   Capitalization (Mcgregor v. McGregor)
+-   Abbreviation (St. Paul v. Saint Paul)
+-   Mis-spelling (it happens!)
+
+## We can use 
+
+# Summarizing Data 
+
+
+
+
+
+
+

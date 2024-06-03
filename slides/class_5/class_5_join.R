@@ -22,8 +22,11 @@ mn_frpl_district_raw <- read_csv("slides/class_5/SchoolDistrictsFreeReducedPrice
 # clean the MCA data ------
 
 mn_mca_frpl_district_fy22 <- mn_mca_frpl_district_fy22_raw |>
-  rename_with(tolower) |> # This makes all of the column names lower cased
+  # This makes all of the column names lower cased
+  rename_with(tolower) |>
+  # We are choosing the grade that is inclusive of all the testing data 
   filter(grade == 0) |>
+  # We are renmaing the variables in accordance with the tidy principles
   rename(dist_number = "district number",
          dist_type = "district type",
          district = "district name",
@@ -32,6 +35,7 @@ mn_mca_frpl_district_fy22 <- mn_mca_frpl_district_fy22_raw |>
          partially_meets_count = "count level p",
          meets_count = "count level m",
          exceeds_count = "count level e") |>
+  # Selecting the variables that we need 
   select(dist_number, dist_type, district, total_tested, does_not_meet_count,
          partially_meets_count, meets_count, exceeds_count)
 
@@ -46,6 +50,9 @@ mn_frpl_district_clean <- mn_frpl_district_raw |>
          free_lunch_count = freeelignum,
          reduced_lunch_count = reduceelignum, 
          frpl_count = totalelignum) |>
+  # We do not need to have district in this data frame because that already exists 
+  # in the other data frame. If we kept it then the two columns would differentiated by 
+  # "district.x" and "district.y" 
   select(dist_id, district, total_enroll, free_lunch_count, reduced_lunch_count,
          frpl_count)
 
@@ -80,6 +87,7 @@ mn_mca_frpl_district_fy22_other <- mn_mca_frpl_district_fy22 |>
 
 mn_mca_frpl_join <- mn_mca_frpl_district_fy22_clean|>
   mutate(dist_id = as.numeric(dist_id, na.rm = T)) |>
+  # We join the two data frames together by their unique identifiders 
   left_join(mn_frpl_district_clean, by = "dist_id") 
 
 # We notice that there are two districts. To rectify this we will remove the 
@@ -108,9 +116,12 @@ mn_mca_frpl_district <- mn_mca_frpl_join_no_extra_district |>
          partially_meets_count = as.numeric(partially_meets_count, na.rm = T),
          meets_count = as.numeric(meets_count, na.rm = T),
          exceeds_count = as.numeric(exceeds_count, na.rm = T)) |>
+  # This tells R to put dist_id, district, and total_enroll as the first three columns and 
+  # everything() tells R to then list the rest of the variables
   select(dist_id, district, total_enroll, everything())
 
 # Export the data -----
+
 
 # Tidy work space -----
 

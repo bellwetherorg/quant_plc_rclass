@@ -66,6 +66,8 @@ bw_secondary <- c("#FFC762", # 1 yellow
 
 # Homework Review
 
+
+
 # Creating Unique Identifiers
 
 ## Your data will rarely come in a single table, so you will need to use join functions to merge the data frames {.smaller}
@@ -218,7 +220,6 @@ mca_frpl_state_summary <- mca_frpl_district_summary |>
             exceeds_count = sum(exceeds_count, na.rm = T)) |>
   mutate(state = "Minnesota") |>
   select(state, everything())
-
 
 ```
 

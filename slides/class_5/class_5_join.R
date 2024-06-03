@@ -51,6 +51,9 @@ mn_frpl_district_clean <- mn_frpl_district_raw |>
 
 # Create the unique identifier -----
 
+# We cannot join the data right now because they do not have the same unique identifier. 
+# However, we can create the identifier, which will allow us to join the data frames. 
+
 # Create a unique identifer with paste0
 mn_mca_frpl_district_fy22_clean <- mn_mca_frpl_district_fy22 |>
   # This tells us that we want the number to have 4 values 
@@ -58,7 +61,6 @@ mn_mca_frpl_district_fy22_clean <- mn_mca_frpl_district_fy22 |>
          dist_id = paste0(dist_type, dist_number))
 
 # Another way to do this is with paste
-
 mn_mca_frpl_district_fy22_other <- mn_mca_frpl_district_fy22 |>
   # This tells us that we want the number to have 4 values 
   mutate(dist_number = str_pad(dist_number, width = 4, pad = "0"),

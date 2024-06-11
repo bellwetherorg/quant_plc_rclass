@@ -59,7 +59,7 @@ bw_secondary <- c("#FFC762", # 1 yellow
 
 ## Agenda
 
--   Homework review
+-   Homework Review 
 -   Creating unique identifiers to join data frames
 -   Summarizing data
 -   Homework and next class
@@ -68,7 +68,43 @@ bw_secondary <- c("#FFC762", # 1 yellow
 
 ## Joining Data Frames 
 
+I owe you all feedback on homework. I had a couple of projects get away from me, so I will get you feedback by EOW. So sorry!
 
+```{r echo=TRUE, eval=FALSE}
+# load the English Language Learner data from the Common Core of Data
+ell_dist_fy19_raw <- read_excel("week_4_data/ccd_ell_dist_raw_fy19.xls")
+
+# Load the Special Education student data from the Common Core of Data
+sped_dist_fy19_raw <- read_excel("week_4_data/ccd_sped_dist_raw_fy19.xls")
+
+# Clean the ell_dist_raw_fy19 dataframe ------
+ell_dist_fy19_clean <- ell_dist_fy19_raw |>
+  rename_with(tolower) |>
+  rename(state = statename, 
+         district = lea_name,
+         dist_id = leaid,
+         ell_enroll = lep_count) |>
+  select(state, dist_id, district, ell_enroll)
+
+
+# Clean the sped_dist_raw_fy19 dataframe ------
+sped_dist_fy19_clean <- sped_dist_fy19_raw |>
+  rename_with(tolower) |>
+  rename(state = statename, 
+         district = lea_name,
+         dist_id = leaid,
+         sped_enroll = idea_count) |>
+  select(state, dist_id, district, sped_enroll)
+
+# Join the two data sets ------
+
+# Look at both data sets and decide the common identifier that can be used to join 
+# them and then do so!
+
+sped_ell_join <- ell_dist_fy19_clean |>
+  left_join(sped_dist_fy19_clean, by = "dist_id")
+
+```
 
 # Creating Unique Identifiers
 

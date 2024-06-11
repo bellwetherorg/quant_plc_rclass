@@ -2389,7 +2389,7 @@
     "href": "slides/class_5/class_5.html#agenda",
     "title": "Data Cleaning and Processing in R: Part 2",
     "section": "Agenda",
-    "text": "Agenda\n\nHomework review\nCreating unique identifiers to join data frames\nSummarizing data\nHomework and next class"
+    "text": "Agenda\n\nHomework Review\nCreating unique identifiers to join data frames\nSummarizing data\nHomework and next class"
   },
   {
     "objectID": "slides/class_5/class_5.html#your-data-will-rarely-come-in-a-single-table-so-you-will-need-to-use-join-functions-to-merge-the-data-frames",
@@ -2462,7 +2462,7 @@
     "href": "slides/class_5/class_5.html#joining-data-frames",
     "title": "Data Cleaning and Processing in R: Part 2",
     "section": "Joining Data Frames",
-    "text": "Joining Data Frames"
+    "text": "Joining Data Frames\nI owe you all feedback on homework. I had a couple of projects get away from me, so I will get you feedback by EOW. So sorry!\n\n# load the English Language Learner data from the Common Core of Data\nell_dist_fy19_raw &lt;- read_excel(\"week_4_data/ccd_ell_dist_raw_fy19.xls\")\n\n# Load the Special Education student data from the Common Core of Data\nsped_dist_fy19_raw &lt;- read_excel(\"week_4_data/ccd_sped_dist_raw_fy19.xls\")\n\n# Clean the ell_dist_raw_fy19 dataframe ------\nell_dist_fy19_clean &lt;- ell_dist_fy19_raw |&gt;\n  rename_with(tolower) |&gt;\n  rename(state = statename, \n         district = lea_name,\n         dist_id = leaid,\n         ell_enroll = lep_count) |&gt;\n  select(state, dist_id, district, ell_enroll)\n\n\n# Clean the sped_dist_raw_fy19 dataframe ------\nsped_dist_fy19_clean &lt;- sped_dist_fy19_raw |&gt;\n  rename_with(tolower) |&gt;\n  rename(state = statename, \n         district = lea_name,\n         dist_id = leaid,\n         sped_enroll = idea_count) |&gt;\n  select(state, dist_id, district, sped_enroll)\n\n# Join the two data sets ------\n\n# Look at both data sets and decide the common identifier that can be used to join \n# them and then do so!\n\nsped_ell_join &lt;- ell_dist_fy19_clean |&gt;\n  left_join(sped_dist_fy19_clean, by = \"dist_id\")"
   },
   {
     "objectID": "slides/class_5/class_5.html#coming-up",

@@ -50,7 +50,7 @@ library(viridis)
 
 -   **Class Recording:** Link to class 5 recording will be added after class. 
 -   **Class Slides:** Slides will be posted the day before class. 
-<!-- [Link to slides for class 5](https://bellwetherorg.github.io/quant_plc_rclass/slides/class_5/class_5.html) -->
+[Link to slides for class 5](https://bellwetherorg.github.io/quant_plc_rclass/slides/class_5/class_5.html)
 -   **R Script:** See the `wk-5-class-examples` repository for the class scripts.
 -   **Homework:** Class 5 homework will be posted after lass. 
     

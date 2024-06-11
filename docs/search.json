@@ -2417,7 +2417,7 @@
     "href": "class_materials.html#june-11-2024-class-5-materials",
     "title": "Class Materials",
     "section": "June 11, 2024: Class 5 Materials",
-    "text": "June 11, 2024: Class 5 Materials\n\nClass Recording: Link to class 5 recording will be added after class.\nClass Slides: Slides will be posted the day before class. \nR Script: See the wk-5-class-examples repository for the class scripts.\nHomework: Class 5 homework will be posted after lass.",
+    "text": "June 11, 2024: Class 5 Materials\n\nClass Recording: Link to class 5 recording will be added after class.\nClass Slides: Slides will be posted the day before class. Link to slides for class 5\nR Script: See the wk-5-class-examples repository for the class scripts.\nHomework: Class 5 homework will be posted after lass.",
     "crumbs": [
       "Class Materials"
     ]
@@ -2456,5 +2456,12 @@
     "title": "Data Cleaning and Processing in R: Part 2",
     "section": "Common functions for summarizing data",
     "text": "Common functions for summarizing data\nAfter the group_by() function is used, then there are several different functions we can use with the summarise() function to summarize the data. A few are listed below:\n\nThe sum() function calculates the sum of the values in each group.\n\nThe first() function returns the first value in each group.\nThe last() function returns the last value in each group.\nThe median() function calculates the median of values in each group.\nThe min() and max() functions minds the minimum and maximum value in each group.\nThe n() function counts the number of observations in each group.\nThe n_distinct() function counts the number of distinct values in each group."
+  },
+  {
+    "objectID": "slides/class_5/class_5.html#joining-data-frames",
+    "href": "slides/class_5/class_5.html#joining-data-frames",
+    "title": "Data Cleaning and Processing in R: Part 2",
+    "section": "Joining Data Frames",
+    "text": "Joining Data Frames"
   }
 ]

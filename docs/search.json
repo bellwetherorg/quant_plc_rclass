@@ -2463,5 +2463,12 @@
     "title": "Data Cleaning and Processing in R: Part 2",
     "section": "Joining Data Frames",
     "text": "Joining Data Frames"
+  },
+  {
+    "objectID": "slides/class_5/class_5.html#coming-up",
+    "href": "slides/class_5/class_5.html#coming-up",
+    "title": "Data Cleaning and Processing in R: Part 2",
+    "section": "Coming Up",
+    "text": "Coming Up\n\n\nNext Class\n\nThe next class will be Tuesday, July 23 from 11:00 AM - 12:00 PM CT.\nWe will do more advanced data visualizations in ggplot2 and plotly\n\n\nHomework\n\nHomework will be distributed in hw-wk-6 repository where you will practice summarizing data\nCome to class on July 23 with between 2-3 data frames. Krista will show you all how to create a repository so you can do your own data cleaning, analysizis, and visualization on a project."
   }
 ]

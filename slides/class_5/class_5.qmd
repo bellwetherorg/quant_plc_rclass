@@ -241,8 +241,8 @@ mca_frpl_state_summary <- mca_frpl_district_summary |>
 ::: {.column width="45%"}
 **Homework**
 
--   Homework will be distributed in `hw-wk-6` repository where you will practice summarizing data 
--   Come to class on July 23 with between 2-3 data frames. Krista will show you all how to create a repository so you can do your own data cleaning, analysizis, and visualization on a project.
+-   Homework will be distributed in `hw-wk-5` repository where you will practice summarizing data 
+-   Come to class on July 23 with between 2-3 data frames. Krista will show you all how to create a repository so you can do your own data cleaning, analysis, and visualization on a project.
 
 :::
 :::

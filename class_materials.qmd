@@ -52,4 +52,10 @@ library(viridis)
 -   **Class Slides:** [Link to slides for class 5](https://bellwetherorg.github.io/quant_plc_rclass/slides/class_5/class_5.html)
 -   **R Script:** See the `wk-5-class-examples` repository for the class scripts.
 -   **Homework:** There are two homework scripts in the `/scripts` folder. **Homework is due by COB on Tuesday, July 16**. Please commit and then push your homework updates using Git to update the repository. Please also bring 2-3 data frames Krista will show you all how to create a repository so you can do your own data cleaning, analysis, and visualization on a project.
+
+## July 23, 2024: Class 6 Materials 
+
+- **Class Recording:** The recording will be added after class
+- **Class Slides:** [Link to the slides for class 6](https://bellwetherorg.github.io/quant_plc_rclass/slides/class_6/class_6.html)
+- **R Script:** You can access the [class 6 example here](https://gist.github.com/kkaput23/eab650cf1c86e2e3d403d74b9a71caf8)
     

@@ -337,7 +337,7 @@ ggplot(edbuild_mortgage_mn |>
 
 ## You can (and should) start your projects by creating a new repo on your GitHub account
 
-![](week_5_images/git_new.png){fig-align="center"}
+![](week_05/week_5_images/git_new.png){fig-align="center"}
 
 ## Before you start coding, set yourself up for a successful, reproducible analysis project
 
@@ -363,7 +363,7 @@ ggplot(edbuild_mortgage_mn |>
 :::
 
 ::: {.column width="60%"}
-![](week_5_images/Screenshot 2024-07-03 at 2.24.37 PM.png){fig-align="center" width="400"}
+![](week_05/week_5_images/Screenshot 2024-07-03 at 2.24.37 PM.png){fig-align="center" width="400"}
 :::
 :::
 
@@ -377,7 +377,7 @@ ggplot(edbuild_mortgage_mn |>
 :::
 
 ::: {.column width="50%"}
-![](week_5_images/Screenshot%202023-06-27%20at%204.50.22%20PM.png){fig-align="center" width="475"}
+![](week_05/week_5_images/Screenshot%202023-06-27%20at%204.50.22%20PM.png){fig-align="center" width="475"}
 :::
 :::
 

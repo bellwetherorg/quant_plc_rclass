@@ -64,16 +64,16 @@ mca_frpl_district_summary <- mca_frpl_school_fy22_clean |>
 
 # We can also make a state summary -----
 
-mca_frpl_state_summary <- mca_frpl_district_summary |>
-  # We do not need to use group_by() because we are only going to have one value
-  summarise(total_tested = sum(total_tested, na.rm = T),
-            does_not_meet_count = sum(does_not_meet_count, na.rm =T),
-            partially_meets_count = sum(partially_meets_count, na.rm = T),
-            meets_count = sum(meets_count, na.rm = T),
-            exceeds_count = sum(exceeds_count, na.rm = T)) |>
-  # We are adding a column to identify that the state is Minnesota
-  mutate(state = "Minnesota") |>
-  select(state, everything())
+# mca_frpl_state_summary <- mca_frpl_district_summary |>
+#   # We do not need to use group_by() because we are only going to have one value
+#   summarise(total_tested = sum(total_tested, na.rm = T),
+#             does_not_meet_count = sum(does_not_meet_count, na.rm =T),
+#             partially_meets_count = sum(partially_meets_count, na.rm = T),
+#             meets_count = sum(meets_count, na.rm = T),
+#             exceeds_count = sum(exceeds_count, na.rm = T)) |>
+#   # We are adding a column to identify that the state is Minnesota
+#   mutate(state = "Minnesota") |>
+#   select(state, everything())
 
 # tidy work place ----
 

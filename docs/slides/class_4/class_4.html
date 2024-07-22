@@ -673,7 +673,7 @@
 <li><strong>Example 2:</strong> The common ID columns have different variable names. The il_test_data_fy23_clean dataframe’s variable is dist_id, while the example_2_il_finance_testing_fy23 dataframe’s variable name is rcdts. The column names can be different, but the values within the cells must be the same so we can join them.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="co"># Use left_join() function to join the the illinoi data -------</span></span>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="co"># Use left_join() function to join the the illinois data -------</span></span>
 <span id="cb6-2"><a></a></span>
 <span id="cb6-3"><a></a><span class="co"># EXAMPLE 1: Join them with the same "dist_id" name </span></span>
 <span id="cb6-4"><a></a></span>
@@ -685,6 +685,144 @@
 <span id="cb6-10"><a></a><span class="co"># dist_id comes from because it's in the il_test_data_fy23_clean dataframe </span></span>
 <span id="cb6-11"><a></a>example_2_il_finance_testing_fy23 <span class="ot">&lt;-</span> il_test_data_fy23_clean <span class="sc">|&gt;</span></span>
 <span id="cb6-12"><a></a>  <span class="fu">left_join</span>(il_finance_fy23_diff_id, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"dist_id"</span> <span class="ot">=</span> <span class="st">"rcdts"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="the-identifiers-are-not-always-in-the-same-format.-we-can-use-paste-and-paste0-to-combine-two-columns-to-create-an-identifier" class="slide level2">
+<h2>The identifiers are not always in the same format. We can use <code>paste()</code> and <code>paste0()</code> to combine two columns to create an identifier</h2>
+<p>in R, <code>paste()</code> and <code>paste0()</code> are both functions that are used to concatenate strings, but they differ in how they handle separators:</p>
+<ul>
+<li>The <code>paste()</code> function concatenates strings and allows you to specify a separator between the strings using the <code>sep</code> argument. If you do not specify a separator, it defaults to a space (” “).</li>
+<li>The <code>paste0()</code> function is a convenience function that concatenates strings without any separator. It is equivalent to using <code>paste(..., sep = "")</code>.</li>
+</ul>
+</section>
+<section id="live-coding-example-minnesota-mca-and-frpl-data" class="slide level2">
+<h2>Live coding example: Minnesota MCA and FRPL data</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="co"># Create the unique identifier -----</span></span>
+<span id="cb7-2"><a></a></span>
+<span id="cb7-3"><a></a><span class="co"># Create a unique identifer with paste0</span></span>
+<span id="cb7-4"><a></a>mn_mca_frpl_district_fy22_clean <span class="ot">&lt;-</span> mn_mca_frpl_district_fy22 <span class="sc">|&gt;</span></span>
+<span id="cb7-5"><a></a>  <span class="co"># This tells us that we want the number to have 4 values </span></span>
+<span id="cb7-6"><a></a>  <span class="fu">mutate</span>(<span class="at">dist_number =</span> <span class="fu">str_pad</span>(dist_number, <span class="at">width =</span> <span class="dv">4</span>, <span class="at">pad =</span> <span class="st">"0"</span>),</span>
+<span id="cb7-7"><a></a>         <span class="at">dist_id =</span> <span class="fu">paste0</span>(dist_type, dist_number))</span>
+<span id="cb7-8"><a></a></span>
+<span id="cb7-9"><a></a><span class="co"># Another way to do this is with paste</span></span>
+<span id="cb7-10"><a></a></span>
+<span id="cb7-11"><a></a>mn_mca_frpl_district_fy22_other <span class="ot">&lt;-</span> mn_mca_frpl_district_fy22 <span class="sc">|&gt;</span></span>
+<span id="cb7-12"><a></a>  <span class="co"># This tells us that we want the number to have 4 values </span></span>
+<span id="cb7-13"><a></a>  <span class="fu">mutate</span>(<span class="at">dist_number =</span> <span class="fu">str_pad</span>(dist_number, <span class="at">width =</span> <span class="dv">4</span>, <span class="at">pad =</span> <span class="st">"0"</span>),</span>
+<span id="cb7-14"><a></a>         <span class="at">dist_id =</span> <span class="fu">paste</span>(dist_type, dist_number, <span class="at">sep =</span> <span class="st">""</span>))</span>
+<span id="cb7-15"><a></a></span>
+<span id="cb7-16"><a></a><span class="co"># Join the MCA and FRPL data -----</span></span>
+<span id="cb7-17"><a></a></span>
+<span id="cb7-18"><a></a><span class="co"># mn_mca_frpl_data &lt;- mn_mca_frpl_district_fy22_clean |&gt;</span></span>
+<span id="cb7-19"><a></a><span class="co">#   left_join(mn_frpl_district_clean, by = "dist_id") </span></span>
+<span id="cb7-20"><a></a><span class="co"># Once we have shown this example, we will comment this out otherwise we will get </span></span>
+<span id="cb7-21"><a></a><span class="co"># en error </span></span>
+<span id="cb7-22"><a></a></span>
+<span id="cb7-23"><a></a><span class="co"># We have an error because they are incompatible types. The "dist_id" in the </span></span>
+<span id="cb7-24"><a></a><span class="co"># "mn_frpl_district_clean" data frame is a number and the "dist_id" variable in the </span></span>
+<span id="cb7-25"><a></a><span class="co"># "mn_mca_frpl_district_fy22_clean" is a "character. We can convert either of them, </span></span>
+<span id="cb7-26"><a></a><span class="co"># but for this example we will convert the id to a number</span></span>
+<span id="cb7-27"><a></a></span>
+<span id="cb7-28"><a></a>mn_mca_frpl_join <span class="ot">&lt;-</span> mn_mca_frpl_district_fy22_clean<span class="sc">|&gt;</span></span>
+<span id="cb7-29"><a></a>  <span class="fu">mutate</span>(<span class="at">dist_id =</span> <span class="fu">as.numeric</span>(dist_id, <span class="at">na.rm =</span> T)) <span class="sc">|&gt;</span></span>
+<span id="cb7-30"><a></a>  <span class="fu">left_join</span>(mn_frpl_district_clean, <span class="at">by =</span> <span class="st">"dist_id"</span>) </span>
+<span id="cb7-31"><a></a></span>
+<span id="cb7-32"><a></a><span class="co"># We notice that there are two districts. To rectify this we will remove the </span></span>
+<span id="cb7-33"><a></a><span class="co"># extra district from one of the data frames. I will choose to remove the district </span></span>
+<span id="cb7-34"><a></a><span class="co"># column in mn_frpl_district_clean because it's uppercase </span></span>
+<span id="cb7-35"><a></a></span>
+<span id="cb7-36"><a></a>mn_frpl_district_clean <span class="ot">&lt;-</span> mn_frpl_district_clean <span class="sc">|&gt;</span></span>
+<span id="cb7-37"><a></a>  <span class="co"># We can use the subtract the sign in front of a column so that it won't be included in the data frame </span></span>
+<span id="cb7-38"><a></a>  <span class="fu">select</span>(<span class="sc">-</span>district)</span>
+<span id="cb7-39"><a></a></span>
+<span id="cb7-40"><a></a><span class="co"># When we join the data frames there will only be one district column </span></span>
+<span id="cb7-41"><a></a>mn_mca_frpl_join_no_extra_district <span class="ot">&lt;-</span> mn_mca_frpl_district_fy22_clean<span class="sc">|&gt;</span></span>
+<span id="cb7-42"><a></a>  <span class="fu">mutate</span>(<span class="at">dist_id =</span> <span class="fu">as.numeric</span>(dist_id, <span class="at">na.rm =</span> T)) <span class="sc">|&gt;</span> <span class="co"># This mean that anything with an NA is read as 0 </span></span>
+<span id="cb7-43"><a></a>  <span class="fu">left_join</span>(mn_frpl_district_clean, <span class="at">by =</span> <span class="st">"dist_id"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb7-44"><a></a>  <span class="co"># This removes the two columns we no longer want</span></span>
+<span id="cb7-45"><a></a>  <span class="fu">select</span>(<span class="sc">-</span>dist_type, <span class="sc">-</span>dist_number) </span>
+<span id="cb7-46"><a></a></span>
+<span id="cb7-47"><a></a><span class="co"># Clean up the joined data frame ----</span></span>
+<span id="cb7-48"><a></a></span>
+<span id="cb7-49"><a></a><span class="co"># We notice that there are no charter schools in the FRPL data, so we will drop that </span></span>
+<span id="cb7-50"><a></a>mn_mca_frpl_district <span class="ot">&lt;-</span> mn_mca_frpl_join_no_extra_district <span class="sc">|&gt;</span></span>
+<span id="cb7-51"><a></a>  <span class="fu">filter</span>(total_enroll <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">|&gt;</span></span>
+<span id="cb7-52"><a></a>  <span class="co"># we also notice that the counts fo the MCA tests are characters, and not numbers</span></span>
+<span id="cb7-53"><a></a>  <span class="co"># so we will convert them into numbers </span></span>
+<span id="cb7-54"><a></a>  <span class="fu">mutate</span>(<span class="at">does_not_meet_count =</span> <span class="fu">as.numeric</span>(does_not_meet_count, <span class="at">na.rm =</span> T),</span>
+<span id="cb7-55"><a></a>         <span class="at">partially_meets_count =</span> <span class="fu">as.numeric</span>(partially_meets_count, <span class="at">na.rm =</span> T),</span>
+<span id="cb7-56"><a></a>         <span class="at">meets_count =</span> <span class="fu">as.numeric</span>(meets_count, <span class="at">na.rm =</span> T),</span>
+<span id="cb7-57"><a></a>         <span class="at">exceeds_count =</span> <span class="fu">as.numeric</span>(exceeds_count, <span class="at">na.rm =</span> T)) <span class="sc">|&gt;</span></span>
+<span id="cb7-58"><a></a>  <span class="fu">select</span>(dist_id, district, total_enroll, <span class="fu">everything</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section></section>
+<section>
+<section id="summarizing-data" class="title-slide slide level1 center">
+<h1>Summarizing Data</h1>
+
+</section>
+<section id="we-can-use-the-group_by-function-to-summarize-data" class="slide level2 smaller">
+<h2>We can use the <code>group_by()</code> function to summarize data</h2>
+<div class="columns">
+<div class="column" style="width:45%;">
+<p>The <code>group_by()</code> function is part of the <code>dplyr</code> package. The primary purpose of <code>group_by()</code> is to group a data frame by one or more variables, which allows you to perform operations on subsets of the data independently.</p>
+<ul>
+<li>Used to define groups of rows based on the values of one or more columns</li>
+<li>It is usually followed by summarizing functions like <code>summarize()</code>, <code>mutate()</code>, or other dplyr functions to perform calculations within each group.</li>
+<li>It simplifies data analysis tasks by allowing you to focus on grouped subsets of the data.</li>
+</ul>
+</div><div class="column" style="width:45%;">
+<p><img data-src="https://swcarpentry.github.io/r-novice-gapminder/fig/13-dplyr-fig3.png"></p>
+</div>
+</div>
+</section>
+<section id="common-functions-for-summarizing-data" class="slide level2 smaller">
+<h2>Common functions for summarizing data</h2>
+<p>After the <code>group_by()</code> function is used, then there are several different functions we can use with the <code>summarise()</code> function to summarize the data. A few are listed below:</p>
+<ul>
+<li>The <code>sum()</code> function calculates the sum of the values in each group.<br>
+</li>
+<li>The <code>first()</code> function returns the first value in each group.</li>
+<li>The <code>last()</code> function returns the last value in each group.</li>
+<li>The <code>median()</code> function calculates the median of values in each group.</li>
+<li>The <code>min()</code> and <code>max()</code> functions minds the minimum and maximum value in each group.</li>
+<li>The <code>n()</code> function counts the number of observations in each group.</li>
+<li>The <code>n_distinct()</code> function counts the number of distinct values in each group.</li>
+</ul>
+</section>
+<section id="live-coding-example-minnesota-frpl-data" class="slide level2">
+<h2>Live Coding Example: Minnesota FRPL Data</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="co"># Summarize the school data to create a district summary -----</span></span>
+<span id="cb8-2"><a></a></span>
+<span id="cb8-3"><a></a>mca_frpl_district_summary <span class="ot">&lt;-</span> mca_frpl_school_fy22_clean <span class="sc">|&gt;</span></span>
+<span id="cb8-4"><a></a>  <span class="co"># We are going to group the data by the dist_id, which is the unique </span></span>
+<span id="cb8-5"><a></a>  <span class="co"># district identifier we created </span></span>
+<span id="cb8-6"><a></a>  <span class="fu">group_by</span>(dist_id) <span class="sc">|&gt;</span></span>
+<span id="cb8-7"><a></a>  <span class="co"># The "first" indicates to keep the first value. So this will keep the </span></span>
+<span id="cb8-8"><a></a>  <span class="co"># identification for district and dist_id</span></span>
+<span id="cb8-9"><a></a>  <span class="fu">summarise</span>(<span class="at">dist_id =</span> <span class="fu">first</span>(dist_id), </span>
+<span id="cb8-10"><a></a>            <span class="at">district =</span> <span class="fu">first</span>(district),</span>
+<span id="cb8-11"><a></a>            <span class="co"># The "sum" totals the values of the columns we are specifying</span></span>
+<span id="cb8-12"><a></a>            <span class="at">total_tested =</span> <span class="fu">sum</span>(total_tested, <span class="at">na.rm =</span> T),</span>
+<span id="cb8-13"><a></a>            <span class="at">does_not_meet_count =</span> <span class="fu">sum</span>(does_not_meet_count, <span class="at">na.rm =</span>T),</span>
+<span id="cb8-14"><a></a>            <span class="at">partially_meets_count =</span> <span class="fu">sum</span>(partially_meets_count, <span class="at">na.rm =</span> T),</span>
+<span id="cb8-15"><a></a>            <span class="at">meets_count =</span> <span class="fu">sum</span>(meets_count, <span class="at">na.rm =</span> T),</span>
+<span id="cb8-16"><a></a>            <span class="at">exceeds_count =</span> <span class="fu">sum</span>(exceeds_count, <span class="at">na.rm =</span> T))</span>
+<span id="cb8-17"><a></a></span>
+<span id="cb8-18"><a></a><span class="co"># We can also make a state summary -----</span></span>
+<span id="cb8-19"><a></a></span>
+<span id="cb8-20"><a></a>mca_frpl_state_summary <span class="ot">&lt;-</span> mca_frpl_district_summary <span class="sc">|&gt;</span></span>
+<span id="cb8-21"><a></a>  <span class="co"># We do not need to use group_by() because we are only going to have one value</span></span>
+<span id="cb8-22"><a></a>  <span class="fu">summarise</span>(<span class="at">total_tested =</span> <span class="fu">sum</span>(total_tested, <span class="at">na.rm =</span> T),</span>
+<span id="cb8-23"><a></a>            <span class="at">does_not_meet_count =</span> <span class="fu">sum</span>(does_not_meet_count, <span class="at">na.rm =</span>T),</span>
+<span id="cb8-24"><a></a>            <span class="at">partially_meets_count =</span> <span class="fu">sum</span>(partially_meets_count, <span class="at">na.rm =</span> T),</span>
+<span id="cb8-25"><a></a>            <span class="at">meets_count =</span> <span class="fu">sum</span>(meets_count, <span class="at">na.rm =</span> T),</span>
+<span id="cb8-26"><a></a>            <span class="at">exceeds_count =</span> <span class="fu">sum</span>(exceeds_count, <span class="at">na.rm =</span> T)) <span class="sc">|&gt;</span></span>
+<span id="cb8-27"><a></a>  <span class="fu">mutate</span>(<span class="at">state =</span> <span class="st">"Minnesota"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb8-28"><a></a>  <span class="fu">select</span>(state, <span class="fu">everything</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section></section>
 <section>

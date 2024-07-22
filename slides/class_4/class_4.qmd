@@ -322,7 +322,7 @@ Joining data sets on a name (e.g. school or district) can create problems based 
 
 ```{r echo=TRUE, eval=FALSE}
 
-# Use left_join() function to join the the illinoi data -------
+# Use left_join() function to join the the illinois data -------
 
 # EXAMPLE 1: Join them with the same "dist_id" name 
 
@@ -337,24 +337,26 @@ example_2_il_finance_testing_fy23 <- il_test_data_fy23_clean |>
 
 ```
 
-# Next Class and Homework
+# Homework assignment
 
-## Coming Up
+## This week's assignment {.smaller}
 
-::: columns
-::: {.column width="45%"}
-**Next Class**
+**Reading assignment**
 
--   The next class will be **Tuesday, June 11 from 11:00 AM - 12:00 PM CT.**
+-   [***How Can School Finance Systems Support Students with Additional Learning Needs?***](https://bellwether.org/wp-content/uploads/2021/10/Bellwether_SplittingBill_05-HowCanSchoolFinStudentswLearnNeeds_Final.pdf)
 
--   We will build on our data cleaning and analysis skills, including how to create unique identifiers
-:::
+**Coding task**
 
-::: {.column width="45%"}
-**Homework**
+Clean your state's district data and make sure that you have all of the data you need to model your state's funding formula and the potential policy changes you want to make. This may require joining data frames, `pivot_longer()`, `pivot_wider()` and/or using `mutate()` to merge, reshape, and tidy data from your state.
 
--   In the homework repository, follow the steps to clean, analyze, and visualize data for Vermont
+Ultimately, you'll want to produce a single data frame where:
 
--   **Homework is due by COB on Wednesday, June 5.** This ensures Krista has enough time to go through the homework and provide feedback before the next class.
-:::
-:::
+- Each row represents a single LEA (traditional district or charter school)
+- Each column represents a single variable
+- All of the data elements that go into your current formula are present in the data frame.
+
+If you need to join more than two data frames, **just start with joining two data frames for this assignment.** We can work on building the full data set you'll need to model your formula over the coming weeks.
+
+To get started, a template R script is included: `scripts/dist_clean.R` – please use that file to load, clean, and save your tidy data.
+
+As always, once you've completed the assignment, be sure to commit and push to GitHub!

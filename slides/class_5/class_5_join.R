@@ -36,7 +36,7 @@ mn_mca_frpl_district_fy22 <- mn_mca_frpl_district_fy22_raw |>
          meets_count = "count level m",
          exceeds_count = "count level e") |>
   # Selecting the variables that we need 
-  select(dist_number, dist_type, district, total_tested, does_not_meet_count,
+  select(dist_number, -dist_type, district, total_tested, does_not_meet_count,
          partially_meets_count, meets_count, exceeds_count)
 
 

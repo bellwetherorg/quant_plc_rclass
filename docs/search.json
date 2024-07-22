@@ -2281,7 +2281,7 @@
     "href": "slides/class_4/class_4.html#coding-example-how-to-use-left_join",
     "title": "Data Cleaning and Processing in R: Part 1",
     "section": "Coding example: How to use left_join()",
-    "text": "Coding example: How to use left_join()\n\nExample 1: The common ID columns have the same variable names (dist_id)\nExample 2: The common ID columns have different variable names. The il_test_data_fy23_clean dataframe’s variable is dist_id, while the example_2_il_finance_testing_fy23 dataframe’s variable name is rcdts. The column names can be different, but the values within the cells must be the same so we can join them.\n\n\n# Use left_join() function to join the the illinoi data -------\n\n# EXAMPLE 1: Join them with the same \"dist_id\" name \n\nexample_1_il_finance_testing_fy23 &lt;- il_test_data_fy23_clean |&gt;\n  left_join(il_finance_fy23_same_id, by = \"dist_id\")\n\n\n# EXAMPLE 2: Join them with different column names, but they're the same values\n# dist_id comes from because it's in the il_test_data_fy23_clean dataframe \nexample_2_il_finance_testing_fy23 &lt;- il_test_data_fy23_clean |&gt;\n  left_join(il_finance_fy23_diff_id, by = c(\"dist_id\" = \"rcdts\"))"
+    "text": "Coding example: How to use left_join()\n\nExample 1: The common ID columns have the same variable names (dist_id)\nExample 2: The common ID columns have different variable names. The il_test_data_fy23_clean dataframe’s variable is dist_id, while the example_2_il_finance_testing_fy23 dataframe’s variable name is rcdts. The column names can be different, but the values within the cells must be the same so we can join them.\n\n\n# Use left_join() function to join the the illinois data -------\n\n# EXAMPLE 1: Join them with the same \"dist_id\" name \n\nexample_1_il_finance_testing_fy23 &lt;- il_test_data_fy23_clean |&gt;\n  left_join(il_finance_fy23_same_id, by = \"dist_id\")\n\n\n# EXAMPLE 2: Join them with different column names, but they're the same values\n# dist_id comes from because it's in the il_test_data_fy23_clean dataframe \nexample_2_il_finance_testing_fy23 &lt;- il_test_data_fy23_clean |&gt;\n  left_join(il_finance_fy23_diff_id, by = c(\"dist_id\" = \"rcdts\"))"
   },
   {
     "objectID": "slides/class_4/class_4.html#as-you-merge-dataframes-be-sure-to-use-the-anti_join-function-to-examine-missing-data",
@@ -2470,5 +2470,306 @@
     "title": "Data Cleaning and Processing in R: Part 2",
     "section": "Coming Up",
     "text": "Coming Up\n\n\nNext Class\n\nThe next class will be Tuesday, July 23 from 11:00 AM - 12:00 PM CT.\nWe will do more advanced data visualizations in ggplot2 and plotly\n\n\nHomework\n\nHomework will be distributed in hw-wk-5 repository where you will practice summarizing data\nCome to class on July 23 with 2-3 data frames. Krista will show you all how to create a repository so you can do your own data cleaning, analysis, and visualization on a project."
+  },
+  {
+    "objectID": "slides/class_4/class_4.html#the-identifiers-are-not-always-in-the-same-format.-we-can-use-paste-and-paste0-to-combine-two-columns-to-create-an-identifier",
+    "href": "slides/class_4/class_4.html#the-identifiers-are-not-always-in-the-same-format.-we-can-use-paste-and-paste0-to-combine-two-columns-to-create-an-identifier",
+    "title": "Data Cleaning and Processing in R: Part 1",
+    "section": "The identifiers are not always in the same format. We can use paste() and paste0() to combine two columns to create an identifier",
+    "text": "The identifiers are not always in the same format. We can use paste() and paste0() to combine two columns to create an identifier\nin R, paste() and paste0() are both functions that are used to concatenate strings, but they differ in how they handle separators:\n\nThe paste() function concatenates strings and allows you to specify a separator between the strings using the sep argument. If you do not specify a separator, it defaults to a space (” “).\nThe paste0() function is a convenience function that concatenates strings without any separator. It is equivalent to using paste(..., sep = \"\")."
+  },
+  {
+    "objectID": "slides/class_4/class_4.html#live-coding-example-minnesota-mca-and-frpl-data",
+    "href": "slides/class_4/class_4.html#live-coding-example-minnesota-mca-and-frpl-data",
+    "title": "Data Cleaning and Processing in R: Part 1",
+    "section": "Live coding example: Minnesota MCA and FRPL data",
+    "text": "Live coding example: Minnesota MCA and FRPL data\n\n# Create the unique identifier -----\n\n# Create a unique identifer with paste0\nmn_mca_frpl_district_fy22_clean &lt;- mn_mca_frpl_district_fy22 |&gt;\n  # This tells us that we want the number to have 4 values \n  mutate(dist_number = str_pad(dist_number, width = 4, pad = \"0\"),\n         dist_id = paste0(dist_type, dist_number))\n\n# Another way to do this is with paste\n\nmn_mca_frpl_district_fy22_other &lt;- mn_mca_frpl_district_fy22 |&gt;\n  # This tells us that we want the number to have 4 values \n  mutate(dist_number = str_pad(dist_number, width = 4, pad = \"0\"),\n         dist_id = paste(dist_type, dist_number, sep = \"\"))\n\n# Join the MCA and FRPL data -----\n\n# mn_mca_frpl_data &lt;- mn_mca_frpl_district_fy22_clean |&gt;\n#   left_join(mn_frpl_district_clean, by = \"dist_id\") \n# Once we have shown this example, we will comment this out otherwise we will get \n# en error \n\n# We have an error because they are incompatible types. The \"dist_id\" in the \n# \"mn_frpl_district_clean\" data frame is a number and the \"dist_id\" variable in the \n# \"mn_mca_frpl_district_fy22_clean\" is a \"character. We can convert either of them, \n# but for this example we will convert the id to a number\n\nmn_mca_frpl_join &lt;- mn_mca_frpl_district_fy22_clean|&gt;\n  mutate(dist_id = as.numeric(dist_id, na.rm = T)) |&gt;\n  left_join(mn_frpl_district_clean, by = \"dist_id\") \n\n# We notice that there are two districts. To rectify this we will remove the \n# extra district from one of the data frames. I will choose to remove the district \n# column in mn_frpl_district_clean because it's uppercase \n\nmn_frpl_district_clean &lt;- mn_frpl_district_clean |&gt;\n  # We can use the subtract the sign in front of a column so that it won't be included in the data frame \n  select(-district)\n\n# When we join the data frames there will only be one district column \nmn_mca_frpl_join_no_extra_district &lt;- mn_mca_frpl_district_fy22_clean|&gt;\n  mutate(dist_id = as.numeric(dist_id, na.rm = T)) |&gt; # This mean that anything with an NA is read as 0 \n  left_join(mn_frpl_district_clean, by = \"dist_id\") |&gt;\n  # This removes the two columns we no longer want\n  select(-dist_type, -dist_number) \n\n# Clean up the joined data frame ----\n\n# We notice that there are no charter schools in the FRPL data, so we will drop that \nmn_mca_frpl_district &lt;- mn_mca_frpl_join_no_extra_district |&gt;\n  filter(total_enroll &gt; 0) |&gt;\n  # we also notice that the counts fo the MCA tests are characters, and not numbers\n  # so we will convert them into numbers \n  mutate(does_not_meet_count = as.numeric(does_not_meet_count, na.rm = T),\n         partially_meets_count = as.numeric(partially_meets_count, na.rm = T),\n         meets_count = as.numeric(meets_count, na.rm = T),\n         exceeds_count = as.numeric(exceeds_count, na.rm = T)) |&gt;\n  select(dist_id, district, total_enroll, everything())"
+  },
+  {
+    "objectID": "slides/class_4/class_4.html#we-can-use-the-group_by-function-to-summarize-data",
+    "href": "slides/class_4/class_4.html#we-can-use-the-group_by-function-to-summarize-data",
+    "title": "Data Cleaning and Processing in R: Part 1",
+    "section": "We can use the group_by() function to summarize data",
+    "text": "We can use the group_by() function to summarize data\n\n\nThe group_by() function is part of the dplyr package. The primary purpose of group_by() is to group a data frame by one or more variables, which allows you to perform operations on subsets of the data independently.\n\nUsed to define groups of rows based on the values of one or more columns\nIt is usually followed by summarizing functions like summarize(), mutate(), or other dplyr functions to perform calculations within each group.\nIt simplifies data analysis tasks by allowing you to focus on grouped subsets of the data."
+  },
+  {
+    "objectID": "slides/class_4/class_4.html#common-functions-for-summarizing-data",
+    "href": "slides/class_4/class_4.html#common-functions-for-summarizing-data",
+    "title": "Data Cleaning and Processing in R: Part 1",
+    "section": "Common functions for summarizing data",
+    "text": "Common functions for summarizing data\nAfter the group_by() function is used, then there are several different functions we can use with the summarise() function to summarize the data. A few are listed below:\n\nThe sum() function calculates the sum of the values in each group.\n\nThe first() function returns the first value in each group.\nThe last() function returns the last value in each group.\nThe median() function calculates the median of values in each group.\nThe min() and max() functions minds the minimum and maximum value in each group.\nThe n() function counts the number of observations in each group.\nThe n_distinct() function counts the number of distinct values in each group."
+  },
+  {
+    "objectID": "slides/class_4/class_4.html#live-coding-example-minnesota-frpl-data",
+    "href": "slides/class_4/class_4.html#live-coding-example-minnesota-frpl-data",
+    "title": "Data Cleaning and Processing in R: Part 1",
+    "section": "Live Coding Example: Minnesota FRPL Data",
+    "text": "Live Coding Example: Minnesota FRPL Data\n\n# Summarize the school data to create a district summary -----\n\nmca_frpl_district_summary &lt;- mca_frpl_school_fy22_clean |&gt;\n  # We are going to group the data by the dist_id, which is the unique \n  # district identifier we created \n  group_by(dist_id) |&gt;\n  # The \"first\" indicates to keep the first value. So this will keep the \n  # identification for district and dist_id\n  summarise(dist_id = first(dist_id), \n            district = first(district),\n            # The \"sum\" totals the values of the columns we are specifying\n            total_tested = sum(total_tested, na.rm = T),\n            does_not_meet_count = sum(does_not_meet_count, na.rm =T),\n            partially_meets_count = sum(partially_meets_count, na.rm = T),\n            meets_count = sum(meets_count, na.rm = T),\n            exceeds_count = sum(exceeds_count, na.rm = T))\n\n# We can also make a state summary -----\n\nmca_frpl_state_summary &lt;- mca_frpl_district_summary |&gt;\n  # We do not need to use group_by() because we are only going to have one value\n  summarise(total_tested = sum(total_tested, na.rm = T),\n            does_not_meet_count = sum(does_not_meet_count, na.rm =T),\n            partially_meets_count = sum(partially_meets_count, na.rm = T),\n            meets_count = sum(meets_count, na.rm = T),\n            exceeds_count = sum(exceeds_count, na.rm = T)) |&gt;\n  mutate(state = \"Minnesota\") |&gt;\n  select(state, everything())"
+  },
+  {
+    "objectID": "slides/class_6/week_05/week_5_slides.html#agenda",
+    "href": "slides/class_6/week_05/week_5_slides.html#agenda",
+    "title": "Tidycensus and Reproducible Data in R",
+    "section": "Agenda",
+    "text": "Agenda\n\nHomework Note\nTidycensus\nPartner activity\nBreak\nReproducible data in R\nHomework and next class"
+  },
+  {
+    "objectID": "slides/class_6/week_05/week_5_slides.html#please-do-the-homework",
+    "href": "slides/class_6/week_05/week_5_slides.html#please-do-the-homework",
+    "title": "Tidycensus and Reproducible Data in R",
+    "section": "Please do the homework!",
+    "text": "Please do the homework!\nWith the holiday and such, several of you didn’t complete the homework. Please have it done by noon CT on Monday, July 15. We will do a homework review next class.\nIf you have questions, please sign up for office hours. If you send an email, please include your script or a screenshot of your code. This helps a lot with problem solving."
+  },
+  {
+    "objectID": "slides/class_6/week_05/week_5_slides.html#the-tidycensus-r-package-is-a-powerful-tool-designed-to-simplify-the-process-of-accessing-and-working-with-us-census-data",
+    "href": "slides/class_6/week_05/week_5_slides.html#the-tidycensus-r-package-is-a-powerful-tool-designed-to-simplify-the-process-of-accessing-and-working-with-us-census-data",
+    "title": "Tidycensus and Reproducible Data in R",
+    "section": "The tidycensus R package is a powerful tool designed to simplify the process of accessing and working with US Census data",
+    "text": "The tidycensus R package is a powerful tool designed to simplify the process of accessing and working with US Census data\n\n\nThe Census Bureau collects a lot of information that is reported at the school district level. This includes information on topics that are relevant to school finance, like housing and health. The two main tidycensus() functions we will use are:\n\nget_acs(): Accesses data from 1-year and 5-year American Community Survey samples\nget_estimates(): Interfaces with Population Estimates APIs"
+  },
+  {
+    "objectID": "slides/class_6/week_05/week_5_slides.html#school-district-geography-options-in-tidycensus",
+    "href": "slides/class_6/week_05/week_5_slides.html#school-district-geography-options-in-tidycensus",
+    "title": "Tidycensus and Reproducible Data in R",
+    "section": "School district geography options in tidycensus",
+    "text": "School district geography options in tidycensus\nIn tidycensus, you can specify school districts as one of the geography types when pulling data. There are three primary types of school districts to work with:\n\nElementary School Districts: Represent areas served by elementary schools.\nSecondary School Districts: Represent areas served by secondary schools (middle and high schools).\nUnified School Districts: Represent areas that serve both elementary and secondary school students.\n\nMost states in the U.S. primarily have unified school districts, which are more common because they serve both elementary and secondary students. However, the exact distribution of school district types varies by by state. Some states may have a mix of elementary, secondary, and unified school districts, while others may predominantly feature one type over the others."
+  },
+  {
+    "objectID": "slides/class_6/week_05/week_5_slides.html#to-get-started-you-will-need-to-sign-up-for-an-api-key-with-the-census-bureau",
+    "href": "slides/class_6/week_05/week_5_slides.html#to-get-started-you-will-need-to-sign-up-for-an-api-key-with-the-census-bureau",
+    "title": "Tidycensus and Reproducible Data in R",
+    "section": "To get started, you will need to sign up for an API key with the Census Bureau",
+    "text": "To get started, you will need to sign up for an API key with the Census Bureau\n\nSignup for an API key here!"
+  },
+  {
+    "objectID": "slides/class_6/week_05/week_5_slides.html#in-the-example-we-will-use-functions-that-are-part-of-the-dplyr-package-and-ggplot2-packages",
+    "href": "slides/class_6/week_05/week_5_slides.html#in-the-example-we-will-use-functions-that-are-part-of-the-dplyr-package-and-ggplot2-packages",
+    "title": "Tidycensus and Reproducible Data in R",
+    "section": "In the example we will use functions that are part of the dplyr package and ggplot2 packages",
+    "text": "In the example we will use functions that are part of the dplyr package and ggplot2 packages\n\nanti_join(): Part of the dplyr package and filters observations from one data frame based on non-matches with another data frame.\nbind_rows(): Part of the dplyr package and combines multiple data frames or tibbles by stacking them vertically.\nfacet_wrap(): Part of the ggplot2 package and creates multi-panel plots by wrapping a 1D sequence of panels into a 2D layout.\n\nWe will also use several functions that we have already learned in the first four classes."
+  },
+  {
+    "objectID": "slides/class_6/week_05/week_5_slides.html#in-class-coding-example-clean_and_join.r",
+    "href": "slides/class_6/week_05/week_5_slides.html#in-class-coding-example-clean_and_join.r",
+    "title": "Tidycensus and Reproducible Data in R",
+    "section": "In-class coding example: clean_and_join.R",
+    "text": "In-class coding example: clean_and_join.R\n\n# load -----------\n\noptions(scipen = 999)\n\nlibrary(tidyverse)\nlibrary(edbuildr)\nlibrary(tidycensus)\nlibrary(viridis)\nlibrary(scales)\n\n# get your own api key from https://api.census.gov/data/key_signup.html\n# only run this line of code once after you replace the text below\n# with your API key\ncensus_api_key(\"YOUR API KEY GOES HERE\", install = TRUE, overwrite = TRUE)\n\n# get edbuild data\nedbuild_fy19 &lt;- masterpull(data_type = \"geo\")\n\n# load census variables from 2019 acs 5-year estimates\nv19 &lt;- load_variables(2019, \"acs5\", cache = TRUE)\n\n# get mortgage data for unified school districts\nmortgage_unified_raw &lt;- get_acs(variables = c(\"B25101_001\", # total households\n                                              \"B25101_002\", # total with a mortgage\n                                              \"B25101_024\"), # total not mortgaged\n                        geography = \"school district (unified)\",\n                        state = \"MN\", \n                        year = 2019)\n\n# get mortgage data for elementary school districts\nmortgage_elementary_raw &lt;- get_acs(variables = c(\"B25101_001\", # total households\n                                                  \"B25101_002\", # total with a mortgage\n                                                  \"B25101_024\"), # total not mortgaged\n                                    geography = \"school district (elementary)\",\n                                    state = \"MN\", \n                                    year = 2019)\n\n# get mortgage data for secondary school districts\nmortgage_secondary_raw &lt;- get_acs(variables = c(\"B25101_001\", # total households\n                                                  \"B25101_002\", # total with a mortgage\n                                                  \"B25101_024\"), # total not mortgaged\n                                    geography = \"school district (secondary)\",\n                                    state = \"MN\", \n                                    year = 2019)\n\n\n# clean ------------\n\n# clean mortgage data for unified school districts\nmortgage_pct_unified &lt;- mortgage_unified_raw |&gt; \n  # replace vars with more descriptive names\n  mutate(variable = str_replace_all(variable, \"B25101_001\", \"households\"),\n         variable = str_replace_all(variable, \"B25101_002\", \"with_mortgage\"),\n         variable = str_replace_all(variable, \"B25101_024\", \"no_mortgage\")\n        ) |&gt;  # close mutate \n  # remove margin of error column\n  select(-moe) |&gt; \n  # pivot variable column into distinct columns\n  pivot_wider(names_from = variable, values_from = estimate) |&gt; \n  # calculate percent of households within a school district with a mortgage\n  mutate(mortgage_pct = with_mortgage / households) \n\n# clean mortgage data for elementary school districts\nmortgage_pct_elementary &lt;- mortgage_elementary_raw |&gt; \n  mutate(variable = str_replace_all(variable, \"B25101_001\", \"households\"),\n         variable = str_replace_all(variable, \"B25101_002\", \"with_mortgage\"),\n         variable = str_replace_all(variable, \"B25101_024\", \"no_mortgage\")\n  ) |&gt;  # close mutate \n  select(-moe) |&gt; \n  pivot_wider(names_from = variable, values_from = estimate) |&gt; \n  mutate(mortgage_pct = with_mortgage / households)\n\n# clean mortgage data for secondary school districts\nmortgage_pct_secondary &lt;- mortgage_secondary_raw |&gt; \n  mutate(variable = str_replace_all(variable, \"B25101_001\", \"households\"),\n         variable = str_replace_all(variable, \"B25101_002\", \"with_mortgage\"),\n         variable = str_replace_all(variable, \"B25101_024\", \"no_mortgage\")\n  ) |&gt;  # close mutate \n  select(-moe) |&gt; \n  pivot_wider(names_from = variable, values_from = estimate) |&gt; \n  mutate(mortgage_pct = with_mortgage / households)\n\n# NOTE: this data isn't really that useful for mn!\n\n# join ----------\n\n# join unified and elementary data by binding rows\nmortgage_pct_mn &lt;- mortgage_pct_unified |&gt; \n  bind_rows(mortgage_pct_elementary) |&gt; \n  # filter out summary row\n  filter(GEOID != \"2199999\") |&gt; \n  # arrange from largest to smallest district\n  arrange(-households)\n\n# join edbuild and census data using left_join\nedbuild_mortgage_mn &lt;- edbuild_fy19 |&gt; \n  filter(State == \"Minnesota\") |&gt; \n  left_join(mortgage_pct_mn, by = c(\"NCESID\" = \"GEOID\"))\n\n# do the join again, but this time select for the columns we want to keep\n# to avoid duplicates like district.x and district.y\nedbuild_mortgage_mn &lt;- edbuild_fy19 |&gt; \n  filter(State == \"Minnesota\") |&gt; \n  left_join(mortgage_pct_mn |&gt; \n              select(GEOID, households, with_mortgage, mortgage_pct),\n            by = c(\"NCESID\" = \"GEOID\"))\n\n# use anti_join() to check for districts with no mortgage data\nedbuild_mortgage_mn_no_match &lt;- edbuild_fy19 |&gt; \n  filter(State == \"Minnesota\") |&gt; \n  anti_join(mortgage_pct_mn |&gt; \n              select(GEOID,households, with_mortgage, mortgage_pct),\n            by = c(\"NCESID\" = \"GEOID\"))\n\n# run the reverse anti_join to see if the census data has \n#  districts not included in the edbuild table\nmortgage_edbuild_mn_no_match &lt;- mortgage_pct_mn |&gt; \n  select(GEOID,households, with_mortgage, mortgage_pct) |&gt; \n  anti_join(edbuild_fy19 |&gt; \n              filter(State == \"Minnesota\") ,\n            by = c(\"GEOID\" = \"NCESID\"))\n\n# plot -----------\n\n# first plot of the joined dataset\nggplot(edbuild_mortgage_mn) +\n  geom_point(aes(x = MHI, y = mortgage_pct, \n                 color = StPovRate, size = ENROLL),\n             alpha = .7) +\n  scale_size_area(max_size = 10, labels = label_comma()) +\n  scale_x_continuous(labels = label_dollar()) +\n  scale_y_continuous(labels = label_percent()) +\n  scale_color_viridis(labels = label_percent()) +\n  labs(x = \"MHI\", y = \"Percent of households with a mortgage\",\n       color = \"Poverty rate\", size = \"Enrollment\") +\n  theme_bw()\n\n# facet by sdType\nggplot(edbuild_mortgage_mn) +\n  geom_point(aes(x = MHI, y = mortgage_pct, \n                 color = StPovRate, size = ENROLL),\n             alpha = .7) +\n  scale_size_area(max_size = 10, labels = label_comma()) +\n  scale_x_continuous(labels = label_dollar()) +\n  scale_y_continuous(labels = label_percent()) +\n  scale_color_viridis(labels = label_percent()) +\n  labs(x = \"MHI\", y = \"Percent of households with a mortgage\",\n       color = \"Poverty rate\", size = \"Enrollment\") +\n  facet_wrap(~sdType) +\n  theme_bw()\n\n# filter out secondary districts and create better labels for \n# elementary and unified districts\nggplot(edbuild_mortgage_mn |&gt; \n         filter(sdType != \"secon\") |&gt; \n         mutate(sdType = case_when(sdType == \"elem\" ~ \"Elementary\",\n                                   sdType == \"uni\" ~ \"Unified\"))) +\n  geom_point(aes(x = MHI, y = mortgage_pct, \n                 color = StPovRate, size = ENROLL),\n             alpha = .7) +\n  scale_size_area(max_size = 10, labels = label_comma()) +\n  scale_x_continuous(labels = label_dollar()) +\n  scale_y_continuous(labels = label_percent()) +\n  scale_color_viridis(labels = label_percent()) +\n  labs(x = \"MHI\", y = \"Percent of households with a mortgage\",\n       color = \"Poverty rate\", size = \"Enrollment\") +\n  facet_wrap(~sdType) +\n  theme_bw()\n\n# same chart, but filter  allow for free x+y axis scales\nggplot(edbuild_mortgage_mn |&gt; \n         filter(sdType != \"secon\") |&gt; \n         mutate(sdType = case_when(sdType == \"elem\" ~ \"Elementary\",\n                                   sdType == \"uni\" ~ \"Unified\"))) +\n  geom_point(aes(x = MHI, y = mortgage_pct, \n                 color = StPovRate, size = ENROLL),\n             alpha = .7) +\n  scale_size_area(max_size = 10, labels = label_comma()) +\n  scale_x_continuous(labels = label_dollar()) +\n  scale_y_continuous(labels = label_percent()) +\n  scale_color_viridis(labels = label_percent()) +\n  labs(x = \"MHI\", y = \"Percent of households with a mortgage\",\n       color = \"Poverty rate\", size = \"Enrollment\") +\n  facet_wrap(~sdType, scales = \"free\") +\n  theme_bw()"
+  },
+  {
+    "objectID": "slides/class_6/week_05/week_5_slides.html#in-small-groups-you-will.",
+    "href": "slides/class_6/week_05/week_5_slides.html#in-small-groups-you-will.",
+    "title": "Tidycensus and Reproducible Data in R",
+    "section": "In small groups you will….",
+    "text": "In small groups you will….\nDo the in-class exercise but for your state. As you are looking through the data frames and the charts, ask yourselves:\n\nWhat do you notice about the data?\nAnything surprising or seem off?\n\nIf you have time, look through the variable book and explore the variables. Are there any variables that you think would be helpful or interesting to explore for your state?"
+  },
+  {
+    "objectID": "slides/class_6/week_05/week_5_slides.html#you-can-and-should-start-your-projects-by-creating-a-new-repo-on-your-github-account",
+    "href": "slides/class_6/week_05/week_5_slides.html#you-can-and-should-start-your-projects-by-creating-a-new-repo-on-your-github-account",
+    "title": "Tidycensus and Reproducible Data in R",
+    "section": "You can (and should) start your projects by creating a new repo on your GitHub account",
+    "text": "You can (and should) start your projects by creating a new repo on your GitHub account"
+  },
+  {
+    "objectID": "slides/class_6/week_05/week_5_slides.html#before-you-start-coding-set-yourself-up-for-a-successful-reproducible-analysis-project",
+    "href": "slides/class_6/week_05/week_5_slides.html#before-you-start-coding-set-yourself-up-for-a-successful-reproducible-analysis-project",
+    "title": "Tidycensus and Reproducible Data in R",
+    "section": "Before you start coding, set yourself up for a successful, reproducible analysis project",
+    "text": "Before you start coding, set yourself up for a successful, reproducible analysis project\n\nEvery new data analysis project should live in its own RStudio project\nMost of your projects should be started on Github, then cloned locally (just like we do with homework)\n\nBe sure to set your project repos to “Private” before creating them on Github!\nAlso, using a README.md file can help you stay organized and keep track of data sources and/or outliers.\n\nRStudio projects can be also created locally by navigating to File -&gt; New Project..., but it’s more difficult to connect it to Github if you start that way."
+  },
+  {
+    "objectID": "slides/class_6/week_05/week_5_slides.html#remember-after-youve-created-a-project-use-a-consistent-folder-structure-to-keep-your-analysis-organized",
+    "href": "slides/class_6/week_05/week_5_slides.html#remember-after-youve-created-a-project-use-a-consistent-folder-structure-to-keep-your-analysis-organized",
+    "title": "Tidycensus and Reproducible Data in R",
+    "section": "Remember: After you’ve created a project, use a consistent folder structure to keep your analysis organized",
+    "text": "Remember: After you’ve created a project, use a consistent folder structure to keep your analysis organized\n\n\n\nBuilding a consistent file structure in your projects will help you (and others!) easily navigate your code.\nMinimally, you will want to have a separate folder for:\n\ndata\nscripts\nfigures"
+  },
+  {
+    "objectID": "slides/class_6/week_05/week_5_slides.html#another-layer-of-organization-separate-your-raw-and-processed-data",
+    "href": "slides/class_6/week_05/week_5_slides.html#another-layer-of-organization-separate-your-raw-and-processed-data",
+    "title": "Tidycensus and Reproducible Data in R",
+    "section": "Another layer of organization: Separate your raw and processed data!",
+    "text": "Another layer of organization: Separate your raw and processed data!\n\n\n\nUse sub-folders within your /data folder to keep your raw data files separated from any processed data files you produce during your analysis.\nThis creates additional procedural barrier to accidentally over-writing your raw data.\nUse the /processed data folder for exporting clean data or results of your analysis, like summary tables."
+  },
+  {
+    "objectID": "slides/class_6/week_05/week_5_slides.html#you-can-use-the-source-function-in-r-to-reuse-functions-that-you-create-in-another-r-script.",
+    "href": "slides/class_6/week_05/week_5_slides.html#you-can-use-the-source-function-in-r-to-reuse-functions-that-you-create-in-another-r-script.",
+    "title": "Tidycensus and Reproducible Data in R",
+    "section": "You can use the source function in R to reuse functions that you create in another R script.",
+    "text": "You can use the source function in R to reuse functions that you create in another R script.\n\nThe source function uses this basic syntax: source(\"path/to/some/file.R\") to run scripts you’ve written behind-the-scenes, giving you access to the objects created by that script.\nBreaking up your data cleaning and analysis work across multiple scripts can be very helpful during complex projects.\nThis approach makes it easier to isolate errors and update code.\n\n\n# load -----\n\nlibrary(tidyverse)\nlibrary(readxl)\n\noptions(scipen = 999)\n\n# Calling in scripts from the \"updated_app_data\" folder then the code in \n# scripts 1-13 will run! \nsource(\"updated_app_data/13_updated_2020_app_data.R\")"
+  },
+  {
+    "objectID": "slides/class_6/week_05/week_5_slides.html#live-coding-example-u.s.-census-annual-survey-of-school-system-finances",
+    "href": "slides/class_6/week_05/week_5_slides.html#live-coding-example-u.s.-census-annual-survey-of-school-system-finances",
+    "title": "Tidycensus and Reproducible Data in R",
+    "section": "Live coding example: U.S. Census Annual Survey of School System Finances",
+    "text": "Live coding example: U.S. Census Annual Survey of School System Finances\n\n# 2_f33_2008_2013_clean\n# 2022-10-05 last updated by Krista Kaput\n\n# load -----\n\nlibrary(tidyverse)\nlibrary(readxl)\n\noptions(scipen = 999)\n\n# source script cleaning f33 data from 2002-2007\nsource(\"f33_finance_enrollment_scripts/1_f33_2002_2007_clean.R\")\n\n# load raw f33 from 2008 \nf33_2008_raw &lt;- read_excel(\"raw_data/f33_finance_raw/elsec08_sttables.xls\", \n              sheet = \"1\", skip = 9, n_max = 53)\n\n# load raw f33 from 2009\nf33_2009_raw &lt;- read_excel(\"raw_data/f33_finance_raw/elsec09_sttables.xls\", \n                           sheet = \"1\", skip = 9, n_max = 53)\n\n# load raw f33 from 2010 \nf33_2010_raw &lt;- read_excel(\"raw_data/f33_finance_raw/elsec10_sttables.xls\", \n                           sheet = \"1\", skip = 9, n_max = 53)\n\n# load raw f33 from 2011\nf33_2011_raw &lt;- read_excel(\"raw_data/f33_finance_raw/elsec11_sttables.xls\", \n                           sheet = \"1\", skip = 9, n_max = 53)\n\n# load raw f33 from 2012 \nf33_2012_raw &lt;- read_excel(\"raw_data/f33_finance_raw/elsec12_sttables.xls\", \n                          sheet = \"1\", skip = 7, n_max = 53)\n\n# load raw f33 from 2013 \nf33_2013_raw &lt;- read_excel(\"raw_data/f33_finance_raw/elsec13_sttables.xls\", \n                           sheet = \"1\", skip = 7, n_max = 53)\n\n\n# clean all 2008 f33 data ---------\nf33_2008_all &lt;- f33_2008_raw |&gt;\n  rename(state = \"...1\",\n         total_revenue = \"Total Revenue\",\n         federal_revenue = \"Federal Revenue\",\n         state_revenue = \"State Revenue\",\n         local_revenue = \"Local Revenue\",\n         total_expenditures = \"Total Expenditure\",\n         current_expenditures = \"Current Spending\",\n         capital_expenses = \"Capital Outlay\") |&gt;\n  mutate(year = 2008) |&gt;\n  select(year, state, total_revenue, federal_revenue, state_revenue, local_revenue,\n         total_expenditures, current_expenditures, capital_expenses)\n\n# filter for 2008 national f33 data\nf33_2008_us &lt;- f33_2008_all |&gt;\n  filter(total_revenue == \"582125621\")\n\n# filter for 2008 state f33 data\nf33_2008_states &lt;- f33_2008_all |&gt;\n  filter(total_revenue != \"582125621\")\n\n\n# clean all 2009 f33 data ---------\nf33_2009_all &lt;- f33_2009_raw |&gt;\n  rename(state = \"...1\",\n         total_revenue = \"Total Revenue\",\n         federal_revenue = \"Federal Revenue\",\n         state_revenue = \"State Revenue\",\n         local_revenue = \"Local Revenue\",\n         total_expenditures = \"Total Expenditure\",\n         current_expenditures = \"Current Spending\",\n         capital_expenses = \"Capital Outlay\") |&gt;\n  mutate(year = 2009) |&gt;\n  select(year, state, total_revenue, federal_revenue, state_revenue, local_revenue,\n         total_expenditures, current_expenditures, capital_expenses)\n\n# filter for 2009 national f33 data\nf33_2009_us &lt;- f33_2009_all |&gt;\n  filter(total_revenue == \"590947579\")\n\n# filter for 2009 state f33 data\nf33_2009_states &lt;- f33_2009_all |&gt;\n  filter(total_revenue != \"590947579\")\n\n# clean all 2010 f33 data ------------\nf33_2010_all &lt;- f33_2010_raw |&gt;\n  rename(state = \"...1\",\n         total_revenue = \"Total Revenue\",\n         federal_revenue = \"Federal Revenue\",\n         state_revenue = \"State Revenue\",\n         local_revenue = \"Local Revenue\",\n         total_expenditures = \"Total Expenditure\",\n         current_expenditures = \"Current Spending\",\n         capital_expenses = \"Capital Outlay\") |&gt;\n  mutate(year = 2010) |&gt;\n  select(year, state, total_revenue, federal_revenue, state_revenue, local_revenue,\n         total_expenditures, current_expenditures, capital_expenses)\n\n# filter for 2010 national f33 data\nf33_2010_us &lt;- f33_2010_all |&gt;\n  filter(total_revenue == \"592895329\")\n\n# filter for 2010 state f33 data\nf33_2010_states &lt;- f33_2010_all |&gt;\n  filter(total_revenue != \"592895329\")\n\n# clean all 2011 f33 data ------------\nf33_2011_all &lt;- f33_2011_raw |&gt;\n  rename(state = \"...1\",\n         total_revenue = \"Total Revenue\",\n         federal_revenue = \"Federal Revenue\",\n         state_revenue = \"State Revenue\",\n         local_revenue = \"Local Revenue\",\n         total_expenditures = \"Total Expenditures\",\n         current_expenditures = \"Current Spending\",\n         capital_expenses = \"Capital Outlay\") |&gt;\n  mutate(year = 2011) |&gt;\n  select(year, state, total_revenue, federal_revenue, state_revenue, local_revenue,\n         total_expenditures, current_expenditures, capital_expenses)"
+  },
+  {
+    "objectID": "slides/class_6/week_05/week_5_slides.html#r-markdown-is-a-special-file-type-that-allows-you-to-combine-code-with-plain-text-to-create-reports",
+    "href": "slides/class_6/week_05/week_5_slides.html#r-markdown-is-a-special-file-type-that-allows-you-to-combine-code-with-plain-text-to-create-reports",
+    "title": "Tidycensus and Reproducible Data in R",
+    "section": "R Markdown is a special file type that allows you to combine code with plain text to create reports",
+    "text": "R Markdown is a special file type that allows you to combine code with plain text to create reports\n\n\n\nYAML Header: Controls certain output settings that apply to the entire document.\nCode Chunk: Includes code to run, and code-related options.\nBody Text: For communicating results and findings to the targeted audience.\nCode to Generate a Table: Outputs a table with minimal formatting like you would see in the console.\nSection Header: Specified with ##.\nCode to Generate a Plot: Outputs a plot. Here, the code used to generate the plot will not be included because the parameter echo=FALSE is specified."
+  },
+  {
+    "objectID": "slides/class_6/week_05/week_5_slides.html#r-markdown-combines-chunks-of-r-code-with-blocks-of-markdown-formatted-text",
+    "href": "slides/class_6/week_05/week_5_slides.html#r-markdown-combines-chunks-of-r-code-with-blocks-of-markdown-formatted-text",
+    "title": "Tidycensus and Reproducible Data in R",
+    "section": "R Markdown combines “chunks” of R code with blocks of Markdown-formatted text",
+    "text": "R Markdown combines “chunks” of R code with blocks of Markdown-formatted text\n\n\nR code chunks in R Markdown are contained within a pair of triple backticks that include a curly brace that indicates the section contains r code:\n```{r}\n&lt;code goes here&gt;\n```\n\nMarkdown is a *really* easy way to format text. For more, visit Markdown Guide).\nFor more on using R Markdown documents, check out RStudio’s resources here."
+  },
+  {
+    "objectID": "slides/class_6/week_05/week_5_slides.html#live-coding-example-kentucky-edbuild-data-analysis",
+    "href": "slides/class_6/week_05/week_5_slides.html#live-coding-example-kentucky-edbuild-data-analysis",
+    "title": "Tidycensus and Reproducible Data in R",
+    "section": "LIVE CODING EXAMPLE: Kentucky EdBuild Data Analysis",
+    "text": "LIVE CODING EXAMPLE: Kentucky EdBuild Data Analysis"
+  },
+  {
+    "objectID": "slides/class_6/week_05/week_5_slides.html#quarto-is-a-multi-language-next-generation-version-of-r-markdown-from-rstudio",
+    "href": "slides/class_6/week_05/week_5_slides.html#quarto-is-a-multi-language-next-generation-version-of-r-markdown-from-rstudio",
+    "title": "Tidycensus and Reproducible Data in R",
+    "section": "Quarto is a multi-language, next generation version of R Markdown from RStudio",
+    "text": "Quarto is a multi-language, next generation version of R Markdown from RStudio\n\nLike R Markdown, Quarto is free and open source\nQuarto also uses Knitr to execute R code, so it can render most existing Rmd files without modification\nUse a single source document to target multiple formats (HTML, PDF, Word, etc.)\nIt’s language-agnostic. It can render documents that contain code written in R, Python, Julia, or Observable.\nCheck out the gallery of Quarto examples"
+  },
+  {
+    "objectID": "slides/class_6/week_05/week_5_slides.html#how-to-use-quarto-rendering",
+    "href": "slides/class_6/week_05/week_5_slides.html#how-to-use-quarto-rendering",
+    "title": "Tidycensus and Reproducible Data in R",
+    "section": "How to use Quarto: Rendering",
+    "text": "How to use Quarto: Rendering\n\nUse the Render button to render the file and preview the output with a single click or keyboard shortcut (⇧⌘K)\nYou can also automatically render whenever you save. To do that you check the Render on Save option on the editor toolbar. The preview will update whenever you re-render the document. Side-by-side preview works for both HTML and PDF outputs.\nWhen rendering, Quarto generates a new file that contains selected text, code, and results from the .qmd file. The new file can be an HTML, PDF, MS Word document, presentation, website, book, interactive document, or other format."
+  },
+  {
+    "objectID": "slides/class_6/week_05/week_5_slides.html#how-to-use-quarto-authoring",
+    "href": "slides/class_6/week_05/week_5_slides.html#how-to-use-quarto-authoring",
+    "title": "Tidycensus and Reproducible Data in R",
+    "section": "How to use Quarto: Authoring",
+    "text": "How to use Quarto: Authoring"
+  },
+  {
+    "objectID": "slides/class_6/week_05/week_5_slides.html#live-coding-example-kentucky-edbuild-data-analysis-1",
+    "href": "slides/class_6/week_05/week_5_slides.html#live-coding-example-kentucky-edbuild-data-analysis-1",
+    "title": "Tidycensus and Reproducible Data in R",
+    "section": "LIVE CODING EXAMPLE: Kentucky EdBuild Data Analysis",
+    "text": "LIVE CODING EXAMPLE: Kentucky EdBuild Data Analysis"
+  },
+  {
+    "objectID": "slides/class_6/week_05/week_5_slides.html#this-weeks-homework-assignment",
+    "href": "slides/class_6/week_05/week_5_slides.html#this-weeks-homework-assignment",
+    "title": "Tidycensus and Reproducible Data in R",
+    "section": "This week’s homework assignment",
+    "text": "This week’s homework assignment\nReading assignment\n\nWhat Should the Future of School Finance Equity Look Like?\n\nCoding task\n\nClone the rclass-capstone-project capstone GitHub repository. Upload your data using the file structure we discussed today and start cleaning and analyzing your state’s education finance data!\nIf you were not able to finish the week 4 homework, please finish it by noon on Monday, July 15.\nSign up for 1:1 check-in with Alex and Krista so we can discuss your capstone projects. Link will be sent in follow-up email."
+  },
+  {
+    "objectID": "slides/class_6/class_6.html#agenda",
+    "href": "slides/class_6/class_6.html#agenda",
+    "title": "Tidycensus and Reproducible Data in R",
+    "section": "Agenda",
+    "text": "Agenda\n\nReview!\nTidycensus\nReproducible data in R"
+  },
+  {
+    "objectID": "slides/class_6/class_6.html#the-tidycensus-r-package-is-a-powerful-tool-designed-to-simplify-the-process-of-accessing-and-working-with-us-census-data",
+    "href": "slides/class_6/class_6.html#the-tidycensus-r-package-is-a-powerful-tool-designed-to-simplify-the-process-of-accessing-and-working-with-us-census-data",
+    "title": "Tidycensus and Reproducible Data in R",
+    "section": "The tidycensus R package is a powerful tool designed to simplify the process of accessing and working with US Census data",
+    "text": "The tidycensus R package is a powerful tool designed to simplify the process of accessing and working with US Census data\n\n\nThe Census Bureau collects a lot of information that is reported at the school district level. This includes information on topics that are relevant to school finance, like housing and health. The two main tidycensus() functions we will use are:\n\nget_acs(): Accesses data from 1-year and 5-year American Community Survey samples\nget_estimates(): Interfaces with Population Estimates APIs"
+  },
+  {
+    "objectID": "slides/class_6/class_6.html#please-do-the-homework",
+    "href": "slides/class_6/class_6.html#please-do-the-homework",
+    "title": "Tidycensus and Reproducible Data in R",
+    "section": "Please do the homework!",
+    "text": "Please do the homework!"
+  },
+  {
+    "objectID": "slides/class_6/class_6.html#school-district-geography-options-in-tidycensus",
+    "href": "slides/class_6/class_6.html#school-district-geography-options-in-tidycensus",
+    "title": "Tidycensus and Reproducible Data in R",
+    "section": "School district geography options in tidycensus",
+    "text": "School district geography options in tidycensus\nIn tidycensus, you can specify school districts as one of the geography types when pulling data. There are three primary types of school districts to work with:\n\nElementary School Districts: Represent areas served by elementary schools.\nSecondary School Districts: Represent areas served by secondary schools (middle and high schools).\nUnified School Districts: Represent areas that serve both elementary and secondary school students.\n\nMost states in the U.S. primarily have unified school districts, which are more common because they serve both elementary and secondary students. However, the exact distribution of school district types varies by by state. Some states may have a mix of elementary, secondary, and unified school districts, while others may predominantly feature one type over the others."
+  },
+  {
+    "objectID": "slides/class_6/class_6.html#to-get-started-you-will-need-to-sign-up-for-an-api-key-with-the-census-bureau",
+    "href": "slides/class_6/class_6.html#to-get-started-you-will-need-to-sign-up-for-an-api-key-with-the-census-bureau",
+    "title": "Tidycensus and Reproducible Data in R",
+    "section": "To get started, you will need to sign up for an API key with the Census Bureau",
+    "text": "To get started, you will need to sign up for an API key with the Census Bureau\n\nSignup for an API key here!"
+  },
+  {
+    "objectID": "slides/class_6/class_6.html#in-the-example-we-will-use-functions-that-are-part-of-the-dplyr-package-and-ggplot2-packages",
+    "href": "slides/class_6/class_6.html#in-the-example-we-will-use-functions-that-are-part-of-the-dplyr-package-and-ggplot2-packages",
+    "title": "Tidycensus and Reproducible Data in R",
+    "section": "In the example we will use functions that are part of the dplyr package and ggplot2 packages",
+    "text": "In the example we will use functions that are part of the dplyr package and ggplot2 packages\n\nanti_join(): Part of the dplyr package and filters observations from one data frame based on non-matches with another data frame.\nbind_rows(): Part of the dplyr package and combines multiple data frames or tibbles by stacking them vertically.\nfacet_wrap(): Part of the ggplot2 package and creates multi-panel plots by wrapping a 1D sequence of panels into a 2D layout.\n\nWe will also use several functions that we have already learned in the first four classes."
+  },
+  {
+    "objectID": "slides/class_6/class_6.html#in-class-coding-example-clean_and_join.r",
+    "href": "slides/class_6/class_6.html#in-class-coding-example-clean_and_join.r",
+    "title": "Tidycensus and Reproducible Data in R",
+    "section": "In-class coding example: clean_and_join.R",
+    "text": "In-class coding example: clean_and_join.R\n\n# load -----------\n\noptions(scipen = 999)\n\nlibrary(tidyverse)\nlibrary(edbuildr)\nlibrary(tidycensus)\nlibrary(viridis)\nlibrary(scales)\n\n# get your own api key from https://api.census.gov/data/key_signup.html\n# only run this line of code once after you replace the text below\n# with your API key\ncensus_api_key(\"YOUR API KEY GOES HERE\", install = TRUE, overwrite = TRUE)\n\n# get edbuild data\nedbuild_fy19 &lt;- masterpull(data_type = \"geo\")\n\n# load census variables from 2019 acs 5-year estimates\nv19 &lt;- load_variables(2019, \"acs5\", cache = TRUE)\n\n# get mortgage data for unified school districts\nmortgage_unified_raw &lt;- get_acs(variables = c(\"B25101_001\", # total households\n                                              \"B25101_002\", # total with a mortgage\n                                              \"B25101_024\"), # total not mortgaged\n                        geography = \"school district (unified)\",\n                        state = \"MN\", \n                        year = 2019)\n\n# get mortgage data for elementary school districts\nmortgage_elementary_raw &lt;- get_acs(variables = c(\"B25101_001\", # total households\n                                                  \"B25101_002\", # total with a mortgage\n                                                  \"B25101_024\"), # total not mortgaged\n                                    geography = \"school district (elementary)\",\n                                    state = \"MN\", \n                                    year = 2019)\n\n# get mortgage data for secondary school districts\nmortgage_secondary_raw &lt;- get_acs(variables = c(\"B25101_001\", # total households\n                                                  \"B25101_002\", # total with a mortgage\n                                                  \"B25101_024\"), # total not mortgaged\n                                    geography = \"school district (secondary)\",\n                                    state = \"MN\", \n                                    year = 2019)\n\n\n# clean ------------\n\n# clean mortgage data for unified school districts\nmortgage_pct_unified &lt;- mortgage_unified_raw |&gt; \n  # replace vars with more descriptive names\n  mutate(variable = str_replace_all(variable, \"B25101_001\", \"households\"),\n         variable = str_replace_all(variable, \"B25101_002\", \"with_mortgage\"),\n         variable = str_replace_all(variable, \"B25101_024\", \"no_mortgage\")\n        ) |&gt;  # close mutate \n  # remove margin of error column\n  select(-moe) |&gt; \n  # pivot variable column into distinct columns\n  pivot_wider(names_from = variable, values_from = estimate) |&gt; \n  # calculate percent of households within a school district with a mortgage\n  mutate(mortgage_pct = with_mortgage / households) \n\n# clean mortgage data for elementary school districts\nmortgage_pct_elementary &lt;- mortgage_elementary_raw |&gt; \n  mutate(variable = str_replace_all(variable, \"B25101_001\", \"households\"),\n         variable = str_replace_all(variable, \"B25101_002\", \"with_mortgage\"),\n         variable = str_replace_all(variable, \"B25101_024\", \"no_mortgage\")\n  ) |&gt;  # close mutate \n  select(-moe) |&gt; \n  pivot_wider(names_from = variable, values_from = estimate) |&gt; \n  mutate(mortgage_pct = with_mortgage / households)\n\n# clean mortgage data for secondary school districts\nmortgage_pct_secondary &lt;- mortgage_secondary_raw |&gt; \n  mutate(variable = str_replace_all(variable, \"B25101_001\", \"households\"),\n         variable = str_replace_all(variable, \"B25101_002\", \"with_mortgage\"),\n         variable = str_replace_all(variable, \"B25101_024\", \"no_mortgage\")\n  ) |&gt;  # close mutate \n  select(-moe) |&gt; \n  pivot_wider(names_from = variable, values_from = estimate) |&gt; \n  mutate(mortgage_pct = with_mortgage / households)\n\n# NOTE: this data isn't really that useful for mn!\n\n# join ----------\n\n# join unified and elementary data by binding rows\nmortgage_pct_mn &lt;- mortgage_pct_unified |&gt; \n  bind_rows(mortgage_pct_elementary) |&gt; \n  # filter out summary row\n  filter(GEOID != \"2199999\") |&gt; \n  # arrange from largest to smallest district\n  arrange(-households)\n\n# join edbuild and census data using left_join\nedbuild_mortgage_mn &lt;- edbuild_fy19 |&gt; \n  filter(State == \"Minnesota\") |&gt; \n  left_join(mortgage_pct_mn, by = c(\"NCESID\" = \"GEOID\"))\n\n# do the join again, but this time select for the columns we want to keep\n# to avoid duplicates like district.x and district.y\nedbuild_mortgage_mn &lt;- edbuild_fy19 |&gt; \n  filter(State == \"Minnesota\") |&gt; \n  left_join(mortgage_pct_mn |&gt; \n              select(GEOID, households, with_mortgage, mortgage_pct),\n            by = c(\"NCESID\" = \"GEOID\"))\n\n# use anti_join() to check for districts with no mortgage data\nedbuild_mortgage_mn_no_match &lt;- edbuild_fy19 |&gt; \n  filter(State == \"Minnesota\") |&gt; \n  anti_join(mortgage_pct_mn |&gt; \n              select(GEOID,households, with_mortgage, mortgage_pct),\n            by = c(\"NCESID\" = \"GEOID\"))\n\n# run the reverse anti_join to see if the census data has \n#  districts not included in the edbuild table\nmortgage_edbuild_mn_no_match &lt;- mortgage_pct_mn |&gt; \n  select(GEOID,households, with_mortgage, mortgage_pct) |&gt; \n  anti_join(edbuild_fy19 |&gt; \n              filter(State == \"Minnesota\") ,\n            by = c(\"GEOID\" = \"NCESID\"))\n\n# plot -----------\n\n# first plot of the joined dataset\nggplot(edbuild_mortgage_mn) +\n  geom_point(aes(x = MHI, y = mortgage_pct, \n                 color = StPovRate, size = ENROLL),\n             alpha = .7) +\n  scale_size_area(max_size = 10, labels = label_comma()) +\n  scale_x_continuous(labels = label_dollar()) +\n  scale_y_continuous(labels = label_percent()) +\n  scale_color_viridis(labels = label_percent()) +\n  labs(x = \"MHI\", y = \"Percent of households with a mortgage\",\n       color = \"Poverty rate\", size = \"Enrollment\") +\n  theme_bw()\n\n# facet by sdType\nggplot(edbuild_mortgage_mn) +\n  geom_point(aes(x = MHI, y = mortgage_pct, \n                 color = StPovRate, size = ENROLL),\n             alpha = .7) +\n  scale_size_area(max_size = 10, labels = label_comma()) +\n  scale_x_continuous(labels = label_dollar()) +\n  scale_y_continuous(labels = label_percent()) +\n  scale_color_viridis(labels = label_percent()) +\n  labs(x = \"MHI\", y = \"Percent of households with a mortgage\",\n       color = \"Poverty rate\", size = \"Enrollment\") +\n  facet_wrap(~sdType) +\n  theme_bw()\n\n# filter out secondary districts and create better labels for \n# elementary and unified districts\nggplot(edbuild_mortgage_mn |&gt; \n         filter(sdType != \"secon\") |&gt; \n         mutate(sdType = case_when(sdType == \"elem\" ~ \"Elementary\",\n                                   sdType == \"uni\" ~ \"Unified\"))) +\n  geom_point(aes(x = MHI, y = mortgage_pct, \n                 color = StPovRate, size = ENROLL),\n             alpha = .7) +\n  scale_size_area(max_size = 10, labels = label_comma()) +\n  scale_x_continuous(labels = label_dollar()) +\n  scale_y_continuous(labels = label_percent()) +\n  scale_color_viridis(labels = label_percent()) +\n  labs(x = \"MHI\", y = \"Percent of households with a mortgage\",\n       color = \"Poverty rate\", size = \"Enrollment\") +\n  facet_wrap(~sdType) +\n  theme_bw()\n\n# same chart, but filter  allow for free x+y axis scales\nggplot(edbuild_mortgage_mn |&gt; \n         filter(sdType != \"secon\") |&gt; \n         mutate(sdType = case_when(sdType == \"elem\" ~ \"Elementary\",\n                                   sdType == \"uni\" ~ \"Unified\"))) +\n  geom_point(aes(x = MHI, y = mortgage_pct, \n                 color = StPovRate, size = ENROLL),\n             alpha = .7) +\n  scale_size_area(max_size = 10, labels = label_comma()) +\n  scale_x_continuous(labels = label_dollar()) +\n  scale_y_continuous(labels = label_percent()) +\n  scale_color_viridis(labels = label_percent()) +\n  labs(x = \"MHI\", y = \"Percent of households with a mortgage\",\n       color = \"Poverty rate\", size = \"Enrollment\") +\n  facet_wrap(~sdType, scales = \"free\") +\n  theme_bw()"
+  },
+  {
+    "objectID": "slides/class_6/class_6.html#in-small-groups-you-will.",
+    "href": "slides/class_6/class_6.html#in-small-groups-you-will.",
+    "title": "Tidycensus and Reproducible Data in R",
+    "section": "In small groups you will….",
+    "text": "In small groups you will….\nDo the in-class exercise but for your state. As you are looking through the data frames and the charts, ask yourselves:\n\nWhat do you notice about the data?\nAnything surprising or seem off?\n\nIf you have time, look through the variable book and explore the variables. Are there any variables that you think would be helpful or interesting to explore for your state?"
+  },
+  {
+    "objectID": "slides/class_6/class_6.html#you-can-and-should-start-your-projects-by-creating-a-new-repo-on-your-github-account",
+    "href": "slides/class_6/class_6.html#you-can-and-should-start-your-projects-by-creating-a-new-repo-on-your-github-account",
+    "title": "Tidycensus and Reproducible Data in R",
+    "section": "You can (and should) start your projects by creating a new repo on your GitHub account",
+    "text": "You can (and should) start your projects by creating a new repo on your GitHub account"
+  },
+  {
+    "objectID": "slides/class_6/class_6.html#before-you-start-coding-set-yourself-up-for-a-successful-reproducible-analysis-project",
+    "href": "slides/class_6/class_6.html#before-you-start-coding-set-yourself-up-for-a-successful-reproducible-analysis-project",
+    "title": "Tidycensus and Reproducible Data in R",
+    "section": "Before you start coding, set yourself up for a successful, reproducible analysis project",
+    "text": "Before you start coding, set yourself up for a successful, reproducible analysis project\n\nEvery new data analysis project should live in its own RStudio project\nMost of your projects should be started on Github, then cloned locally (just like we do with homework)\n\nBe sure to set your project repos to “Private” before creating them on Github!\nAlso, using a README.md file can help you stay organized and keep track of data sources and/or outliers.\n\nRStudio projects can be also created locally by navigating to File -&gt; New Project..., but it’s more difficult to connect it to Github if you start that way."
+  },
+  {
+    "objectID": "slides/class_6/class_6.html#remember-after-youve-created-a-project-use-a-consistent-folder-structure-to-keep-your-analysis-organized",
+    "href": "slides/class_6/class_6.html#remember-after-youve-created-a-project-use-a-consistent-folder-structure-to-keep-your-analysis-organized",
+    "title": "Tidycensus and Reproducible Data in R",
+    "section": "Remember: After you’ve created a project, use a consistent folder structure to keep your analysis organized",
+    "text": "Remember: After you’ve created a project, use a consistent folder structure to keep your analysis organized\n\n\n\nBuilding a consistent file structure in your projects will help you (and others!) easily navigate your code.\nMinimally, you will want to have a separate folder for:\n\ndata\nscripts\nfigures"
+  },
+  {
+    "objectID": "slides/class_6/class_6.html#another-layer-of-organization-separate-your-raw-and-processed-data",
+    "href": "slides/class_6/class_6.html#another-layer-of-organization-separate-your-raw-and-processed-data",
+    "title": "Tidycensus and Reproducible Data in R",
+    "section": "Another layer of organization: Separate your raw and processed data!",
+    "text": "Another layer of organization: Separate your raw and processed data!\n\n\n\nUse sub-folders within your /data folder to keep your raw data files separated from any processed data files you produce during your analysis.\nThis creates additional procedural barrier to accidentally over-writing your raw data.\nUse the /processed data folder for exporting clean data or results of your analysis, like summary tables."
+  },
+  {
+    "objectID": "slides/class_6/class_6.html#class-2-the-dplyr-package-provides-many-functions-to-manipulate-your-data-frames-columns-and-rows",
+    "href": "slides/class_6/class_6.html#class-2-the-dplyr-package-provides-many-functions-to-manipulate-your-data-frames-columns-and-rows",
+    "title": "Tidycensus and Reproducible Data in R",
+    "section": "Class #2: The dplyr() package provides many functions to manipulate your data frames’ columns and rows",
+    "text": "Class #2: The dplyr() package provides many functions to manipulate your data frames’ columns and rows\nThe functions you’ll most frequently use from the dplyr packages are:\n\nselect(): names columns to keep from a data frame\nrename(): name columns to keep from a data frame\nfilter(): remove rows that do not meet the condition in the logical statement from the output\nmutate(): create a new column that will be added to the end of your data frame."
+  },
+  {
+    "objectID": "slides/class_6/class_6.html#class-3-the-ggplot2-package-is-the-most-widely-used-data-visualization-approach-in-the-r-ecosystem.",
+    "href": "slides/class_6/class_6.html#class-3-the-ggplot2-package-is-the-most-widely-used-data-visualization-approach-in-the-r-ecosystem.",
+    "title": "Tidycensus and Reproducible Data in R",
+    "section": "Class #3: The ggplot2 package is the most widely-used data visualization approach in the R ecosystem.",
+    "text": "Class #3: The ggplot2 package is the most widely-used data visualization approach in the R ecosystem.\n\nPlots in ggplot2 are created by starting with your data, then building up layers\nOnce your specify your data, you can add layers of “geoms” to create your plot"
+  },
+  {
+    "objectID": "slides/class_6/class_6.html#class-4-your-data-will-rarely-come-in-a-single-table-so-you-will-need-to-use-join-functions-to-merge-the-data-frames",
+    "href": "slides/class_6/class_6.html#class-4-your-data-will-rarely-come-in-a-single-table-so-you-will-need-to-use-join-functions-to-merge-the-data-frames",
+    "title": "Tidycensus and Reproducible Data in R",
+    "section": "Class #4: Your data will rarely come in a single table, so you will need to use join functions to merge the data frames",
+    "text": "Class #4: Your data will rarely come in a single table, so you will need to use join functions to merge the data frames\nTo join two data frames, they need to share a common column with a unique identifier.\nState departments of education typically assign a unique ID number to each school district. Make sure this is available in your data sets.\nJoining data sets on a name (e.g. school or district) can create problems based on:\n\nCapitalization (Mcgregor v. McGregor)\nAbbreviation (St. Paul v. Saint Paul)\nMis-spelling (it happens!)"
+  },
+  {
+    "objectID": "slides/class_6/class_6.html#homework-and-next-steps",
+    "href": "slides/class_6/class_6.html#homework-and-next-steps",
+    "title": "Tidycensus and Reproducible Data in R",
+    "section": "Homework and Next Steps",
+    "text": "Homework and Next Steps\n\nOur next class is Tuesday, August 13 from 11:00 AM - 12:00 PM CT. During that class we will go over creating maps and bar charts.\nThere is no homework!"
   }
 ]

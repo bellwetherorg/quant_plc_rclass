@@ -1,0 +1,5 @@
+---
+title: "class_7"
+format: revealjs
+editor: visual
+---

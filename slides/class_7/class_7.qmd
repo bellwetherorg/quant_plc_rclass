@@ -1,5 +1,5 @@
 ---
-title: "Mapping and Bar Charts in R"
+title: "Mapping and Histograms in R"
 date: "August 13, 2024"
 css:
   - |

@@ -55,7 +55,14 @@ library(viridis)
 
 ## July 23, 2024: Class 6 Materials 
 
-- **Class Recording:** The recording will be added after class
+- **Class Recording:** [Link to class 6 recording](https://vimeo.com/manage/videos/989097088)
 - **Class Slides:** [Link to the slides for class 6](https://bellwetherorg.github.io/quant_plc_rclass/slides/class_6/class_6.html)
 - **R Script:** You can access the [class 6 example here](https://gist.github.com/kkaput23/eab650cf1c86e2e3d403d74b9a71caf8)
+
+
+## August 13, 2024: Class 7 Materials 
+
+- **Class Recording:** The recording will be added after class
+- **Class Slides:** [Link to the slides for class 6](https://bellwetherorg.github.io/quant_plc_rclass/slides/class_7/class_7.html)
+- **R Script:** See the `wk-7-class-examples` repository for the class scripts.
     

@@ -2777,7 +2777,7 @@
     "href": "class_materials.html#july-23-2024-class-6-materials",
     "title": "Class Materials",
     "section": "July 23, 2024: Class 6 Materials",
-    "text": "July 23, 2024: Class 6 Materials\n\nClass Recording: The recording will be added after class\nClass Slides: Link to the slides for class 6\nR Script: You can access the class 6 example here",
+    "text": "July 23, 2024: Class 6 Materials\n\nClass Recording: Link to class 6 recording\nClass Slides: Link to the slides for class 6\nR Script: You can access the class 6 example here",
     "crumbs": [
       "Class Materials"
     ]
@@ -2942,5 +2942,15 @@
     "title": "Mapping and Bar Charts in R",
     "section": "Final R Class",
     "text": "Final R Class\n\nScheduled for Tuesday, September 24 from 11 AM - 12 PM CT\nWe will cover frequency tables and how to add labels to scatterplots\nIs there anything else people want to cover?"
+  },
+  {
+    "objectID": "class_materials.html#august-13-2024-class-7-materials",
+    "href": "class_materials.html#august-13-2024-class-7-materials",
+    "title": "Class Materials",
+    "section": "August 13, 2024: Class 7 Materials",
+    "text": "August 13, 2024: Class 7 Materials\n\nClass Recording: The recording will be added after class\nClass Slides: Link to the slides for class 6\nR Script: See the wk-7-class-examples repository for the class scripts.",
+    "crumbs": [
+      "Class Materials"
+    ]
   }
 ]

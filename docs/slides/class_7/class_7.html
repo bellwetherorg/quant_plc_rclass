@@ -726,20 +726,25 @@
 </section>
 <section id="create-histograms-23" class="slide level2">
 <h2>Create histograms (2/3)</h2>
-<p>Use a histogram to visualize the distribution of median household income across states.</p>
+<p>Use a histogram to visualize the distribution of state and local per-pupil funding across states.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="co"># histogram of median household income</span></span>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="co"># histogram of state + local pp rev</span></span>
 <span id="cb14-2"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> state_summary) <span class="sc">+</span></span>
-<span id="cb14-3"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> mhi_med), <span class="at">binwidth =</span> <span class="dv">3000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-3"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> state_loc_rev_pp_med), <span class="at">binwidth =</span> <span class="dv">2000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="create-histograms-33" class="slide level2">
 <h2>Create histograms (3/3)</h2>
-<p>Use a histogram to visualize the distribution of state and local per-pupil funding across states.</p>
+<p>Use a histogram to visualize the distribution of median household income across states.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="co"># histogram of state + local pp rev</span></span>
-<span id="cb15-2"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> state_summary) <span class="sc">+</span></span>
-<span id="cb15-3"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> state_loc_rev_pp_med), <span class="at">binwidth =</span> <span class="dv">2000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="co"># histogram of median household income ---------</span></span>
+<span id="cb15-2"><a></a></span>
+<span id="cb15-3"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> state_summary) <span class="sc">+</span></span>
+<span id="cb15-4"><a></a>  <span class="fu">geom_histogram</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> mhi_med), <span class="at">binwidth =</span> <span class="dv">3000</span>) <span class="sc">+</span></span>
+<span id="cb15-5"><a></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> <span class="fu">label_dollar</span>()) <span class="sc">+</span></span>
+<span id="cb15-6"><a></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">label_number</span>()) <span class="sc">+</span></span>
+<span id="cb15-7"><a></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Median Household Income"</span>, <span class="at">y =</span> <span class="st">"Number of Districts"</span>, <span class="at">title =</span> <span class="st">"Median Household Income Distribution"</span>, <span class="at">caption =</span> <span class="st">"Source: EdBuilder Data, 2019"</span>) <span class="sc">+</span></span>
+<span id="cb15-8"><a></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="final-r-class" class="slide level2">
@@ -749,6 +754,157 @@
 <li>We will cover frequency tables and how to add labels to scatterplots</li>
 <li>Is there anything else people want to cover?</li>
 </ul>
+</section>
+<section id="extra-class-example-mapping-in-leaflet-12" class="slide level2">
+<h2>Extra Class Example: Mapping in <code>leaflet</code> (1/2)</h2>
+<ul>
+<li>The <code>leaflet()</code> function creates a blank, interact map canvas in your RStudio viewer pane</li>
+<li>Based on <code>leaflet.js</code>, which is a javascript library.
+<ul>
+<li>Most common javascript library for making maps</li>
+</ul></li>
+<li>You can add elements to the map canvas using the generic <code>addControl()</code> function:
+<ul>
+<li><p><code>addProviderTiles()</code>: Add a basemap</p></li>
+<li><p><code>addCircleMarker()</code> and <code>addMarker()</code>: Adds a point layer</p></li>
+<li><p><code>addPolylines()</code>: Adds a line layer</p></li>
+<li><p><code>addPolygons()</code>: Adds a polygon layer</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="extra-class-example-mapping-in-leaflet-22" class="slide level2">
+<h2>Extra Class Example: Mapping in <code>leaflet</code> (2/2)</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="co"># load -------------</span></span>
+<span id="cb16-2"><a></a></span>
+<span id="cb16-3"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb16-4"><a></a><span class="fu">library</span>(edbuildr)</span>
+<span id="cb16-5"><a></a><span class="fu">library</span>(edbuildmapr)</span>
+<span id="cb16-6"><a></a><span class="fu">library</span>(viridis)</span>
+<span id="cb16-7"><a></a><span class="fu">library</span>(scales)</span>
+<span id="cb16-8"><a></a><span class="fu">library</span>(sf)</span>
+<span id="cb16-9"><a></a><span class="fu">library</span>(leaflet)</span>
+<span id="cb16-10"><a></a></span>
+<span id="cb16-11"><a></a><span class="co"># load in the school district mapping data</span></span>
+<span id="cb16-12"><a></a>sd_map_raw <span class="ot">&lt;-</span> <span class="fu">sd_shapepull</span>(<span class="at">data_year =</span> <span class="st">"2019"</span>, <span class="at">with_data =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb16-13"><a></a></span>
+<span id="cb16-14"><a></a>dist_data_raw <span class="ot">&lt;-</span> <span class="fu">masterpull</span>(<span class="at">data_type =</span> <span class="st">"geo"</span>)</span>
+<span id="cb16-15"><a></a></span>
+<span id="cb16-16"><a></a><span class="co"># Step #1: clean ----------------</span></span>
+<span id="cb16-17"><a></a></span>
+<span id="cb16-18"><a></a><span class="co"># filter mapping data for your state</span></span>
+<span id="cb16-19"><a></a>state_shp_raw <span class="ot">&lt;-</span> sd_map_raw <span class="sc">|&gt;</span> </span>
+<span id="cb16-20"><a></a>  <span class="co"># tidy up colnames</span></span>
+<span id="cb16-21"><a></a>  <span class="fu">rename_with</span>(tolower) <span class="sc">|&gt;</span> </span>
+<span id="cb16-22"><a></a>  <span class="fu">filter</span>(state <span class="sc">==</span> <span class="st">"Kentucky"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb16-23"><a></a>  <span class="fu">rename</span>(<span class="at">ncesid =</span> geoid) <span class="sc">|&gt;</span> </span>
+<span id="cb16-24"><a></a>  <span class="fu">rename_with</span>(tolower) <span class="sc">|&gt;</span> </span>
+<span id="cb16-25"><a></a>  <span class="fu">select</span>(ncesid, geometry)</span>
+<span id="cb16-26"><a></a></span>
+<span id="cb16-27"><a></a><span class="co"># filter finance data for your state</span></span>
+<span id="cb16-28"><a></a>state_data <span class="ot">&lt;-</span> dist_data_raw <span class="sc">|&gt;</span> </span>
+<span id="cb16-29"><a></a>  <span class="fu">rename_with</span>(tolower) <span class="sc">|&gt;</span> </span>
+<span id="cb16-30"><a></a>  <span class="fu">filter</span>(state <span class="sc">==</span> <span class="st">"Kentucky"</span>)</span>
+<span id="cb16-31"><a></a></span>
+<span id="cb16-32"><a></a><span class="co"># join data</span></span>
+<span id="cb16-33"><a></a>state_shp <span class="ot">&lt;-</span> state_shp_raw <span class="sc">|&gt;</span> </span>
+<span id="cb16-34"><a></a>  <span class="fu">left_join</span>(state_data, <span class="at">by =</span> <span class="st">"ncesid"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb16-35"><a></a>  <span class="fu">mutate</span>(<span class="at">pct_sr =</span> srpp <span class="sc">/</span> slrpp) <span class="sc">|&gt;</span> </span>
+<span id="cb16-36"><a></a>  <span class="fu">st_transform</span>(<span class="fu">st_crs</span>(<span class="st">"EPSG:4326"</span>))</span>
+<span id="cb16-37"><a></a></span>
+<span id="cb16-38"><a></a></span>
+<span id="cb16-39"><a></a><span class="co"># Step 2: Create leaflet map with a base layer -----</span></span>
+<span id="cb16-40"><a></a><span class="fu">leaflet</span>() <span class="sc">|&gt;</span></span>
+<span id="cb16-41"><a></a>  <span class="fu">addProviderTiles</span>(<span class="at">provider =</span> <span class="st">"CartoDB.Positron"</span>) </span>
+<span id="cb16-42"><a></a></span>
+<span id="cb16-43"><a></a></span>
+<span id="cb16-44"><a></a><span class="co"># Step #3: add district shapes -------</span></span>
+<span id="cb16-45"><a></a><span class="fu">leaflet</span>() <span class="sc">|&gt;</span></span>
+<span id="cb16-46"><a></a>  <span class="fu">addProviderTiles</span>(<span class="at">provider =</span> <span class="st">"CartoDB.Positron"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb16-47"><a></a>  <span class="fu">addPolygons</span>(<span class="at">data =</span> state_shp)</span>
+<span id="cb16-48"><a></a></span>
+<span id="cb16-49"><a></a></span>
+<span id="cb16-50"><a></a><span class="co"># Step #4: define the color and thickness of borders ------</span></span>
+<span id="cb16-51"><a></a><span class="fu">leaflet</span>() <span class="sc">|&gt;</span></span>
+<span id="cb16-52"><a></a>  <span class="fu">addProviderTiles</span>(<span class="at">provider =</span> <span class="st">"CartoDB.Positron"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb16-53"><a></a>  <span class="fu">addPolygons</span>(<span class="at">data =</span> state_shp,</span>
+<span id="cb16-54"><a></a>              <span class="at">color =</span> <span class="st">"#ababab"</span>,</span>
+<span id="cb16-55"><a></a>              <span class="at">weight =</span> .<span class="dv">5</span>)</span>
+<span id="cb16-56"><a></a></span>
+<span id="cb16-57"><a></a><span class="co"># Step #5: add a popup layer --------</span></span>
+<span id="cb16-58"><a></a></span>
+<span id="cb16-59"><a></a><span class="fu">leaflet</span>() <span class="sc">|&gt;</span></span>
+<span id="cb16-60"><a></a>  <span class="fu">addProviderTiles</span>(<span class="at">provider =</span> <span class="st">"CartoDB.Positron"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb16-61"><a></a>  <span class="fu">addPolygons</span>(<span class="at">data =</span> state_shp,</span>
+<span id="cb16-62"><a></a>              <span class="at">color =</span> <span class="st">"#ababab"</span>,</span>
+<span id="cb16-63"><a></a>              <span class="at">weight =</span> .<span class="dv">5</span>,</span>
+<span id="cb16-64"><a></a>              <span class="at">popup =</span> <span class="fu">paste0</span>(<span class="st">"District: "</span>,</span>
+<span id="cb16-65"><a></a>                             <span class="fu">str_to_title</span>(state_shp<span class="sc">$</span>name), </span>
+<span id="cb16-66"><a></a>                             <span class="st">"&lt;br&gt; Enrollment: "</span>, </span>
+<span id="cb16-67"><a></a>                             <span class="fu">comma</span>(state_shp<span class="sc">$</span>enroll),</span>
+<span id="cb16-68"><a></a>                             <span class="st">"&lt;br&gt; Percent state revenue: "</span>,</span>
+<span id="cb16-69"><a></a>                             <span class="fu">percent</span>(state_shp<span class="sc">$</span>pct_sr, <span class="at">accuracy =</span> .<span class="dv">1</span>)))</span>
+<span id="cb16-70"><a></a></span>
+<span id="cb16-71"><a></a></span>
+<span id="cb16-72"><a></a><span class="co"># Step 6: Create a more advanced map with dynamic fill and a legend ------</span></span>
+<span id="cb16-73"><a></a><span class="co"># advanced leaflet example ------------------</span></span>
+<span id="cb16-74"><a></a></span>
+<span id="cb16-75"><a></a>bw_primary <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"#6D1E4A"</span>, <span class="co"># 1 plum</span></span>
+<span id="cb16-76"><a></a>                <span class="st">"#007786"</span>, <span class="co"># 2 teal</span></span>
+<span id="cb16-77"><a></a>                <span class="st">"#0D525A"</span>, <span class="co"># 3 dark green</span></span>
+<span id="cb16-78"><a></a>                <span class="st">"#212B46"</span>, <span class="co"># 4 navy</span></span>
+<span id="cb16-79"><a></a>                <span class="st">"#5A6675"</span>, <span class="co"># 5 grey</span></span>
+<span id="cb16-80"><a></a>                <span class="st">"#F0DEC1"</span>) <span class="co"># 6 cream</span></span>
+<span id="cb16-81"><a></a></span>
+<span id="cb16-82"><a></a>bw_secondary <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"#FFC762"</span>, <span class="co"># 1 yellow</span></span>
+<span id="cb16-83"><a></a>                  <span class="st">"#FFB653"</span>, <span class="co"># 2 orange</span></span>
+<span id="cb16-84"><a></a>                  <span class="st">"#BEC6CE"</span>, <span class="co"># 3 light grey</span></span>
+<span id="cb16-85"><a></a>                  <span class="st">"#2E1A4A"</span>, <span class="co"># 4 deep purple</span></span>
+<span id="cb16-86"><a></a>                  <span class="st">"#7EA2D1"</span>, <span class="co"># 5 soft blue</span></span>
+<span id="cb16-87"><a></a>                  <span class="st">"#CAD3FB"</span>, <span class="co"># 6 lavender</span></span>
+<span id="cb16-88"><a></a>                  <span class="st">"#9CD4EA"</span>, <span class="co"># 7 sky</span></span>
+<span id="cb16-89"><a></a>                  <span class="st">"#FFA497"</span>) <span class="co"># 8 peach</span></span>
+<span id="cb16-90"><a></a></span>
+<span id="cb16-91"><a></a><span class="co"># define breaks for fill variable</span></span>
+<span id="cb16-92"><a></a>state_rev_breaks <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, .<span class="dv">4</span>, .<span class="dv">6</span>, .<span class="dv">7</span>, .<span class="dv">8</span>, <span class="dv">1</span>)</span>
+<span id="cb16-93"><a></a></span>
+<span id="cb16-94"><a></a><span class="co"># define custom color palette</span></span>
+<span id="cb16-95"><a></a>bw_scale <span class="ot">&lt;-</span> <span class="fu">c</span>(bw_primary[<span class="dv">6</span>],</span>
+<span id="cb16-96"><a></a>              bw_secondary[<span class="dv">1</span>],</span>
+<span id="cb16-97"><a></a>              bw_primary[<span class="dv">2</span>],</span>
+<span id="cb16-98"><a></a>              bw_primary[<span class="dv">3</span>],</span>
+<span id="cb16-99"><a></a>              bw_primary[<span class="dv">4</span>])</span>
+<span id="cb16-100"><a></a></span>
+<span id="cb16-101"><a></a><span class="co"># create color palette object</span></span>
+<span id="cb16-102"><a></a>state_rev_palette <span class="ot">&lt;-</span> <span class="fu">colorBin</span>(<span class="at">palette =</span> bw_scale,</span>
+<span id="cb16-103"><a></a>                              <span class="at">domain =</span> state_shp<span class="sc">$</span>pct_sr,</span>
+<span id="cb16-104"><a></a>                              <span class="at">bins =</span> state_rev_breaks,</span>
+<span id="cb16-105"><a></a>                              <span class="at">na.color =</span> bw_primary[<span class="dv">5</span>]) </span>
+<span id="cb16-106"><a></a></span>
+<span id="cb16-107"><a></a><span class="co"># create advanced leaflet map</span></span>
+<span id="cb16-108"><a></a><span class="fu">leaflet</span>() <span class="sc">|&gt;</span></span>
+<span id="cb16-109"><a></a>  <span class="fu">addProviderTiles</span>(<span class="at">provider =</span> <span class="st">"CartoDB.Positron"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb16-110"><a></a>  <span class="fu">addPolygons</span>(<span class="at">data =</span> state_shp,</span>
+<span id="cb16-111"><a></a>              <span class="at">color =</span> <span class="st">"#ababab"</span>,</span>
+<span id="cb16-112"><a></a>              <span class="at">weight =</span> .<span class="dv">5</span>,</span>
+<span id="cb16-113"><a></a>              <span class="at">popup =</span> <span class="fu">paste0</span>(<span class="st">"District: "</span>,</span>
+<span id="cb16-114"><a></a>                             <span class="fu">str_to_title</span>(state_shp<span class="sc">$</span>name), </span>
+<span id="cb16-115"><a></a>                             <span class="st">"&lt;br&gt; Enrollment: "</span>, </span>
+<span id="cb16-116"><a></a>                             <span class="fu">comma</span>(state_shp<span class="sc">$</span>enroll),</span>
+<span id="cb16-117"><a></a>                             <span class="st">"&lt;br&gt; Percent state revenue: "</span>,</span>
+<span id="cb16-118"><a></a>                             <span class="fu">percent</span>(state_shp<span class="sc">$</span>pct_sr, <span class="at">accuracy =</span> .<span class="dv">1</span>)),</span>
+<span id="cb16-119"><a></a>              <span class="at">fillColor =</span> <span class="sc">~</span> <span class="fu">state_rev_palette</span>(pct_sr),</span>
+<span id="cb16-120"><a></a>              <span class="at">fillOpacity =</span> .<span class="dv">8</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb16-121"><a></a>  <span class="fu">addLegend</span>(<span class="st">"topright"</span>, </span>
+<span id="cb16-122"><a></a>            <span class="at">opacity =</span> .<span class="dv">8</span>,</span>
+<span id="cb16-123"><a></a>            <span class="at">pal =</span> state_rev_palette,</span>
+<span id="cb16-124"><a></a>            <span class="at">values =</span> state_shp<span class="sc">$</span>pct_sr,</span>
+<span id="cb16-125"><a></a>            <span class="at">labFormat =</span> <span class="fu">labelFormat</span>(</span>
+<span id="cb16-126"><a></a>              <span class="at">suffix =</span> <span class="st">"%"</span>, <span class="at">between =</span> <span class="st">" - "</span>,</span>
+<span id="cb16-127"><a></a>              <span class="at">transform =</span> <span class="cf">function</span>(x) <span class="dv">100</span> <span class="sc">*</span> x</span>
+<span id="cb16-128"><a></a>            ),</span>
+<span id="cb16-129"><a></a>            <span class="at">title =</span> <span class="st">"Percent state revenue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 <div class="quarto-auto-generated-content">
 <p><img src="../../images/primary_full-color.png" class="slide-logo"></p>

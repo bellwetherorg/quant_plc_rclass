@@ -1,0 +1,452 @@
+---
+title: "Mapping and Bar Charts in R"
+date: "August 13, 2024"
+css:
+  - |
+    .smaller h1 {
+      font-size: 0.5em; /* Adjust the font size as needed */
+    }
+output:
+  quarto::quarto_presentation:
+    format: revealjs
+    theme: 
+      logo: images/primary_full-color.png
+      theme: theme/slides.scss # Choose a theme for your presentation (e.g., simple, serif, solarized, etc.)
+    incremental: true # Whether to display content incrementally (one step at a time)
+    self_contained: true # Whether to create a standalone HTML file
+    highlight_style: "github" # Syntax highlighting style (e.g., github, monokai, etc.)
+    revealjs:
+      controls: true # Display navigation controls (e.g., arrows, slide number, etc.)
+      progress: true # Display a progress bar
+      slideNumber: true # Display slide numbers
+      center: true # Center the content on each slide
+      chalkboard: true # Enable chalkboard mode for reveal.js
+---
+
+```{r}
+#| output: false
+
+library(tidyverse)
+library(countdown)
+library(tigris)
+library(sf)
+library(scales)
+library(edbuildr)
+library(viridis)
+library(readxl)
+library(countdown)
+
+
+
+
+bw_primary <- c("#6D1E4A", # 1 plum
+                "#007786", # 2 teal
+                "#0D525A", # 3 dark green
+                "#212B46", # 4 navy
+                "#5A6675", # 5 grey
+                "#F0DEC1") # 6 cream
+
+bw_secondary <- c("#FFC762", # 1 yellow
+                  "#FFB653", # 2 orange
+                  "#BEC6CE", # 3 light grey
+                  "#2E1A4A", # 4 deep purple
+                  "#7EA2D1", # 5 soft blue
+                  "#CAD3FB", # 6 lavender
+                  "#9CD4EA", # 7 sky
+                  "#FFA497") # 8 peach
+
+
+```
+
+## Agenda
+
+-   Homework Notes
+-   Introduction to `sf`
+-   Mapping using `edbuildmapr`
+-   Creating histograms using `ggplot2` 
+
+
+
+# Introduction to `sf`
+
+## Overview of the `sf` package
+
+-   There are many R packages that handle spatial data but `sf` is the most modern and easy-to-use.
+
+-   In the `sf` package, spatial data is represented as a *simple feature*, which is a set of standards on how to store spatial objects.
+
+-   Spatial data is represented as a data frame with:
+
+    -   A geography column that lists all the coordinates that make up the shape
+
+    -   "Slots" that hold spatial information
+
+::: callout
+You can learn more about simple features and the sf package [here.](https://r-spatial.github.io/sf/articles/sf1.html)
+:::
+
+## Reading and writing functions in `sf`
+
+-   `sf` uses the Geospatial Data Abstraction Library (GDAL)
+-   Use `st_read` to import all spatial data
+
+`dataframe <- st_read("filepath.filetype")`
+
+-   Use `st_write` to export all spatial data
+
+`st_write(dataframe, "filepath.filetype")`
+
+-   The filetype indicates the type of file you want to write to your computer - called the driver.
+    -   This will most likely be either a shapefile (.shp) or geojson (.geojson)
+
+## Converting lat-long location into simple features
+
+There are a range of shapefiles available that we can use for mapping, but there are cases when we might have other location data, like latitude-longitude pairs, that could be useful to map. The `sf` package has a helpful function that allows us to convert data in latidude and longitude columns into the simple features format.
+
+Convert a dataframe from lat/long to a simple feature using `st_as_sf()`
+
+-   **dataframe**
+-   **coords**: The columns that define x (latitude) and y (longitude)
+-   **crs**: The coordinate system that translate x and y to a location on Earth, provided by using the `st_crs()` function. The most commonly used is `"EPSG:4326"`.
+
+```{r}
+#| echo: true
+#| eval: false
+
+example <- st_as_sf(dataframe = df, 
+                    coords = c("lat", "long"), 
+                    crs = st_crs("EPSG:4326"))
+```
+
+## In-class exercise: Create a simple features object
+
+**Step 1**: At the top of your script, load in the `sf` package and and your clean data into your environment
+
+```{r}
+#| echo: true
+#| eval: false
+#| 
+# load -------
+
+library(tidyverse) 
+library(sf)
+
+options(scipen = 999)
+
+# Load in the Minnesota schools data 
+
+mn_schools <- read_csv("slides/class_7/data/mn_schools_clean.csv")
+
+glimpse(mn_schools)
+
+```
+
+## In-class exercise: Create a simple features object
+
+**Step 2**: Turn the Minnesota schools csv file into an `sf` object using the `st_as_sf()` function.
+
+```{r}
+#| echo: true
+#| eval: false
+
+# clean -------
+
+# Convert to sf object for mapping
+mn_schools_shp <- st_as_sf(mn_schools,
+                           coords = c("long", "lat"),
+                           crs = st_crs("EPSG:4326"))
+
+glimpse(mn_schools_shp)
+```
+
+Note: The `sf` dataframe looks like a regular dataframe, except the `lat` and `long` columns have been merged into one column, now called `geometry`
+
+## In-class exercise: Create a simple features object
+
+**Step 3**: Check the projection of your objects using the `st_crs()` function.
+
+```{r}
+#| echo: true
+#| eval: false
+
+# check ----------
+
+# Check the projection of your objects using the st_crs() function 
+
+# QUESTION: Why does this dataframe not have a coordinate system? 
+st_crs(mn_schools)
+
+st_crs(mn_schools_shp)
+
+```
+
+## In-class exsercise: Mapping with `geom_sf()`
+
+```{r}
+#| echo: true
+#| eval: false
+#| 
+# plot ---------------
+
+# simple plot of sf data
+ggplot(mn_schools_shp) +
+  geom_sf() +
+  theme_void()
+
+```
+
+## In-class exsercise: Mapping with `geom_sf()`
+
+-   The `tigris` package provides access to a range of shapefiles from the U.S. Census Bureau
+-   Using the `states()` function, we can download state outlines and then filter for the state we want to use.
+-   Setting the `cb` parameter of the `states()` function to `TRUE` will provide the most generally recognized shape file.
+
+```{r}
+#| echo: true
+#| eval: false
+
+# get state outline from tigris ----------
+library(tigris)
+
+mn_outline <- states(cb = TRUE) |> 
+  filter(NAME == "Minnesota")
+
+```
+
+## In-class exsercise: Mapping with `geom_sf()`
+
+```{r}
+#| echo: true
+#| eval: false
+
+library(scales)
+library(viridis)
+
+# plotting multiple geom_sf layers ---------
+ggplot() +
+  geom_sf(data = mn_outline, color = "black") +
+  geom_sf(data = mn_schools_shp, 
+          # we can use aes() to map data just like with geom_point()
+          aes(size = total_enroll,
+              color = bipoc_pct),
+          alpha = .5) +
+  scale_color_viridis(labels = percent_format()) +
+  scale_size_area(max_size = 5,
+                  labels = comma_format()) +
+  labs(color = "Percent BIPOC", 
+       size = "Enrollment",
+       title = "Minnesota School Size, Location, and Demographics") +
+  theme_void()
+```
+
+# Making maps with `edbuildmapr`
+
+## Review: Overview of the `edbuildr` package
+
+-   The goal of `edbuildr` is to import EdBuild's master dataset that includes school district finance, student demographics, and community economic indicators for every school district in the United States.
+-   The master dataset is available for any school year from 2013 to 2019 or longitudinally for all years 2013-2019.
+    -   School year is identified by the end year. For example, the 2018-19 school year is 2019.
+-   The master dataset is build from the:
+    -   U.S. Census Bureau
+    -   Annual Survey of School System Finances (F33), and
+    -   join data from the National Center for Education Statistics, Common Core of Data (CCD), Small Area Income and Poverty Estimates (SAIPE), and Education Demographic and Geographic Estimates (EDGE).
+
+## `edbuildmapr` makes it easier to perform spatial analysis of education data
+
+-   R can use objects called "shapefiles" to create maps
+-   The `edbuildmapr` package makes it easy to produce high-quality maps as you analyze school finance data.
+-   To get started, you will need to install two packages:
+    -   `edbuildmapr`: Simplifies the use of school district shapefiles.
+
+    -   `sf`: Standardizes how to encode spatial vector data.
+
+## LIVE CODING EXAMPLE: Making a state map with `edbuildmapr`
+
+**Step 1**: Load in packages and data from `edbuildmapr` and `edbuild`
+
+```{r}
+#| echo: true
+#| eval: false
+# load -------
+
+options(scipen = 999)
+
+library(edbuildr)
+library(edbuildmapr)
+library(viridis)
+library(scales)
+
+# load in the school district mapping data
+sd_map_raw <- sd_shapepull(data_year = "2019", with_data = TRUE)
+
+# load in raw district finance data
+dist_data_raw <- masterpull(data_type = "geo")
+
+
+```
+
+## LIVE CODING EXAMPLE: Making a state map with `edbuildmapr`
+
+**Step 2**: Filter for your state, create a new variable, and join the data
+
+```{r}
+#| echo: true
+#| eval: false
+
+# filter mapping data for your state ------
+state_shp_raw <- sd_map_raw |> 
+  # tidy up colnames
+  rename_with(tolower) |> 
+  filter(state == "Minnesota") |>
+  rename(ncesid = geoid) |> 
+  rename_with(tolower) |> 
+  select(ncesid, geometry)
+
+# filter state finance data for your state
+state_data <- dist_data_raw |> 
+  rename_with(tolower) |> 
+  filter(state == "Minnesota")
+
+# join data
+state_shp <- state_shp_raw |> 
+  left_join(state_data, by = "ncesid") |> 
+  mutate(pct_sr = srpp / slrpp)
+
+```
+
+## LIVE CODING EXAMPLE: Making a state map with `edbuildmapr`
+
+**Step 3**: Plot a basic map
+
+```{r}
+#| echo: true
+#| eval: false
+
+# plot a basic map
+ggplot()  + 
+  geom_sf(data = state_shp, aes(fill = pct_sr)) +
+  theme_void()
+
+```
+
+## LIVE CODING EXAMPLE: Making a state map with `edbuildmapr` {.smaller}
+
+The map looks okay, but there is a lot we can improve!
+
+**Step 4**: Make several aesthetic changes
+
+-   Change the color of the lines to white within `geom_sf()`
+-   Reverse the direction of the color scale within `scale_fill_viridis()`
+-   Add a title, subtitle, and source caption within `labs()`
+
+```{r}
+#| echo: true
+#| eval: false
+
+# Make several aesthetic changes ------
+ggplot() + 
+  geom_sf(data = state_shp, 
+          aes(fill = pct_sr),
+          color = "#ffffff") +
+  theme_void() +
+  scale_fill_viridis(name = "Percent K-12 Budget\nfrom State Revenue (%)",
+                     labels = percent_format(accuracy = 1), 
+                     direction = -1) +
+  labs(
+    title = "School Districts' Reliance on State Revenue",
+    subtitle = "Percent of District K-12 Revenue From State, 2018-19",
+    caption = "Source: EdBuild")
+
+```
+
+## LIVE CODING EXAMPLE: Making a state map with `edbuildmapr`
+
+**Step 5**: Make your own color palette and create bins to more clearly break up your data!
+
+```{r}
+#| echo: true
+#| eval: false
+
+# Make your own color palette and create bins to more clearly break up your data! ----
+
+# create custom color palette
+bw_state_revenue <- c("#BEC6CE", "#FFC762", "#007786", "#212B46", "#6D1E4A")
+
+# plot another nicely-formatted map
+ggplot()  + 
+  geom_sf(data = state_shp,
+          aes(fill = pct_sr),
+          color = "#ffffff") +
+  theme_void() +
+  scale_fill_stepsn(breaks=c(0, .3, .5, .7, 1), # Breaks up the data
+                    colors = bw_state_revenue, 
+                    name="State K-12 Revenue (%)",
+                    labels=percent_format(accuracy = 1L)) + 
+  labs(
+    title = "School Districts' Reliance on State Revenue",
+    subtitle = "Percent of District K-12 Revenue From State (2019)",
+    caption = "Source: EdBuildr Data, 2019")
+
+```
+
+You can export your map like any other plot via `ggsave()`
+
+# Creating histograms using `ggplot2`
+
+## Review: What is the `ggplot2` package? 
+
+The `ggplot2` package is the most widely-used data visualization approach in the R ecosystem.
+
+-   Plots in `ggplot2` are created by starting with your data, then building up layers
+-   Once your specify your data, you can add layers of "geoms" to create your plot
+-   Today we will use `geom_histogram()` 
+
+
+## Create histograms (1/3)
+
+Use a histogram to visualize the distribution of median property values across states.
+
+```{r}
+#| echo: true
+#| eval: false
+# histogram of median property value
+ggplot(data = state_summary) +
+  geom_histogram(mapping = aes(x = mpv_med), binwidth = 40000)
+
+```
+
+## Create histograms (2/3)
+
+Use a histogram to visualize the distribution of median household income across states.
+
+```{r}
+#| echo: true
+#| eval: false
+# histogram of median household income
+ggplot(data = state_summary) +
+  geom_histogram(mapping = aes(x = mhi_med), binwidth = 3000)
+
+
+```
+
+## Create histograms (3/3)
+
+Use a histogram to visualize the distribution of state and local per-pupil funding across states.
+
+```{r}
+#| echo: true
+#| eval: false
+# histogram of state + local pp rev
+ggplot(data = state_summary) +
+  geom_histogram(mapping = aes(x = state_loc_rev_pp_med), binwidth = 2000)
+
+```
+
+
+## Final R Class 
+
+- Scheduled for Tuesday, September 24 from 11 AM - 12 PM CT
+- We will cover frequency tables and how to add labels to scatterplots 
+- Is there anything else people want to cover? 
+
+

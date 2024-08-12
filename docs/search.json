@@ -2788,5 +2788,159 @@
     "title": "Data Cleaning and Processing in R: Part 1",
     "section": "This week’s assignment",
     "text": "This week’s assignment\nReading assignment\n\nHow Can School Finance Systems Support Students with Additional Learning Needs?\n\nCoding task\nClean your state’s district data and make sure that you have all of the data you need to model your state’s funding formula and the potential policy changes you want to make. This may require joining data frames, pivot_longer(), pivot_wider() and/or using mutate() to merge, reshape, and tidy data from your state.\nUltimately, you’ll want to produce a single data frame where:\n\nEach row represents a single LEA (traditional district or charter school)\nEach column represents a single variable\nAll of the data elements that go into your current formula are present in the data frame.\n\nIf you need to join more than two data frames, just start with joining two data frames for this assignment. We can work on building the full data set you’ll need to model your formula over the coming weeks.\nTo get started, a template R script is included: scripts/dist_clean.R – please use that file to load, clean, and save your tidy data.\nAs always, once you’ve completed the assignment, be sure to commit and push to GitHub!"
+  },
+  {
+    "objectID": "slides/class_7/class_7.html#agenda",
+    "href": "slides/class_7/class_7.html#agenda",
+    "title": "Mapping and Bar Charts in R",
+    "section": "Agenda",
+    "text": "Agenda\n\nHomework Notes\nIntroduction to sf\nMapping using edbuildmapr\nCreating histograms using ggplot2"
+  },
+  {
+    "objectID": "slides/class_7/class_7.html#overview-of-the-sf-package",
+    "href": "slides/class_7/class_7.html#overview-of-the-sf-package",
+    "title": "Mapping and Bar Charts in R",
+    "section": "Overview of the sf package",
+    "text": "Overview of the sf package\n\nThere are many R packages that handle spatial data but sf is the most modern and easy-to-use.\nIn the sf package, spatial data is represented as a simple feature, which is a set of standards on how to store spatial objects.\nSpatial data is represented as a data frame with:\n\nA geography column that lists all the coordinates that make up the shape\n“Slots” that hold spatial information\n\n\n\n\n\nYou can learn more about simple features and the sf package here."
+  },
+  {
+    "objectID": "slides/class_7/class_7.html#reading-and-writing-functions-in-sf",
+    "href": "slides/class_7/class_7.html#reading-and-writing-functions-in-sf",
+    "title": "Mapping and Bar Charts in R",
+    "section": "Reading and writing functions in sf",
+    "text": "Reading and writing functions in sf\n\nsf uses the Geospatial Data Abstraction Library (GDAL)\nUse st_read to import all spatial data\n\ndataframe &lt;- st_read(\"filepath.filetype\")\n\nUse st_write to export all spatial data\n\nst_write(dataframe, \"filepath.filetype\")\n\nThe filetype indicates the type of file you want to write to your computer - called the driver.\n\nThis will most likely be either a shapefile (.shp) or geojson (.geojson)"
+  },
+  {
+    "objectID": "slides/class_7/class_7.html#converting-lat-long-location-into-simple-features",
+    "href": "slides/class_7/class_7.html#converting-lat-long-location-into-simple-features",
+    "title": "Mapping and Bar Charts in R",
+    "section": "Converting lat-long location into simple features",
+    "text": "Converting lat-long location into simple features\nThere are a range of shapefiles available that we can use for mapping, but there are cases when we might have other location data, like latitude-longitude pairs, that could be useful to map. The sf package has a helpful function that allows us to convert data in latidude and longitude columns into the simple features format.\nConvert a dataframe from lat/long to a simple feature using st_as_sf()\n\ndataframe\ncoords: The columns that define x (latitude) and y (longitude)\ncrs: The coordinate system that translate x and y to a location on Earth, provided by using the st_crs() function. The most commonly used is \"EPSG:4326\".\n\n\nexample &lt;- st_as_sf(dataframe = df, \n                    coords = c(\"lat\", \"long\"), \n                    crs = st_crs(\"EPSG:4326\"))"
+  },
+  {
+    "objectID": "slides/class_7/class_7.html#in-class-exercise-create-a-simple-features-object",
+    "href": "slides/class_7/class_7.html#in-class-exercise-create-a-simple-features-object",
+    "title": "Mapping and Bar Charts in R",
+    "section": "In-class exercise: Create a simple features object",
+    "text": "In-class exercise: Create a simple features object\nStep 1: At the top of your script, load in the sf package and and your clean data into your environment\n\n# load -------\n\nlibrary(tidyverse) \nlibrary(sf)\n\noptions(scipen = 999)\n\n# Load in the Minnesota schools data \n\nmn_schools &lt;- read_csv(\"slides/class_7/data/mn_schools_clean.csv\")\n\nglimpse(mn_schools)"
+  },
+  {
+    "objectID": "slides/class_7/class_7.html#in-class-exercise-create-a-simple-features-object-1",
+    "href": "slides/class_7/class_7.html#in-class-exercise-create-a-simple-features-object-1",
+    "title": "Mapping and Bar Charts in R",
+    "section": "In-class exercise: Create a simple features object",
+    "text": "In-class exercise: Create a simple features object\nStep 2: Turn the Minnesota schools csv file into an sf object using the st_as_sf() function.\n\n# clean -------\n\n# Convert to sf object for mapping\nmn_schools_shp &lt;- st_as_sf(mn_schools,\n                           coords = c(\"long\", \"lat\"),\n                           crs = st_crs(\"EPSG:4326\"))\n\nglimpse(mn_schools_shp)\n\nNote: The sf dataframe looks like a regular dataframe, except the lat and long columns have been merged into one column, now called geometry"
+  },
+  {
+    "objectID": "slides/class_7/class_7.html#in-class-exercise-create-a-simple-features-object-2",
+    "href": "slides/class_7/class_7.html#in-class-exercise-create-a-simple-features-object-2",
+    "title": "Mapping and Bar Charts in R",
+    "section": "In-class exercise: Create a simple features object",
+    "text": "In-class exercise: Create a simple features object\nStep 3: Check the projection of your objects using the st_crs() function.\n\n# check ----------\n\n# Check the projection of your objects using the st_crs() function \n\n# QUESTION: Why does this dataframe not have a coordinate system? \nst_crs(mn_schools)\n\nst_crs(mn_schools_shp)"
+  },
+  {
+    "objectID": "slides/class_7/class_7.html#in-class-exsercise-mapping-with-geom_sf",
+    "href": "slides/class_7/class_7.html#in-class-exsercise-mapping-with-geom_sf",
+    "title": "Mapping and Bar Charts in R",
+    "section": "In-class exsercise: Mapping with geom_sf()",
+    "text": "In-class exsercise: Mapping with geom_sf()\n\n# plot ---------------\n\n# simple plot of sf data\nggplot(mn_schools_shp) +\n  geom_sf() +\n  theme_void()"
+  },
+  {
+    "objectID": "slides/class_7/class_7.html#in-class-exsercise-mapping-with-geom_sf-1",
+    "href": "slides/class_7/class_7.html#in-class-exsercise-mapping-with-geom_sf-1",
+    "title": "Mapping and Bar Charts in R",
+    "section": "In-class exsercise: Mapping with geom_sf()",
+    "text": "In-class exsercise: Mapping with geom_sf()\n\nThe tigris package provides access to a range of shapefiles from the U.S. Census Bureau\nUsing the states() function, we can download state outlines and then filter for the state we want to use.\nSetting the cb parameter of the states() function to TRUE will provide the most generally recognized shape file.\n\n\n# get state outline from tigris ----------\nlibrary(tigris)\n\nmn_outline &lt;- states(cb = TRUE) |&gt; \n  filter(NAME == \"Minnesota\")"
+  },
+  {
+    "objectID": "slides/class_7/class_7.html#in-class-exsercise-mapping-with-geom_sf-2",
+    "href": "slides/class_7/class_7.html#in-class-exsercise-mapping-with-geom_sf-2",
+    "title": "Mapping and Bar Charts in R",
+    "section": "In-class exsercise: Mapping with geom_sf()",
+    "text": "In-class exsercise: Mapping with geom_sf()\n\nlibrary(scales)\nlibrary(viridis)\n\n# plotting multiple geom_sf layers ---------\nggplot() +\n  geom_sf(data = mn_outline, color = \"black\") +\n  geom_sf(data = mn_schools_shp, \n          # we can use aes() to map data just like with geom_point()\n          aes(size = total_enroll,\n              color = bipoc_pct),\n          alpha = .5) +\n  scale_color_viridis(labels = percent_format()) +\n  scale_size_area(max_size = 5,\n                  labels = comma_format()) +\n  labs(color = \"Percent BIPOC\", \n       size = \"Enrollment\",\n       title = \"Minnesota School Size, Location, and Demographics\") +\n  theme_void()"
+  },
+  {
+    "objectID": "slides/class_7/class_7.html#review-overview-of-the-edbuildr-package",
+    "href": "slides/class_7/class_7.html#review-overview-of-the-edbuildr-package",
+    "title": "Mapping and Bar Charts in R",
+    "section": "Review: Overview of the edbuildr package",
+    "text": "Review: Overview of the edbuildr package\n\nThe goal of edbuildr is to import EdBuild’s master dataset that includes school district finance, student demographics, and community economic indicators for every school district in the United States.\nThe master dataset is available for any school year from 2013 to 2019 or longitudinally for all years 2013-2019.\n\nSchool year is identified by the end year. For example, the 2018-19 school year is 2019.\n\nThe master dataset is build from the:\n\nU.S. Census Bureau\nAnnual Survey of School System Finances (F33), and\njoin data from the National Center for Education Statistics, Common Core of Data (CCD), Small Area Income and Poverty Estimates (SAIPE), and Education Demographic and Geographic Estimates (EDGE)."
+  },
+  {
+    "objectID": "slides/class_7/class_7.html#edbuildmapr-makes-it-easier-to-perform-spatial-analysis-of-education-data",
+    "href": "slides/class_7/class_7.html#edbuildmapr-makes-it-easier-to-perform-spatial-analysis-of-education-data",
+    "title": "Mapping and Bar Charts in R",
+    "section": "edbuildmapr makes it easier to perform spatial analysis of education data",
+    "text": "edbuildmapr makes it easier to perform spatial analysis of education data\n\nR can use objects called “shapefiles” to create maps\nThe edbuildmapr package makes it easy to produce high-quality maps as you analyze school finance data.\nTo get started, you will need to install two packages:\n\nedbuildmapr: Simplifies the use of school district shapefiles.\nsf: Standardizes how to encode spatial vector data."
+  },
+  {
+    "objectID": "slides/class_7/class_7.html#live-coding-example-making-a-state-map-with-edbuildmapr",
+    "href": "slides/class_7/class_7.html#live-coding-example-making-a-state-map-with-edbuildmapr",
+    "title": "Mapping and Bar Charts in R",
+    "section": "LIVE CODING EXAMPLE: Making a state map with edbuildmapr",
+    "text": "LIVE CODING EXAMPLE: Making a state map with edbuildmapr\nStep 1: Load in packages and data from edbuildmapr and edbuild\n\n# load -------\n\noptions(scipen = 999)\n\nlibrary(edbuildr)\nlibrary(edbuildmapr)\nlibrary(viridis)\nlibrary(scales)\n\n# load in the school district mapping data\nsd_map_raw &lt;- sd_shapepull(data_year = \"2019\", with_data = TRUE)\n\n# load in raw district finance data\ndist_data_raw &lt;- masterpull(data_type = \"geo\")"
+  },
+  {
+    "objectID": "slides/class_7/class_7.html#live-coding-example-making-a-state-map-with-edbuildmapr-1",
+    "href": "slides/class_7/class_7.html#live-coding-example-making-a-state-map-with-edbuildmapr-1",
+    "title": "Mapping and Bar Charts in R",
+    "section": "LIVE CODING EXAMPLE: Making a state map with edbuildmapr",
+    "text": "LIVE CODING EXAMPLE: Making a state map with edbuildmapr\nStep 2: Filter for your state, create a new variable, and join the data\n\n# filter mapping data for your state ------\nstate_shp_raw &lt;- sd_map_raw |&gt; \n  # tidy up colnames\n  rename_with(tolower) |&gt; \n  filter(state == \"Minnesota\") |&gt;\n  rename(ncesid = geoid) |&gt; \n  rename_with(tolower) |&gt; \n  select(ncesid, geometry)\n\n# filter state finance data for your state\nstate_data &lt;- dist_data_raw |&gt; \n  rename_with(tolower) |&gt; \n  filter(state == \"Minnesota\")\n\n# join data\nstate_shp &lt;- state_shp_raw |&gt; \n  left_join(state_data, by = \"ncesid\") |&gt; \n  mutate(pct_sr = srpp / slrpp)"
+  },
+  {
+    "objectID": "slides/class_7/class_7.html#live-coding-example-making-a-state-map-with-edbuildmapr-2",
+    "href": "slides/class_7/class_7.html#live-coding-example-making-a-state-map-with-edbuildmapr-2",
+    "title": "Mapping and Bar Charts in R",
+    "section": "LIVE CODING EXAMPLE: Making a state map with edbuildmapr",
+    "text": "LIVE CODING EXAMPLE: Making a state map with edbuildmapr\nStep 3: Plot a basic map\n\n# plot a basic map\nggplot()  + \n  geom_sf(data = state_shp, aes(fill = pct_sr)) +\n  theme_void()"
+  },
+  {
+    "objectID": "slides/class_7/class_7.html#live-coding-example-making-a-state-map-with-edbuildmapr-3",
+    "href": "slides/class_7/class_7.html#live-coding-example-making-a-state-map-with-edbuildmapr-3",
+    "title": "Mapping and Bar Charts in R",
+    "section": "LIVE CODING EXAMPLE: Making a state map with edbuildmapr",
+    "text": "LIVE CODING EXAMPLE: Making a state map with edbuildmapr\nThe map looks okay, but there is a lot we can improve!\nStep 4: Make several aesthetic changes\n\nChange the color of the lines to white within geom_sf()\nReverse the direction of the color scale within scale_fill_viridis()\nAdd a title, subtitle, and source caption within labs()\n\n\n# Make several aesthetic changes ------\nggplot() + \n  geom_sf(data = state_shp, \n          aes(fill = pct_sr),\n          color = \"#ffffff\") +\n  theme_void() +\n  scale_fill_viridis(name = \"Percent K-12 Budget\\nfrom State Revenue (%)\",\n                     labels = percent_format(accuracy = 1), \n                     direction = -1) +\n  labs(\n    title = \"School Districts' Reliance on State Revenue\",\n    subtitle = \"Percent of District K-12 Revenue From State, 2018-19\",\n    caption = \"Source: EdBuild\")"
+  },
+  {
+    "objectID": "slides/class_7/class_7.html#live-coding-example-making-a-state-map-with-edbuildmapr-4",
+    "href": "slides/class_7/class_7.html#live-coding-example-making-a-state-map-with-edbuildmapr-4",
+    "title": "Mapping and Bar Charts in R",
+    "section": "LIVE CODING EXAMPLE: Making a state map with edbuildmapr",
+    "text": "LIVE CODING EXAMPLE: Making a state map with edbuildmapr\nStep 5: Make your own color palette and create bins to more clearly break up your data!\n\n# Make your own color palette and create bins to more clearly break up your data! ----\n\n# create custom color palette\nbw_state_revenue &lt;- c(\"#BEC6CE\", \"#FFC762\", \"#007786\", \"#212B46\", \"#6D1E4A\")\n\n# plot another nicely-formatted map\nggplot()  + \n  geom_sf(data = state_shp,\n          aes(fill = pct_sr),\n          color = \"#ffffff\") +\n  theme_void() +\n  scale_fill_stepsn(breaks=c(0, .3, .5, .7, 1), # Breaks up the data\n                    colors = bw_state_revenue, \n                    name=\"State K-12 Revenue (%)\",\n                    labels=percent_format(accuracy = 1L)) + \n  labs(\n    title = \"School Districts' Reliance on State Revenue\",\n    subtitle = \"Percent of District K-12 Revenue From State (2019)\",\n    caption = \"Source: EdBuildr Data, 2019\")\n\nYou can export your map like any other plot via ggsave()"
+  },
+  {
+    "objectID": "slides/class_7/class_7.html#review-what-is-the-ggplot2-package",
+    "href": "slides/class_7/class_7.html#review-what-is-the-ggplot2-package",
+    "title": "Mapping and Bar Charts in R",
+    "section": "Review: What is the ggplot2 package?",
+    "text": "Review: What is the ggplot2 package?\nThe ggplot2 package is the most widely-used data visualization approach in the R ecosystem.\n\nPlots in ggplot2 are created by starting with your data, then building up layers\nOnce your specify your data, you can add layers of “geoms” to create your plot\nToday we will use geom_histogram()"
+  },
+  {
+    "objectID": "slides/class_7/class_7.html#create-histograms-13",
+    "href": "slides/class_7/class_7.html#create-histograms-13",
+    "title": "Mapping and Bar Charts in R",
+    "section": "Create histograms (1/3)",
+    "text": "Create histograms (1/3)\nUse a histogram to visualize the distribution of median property values across states.\n\n# histogram of median property value\nggplot(data = state_summary) +\n  geom_histogram(mapping = aes(x = mpv_med), binwidth = 40000)"
+  },
+  {
+    "objectID": "slides/class_7/class_7.html#create-histograms-23",
+    "href": "slides/class_7/class_7.html#create-histograms-23",
+    "title": "Mapping and Bar Charts in R",
+    "section": "Create histograms (2/3)",
+    "text": "Create histograms (2/3)\nUse a histogram to visualize the distribution of median household income across states.\n\n# histogram of median household income\nggplot(data = state_summary) +\n  geom_histogram(mapping = aes(x = mhi_med), binwidth = 3000)"
+  },
+  {
+    "objectID": "slides/class_7/class_7.html#create-histograms-33",
+    "href": "slides/class_7/class_7.html#create-histograms-33",
+    "title": "Mapping and Bar Charts in R",
+    "section": "Create histograms (3/3)",
+    "text": "Create histograms (3/3)\nUse a histogram to visualize the distribution of state and local per-pupil funding across states.\n\n# histogram of state + local pp rev\nggplot(data = state_summary) +\n  geom_histogram(mapping = aes(x = state_loc_rev_pp_med), binwidth = 2000)"
+  },
+  {
+    "objectID": "slides/class_7/class_7.html#final-r-class",
+    "href": "slides/class_7/class_7.html#final-r-class",
+    "title": "Mapping and Bar Charts in R",
+    "section": "Final R Class",
+    "text": "Final R Class\n\nScheduled for Tuesday, September 24 from 11 AM - 12 PM CT\nWe will cover frequency tables and how to add labels to scatterplots\nIs there anything else people want to cover?"
   }
 ]

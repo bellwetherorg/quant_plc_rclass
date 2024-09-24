@@ -1,0 +1,249 @@
+---
+title: "Advanced Data Visualization in R"
+date: "September 23, 2024"
+css:
+  - |
+    .smaller h1 {
+      font-size: 0.5em; /* Adjust the font size as needed */
+    }
+output:
+  quarto::quarto_presentation:
+    format: revealjs
+    theme: 
+      logo: images/primary_full-color.png
+      theme: theme/slides.scss # Choose a theme for your presentation (e.g., simple, serif, solarized, etc.)
+    incremental: true # Whether to display content incrementally (one step at a time)
+    self_contained: true # Whether to create a standalone HTML file
+    highlight_style: "github" # Syntax highlighting style (e.g., github, monokai, etc.)
+    revealjs:
+      controls: true # Display navigation controls (e.g., arrows, slide number, etc.)
+      progress: true # Display a progress bar
+      slideNumber: true # Display slide numbers
+      center: true # Center the content on each slide
+      chalkboard: true # Enable chalkboard mode for reveal.js
+---
+
+```{r}
+#| output: false
+
+library(tidyverse)
+library(countdown)
+library(tigris)
+library(sf)
+library(scales)
+library(edbuildr)
+library(viridis)
+library(readxl)
+library(countdown)
+
+
+
+
+bw_primary <- c("#6D1E4A", # 1 plum
+                "#007786", # 2 teal
+                "#0D525A", # 3 dark green
+                "#212B46", # 4 navy
+                "#5A6675", # 5 grey
+                "#F0DEC1") # 6 cream
+
+bw_secondary <- c("#FFC762", # 1 yellow
+                  "#FFB653", # 2 orange
+                  "#BEC6CE", # 3 light grey
+                  "#2E1A4A", # 4 deep purple
+                  "#7EA2D1", # 5 soft blue
+                  "#CAD3FB", # 6 lavender
+                  "#9CD4EA", # 7 sky
+                  "#FFA497") # 8 peach
+
+
+```
+
+
+
+# Introduction to `ggrepel`
+
+## What is `ggrepel`? 
+
+`ggrepel` is an R package that provides geoms for ggplot2 to repel overlapping text labels in plot. The primary purpose of `ggrepel` is to improve the readability of plots by automatically adjusting the position of text labels to minimize overlaps. The two main functions are: 
+
+- `geom_text_repel()`: For adding repelled text labels
+- `geom_label_repel()`: For adding repelled text labels with background boxes
+
+These functions work to repel text labels in three ways:
+
+- Away from each other
+- Away from data points
+- Away from edges of the plotting area
+
+## Live `ggrepel` coding example 
+
+
+```{r}
+#| echo: true
+#| eval: false
+
+
+# BASIC SCATTERPLOT #1: Before and after, no ggrepel -------
+
+ggplot() +
+  geom_point(data = ms_model9,
+             aes(x = maep_expected_local_pp, y = matt_wsf_pp,
+                 size = total_enroll, color = direct_cert_pct),
+             alpha = .8) +
+  # This line of code adds the 1:1 line. This means that districts below the line receive less PP funding 
+  # under the new model, and districts above the line receive more PP funding. 
+  geom_abline(color = "black") +
+  scale_x_continuous(labels = dollar_format()) +
+  scale_y_continuous(labels = dollar_format(),
+                     limits = c(7500, 11000)) +
+  scale_color_viridis(labels = percent_format()) +
+  scale_size_area(max_size = 10,
+                  labels = comma_format()) +
+  labs(x = "Total (MAEP + Expected Local) Funding Per-Pupil",
+       y = "INSPIRE Funding Per-Pupil",
+       color = "Direct Cert %",
+       size = "Enrollment",
+       # shape = "LEA Type",
+       title = "Change in Per-Pupil Funding, FY25") +
+  theme_bw() +
+  theme(text = element_text(family = "Avenir", size = 11),
+        plot.caption = element_text(hjust = 0))
+
+
+
+
+# SCATTERPLOT 2: Before and after with ggrepel  and geom_text_repel -------
+
+# plot before vs after
+
+ggplot() +
+  geom_point(data = ms_model9,
+             aes(x = maep_expected_local_pp, y = matt_wsf_pp,
+                 size = total_enroll, color = direct_cert_pct),
+             alpha = .8) +
+  # Add in ggrepel so that we can lael certain districts that are above and below the trend line
+  geom_text_repel(data = ms_model9 |>
+                    filter(matt_wsf_pp > 9700),
+                  aes(x = maep_expected_local_pp, y =  matt_wsf_pp,
+                      label = district),
+                  size = text_repel_size) +
+  geom_text_repel(data = ms_model9 |>
+                    filter(maep_expected_local_pp > 9000,
+                           matt_wsf_pp < 9660),
+                  aes(x = maep_expected_local_pp, y =  matt_wsf_pp,
+                      label = district),
+                  size = text_repel_size) +
+  geom_text_repel(data = ms_model9 |>
+                    filter(maep_expected_local_pp < 7200),
+                  aes(x = maep_expected_local_pp, y =  matt_wsf_pp,
+                      label = district),
+                  size = text_repel_size) +
+  geom_text_repel(data = ms_model9 |>
+                    filter(maep_expected_local_pp < 8300 &
+                             maep_expected_local_pp > 8100 &
+                             matt_wsf_pp < 8400),
+                  aes(x = maep_expected_local_pp, y = matt_wsf_pp,
+                      label = district),
+                  size = text_repel_size) +
+  geom_abline(color = "black") +
+  scale_x_continuous(labels = dollar_format()) +
+  scale_y_continuous(labels = dollar_format(),
+                     limits = c(7500, 11000)) +
+  scale_color_viridis(labels = percent_format()) +
+  scale_size_area(max_size = 10,
+                  labels = comma_format()) +
+  labs(x = "Total (MAEP + Expected Local) Funding Per-Pupil",
+       y = "INSPIRE Funding Per-Pupil",
+       color = "Direct Cert %",
+       size = "Enrollment",
+       # shape = "LEA Type",
+       title = "Change in Per-Pupil Funding, FY25") +
+  theme_bw() +
+  theme(text = element_text(family = "Avenir", size = 11),
+        plot.caption = element_text(hjust = 0))
+
+# SCATTERPLOT 3: Before and after with ggrepel and  geom_label-------
+
+# plot before vs after
+
+ggplot() +
+  geom_point(data = ms_model9,
+             aes(x = maep_expected_local_pp, y = matt_wsf_pp,
+                 size = total_enroll, color = direct_cert_pct),
+             alpha = .8) +
+  geom_label_repel(data = ms_model9 |>
+                     filter(matt_wsf_pp > 9700),
+                   aes(x = maep_expected_local_pp, y =  matt_wsf_pp,
+                       label = district),
+                   size = text_repel_size) +
+  geom_label_repel(data = ms_model9 |>
+                     filter(maep_expected_local_pp > 9000,
+                            matt_wsf_pp < 9660),
+                   aes(x = maep_expected_local_pp, y =  matt_wsf_pp,
+                       label = district),
+                   size = text_repel_size) +
+  geom_label_repel(data = ms_model9 |>
+                     filter(maep_expected_local_pp < 7200),
+                   aes(x = maep_expected_local_pp, y =  matt_wsf_pp,
+                       label = district),
+                   size = text_repel_size) +
+  geom_label_repel(data = ms_model9 |>
+                     filter(maep_expected_local_pp < 8300 &
+                              maep_expected_local_pp > 8100 &
+                              matt_wsf_pp < 8400),
+                   aes(x = maep_expected_local_pp, y = matt_wsf_pp,
+                       label = district),
+                   size = text_repel_size) +
+  geom_abline(color = "black") +
+  scale_x_continuous(labels = dollar_format()) +
+  scale_y_continuous(labels = dollar_format(),
+                     limits = c(7500, 11000)) +
+  scale_color_viridis(labels = percent_format()) +
+  scale_size_area(max_size = 10,
+                  labels = comma_format()) +
+  labs(x = "Total (MAEP + Expected Local) Funding Per-Pupil",
+       y = "INSPIRE Funding Per-Pupil",
+       color = "Direct Cert %",
+       size = "Enrollment",
+       title = "Change in Per-Pupil Funding, FY25") +
+  theme_bw() +
+  theme(text = element_text(family = "Avenir", size = 11),
+        plot.caption = element_text(hjust = 0))
+
+
+
+# state summary: This is a reminder on how to do a state summary --------
+model9_state_summary <- ms_model9 |>
+  summarise(model_9_total_funding = sum(model_9_total_funding, na.rm = T),
+            base_funding = sum(base_funding, na.rm = T),
+            sped_tier_1_funding = sum(sped_tier_1_funding, na.rm = T),
+            sped_tier_2_funding = sum(sped_tier_2_funding, na.rm = T),
+            sped_tier_3_funding = sum(sped_tier_3_funding, na.rm = T), 
+            total_sped_funding = sum(total_sped_funding, na.rm = T), 
+            ell_funding = sum(ell_funding, na.rm = T),
+            gifted_funding = sum(gifted_funding, na.rm = T),
+            ed_funding = sum(ed_funding, na.rm = T), 
+            conc_pov_funding = sum(conc_pov_funding, na.rm = T),
+            sparsity_funding = sum(sparsity_funding, na.rm = T), 
+            vocational_funding = sum(vocational_funding, na.rm = T),
+            model_9_state_share = sum(model_9_state_share, na.rm = T),
+            local_share_expected_total = sum(local_share_expected_total, na.rm = T),
+            maep_rev_fy24 = sum(maep_rev_fy24, na.rm = T)) |>
+  mutate(maep_total_cost = maep_rev_fy24 + local_share_expected_total,
+         total_difference = model_9_total_funding - maep_total_cost,
+         state_share_diff = model_9_state_share - maep_rev_fy24)
+
+
+
+
+```
+
+
+## Class "Class" 
+
+On October 22, instead of class I will host office hours where I would love for people to come by and share with me what you have learned, things you liked, and things you would change about the optional training. 
+
+If people are interested in learning how to build dashboards, please let me know and I can put together a dashboard training for winter 2025. 
+
+Thanks all!!! 
+

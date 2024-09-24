@@ -65,4 +65,9 @@ library(viridis)
 - **Class Recording:** The recording will be added after class
 - **Class Slides:** [Link to the slides for class 7](https://bellwetherorg.github.io/quant_plc_rclass/slides/class_7/class_7.html)
 - **R Script:** See the `wk-7-class-examples` repository for the class scripts.
+
+## September 24, 2024: Class 8 Materials
+
+- **Class Slides:** [Link to the slides for class 8](https://bellwetherorg.github.io/quant_plc_rclass/slides/class_8/class_8.html)
+- **R Script:** See the `wk-8-class-example` repository for the class scripts.
     

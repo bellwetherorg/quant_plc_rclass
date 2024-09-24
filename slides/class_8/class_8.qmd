@@ -1,6 +1,6 @@
 ---
 title: "Advanced Data Visualization in R"
-date: "September 23, 2024"
+date: "September 24, 2024"
 css:
   - |
     .smaller h1 {
@@ -239,7 +239,7 @@ model9_state_summary <- ms_model9 |>
 ```
 
 
-## Class "Class" 
+## Last "Class" 
 
 On October 22, instead of class I will host office hours where I would love for people to come by and share with me what you have learned, things you liked, and things you would change about the optional training. 
 
